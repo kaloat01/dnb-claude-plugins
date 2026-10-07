@@ -1,0 +1,28 @@
+# dealer-articles roadmap (status 2026-10-07)
+
+## Shipped
+- **v0.1:** `/article-apollo`, `/article-images` and `/article-setup`.
+  - Bundled golden-geo (article mode).
+  - Research, compliance and golden-geo reviewer agents.
+  - Apollo package plus local preview.
+  - 5 pilot dealers.
+- **v0.2:**
+  - The dealership section borrows the service-specials structure: a storefront plaque plus factual value lines.
+  - White logos sit on the black brand band.
+  - Dry-run workflow fixes.
+  - Phones and hours come from each dealer's About Us page seen from the US, using About Us numbers when there is no local number.
+  - Verified Apollo image catalogs per dealer.
+
+## Next
+1. A first full end-to-end article through the installed plugin, on a topic the dealer site does not already cover. Fix whatever it finds.
+2. Minor cleanups:
+   - Use one value for each number across the rules files: title 50–65 characters, internal links 12–25, pair images ≥800 px.
+   - Make `shot` capture the full page.
+   - Make the banned-phrase gate match whole words.
+   - Test on macOS.
+3. Add the remaining Apollo dealers: Murgado Ford Chicago, Murgado Lincoln Chicago and Bentley Edison.
+4. Platform adapters:
+   - Dealer.com: a block with no H1 where the page name is the H1, px units with a 16px wrapper, `!important` CTA fills, and no Google Fonts where the dealer forbids them.
+   - DealerInspire: WordPress posts via the Text tab, shortcodes, Yoast fields.
+5. A live post-publish QA command: compare the live page with the build, and check the head tags against the SEO fields.
+6. Semver releases from v1.0.
