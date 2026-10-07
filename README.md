@@ -62,6 +62,10 @@ Brickell Honda · Brickell Mazda · Honda Libertyville · Toyota of Downtown Chi
 To add or correct a dealer without waiting for an update, put a `dealers/<key>.json` file in your working folder. Use
 the same format as `plugins/dealer-articles/resources/dealers/`; your local file overrides the shipped one.
 
+**Phones and hours:** these are taken from each dealer's **About Us page as seen from the US**. Call-tracking scripts
+swap numbers by visitor location, so a check from outside the US can show the wrong numbers. Toll-free numbers are
+never used as department phones.
+
 ### Update
 With auto-update on, updates arrive by themselves. To update manually, run
 `/plugin marketplace update dnb-plugins`, then restart Claude Code.

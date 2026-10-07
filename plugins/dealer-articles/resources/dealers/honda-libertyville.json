@@ -13,7 +13,7 @@
   "departments": {
     "service": {
       "label": "Service",
-      "phone": "872-258-0414",
+      "phone": "847-595-5561",
       "cta": { "label": "Schedule Service", "href": "/scheduleservice" },
       "hours": [
         [["Monday", "Tuesday", "Wednesday", "Thursday"], "06:30", "19:00"],
@@ -81,9 +81,9 @@
   ],
   "lastVerified": "2026-10-07",
   "sources": [
+    "https://www.hondalibertyville.com/about-us About Us, US geo, 2026-10-07: Sales and Service 847-595-5561 (visible and tel: links); main (847) 362-4300 in page JSON-LD; sales hours Mon-Fri 9-8, Sat 9-6 and service hours Mon-Thu 6:30-7, Fri 6:30-6:30, Sat 7:30-4, Sunday closed (page JSON-LD + today's header); CallRevu DNI script present, rendered numbers matched raw HTML",
     "https://www.hondalibertyville.com/contactus (live, 2026-10-07): address, Main (847) 362-4300, Sales and Service 847-595-5561, sales hours, service and parts hours",
     "https://www.hondalibertyville.com/ rawHtml (live, 2026-10-07): geo 42.2688444,-87.9517543, theme CSS p1162 websitegemini + Honda, header logo 181233 logo=y (white)",
-    "Service phone 872-258-0414: locked user decision 10/03 to keep our tracked service numbers in pages and schema (SERVICE_PAGES/2026.10.03-REMAINING-WORK-HANDOFF-HLV-MFC-MLC-Toyota.md section 1.1 #1); live site lists 847-595-5561 for Sales and Service",
     "HondaLibertyville/design.json: local areas, Illinois climate context",
     "SALES_ARTICLES/2026.09.30-Dealer-Article-PROCESS-Playbook-v2.md section 5: Honda naming rules",
     "2026-08-17-Illinois-Article-Production/10_PHASE_A_DISCOVERY_FINDINGS.md: /blog index renders empty, so no blog route",

@@ -56,7 +56,11 @@ Spawn the agent **`dealer-articles:article-researcher`** (foreground) with: titl
 today's date, article type, pricing policy, allowed local framing (`areas`, `climate`) and bans (`excluded`, `bans`).
 It writes `<job>/<slug>-source-ledger.md`. Then:
 - **Premise failed** → ⛔ AskUserQuestion: recommended corrected H1/scope first, keep-as-is second. Wait.
-- Dealer `verify[]` items you will use (department phone/hours, routes) → ask the user to confirm them in one question.
+- **Phones + hours rule:** the reference is the dealer's **About Us page as seen from the US** (call-tracking scripts swap
+  numbers by visitor location/source). The dealer file was verified this way (`lastVerified`). If it is older than ~60 days
+  or has `verify[]` items you will use, re-check `<domain>/about-us` — with Firecrawl if available (`--country US
+  --max-age 0`, cache-busted URL), otherwise ask the user to open the About Us page in a US browser session and confirm.
+  Never use toll-free (8xx) numbers as department phones. Ask the user to confirm any remaining `verify[]` item in one question.
 Phase → `draft`.
 
 ## Phase 4 — Draft + build

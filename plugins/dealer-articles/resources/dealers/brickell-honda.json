@@ -74,9 +74,8 @@
     "LOGO": { "apollo": "108908&Width=0&Height=0&logo=y", "alt": "Honda and Brickell Honda logos, a proud member of the Murgado Automotive Group", "w": 860, "h": 200, "desc": "Honda + Brickell Honda logo lockup (Murgado Automotive Group)" }
   },
   "verify": [
-    "Sunday service hours: the builder uses Sunday 09:00 to 15:00 (from the 09/2026 build); some service copy omits Sunday. Confirm with the dealer.",
     "/kbb-ico participating dealer listing shows a different store name and an 877 number; confirm before linking it as Brickell Honda's own offer."
   ],
-  "lastVerified": "2026-09-28",
-  "sources": ["Editorial v2 Apollo builder dealer config (09/28/2026)", "Brickell Honda design.json", "live brickellhonda.com theme CSS (p1138, checked 09/28/2026; live build p1162 per 10/07/2026)"]
+  "lastVerified": "2026-10-07",
+  "sources": ["https://www.brickellhonda.com/about-us About Us, US geo, 2026-10-07: address 690 SW 8th St, Miami, FL 33130; main (305) 856-3000; Sales 786-480-1304; Service and Parts 786-628-0577; sales hours and service hours incl. Sunday service 9:00 AM-3:00 PM; no call-tracking script (disableDNIScripts True)", "Editorial v2 Apollo builder dealer config (09/28/2026)", "Brickell Honda design.json", "live brickellhonda.com theme CSS (p1138, checked 09/28/2026; live build p1162 per 10/07/2026)"]
 }

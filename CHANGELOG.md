@@ -6,3 +6,4 @@
 - Apollo packaging (HTML fragment, site-wide CSS with hash marker, Structured Data, SEO `* Field  →  value`, preview).
 - Dealers: Brickell Honda, Brickell Mazda, Honda Libertyville, Toyota of Downtown Chicago, Bentley Jacksonville.
 - Zero npm dependencies; screenshots via the system Edge/Chrome.
+- Dealer phones + hours verified on each About Us page from a US location (call trackers swap numbers by geo); About Us wins.
