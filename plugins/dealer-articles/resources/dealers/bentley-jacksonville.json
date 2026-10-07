@@ -3,30 +3,82 @@
   "prefix": "bj",
   "platform": "apollo",
   "name": "Bentley Jacksonville",
-  "aliases": ["bentley jacksonville", "bentley of jacksonville", "jacksonville bentley", "bj"],
+  "aliases": [
+    "bentley jacksonville",
+    "bentley of jacksonville",
+    "jacksonville bentley",
+    "bj"
+  ],
   "brand": "Bentley",
   "group": "Murgado Automotive Group",
   "domain": "https://bentleyjacksonville.com",
-  "address": { "street": "7137 Bentley Rd", "city": "Jacksonville", "region": "FL", "zip": "32256", "country": "US" },
-  "geo": [30.2453452, -81.5939649],
+  "address": {
+    "street": "7137 Bentley Rd",
+    "city": "Jacksonville",
+    "region": "FL",
+    "zip": "32256",
+    "country": "US"
+  },
+  "geo": [
+    30.2453452,
+    -81.5939649
+  ],
   "mainPhone": "(904) 490-9953",
   "departments": {
     "service": {
       "label": "Service",
       "phone": "904-490-8530",
-      "cta": { "label": "Schedule Service", "href": "/scheduleservice" },
+      "cta": {
+        "label": "Schedule Service",
+        "href": "/scheduleservice"
+      },
       "hours": [
-        [["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"], "08:00", "18:00"],
-        [["Saturday"], "08:00", "15:00"]
+        [
+          [
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday"
+          ],
+          "08:00",
+          "18:00"
+        ],
+        [
+          [
+            "Saturday"
+          ],
+          "08:00",
+          "15:00"
+        ]
       ]
     },
     "sales": {
       "label": "Sales",
       "phone": "904-490-9953",
-      "cta": { "label": "Shop New Inventory", "href": "/inventory/new" },
+      "cta": {
+        "label": "Shop New Inventory",
+        "href": "/inventory/new"
+      },
       "hours": [
-        [["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"], "09:00", "19:00"],
-        [["Saturday"], "09:00", "18:00"]
+        [
+          [
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday"
+          ],
+          "09:00",
+          "19:00"
+        ],
+        [
+          [
+            "Saturday"
+          ],
+          "09:00",
+          "18:00"
+        ]
       ]
     }
   },
@@ -43,10 +95,27 @@
     "about": "/about-us",
     "contact": "/contactus"
   },
-  "areas": ["Jacksonville", "San Marco", "Riverside", "Avondale", "Southside", "Mandarin", "Nocatee", "Ponte Vedra Beach", "St. Augustine", "Orange Park", "Jacksonville Beach", "Atlantic Beach", "Fleming Island"],
+  "areas": [
+    "Jacksonville",
+    "San Marco",
+    "Riverside",
+    "Avondale",
+    "Southside",
+    "Mandarin",
+    "Nocatee",
+    "Ponte Vedra Beach",
+    "St. Augustine",
+    "Orange Park",
+    "Jacksonville Beach",
+    "Atlantic Beach",
+    "Fleming Island"
+  ],
   "excluded": [],
   "climate": "Northeast Florida: hot, humid summers with daily afternoon thunderstorms, intense sun and UV, coastal salt air off the Atlantic and the St. Johns River, heavy summer rain and Atlantic hurricane season (June through November); no snow, road salt or freeze-thaw.",
-  "bans": ["snow", "road salt"],
+  "bans": [
+    "snow",
+    "road salt"
+  ],
   "brandNaming": [
     "Write 'Bentley' and model names in full (Bentayga, Bentayga EWB, Continental GT, Flying Spur)",
     "'Genuine Bentley Parts', 'Bentley Service Advisor' and 'Bentley-trained' are the dealer's own offer wording; use them only in that sense and make no other expertise claims",
@@ -68,12 +137,23 @@
     "shell": "gemini"
   },
   "images": {
-    "STORE": { "apollo": "903401", "alt": "Bentley Jacksonville and Murgado Automotive Group dealership building at dusk on Bentley Rd", "w": 960, "h": 455, "desc": "Bentley Jacksonville / Murgado Automotive Group building at dusk with Bentley models out front" },
-    "LOGO": { "apollo": null, "alt": "Bentley Jacksonville logo", "w": null, "h": null, "desc": "Dark-on-light Bentley Jacksonville logo (needed; Apollo versions are white)" }
+    "STORE": {
+      "apollo": "903401",
+      "alt": "Bentley Jacksonville and Murgado Automotive Group dealership building at dusk on Bentley Rd",
+      "w": 960,
+      "h": 455,
+      "desc": "Bentley Jacksonville / Murgado Automotive Group building at dusk with Bentley models out front"
+    },
+    "LOGO": {
+      "apollo": "903402&Width=0&Height=0&logo=y",
+      "alt": "Bentley wings emblem and Bentley Jacksonville wordmark",
+      "w": 430,
+      "h": 100,
+      "onDark": true,
+      "desc": "White logo on transparent PNG; shown on the black brand band"
+    }
   },
-  "verify": [
-    "The Bentley Jacksonville logos in Apollo (213895, 903402) are white on transparent; upload a dark-on-light version before setting images.LOGO, otherwise keep the text band."
-  ],
+  "verify": [],
   "lastVerified": "2026-10-07",
   "sources": [
     "https://bentleyjacksonville.com/about-us About Us, US geo, 2026-10-07: address 7137 Bentley Rd, Jacksonville, FL 32256; Sales 904-490-9953, Service and Parts 904-490-8530; sales Mon-Fri 9-7, Sat 9-6 and service Mon-Fri 8-6, Sat 8-3, no Sunday (page JSON-LD + today's header); CallRevu DNI script present, rendered numbers matched raw HTML",

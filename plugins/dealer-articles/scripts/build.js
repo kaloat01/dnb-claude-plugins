@@ -225,6 +225,8 @@ ${R} .${P}-dealer-media img{width:100%;height:100%;min-height:260px;object-fit:c
 ${R} .${P}-dealer-body{padding:30px 26px 32px}
 ${R} .${P}-dealer-logo{display:block;width:100%;max-width:340px;height:auto;margin:0 0 22px;mix-blend-mode:multiply}
 ${R} .${P}-dealer-logo.${P}-dealer-logo-sm{width:auto;max-width:96px;margin:0 0 16px}
+${R} .${P}-dealer-band{background:var(${V}-dark);padding:20px 24px;margin:0 0 22px;border-radius:var(${V}-radius)}
+${R} .${P}-dealer-band .${P}-dealer-logo{margin:0;mix-blend-mode:normal}
 ${R} .${P}-dealer-solo .${P}-dealer-body{max-width:860px}
 ${R} .${P}-dealer-name{font-family:${B.head};font-size:24px;line-height:1.2;color:var(${V}-ink);margin:0 0 22px;padding:0 0 14px;border-bottom:1px solid var(${V}-line)}
 ${R} .${P}-dealer h2{font-size:28px;line-height:1.25;margin:0 0 12px}
@@ -520,8 +522,10 @@ function build(mod, D, job, opts = {}) {
     const other = ds.other ? [ds.otherLabel || 'Main line', phoneLink(ds.other)]
       : D.mainPhone ? [ds.otherLabel || 'Main line', `<a href="${telHref(D.mainPhone)}">${D.mainPhone}</a>`]
         : otherDept ? [otherDept[1].label, phoneLink(otherDept[1])] : null;
-    // logo: wide lockup alone; small emblem (<300 px) + name band; no Apollo logo = name band only
-    const logo = (hasLogo ? imgTag('LOGO', mode, `${P}-dealer-logo${logoSmall ? ` ${P}-dealer-logo-sm` : ''}`) : '') + (hasLogo && !logoSmall ? '' : `<div class="${P}-dealer-name">${esc(D.name)}</div>`);
+    // logo: wide lockup alone; small emblem (<300 px) + name band; no Apollo logo = name band only;
+    // LOGO.onDark (white artwork) = logo on the Editorial v2 black brand band (as the Mercedes white star)
+    const logoImg = hasLogo ? imgTag('LOGO', mode, `${P}-dealer-logo${logoSmall ? ` ${P}-dealer-logo-sm` : ''}`) : '';
+    const logo = (hasLogo && images.LOGO.onDark ? `<div class="${P}-dealer-band">${logoImg}</div>` : logoImg) + (hasLogo && !logoSmall ? '' : `<div class="${P}-dealer-name">${esc(D.name)}</div>`);
     const facts = [['Address', `${D.street}, ${D.city}, ${D.region} ${D.zip}`], dept.phone && [dept.label, phoneLink(dept)], hrs(dept) && [`${dept.label} hours`, hrs(dept).replace(/ {2}· {2}/g, '<br>')], other]
       .filter(Boolean).map(([t, d]) => `<div><dt>${t}</dt><dd>${d}</dd></div>`).join('');
     const media = hasStore ? `<figure class="${P}-dealer-media">${imgTag('STORE', mode)}</figure>` : '';
@@ -620,7 +624,7 @@ ${cssText}
 <script type="application/ld+json">${sdJson}</script>
 </head><body>
 <div class="pv-bar"><b>${isFinal ? 'LOCAL PREVIEW · FINAL' : 'LOCAL PREVIEW · DRAFT (placeholders) · not for pasting'}</b> · Title (${mod.title.length}): <b>${esc(mod.title)}</b> · Meta (${mod.meta.length}) · Focus: <b>${esc(mod.focus)}</b> · ${url}</div>
-<div class="pv-hdr">${hasLogo ? `<img src="${esc(APOLLO_IMG + images.LOGO.apollo)}" alt="" style="height:44px;width:auto">` : `<b>${esc(D.name)}</b>`} Site header (Apollo ${esc(ap.shell || 'theme')} shell)</div>
+<div class="pv-hdr"${hasLogo && images.LOGO.onDark ? ' style="background:#111;color:#ccc"' : ''}>${hasLogo ? `<img src="${esc(APOLLO_IMG + images.LOGO.apollo)}" alt="" style="height:44px;width:auto">` : `<b>${esc(D.name)}</b>`} Site header (Apollo ${esc(ap.shell || 'theme')} shell)</div>
 ${shellOpen}
 ${inner}
 ${shellClose}

@@ -3,31 +3,88 @@
   "prefix": "hlv",
   "platform": "apollo",
   "name": "Honda Libertyville",
-  "aliases": ["honda libertyville", "libertyville honda", "honda of libertyville", "hlv"],
+  "aliases": [
+    "honda libertyville",
+    "libertyville honda",
+    "honda of libertyville",
+    "hlv"
+  ],
   "brand": "Honda",
   "group": "Murgado Automotive Group",
   "domain": "https://www.hondalibertyville.com",
-  "address": { "street": "1111 S Milwaukee Ave", "city": "Libertyville", "region": "IL", "zip": "60048", "country": "US" },
-  "geo": [42.2688444, -87.9517543],
+  "address": {
+    "street": "1111 S Milwaukee Ave",
+    "city": "Libertyville",
+    "region": "IL",
+    "zip": "60048",
+    "country": "US"
+  },
+  "geo": [
+    42.2688444,
+    -87.9517543
+  ],
   "mainPhone": "(847) 362-4300",
   "departments": {
     "service": {
       "label": "Service",
       "phone": "847-595-5561",
-      "cta": { "label": "Schedule Service", "href": "/scheduleservice" },
+      "cta": {
+        "label": "Schedule Service",
+        "href": "/scheduleservice"
+      },
       "hours": [
-        [["Monday", "Tuesday", "Wednesday", "Thursday"], "06:30", "19:00"],
-        [["Friday"], "06:30", "18:30"],
-        [["Saturday"], "07:30", "16:00"]
+        [
+          [
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday"
+          ],
+          "06:30",
+          "19:00"
+        ],
+        [
+          [
+            "Friday"
+          ],
+          "06:30",
+          "18:30"
+        ],
+        [
+          [
+            "Saturday"
+          ],
+          "07:30",
+          "16:00"
+        ]
       ]
     },
     "sales": {
       "label": "Sales",
       "phone": "847-595-5561",
-      "cta": { "label": "Shop New Inventory", "href": "/inventory/new" },
+      "cta": {
+        "label": "Shop New Inventory",
+        "href": "/inventory/new"
+      },
       "hours": [
-        [["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"], "09:00", "20:00"],
-        [["Saturday"], "09:00", "18:00"]
+        [
+          [
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday"
+          ],
+          "09:00",
+          "20:00"
+        ],
+        [
+          [
+            "Saturday"
+          ],
+          "09:00",
+          "18:00"
+        ]
       ]
     }
   },
@@ -46,10 +103,26 @@
     "about": "/about-us",
     "contact": "/contactus"
   },
-  "areas": ["Libertyville", "Vernon Hills", "Mundelein", "Gurnee", "Waukegan", "Lake Forest", "Lake Bluff", "Highland Park", "Grayslake", "Antioch", "Lindenhurst", "Round Lake"],
+  "areas": [
+    "Libertyville",
+    "Vernon Hills",
+    "Mundelein",
+    "Gurnee",
+    "Waukegan",
+    "Lake Forest",
+    "Lake Bluff",
+    "Highland Park",
+    "Grayslake",
+    "Antioch",
+    "Lindenhurst",
+    "Round Lake"
+  ],
   "excluded": [],
   "climate": "Lake County, Illinois: cold, snowy winters with sub-zero wind chills, heavily salted roads from about November through March, freeze-thaw potholes in spring, and hot, humid summers.",
-  "bans": ["HondaCare", "Honda Care"],
+  "bans": [
+    "HondaCare",
+    "Honda Care"
+  ],
   "brandNaming": [
     "Say 'Honda Genuine Parts' (Honda's wording)",
     "Use 'Maintenance Minder'; Honda publishes no fixed mileage for Maintenance Minder items, so never state one",
@@ -72,12 +145,24 @@
     "shell": "gemini"
   },
   "images": {
-    "STORE": { "apollo": null, "alt": "Honda Libertyville dealership exterior on S Milwaukee Ave in Libertyville", "w": null, "h": null, "desc": "Honda Libertyville dealership exterior on S Milwaukee Ave, daylight (photo needed)" },
-    "LOGO": { "apollo": null, "alt": "Honda Libertyville logo", "w": null, "h": null, "desc": "Dark-on-light Honda Libertyville logo lockup (needed; current header logo is white)" }
+    "STORE": {
+      "apollo": null,
+      "alt": "Honda Libertyville dealership exterior on S Milwaukee Ave in Libertyville",
+      "w": null,
+      "h": null,
+      "desc": "Honda Libertyville dealership exterior on S Milwaukee Ave, daylight (photo needed)"
+    },
+    "LOGO": {
+      "apollo": "181233&Width=0&Height=0&logo=y",
+      "alt": "Honda and Honda Libertyville logos, a proud member of the Murgado Automotive Group",
+      "w": 430,
+      "h": 100,
+      "onDark": true,
+      "desc": "White logo on transparent PNG; shown on the black brand band"
+    }
   },
   "verify": [
-    "Supply an Apollo library photo of the Honda Libertyville dealership exterior for images.STORE before a final build.",
-    "The site header logo (Apollo 181233) is white on transparent; upload a dark-on-light Honda Libertyville logo before setting images.LOGO, otherwise keep the text band."
+    "Supply an Apollo library photo of the Honda Libertyville dealership exterior for images.STORE before a final build."
   ],
   "lastVerified": "2026-10-07",
   "sources": [
