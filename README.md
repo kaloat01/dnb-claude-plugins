@@ -63,8 +63,8 @@ To add or correct a dealer without waiting for an update, put a `dealers/<key>.j
 the same format as `plugins/dealer-articles/resources/dealers/`; your local file overrides the shipped one.
 
 **Phones and hours:** these are taken from each dealer's **About Us page as seen from the US**. Call-tracking scripts
-swap numbers by visitor location, so a check from outside the US can show the wrong numbers. Toll-free numbers are
-never used as department phones.
+swap numbers by visitor location, so a check from outside the US can show the wrong numbers. Local numbers are
+preferred; when a department has no local number, the number its About Us page shows (header/main line) is used.
 
 ### Update
 With auto-update on, updates arrive by themselves. To update manually, run

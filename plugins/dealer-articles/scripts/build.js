@@ -698,7 +698,10 @@ ${shellClose}
   (mod.banned || []).forEach((re) => { if (new RegExp(re, 'i').test(allText)) hits.push(`/${re}/`); });
   gate('Banned phrases (global + dealer + module)', hits);
   gate('Excluded towns', D.excluded.filter((c) => allText.includes(c)));
-  gate('No toll-free numbers', /(?<![\d,$])\(?8(77|88|00|66|55|44)\)?[-. ]?\d{3}[-. ]\d{4}/.test(visible) ? ['8xx number in copy'] : []);
+  // toll-free numbers are allowed only when they are the dealer file's verified About Us number for a department/main line
+  const fileDigits = new Set([D.mainPhone, ...Object.values(D.depts || {}).map((d) => d && d.phone)].filter(Boolean).map((p) => String(p).replace(/\D/g, '').slice(-10)));
+  const tollFree = (visible.match(/(?<![\d,$])\(?8(77|88|00|66|55|44|33)\)?[-. ]?\d{3}[-. ]\d{4}/g) || []).filter((n) => !fileDigits.has(n.replace(/\D/g, '').slice(-10)));
+  gate('No toll-free numbers', tollFree.length ? [`8xx number not in the dealer file: ${tollFree[0]}`] : []);
   const dollars = [];
   for (const m of allText.matchAll(/\$\s?\d[\d,.]*/g)) { const ctx = allText.slice(Math.max(0, m.index - 140), m.index + 140); if (!mod.allowMsrp || !/MSRP/.test(ctx)) dollars.push(m[0]); }
   gate('$ figures only as MSRP (allowMsrp)', dollars.length ? [`${dollars.slice(0, 5).join(', ')} without allowMsrp + "MSRP" within 140 chars`] : []);
