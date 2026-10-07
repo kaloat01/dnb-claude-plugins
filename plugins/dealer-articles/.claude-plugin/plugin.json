@@ -1,0 +1,8 @@
+{
+  "name": "dealer-articles",
+  "description": "Draft Hrizn-level, compliance-reviewed long-form dealership articles (Editorial v2 design) and package them for Apollo: HTML fragment, site-wide CSS, Structured Data, SEO fields and a local preview. Start with /article-setup, then /article-apollo \"<dealer>\" \"<title>\".",
+  "author": { "name": "DNB Solutions / Referel Consulting" },
+  "homepage": "https://github.com/kaloat01/dnb-claude-plugins",
+  "repository": "https://github.com/kaloat01/dnb-claude-plugins",
+  "keywords": ["dealership", "seo", "geo", "aeo", "articles", "apollo"]
+}

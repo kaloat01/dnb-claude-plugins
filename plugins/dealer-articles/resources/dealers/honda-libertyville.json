@@ -1,0 +1,92 @@
+{
+  "key": "honda-libertyville",
+  "prefix": "hlv",
+  "platform": "apollo",
+  "name": "Honda Libertyville",
+  "aliases": ["honda libertyville", "libertyville honda", "honda of libertyville", "hlv"],
+  "brand": "Honda",
+  "group": "Murgado Automotive Group",
+  "domain": "https://www.hondalibertyville.com",
+  "address": { "street": "1111 S Milwaukee Ave", "city": "Libertyville", "region": "IL", "zip": "60048", "country": "US" },
+  "geo": [42.2688444, -87.9517543],
+  "mainPhone": "(847) 362-4300",
+  "departments": {
+    "service": {
+      "label": "Service",
+      "phone": "872-258-0414",
+      "cta": { "label": "Schedule Service", "href": "/scheduleservice" },
+      "hours": [
+        [["Monday", "Tuesday", "Wednesday", "Thursday"], "06:30", "19:00"],
+        [["Friday"], "06:30", "18:30"],
+        [["Saturday"], "07:30", "16:00"]
+      ]
+    },
+    "sales": {
+      "label": "Sales",
+      "phone": "847-595-5561",
+      "cta": { "label": "Shop New Inventory", "href": "/inventory/new" },
+      "hours": [
+        [["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"], "09:00", "20:00"],
+        [["Saturday"], "09:00", "18:00"]
+      ]
+    }
+  },
+  "routes": {
+    "directions": "/get-directions",
+    "serviceHub": "/service-department",
+    "specials": "/specials/service-specials",
+    "scheduleService": "/scheduleservice",
+    "newInventory": "/inventory/new",
+    "usedInventory": "/inventory/used",
+    "cpoInventory": "/inventory/cpo",
+    "vehicleSpecials": "/specials/vehicle-specials",
+    "financing": "/getfinancing",
+    "valueYourTrade": "/shopperwizard/mytradevalue",
+    "parts": "/parts-department",
+    "about": "/about-us",
+    "contact": "/contactus"
+  },
+  "areas": ["Libertyville", "Vernon Hills", "Mundelein", "Gurnee", "Waukegan", "Lake Forest", "Lake Bluff", "Highland Park", "Grayslake", "Antioch", "Lindenhurst", "Round Lake"],
+  "excluded": [],
+  "climate": "Lake County, Illinois: cold, snowy winters with sub-zero wind chills, heavily salted roads from about November through March, freeze-thaw potholes in spring, and hot, humid summers.",
+  "bans": ["HondaCare", "Honda Care"],
+  "brandNaming": [
+    "Say 'Honda Genuine Parts' (Honda's wording)",
+    "Use 'Maintenance Minder'; Honda publishes no fixed mileage for Maintenance Minder items, so never state one",
+    "No HondaCare or 'Honda Certified Service' claims",
+    "Quote Honda's warranty line exactly: service at an authorized Honda automobile dealer is not mandatory for continued warranty coverage"
+  ],
+  "style": {
+    "linkColor": "#0067AD",
+    "linkHover": "#005C9B",
+    "linkUnderline": false,
+    "importantWaiver": false,
+    "exceptions": []
+  },
+  "apollo": {
+    "themeCss": [
+      "https://prod.cdn.secureoffersites.com/dist/p1162/css/websitegemini/vendor/vendor.css",
+      "https://prod.cdn.secureoffersites.com/dist/p1162/css/themes/Honda/styles.css"
+    ],
+    "themeFont": "Nunito",
+    "shell": "gemini"
+  },
+  "images": {
+    "STORE": { "apollo": null, "alt": "Honda Libertyville dealership exterior on S Milwaukee Ave in Libertyville", "w": null, "h": null, "desc": "Honda Libertyville dealership exterior on S Milwaukee Ave, daylight (photo needed)" },
+    "LOGO": { "apollo": null, "alt": "Honda Libertyville logo", "w": null, "h": null, "desc": "Dark-on-light Honda Libertyville logo lockup (needed; current header logo is white)" }
+  },
+  "verify": [
+    "Supply an Apollo library photo of the Honda Libertyville dealership exterior for images.STORE before a final build.",
+    "The site header logo (Apollo 181233) is white on transparent; upload a dark-on-light Honda Libertyville logo before setting images.LOGO, otherwise keep the text band."
+  ],
+  "lastVerified": "2026-10-07",
+  "sources": [
+    "https://www.hondalibertyville.com/contactus (live, 2026-10-07): address, Main (847) 362-4300, Sales and Service 847-595-5561, sales hours, service and parts hours",
+    "https://www.hondalibertyville.com/ rawHtml (live, 2026-10-07): geo 42.2688444,-87.9517543, theme CSS p1162 websitegemini + Honda, header logo 181233 logo=y (white)",
+    "Service phone 872-258-0414: locked user decision 10/03 to keep our tracked service numbers in pages and schema (SERVICE_PAGES/2026.10.03-REMAINING-WORK-HANDOFF-HLV-MFC-MLC-Toyota.md section 1.1 #1); live site lists 847-595-5561 for Sales and Service",
+    "HondaLibertyville/design.json: local areas, Illinois climate context",
+    "SALES_ARTICLES/2026.09.30-Dealer-Article-PROCESS-Playbook-v2.md section 5: Honda naming rules",
+    "2026-08-17-Illinois-Article-Production/10_PHASE_A_DISCOVERY_FINDINGS.md: /blog index renders empty, so no blog route",
+    "firecrawl map https://www.hondalibertyville.com (2026-10-07): sitemap snapshot"
+  ]
+}

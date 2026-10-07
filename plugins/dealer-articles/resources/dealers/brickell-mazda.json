@@ -1,0 +1,92 @@
+{
+  "key": "brickell-mazda",
+  "prefix": "mzd",
+  "platform": "apollo",
+  "name": "Brickell Mazda",
+  "aliases": ["brickell mazda", "mazda brickell", "mazda miami", "mzd"],
+  "brand": "Mazda",
+  "group": "Murgado Automotive Group",
+  "domain": "https://www.brickellmazda.com",
+  "address": { "street": "618 SW 8th St", "city": "Miami", "region": "FL", "zip": "33130", "country": "US" },
+  "geo": [25.7658441, -80.2045486],
+  "departments": {
+    "service": {
+      "label": "Service",
+      "phone": "786-481-4541",
+      "cta": { "label": "Schedule Service", "href": "/scheduleservice" },
+      "hours": [
+        [["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"], "07:00", "18:00"],
+        [["Saturday"], "08:00", "16:00"]
+      ]
+    },
+    "sales": {
+      "label": "Sales",
+      "phone": "786-410-6484",
+      "cta": { "label": "Shop New Inventory", "href": "/inventory/new" },
+      "hours": [
+        [["Monday", "Tuesday", "Wednesday", "Thursday"], "09:00", "21:00"],
+        [["Friday", "Saturday"], "09:00", "20:00"],
+        [["Sunday"], "11:00", "19:00"]
+      ]
+    }
+  },
+  "routes": {
+    "directions": "/get-directions",
+    "serviceHub": "/service-department",
+    "specials": "/specials/service-specials",
+    "scheduleService": "/scheduleservice",
+    "newInventory": "/inventory/new",
+    "usedInventory": "/inventory/used",
+    "cpoInventory": "/inventory/cpo",
+    "vehicleSpecials": "/specials/vehicle-specials",
+    "financing": "/getfinancing",
+    "valueYourTrade": "/trade-value",
+    "parts": "/parts-department",
+    "about": "/about-us",
+    "blog": "/blog",
+    "contact": "/contactus"
+  },
+  "areas": ["Miami", "Brickell", "Downtown Miami", "Little Havana", "Coral Gables", "Coconut Grove", "Key Biscayne", "Miami Beach", "South Miami", "Pinecrest"],
+  "excluded": [],
+  "climate": "Hot, humid South Florida: year-round heat and UV, coastal salt air, heavy summer rain, hurricane season (June through November) and urban stop-and-go traffic; no snow, road salt or freeze-thaw.",
+  "bans": ["snow", "road salt", "winter"],
+  "brandNaming": [
+    "Write Mazda model names as Mazda styles them (Mazda3, CX-30, CX-5, CX-50, CX-50 Hybrid, CX-70, CX-90, MX-5 Miata)",
+    "Cite maintenance intervals from the Mazda owner's manual scheduled maintenance charts and warranty terms from the current Mazda Warranty Information document, quoted exactly",
+    "Do not describe Brickell Mazda staff as certified, factory-trained or master technicians; attribute service capability to the dealer's service page"
+  ],
+  "style": {
+    "linkColor": "#111111",
+    "linkHover": "#C8102E",
+    "linkUnderline": true,
+    "importantWaiver": true,
+    "exceptions": [
+      { "rule": "Links are ink #111111 with an underline at rest; Mazda red #C8102E appears only on hover because red at rest is forbidden", "source": "Mazda/design.json redUsageRules" },
+      { "rule": "Apollo heading/body guards use !important although design.json apolloSafetyChecklist says 'No !important'", "source": "platform (Mazda_OEM styles.css forces body/h1/h2 font-family and h1-h5 text-transform:uppercase with !important)" }
+    ]
+  },
+  "apollo": {
+    "themeCss": [
+      "https://prod.cdn.secureoffersites.com/dist/p1162/css/websitemazdaoem/vendor/vendor.css",
+      "https://prod.cdn.secureoffersites.com/dist/p1162/css/themes/Mazda_OEM/styles.css"
+    ],
+    "themeFont": "MazdaType-Regular",
+    "shell": "other"
+  },
+  "images": {
+    "STORE": { "apollo": "789273", "alt": "Brickell Mazda dealership exterior with palm trees on SW 8th St in Miami", "w": 600, "h": 450, "desc": "Brickell Mazda storefront on SW 8th St, street-level exterior with palms and flags" },
+    "LOGO": { "apollo": "56364&Width=0&Height=0&logo=y", "alt": "Mazda emblem and wordmark", "w": 100, "h": 100, "desc": "Mazda emblem and wordmark (chrome, transparent PNG)" }
+  },
+  "verify": [
+    "Do not state Sunday service hours; the service schedule lists Monday through Saturday only, so confirm with the dealer first if an article needs Sunday service."
+  ],
+  "lastVerified": "2026-10-07",
+  "sources": [
+    "https://www.brickellmazda.com/contactus (live, 2026-10-07): address, Sales 786-410-6484, Service and Parts 786-481-4541, sales and service hours",
+    "https://www.brickellmazda.com/ rawHtml (live, 2026-10-07): AutoDealer JSON-LD department hours and contactPoints, geo 25.7658441,-80.2045486, theme CSS p1162 websitemazdaoem + Mazda_OEM, header logo 56364 logo=y",
+    "https://prod.cdn.secureoffersites.com/dist/p1162/css/themes/Mazda_OEM/styles.css (2026-10-07): body font MazdaType-Regular !important",
+    "Mazda/design.json: red usage rules, neighborhoods, climate factors",
+    "Mazda/monthly-updates/2026.10/service-specials (package 2026-10-03): STORE image 789273, areas incl. Little Havana",
+    "firecrawl map https://www.brickellmazda.com (2026-10-07): sitemap snapshot"
+  ]
+}

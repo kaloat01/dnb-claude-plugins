@@ -1,0 +1,82 @@
+{
+  "key": "brickell-honda",
+  "prefix": "bh",
+  "platform": "apollo",
+  "name": "Brickell Honda",
+  "aliases": ["brickell honda", "honda brickell", "bh", "brickell honda miami"],
+  "brand": "Honda",
+  "group": "Murgado Automotive Group",
+  "domain": "https://www.brickellhonda.com",
+  "address": { "street": "690 SW 8th St", "city": "Miami", "region": "FL", "zip": "33130", "country": "US" },
+  "geo": [25.7654883, -80.2053767],
+  "mainPhone": "(305) 856-3000",
+  "departments": {
+    "service": {
+      "label": "Service",
+      "phone": "786-628-0577",
+      "cta": { "label": "Schedule Service", "href": "/scheduleservice" },
+      "hours": [
+        [["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"], "07:00", "18:00"],
+        [["Saturday"], "08:00", "18:00"],
+        [["Sunday"], "09:00", "15:00"]
+      ]
+    },
+    "sales": {
+      "label": "Sales",
+      "phone": "786-480-1304",
+      "cta": { "label": "Value Your Trade", "href": "/value-your-trade" },
+      "hours": [
+        [["Monday", "Tuesday", "Wednesday", "Thursday"], "09:00", "21:00"],
+        [["Friday"], "09:00", "20:00"],
+        [["Saturday"], "09:00", "21:00"],
+        [["Sunday"], "11:00", "19:00"]
+      ]
+    }
+  },
+  "routes": {
+    "directions": "/get-directions",
+    "scheduleService": "/scheduleservice",
+    "valueYourTrade": "/value-your-trade",
+    "newInventory": "/inventory/new",
+    "cpoInventory": "/inventory/cpo",
+    "vehicleSpecials": "/specials/vehicle-specials",
+    "financing": "/getfinancing"
+  },
+  "areas": ["Miami", "Brickell", "Downtown Miami", "Little Havana", "Coral Gables", "Coconut Grove", "Key Biscayne", "Wynwood", "Edgewater"],
+  "excluded": [],
+  "climate": "Hot, humid South Florida: strong sun, heat, heavy rain, hurricane season and flood risk. No snow, road salt or winter driving.",
+  "bans": ["HondaCare", "Honda Care", "snow", "road salt", "winter"],
+  "brandNaming": [
+    "Say 'Honda Genuine Parts' (not OEM parts or factory parts)",
+    "Use 'Maintenance Minder' for Honda's service reminder system",
+    "Do not mention HondaCare or Honda Care (dealer rule)"
+  ],
+  "style": {
+    "linkColor": "#0067AD",
+    "linkHover": "#005C9B",
+    "linkUnderline": false,
+    "importantWaiver": false,
+    "exceptions": [
+      { "rule": "!important on article H1 font-size and heading font-family", "source": "Apollo Gemini theme sets body h1{font-size:20px!important} and h1,h2,h3{font-family:var(--fontBold)!important}; Honda/design.json allows !important as a last resort for typography" }
+    ]
+  },
+  "apollo": {
+    "themeCss": [
+      "https://prod.cdn.secureoffersites.com/dist/p1162/css/websitegemini/vendor/vendor.css",
+      "https://prod.cdn.secureoffersites.com/dist/p1162/css/themes/Honda/styles.css"
+    ],
+    "themeFont": "Nunito",
+    "themeColor": "#007CC3",
+    "shell": "gemini"
+  },
+  "images": {
+    "STORE": { "apollo": "49187", "alt": "Brickell Honda dealership on SW 8th Street in Miami, seen from above with the Honda sign and palm-lined entrance", "w": 1000, "h": 550, "desc": "Brickell Honda storefront on SW 8th St, aerial view with Honda sign and palms" },
+    "LOGO": { "apollo": "108908&Width=0&Height=0&logo=y", "alt": "Honda and Brickell Honda logos, a proud member of the Murgado Automotive Group", "w": 860, "h": 200, "desc": "Honda + Brickell Honda logo lockup (Murgado Automotive Group)" }
+  },
+  "verify": [
+    "Sunday service hours: the builder uses Sunday 09:00 to 15:00 (from the 09/2026 build); some service copy omits Sunday. Confirm with the dealer.",
+    "/kbb-ico participating dealer listing shows a different store name and an 877 number; confirm before linking it as Brickell Honda's own offer."
+  ],
+  "lastVerified": "2026-09-28",
+  "sources": ["Editorial v2 Apollo builder dealer config (09/28/2026)", "Brickell Honda design.json", "live brickellhonda.com theme CSS (p1138, checked 09/28/2026; live build p1162 per 10/07/2026)"]
+}

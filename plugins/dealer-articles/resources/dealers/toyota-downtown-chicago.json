@@ -1,0 +1,91 @@
+{
+  "key": "toyota-downtown-chicago",
+  "prefix": "toy",
+  "platform": "apollo",
+  "name": "Toyota of Downtown Chicago",
+  "aliases": ["toyota of downtown chicago", "toyota downtown chicago", "downtown chicago toyota", "dt toyota", "dttoyota", "toy"],
+  "brand": "Toyota",
+  "group": "Murgado Automotive Group",
+  "domain": "https://www.dttoyotachicago.com",
+  "address": { "street": "1561 N Fremont St", "city": "Chicago", "region": "IL", "zip": "60642", "country": "US" },
+  "geo": [41.9101043, -87.6502529],
+  "departments": {
+    "service": {
+      "label": "Service",
+      "phone": "872-353-8943",
+      "cta": { "label": "Schedule Service", "href": "/scheduleservice" },
+      "hours": [
+        [["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"], "07:00", "19:00"],
+        [["Saturday"], "08:00", "17:00"]
+      ]
+    },
+    "sales": {
+      "label": "Sales",
+      "phone": null,
+      "cta": { "label": "Shop New Inventory", "href": "/inventory/new" },
+      "hours": [
+        [["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"], "09:00", "20:00"],
+        [["Saturday"], "09:00", "18:00"]
+      ]
+    }
+  },
+  "routes": {
+    "directions": "/get-directions",
+    "serviceHub": "/toyota-service-center",
+    "specials": "/specials/service-specials",
+    "scheduleService": "/scheduleservice",
+    "newInventory": "/inventory/new",
+    "usedInventory": "/inventory/used",
+    "cpoInventory": "/inventory/cpo",
+    "vehicleSpecials": "/specials/vehicle-specials",
+    "financing": "/getfinancing",
+    "valueYourTrade": "/shopperwizard/mytradevalue",
+    "about": "/about-us",
+    "blog": "/blog",
+    "contact": "/contactus"
+  },
+  "areas": ["Chicago", "Lincoln Park", "Gold Coast", "River North", "West Loop", "Loop", "South Loop"],
+  "excluded": [],
+  "climate": "Chicago: harsh winters with sub-zero cold starts, road salt corrosion, temperature extremes and dense stop-and-go city traffic.",
+  "bans": [],
+  "brandNaming": [
+    "ToyotaCare is 1 year / 10,000 miles of normal factory-scheduled maintenance (not 2 years / 25,000 miles); verify ToyotaCare terms on toyota.com before citing",
+    "'Toyota Service Care' is the dealer's own prepaid service offer, separate from ToyotaCare; never conflate the two",
+    "Say 'Toyota Genuine Parts' (Toyota's term; the dealer site has a /toyota-genuine-parts page)"
+  ],
+  "style": {
+    "linkColor": "#CC0919",
+    "linkHover": "#A80714",
+    "linkUnderline": false,
+    "importantWaiver": true,
+    "exceptions": [
+      { "rule": "Apollo heading/H1 guards use !important although design.json apolloSafetyChecklist says no !important", "source": "platform (Apollo theme forces body h1 20px!important)" }
+    ]
+  },
+  "apollo": {
+    "themeCss": [
+      "https://prod.cdn.secureoffersites.com/dist/p1162/css/websitegemini/vendor/vendor.css",
+      "https://prod.cdn.secureoffersites.com/dist/p1162/css/themes/Toyota/styles.css"
+    ],
+    "themeFont": "ToyotaType-Book",
+    "shell": "gemini"
+  },
+  "images": {
+    "STORE": { "apollo": "790750", "alt": "Toyota of Downtown Chicago dealership building on N Fremont St with the Chicago skyline behind it", "w": 1366, "h": 768, "desc": "Toyota of Downtown Chicago building on N Fremont St, aerial view with the Chicago skyline" },
+    "LOGO": { "apollo": "708323&Width=0&Height=0&logo=y", "alt": "Toyota and Toyota of Downtown Chicago logos with a Chicago skyline mark", "w": 2454, "h": 608, "desc": "Toyota emblem + Chicago skyline mark + Toyota of Downtown Chicago wordmark" }
+  },
+  "verify": [
+    "Get a local sales phone number from the dealer before quoting a sales line; the published sales and main numbers are toll-free, so departments.sales.phone is null."
+  ],
+  "lastVerified": "2026-10-07",
+  "sources": [
+    "https://www.dttoyotachicago.com/contactus (live, 2026-10-07): address, Main (888) 539-0910 and Sales 877-413-8672 (both toll-free), Service and Parts 872-353-8943, sales hours, service and parts hours",
+    "https://www.dttoyotachicago.com/ rawHtml (live, 2026-10-07): geo 41.9101043,-87.6502529, theme CSS p1162 websitegemini + Toyota, header logo 708323 logo=y, /toyota-service-center link",
+    "https://prod.cdn.secureoffersites.com/dist/p1162/css/websitegemini/vendor/vendor.css (2026-10-07): body h1{font-size:20px!important}",
+    "Service phone 872-353-8943 also matches the locked user decision 10/03 (SERVICE_PAGES/2026.10.03-REMAINING-WORK-HANDOFF-HLV-MFC-MLC-Toyota.md section 1.1 #1)",
+    "Toyota/design.json: neighborhoods, climate factors, apolloSafetyChecklist",
+    "2026-08-17-Illinois-Article-Production/10_PHASE_A_DISCOVERY_FINDINGS.md: ToyotaCare 1 yr / 10,000 mi, domain dttoyotachicago.com",
+    "Toyota/monthly-updates/2026.10/service-specials (package): STORE image 790750",
+    "firecrawl map https://www.dttoyotachicago.com (2026-10-07): sitemap snapshot"
+  ]
+}
