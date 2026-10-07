@@ -11,7 +11,7 @@
  *  - 8 to 9 question H2s, 1,700 to 2,300 body words, sentences of 25 words or fewer, 12+ unique internal links.
  *  - FAQ: 9 to 10 questions, each answer 40 to 90 words, plain text (no HTML), not repeating the body verbatim.
  *  - No em dashes; en dashes only inside number ranges. No toll-free (8xx) numbers. No "$" figures unless
- *    allowMsrp: true and the word "MSRP" sits within 140 characters. No banned phrases (see docs/CONTRACT.md §5,
+ *    allowMsrp: true and the word "MSRP" sits within 140 characters. No banned phrases (see ${CLAUDE_PLUGIN_ROOT}/resources/rules/rigor-and-content.md,
  *    plus the dealer's "bans"). Local framing only with the dealer's "areas"; never its "excluded" towns.
  *  - Internal links: root-relative paths ("/scheduleservice") from the dealer sitemap snapshot or allowedLinks.
  *  - Tokens you may use in HTML strings: {{PHONE}} (this article's department phone), {{SALESPHONE}}, {{SERVICEPHONE}}.
@@ -50,7 +50,7 @@ module.exports = {
   images: {
     IMG_HERO: { apollo: null, alt: 'TODO literal description of the hero photo', w: null, h: null, desc: 'TODO hero request: model/scene, angle, setting, daylight; landscape, ideally 1900+ px wide' },
     IMG_FIG1: { apollo: null, alt: 'TODO alt text', w: null, h: null, desc: 'TODO wide figure request, 1100+ px wide' },
-    IMG_FIG2: { apollo: null, alt: 'TODO alt text', w: null, h: null, desc: 'TODO narrow (prose) figure request, 880+ px wide' },
+    IMG_FIG2: { apollo: null, alt: 'TODO alt text', w: null, h: null, desc: 'TODO second full-width figure request, 1100+ px wide' },
     IMG_PAIR1: { apollo: null, alt: 'TODO alt text', w: null, h: null, desc: 'TODO left image of a side-by-side pair (4:3 crop)' },
     IMG_PAIR2: { apollo: null, alt: 'TODO alt text', w: null, h: null, desc: 'TODO right image of a side-by-side pair (4:3 crop)' },
   },
@@ -116,7 +116,7 @@ module.exports = {
     { t: 'p', html: 'TODO supporting paragraph.' },
     // callout: gray box with a label; good for a rule, a warning or a local note
     { t: 'callout', label: 'TODO callout label', html: 'TODO callout text with its source.' },
-    { t: 'fig', prose: true, img: 'IMG_FIG2', caption: 'TODO caption' },
+    { t: 'fig', img: 'IMG_FIG2', caption: 'TODO caption' },
     // ... continue with question H2s 5 to 9 using the same pattern
   ],
 

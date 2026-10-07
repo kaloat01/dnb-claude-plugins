@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 /* dealer-articles engine: "Editorial v2" long-form article builder for Apollo (Team Velocity) custom pages.
  * Dealers: resources/dealers/<key>.json (./dealers/<key>.json in the working folder overrides). Pure Node >= 18, no deps.
- * Spec: docs/CONTRACT.md.  node build.js env | dealers | new --dealer "<name>" --title "<title>" [--out <dir>]
+ * Spec: repository docs/CONTRACT.md (maintainers).  node build.js env | dealers | new --dealer "<name>" --title "<title>" [--out <dir>]
  *   | status <job> | build <job> [--final] | shot <job> [--widths 1280,375] | images <job> */
 'use strict';
 const fs = require('fs');
@@ -161,8 +161,8 @@ ${R} .${P}-body ul:not(.${P}-steps){list-style:none;padding-left:0}
 ${R} .${P}-body ul:not(.${P}-steps)>li{position:relative;padding-left:24px}
 ${R} .${P}-body ul:not(.${P}-steps)>li::before{content:"";position:absolute;left:2px;top:12px;width:7px;height:7px;background:var(${V}-marker)}
 ${R} .${P}-body strong{color:var(${V}-ink);font-weight:700}
-${R} .${P}-body a:not(.${P}-btn),${R} .${P}-glance a,${R} .${P}-faq a,${R} .${P}-dealer-facts a{color:var(${V}-link);text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:3px;text-decoration-color:var(${V}-link-soft)}
-${R} .${P}-body a:not(.${P}-btn):hover,${R} .${P}-glance a:hover,${R} .${P}-faq a:hover,${R} .${P}-dealer-facts a:hover{color:var(${V}-link-hover);text-decoration-color:var(${V}-link-hover)}
+${R} .${P}-body a:not(.${P}-btn),${R} .${P}-glance a,${R} .${P}-faq a,${R} .${P}-dealer-facts a,${R} .${P}-dealer-values a{color:var(${V}-link);text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:3px;text-decoration-color:var(${V}-link-soft)}
+${R} .${P}-body a:not(.${P}-btn):hover,${R} .${P}-glance a:hover,${R} .${P}-faq a:hover,${R} .${P}-dealer-facts a:hover,${R} .${P}-dealer-values a:hover{color:var(${V}-link-hover);text-decoration-color:var(${V}-link-hover)}
 ${R} .${P}-toc a,${R} .${P}-toc a:hover{color:var(${V}-ink);text-decoration:none}
 /* figures (square corners) */
 ${R} .${P}-fig{max-width:1080px;margin:48px auto;padding:0 20px}
@@ -228,6 +228,14 @@ ${R} .${P}-dealer-logo.${P}-dealer-logo-sm{width:auto;max-width:96px;margin:0 0 
 ${R} .${P}-dealer-band{background:var(${V}-dark);padding:20px 24px;margin:0 0 22px;border-radius:var(${V}-radius)}
 ${R} .${P}-dealer-band .${P}-dealer-logo{margin:0;mix-blend-mode:normal}
 ${R} .${P}-dealer-solo .${P}-dealer-body{max-width:860px}
+${R} .${P}-dealer-media{position:relative;overflow:hidden}
+${R} .${P}-dealer-plaque{position:absolute;left:0;right:0;bottom:0;display:flex;flex-direction:column;gap:4px;padding:56px 24px 20px;background:linear-gradient(to top,rgba(10,10,10,0.88),rgba(10,10,10,0));color:#fff}
+${R} .${P}-dealer-plaque-label{font-family:${B.body};font-size:11px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#fff}
+${R} .${P}-dealer-plaque-addr{font-family:${B.body};font-size:15px;line-height:1.4;color:#fff}
+${R} .${P}-dealer-values{list-style:none;display:grid;grid-template-columns:1fr;gap:10px 28px;margin:0 0 22px;padding:0}
+${R} .${P}-dealer-values li{position:relative;margin:0;padding:0 0 0 18px;font-size:15px;line-height:1.5;color:var(${V}-text)}
+${R} .${P}-dealer-values li::before{content:"";position:absolute;left:0;top:8px;width:6px;height:6px;background:var(${V}-marker)}
+${R} .${P}-dealer-values strong{display:block;color:var(${V}-ink);font-weight:700}
 ${R} .${P}-dealer-name{font-family:${B.head};font-size:24px;line-height:1.2;color:var(${V}-ink);margin:0 0 22px;padding:0 0 14px;border-bottom:1px solid var(${V}-line)}
 ${R} .${P}-dealer h2{font-size:28px;line-height:1.25;margin:0 0 12px}
 ${R} .${P}-dealer-body>p{font-size:16px;line-height:1.65;color:var(${V}-muted);margin:0 0 18px}
@@ -265,6 +273,7 @@ ${R} .${P}-fine{max-width:760px;margin:26px auto 0;padding:0 20px;font-size:12px
 ${R} .${P}-toc ol{grid-template-columns:1fr 1fr}
 ${R} .${P}-more-grid{grid-template-columns:repeat(3,1fr);gap:28px}
 ${R} .${P}-dealer-facts{grid-template-columns:1fr 1fr}
+${R} .${P}-dealer-values{grid-template-columns:1fr 1fr}
 }
 @media (min-width:768px){
 ${R} h1.${P}-title{font-size:40px}
@@ -337,8 +346,8 @@ ${R} h1.${P}-title{font-size:32px!important}
 ${on(x('a.~-btn', 'a.~-btn:hover', 'a.~-btn:focus', 'a.~-more-link', 'a.~-more-link:hover', '.~-toc a', '.~-toc a:hover', '.~-closer-phone a', '.~-closer-phone a:hover'), 'text-decoration:none')}
 ${on(x('a.~-btn-ink', 'a.~-btn-ink:hover', 'a.~-btn-ghost', 'a.~-btn-ghost:hover', '.~-closer-phone a', '.~-closer-phone a:hover'), 'color:#ffffff')}
 ${on(x('a.~-btn-white', 'a.~-btn-white:hover', 'a.~-btn-outline', 'a.~-btn-outline:hover', 'a.~-more-link', 'a.~-more-link:hover', '.~-toc a', '.~-toc a:hover'), `color:var(${V}-ink)`)}
-${on(x('.~-glance a', '.~-faq a', '.~-dealer-facts a', '.~-body a:not(.~-btn)'), `color:var(${V}-link);text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:3px;text-decoration-color:var(${V}-link-soft)`)}
-${on(x('.~-glance a:hover', '.~-faq a:hover', '.~-dealer-facts a:hover', '.~-body a:not(.~-btn):hover'), `color:var(${V}-link-hover);text-decoration-color:var(${V}-link-hover)`)}
+${on(x('.~-glance a', '.~-faq a', '.~-dealer-facts a', '.~-dealer-values a', '.~-body a:not(.~-btn)'), `color:var(${V}-link);text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:3px;text-decoration-color:var(${V}-link-soft)`)}
+${on(x('.~-glance a:hover', '.~-faq a:hover', '.~-dealer-facts a:hover', '.~-dealer-values a:hover', '.~-body a:not(.~-btn):hover'), `color:var(${V}-link-hover);text-decoration-color:var(${V}-link-hover)`)}
 ${R} .${P}-faq summary:focus-visible,${R} a:focus-visible{outline:2px solid var(${V}-ink);outline-offset:3px}
 `;
 }
@@ -528,8 +537,20 @@ function build(mod, D, job, opts = {}) {
     const logo = (hasLogo && images.LOGO.onDark ? `<div class="${P}-dealer-band">${logoImg}</div>` : logoImg) + (hasLogo && !logoSmall ? '' : `<div class="${P}-dealer-name">${esc(D.name)}</div>`);
     const facts = [['Address', `${D.street}, ${D.city}, ${D.region} ${D.zip}`], dept.phone && [dept.label, phoneLink(dept)], hrs(dept) && [`${dept.label} hours`, hrs(dept).replace(/ {2}· {2}/g, '<br>')], other]
       .filter(Boolean).map(([t, d]) => `<div><dt>${t}</dt><dd>${d}</dd></div>`).join('');
-    const media = hasStore ? `<figure class="${P}-dealer-media">${imgTag('STORE', mode)}</figure>` : '';
-    const dealer = `<section class="${P}-dealer" aria-labelledby="${P}-dealer-h"><div class="${P}-dealer-in${hasStore ? '' : ` ${P}-dealer-solo`}">${media}<div class="${P}-dealer-body">${logo}<div class="${P}-eyebrow">${ds.eyebrow || `Visit us in ${D.city}`}</div><h2 id="${P}-dealer-h">${ds.h}</h2><p>${fill(ds.p)}</p><dl class="${P}-dealer-facts">${facts}</dl>${btns(ctaBtn('ink'), D.directions ? `<a class="${P}-btn ${P}-btn-outline" href="${D.directions}">Get Directions</a>` : '')}</div></div></section>`;
+    // storefront plaque (department + address) and factual value lines: the structure of the dealers' service-specials
+    // "Brand Anchor", restyled in Editorial v2 ink. Facts only from the dealer file: no credential or capability claims.
+    const plaque = `<figcaption class="${P}-dealer-plaque"><span class="${P}-dealer-plaque-label">${esc(dept.label)} Department</span><span class="${P}-dealer-plaque-addr">${esc(D.street)} · ${esc(D.city)}, ${esc(D.region)} ${esc(D.zip)}</span></figcaption>`;
+    const media = hasStore ? `<figure class="${P}-dealer-media">${imgTag('STORE', mode)}${plaque}</figure>` : '';
+    const daysOpen = dept.hours ? new Set(dept.hours.flatMap((r) => r[0])).size : 0;
+    const R2 = D.routes || {};
+    const specials = mod.dept === 'service' ? (R2.specials || R2.serviceSpecials) : (R2.vehicleSpecials || R2.specials);
+    const values = [
+      daysOpen ? [`Open ${daysOpen} days a week`, `${esc(dept.label)} hours are listed below.`] : null,
+      cta && cta.href ? ['Book online', `<a href="${cta.href}">${esc(cta.label)}</a> any time.`] : null,
+      specials ? [mod.dept === 'service' ? 'Current service specials' : 'Current offers', `<a href="${specials}">See this month's ${mod.dept === 'service' ? 'service specials' : 'offers'}</a> and their terms.`] : null,
+      D.group ? [esc(D.group), `${esc(D.name)} is part of the ${esc(D.group)}.`] : null,
+    ].filter(Boolean).slice(0, 4).map(([t, d]) => `<li><strong>${t}</strong>${d}</li>`).join('');
+    const dealer = `<section class="${P}-dealer" aria-labelledby="${P}-dealer-h"><div class="${P}-dealer-in${hasStore ? '' : ` ${P}-dealer-solo`}">${media}<div class="${P}-dealer-body">${logo}<div class="${P}-eyebrow">${ds.eyebrow || `Visit us in ${D.city}`}</div><h2 id="${P}-dealer-h">${ds.h}</h2><p>${fill(ds.p)}</p>${values ? `<ul class="${P}-dealer-values">${values}</ul>` : ''}<dl class="${P}-dealer-facts">${facts}</dl>${btns(ctaBtn('ink'), D.directions ? `<a class="${P}-btn ${P}-btn-outline" href="${D.directions}">Get Directions</a>` : '')}</div></div></section>`;
     return `<div class="${P}-art ${P}-art-${mod.slug}">`
       + `<figure class="${P}-hero${mod.heroContained ? ` ${P}-hero-contained` : ''}">${imgTag(mod.hero, mode, 'eager')}</figure>`
       + `<header class="${P}-head"><div class="${P}-eyebrow">${mod.eyebrow}</div><h1 class="${P}-title">${mod.h1}</h1><p class="${P}-dek">${fill(mod.dek)}</p><div class="${P}-meta"><span>${D.name}</span><span>Updated ${mod.updatedLabel}</span><span>${readMin} min read</span></div>`

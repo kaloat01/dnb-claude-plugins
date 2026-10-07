@@ -20,7 +20,7 @@ Run each check, then report a short ✅/❌ table with the exact fix for any ❌
 2. **Engine** — run `DA env`. Expect: Node version, plugin folder, dealers list, and a browser for screenshots
    (Microsoft Edge or Google Chrome). No browser → screenshots are skipped (the article still builds, but the visual check
    is weaker); suggest installing Chrome or Edge.
-3. **frontend-design skill** (required by the workflow for the visual check) — if the skill `frontend-design` is not
+3. **frontend-design skill** (required by the workflow for the visual check) — if the skill `frontend-design:frontend-design` is not
    available in this session, run `claude plugin install frontend-design@claude-plugins-official`. If that fails, ask the user
    to type `/plugin install frontend-design@claude-plugins-official`, then restart Claude Code.
 4. **Auto-update** — tell the user: `/plugin` → **Marketplaces** → `dnb-plugins` → **Enable auto-update** (one time).

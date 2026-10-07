@@ -42,7 +42,7 @@ Every row: `# | Claim | Permitted wording | Primary source URL | Retrieved | Con
 is the exact sentence the writer may use; quote verbatim for legal, warranty and safety text and keep every condition
 ("whichever comes first", "when purchased at the same time as your vehicle", frozen-battery / EV exceptions). Restriction
 names the scope (model year, trim, drivetrain, market, manual) and flags time-sensitive facts. Cover, by article type:
-- **Comparison:** current model year per vehicle; trims and powertrains; output; EPA ratings; seating, cargo, towing;
+- **Comparison:** current model year per vehicle; exterior dimensions the title promises (length, width with and without mirrors, height, turning diameter) from the same OEM source type for both; never claim a model "fits" a specific garage or space, give the measurements and a measure-your-space step (local size standards only from municipal code); trims and powertrains; output; EPA ratings; seating, cargo, towing;
   warranty and roadside for BOTH brands; included maintenance for both; NHTSA (exact scope) and IIHS (award year vs model
   year, conditions); MSRP for the same model year with each OEM's destination treatment (only if the policy allows prices);
   the rival's real advantages (the writer must concede them).
