@@ -1,0 +1,408 @@
+{
+  "dealer": "brickell-mazda",
+  "generated": "2026-10-07",
+  "note": "Images already in this dealer's Apollo library. Reuse before asking for new uploads. View before use; match the article's model year.",
+  "images": [
+    {
+      "id": "789273",
+      "url": "https://service.secureoffersites.com/images/GetLibraryImage?fileNameOrId=789273&type=webp&quality=85",
+      "w": 600,
+      "h": 450,
+      "shows": "Street-level view of the Brickell Mazda showroom with BRICKELL and Mazda signage, palms and US flag",
+      "vehicle": null,
+      "text": false,
+      "slots": [
+        "store"
+      ],
+      "tags": [
+        "storefront"
+      ]
+    },
+    {
+      "id": "56364",
+      "url": "https://service.secureoffersites.com/images/GetLibraryImage?fileNameOrId=56364&type=webp&quality=85",
+      "w": 100,
+      "h": 100,
+      "shows": "Chrome Mazda emblem over Mazda wordmark (small 100px, transparent)",
+      "vehicle": null,
+      "text": true,
+      "slots": [
+        "logo"
+      ],
+      "tags": []
+    },
+    {
+      "id": "789270",
+      "url": "https://service.secureoffersites.com/images/GetLibraryImage?fileNameOrId=789270&type=webp&quality=85",
+      "w": 4128,
+      "h": 2752,
+      "shows": "Bright, spotless Mazda service workshop with red Mazdas on lifts",
+      "vehicle": null,
+      "text": false,
+      "slots": [
+        "hero",
+        "fig",
+        "pair"
+      ],
+      "tags": [
+        "service-bay"
+      ]
+    },
+    {
+      "id": "759156",
+      "url": "https://service.secureoffersites.com/images/GetLibraryImage?fileNameOrId=759156&type=webp&quality=85",
+      "w": 915,
+      "h": 608,
+      "shows": "Mazda technician in black uniform working under the hood of a car in a busy shop",
+      "vehicle": null,
+      "text": false,
+      "slots": [
+        "pair"
+      ],
+      "tags": [
+        "technician",
+        "oil",
+        "service-bay"
+      ]
+    },
+    {
+      "id": "788071",
+      "url": "https://service.secureoffersites.com/images/GetLibraryImage?fileNameOrId=788071&type=webp&quality=85",
+      "w": 916,
+      "h": 609,
+      "shows": "Mazda technician pulling a tire from a tire rack",
+      "vehicle": null,
+      "text": false,
+      "slots": [
+        "pair"
+      ],
+      "tags": [
+        "technician",
+        "tires"
+      ]
+    },
+    {
+      "id": "759152",
+      "url": "https://service.secureoffersites.com/images/GetLibraryImage?fileNameOrId=759152&type=webp&quality=85",
+      "w": 2048,
+      "h": 2048,
+      "shows": "White Mazda CX-5 on a driveway with green trees behind (square; no text despite \"savings\" alt)",
+      "vehicle": "2022+ Mazda CX-5",
+      "text": false,
+      "slots": [
+        "fig",
+        "pair"
+      ],
+      "tags": [
+        "vehicle-exterior"
+      ]
+    },
+    {
+      "id": "759142",
+      "url": "https://service.secureoffersites.com/images/GetLibraryImage?fileNameOrId=759142&type=webp&quality=85",
+      "w": 914,
+      "h": 608,
+      "shows": "Mazda technician working on a front wheel/brake assembly, close-up",
+      "vehicle": null,
+      "text": false,
+      "slots": [
+        "pair"
+      ],
+      "tags": [
+        "technician",
+        "brakes"
+      ]
+    },
+    {
+      "id": "759168",
+      "url": "https://service.secureoffersites.com/images/GetLibraryImage?fileNameOrId=759168&type=webp&quality=85",
+      "w": 817,
+      "h": 544,
+      "shows": "Technician beside an alignment target clamped to the wheel of a dark-red Mazda SUV",
+      "vehicle": "Mazda SUV (current lineup)",
+      "text": false,
+      "slots": [
+        "pair"
+      ],
+      "tags": [
+        "technician",
+        "tires"
+      ]
+    },
+    {
+      "id": "759149",
+      "url": "https://service.secureoffersites.com/images/GetLibraryImage?fileNameOrId=759149&type=webp&quality=85",
+      "w": 914,
+      "h": 607,
+      "shows": "Mazda technician working in the engine bay of a gray Mazda (battery work)",
+      "vehicle": null,
+      "text": false,
+      "slots": [
+        "pair"
+      ],
+      "tags": [
+        "technician",
+        "battery"
+      ]
+    },
+    {
+      "id": "759159",
+      "url": "https://service.secureoffersites.com/images/GetLibraryImage?fileNameOrId=759159&type=webp&quality=85",
+      "w": 914,
+      "h": 607,
+      "shows": "Female Mazda technician with clipboard inspecting an open engine bay",
+      "vehicle": null,
+      "text": false,
+      "slots": [
+        "pair"
+      ],
+      "tags": [
+        "technician",
+        "service-bay"
+      ]
+    },
+    {
+      "id": "759147",
+      "url": "https://service.secureoffersites.com/images/GetLibraryImage?fileNameOrId=759147&type=webp&quality=85",
+      "w": 916,
+      "h": 608,
+      "shows": "Close-up of a Mazda key fob being handed from one person to another",
+      "vehicle": null,
+      "text": false,
+      "slots": [
+        "pair"
+      ],
+      "tags": [
+        "people"
+      ]
+    },
+    {
+      "id": "759141",
+      "url": "https://service.secureoffersites.com/images/GetLibraryImage?fileNameOrId=759141&type=webp&quality=85",
+      "w": 819,
+      "h": 544,
+      "shows": "Service advisor at a desk under a Mazda wall logo talking with a customer (no overlay text despite \"$10 off\" alt)",
+      "vehicle": null,
+      "text": false,
+      "slots": [
+        "pair"
+      ],
+      "tags": [
+        "people",
+        "showroom"
+      ]
+    },
+    {
+      "id": "759158",
+      "url": "https://service.secureoffersites.com/images/GetLibraryImage?fileNameOrId=759158&type=webp&quality=85",
+      "w": 915,
+      "h": 609,
+      "shows": "Technician inspecting the wheel and tire of a red Mazda",
+      "vehicle": null,
+      "text": false,
+      "slots": [
+        "pair"
+      ],
+      "tags": [
+        "technician",
+        "tires"
+      ]
+    },
+    {
+      "id": "759163",
+      "url": "https://service.secureoffersites.com/images/GetLibraryImage?fileNameOrId=759163&type=webp&quality=85",
+      "w": 916,
+      "h": 605,
+      "shows": "Technician fitting a wiper blade at the windshield of a dark Mazda",
+      "vehicle": null,
+      "text": false,
+      "slots": [
+        "pair"
+      ],
+      "tags": [
+        "technician"
+      ]
+    },
+    {
+      "id": "759148",
+      "url": "https://service.secureoffersites.com/images/GetLibraryImage?fileNameOrId=759148&type=webp&quality=85",
+      "w": 932,
+      "h": 850,
+      "shows": "Driver hands on the wheel inside a Mazda cabin, city street outside",
+      "vehicle": "Mazda (recent CX-5-style cabin)",
+      "text": false,
+      "slots": [
+        "pair"
+      ],
+      "tags": [
+        "vehicle-interior"
+      ]
+    },
+    {
+      "id": "788069",
+      "url": "https://service.secureoffersites.com/images/GetLibraryImage?fileNameOrId=788069&type=webp&quality=85",
+      "w": 1200,
+      "h": 896,
+      "shows": "Rainy Miami street seen through a windshield with a wiper blade sweeping",
+      "vehicle": null,
+      "text": false,
+      "slots": [
+        "fig",
+        "pair"
+      ],
+      "tags": [
+        "road",
+        "city"
+      ]
+    },
+    {
+      "id": "788068",
+      "url": "https://service.secureoffersites.com/images/GetLibraryImage?fileNameOrId=788068&type=webp&quality=85",
+      "w": 1210,
+      "h": 768,
+      "shows": "Red Mazda crossover seen from behind on a curving coastal road above the bay",
+      "vehicle": "Mazda crossover (CX-50/CX-5 family)",
+      "text": false,
+      "slots": [
+        "fig",
+        "pair"
+      ],
+      "tags": [
+        "vehicle-exterior",
+        "road"
+      ]
+    },
+    {
+      "id": "759146",
+      "url": "https://service.secureoffersites.com/images/GetLibraryImage?fileNameOrId=759146&type=webp&quality=85",
+      "w": 1024,
+      "h": 1024,
+      "shows": "Red Mazda CX-5 splashing through standing water on a palm-lined street (square)",
+      "vehicle": "2022+ Mazda CX-5",
+      "text": false,
+      "slots": [
+        "pair"
+      ],
+      "tags": [
+        "vehicle-exterior",
+        "road"
+      ]
+    },
+    {
+      "id": "759157",
+      "url": "https://service.secureoffersites.com/images/GetLibraryImage?fileNameOrId=759157&type=webp&quality=85",
+      "w": 1024,
+      "h": 678,
+      "shows": "Traffic on a palm-lined Miami causeway with skyline and water",
+      "vehicle": null,
+      "text": false,
+      "slots": [
+        "pair"
+      ],
+      "tags": [
+        "road",
+        "city"
+      ]
+    },
+    {
+      "id": "759144",
+      "url": "https://service.secureoffersites.com/images/GetLibraryImage?fileNameOrId=759144&type=webp&quality=85",
+      "w": 1397,
+      "h": 931,
+      "shows": "Red Mazda SUV parked on a rock jetty with a couple, open water and blue sky",
+      "vehicle": "Mazda CX-5 (2022+ look)",
+      "text": false,
+      "slots": [
+        "fig",
+        "pair"
+      ],
+      "tags": [
+        "vehicle-exterior",
+        "people"
+      ]
+    },
+    {
+      "id": "759153",
+      "url": "https://service.secureoffersites.com/images/GetLibraryImage?fileNameOrId=759153&type=webp&quality=85",
+      "w": 916,
+      "h": 609,
+      "shows": "Woman checking her phone beside a white Mazda CX-5 on a city street",
+      "vehicle": "2022+ Mazda CX-5",
+      "text": false,
+      "slots": [
+        "pair"
+      ],
+      "tags": [
+        "vehicle-exterior",
+        "people",
+        "city"
+      ]
+    },
+    {
+      "id": "759155",
+      "url": "https://service.secureoffersites.com/images/GetLibraryImage?fileNameOrId=759155&type=webp&quality=85",
+      "w": 1200,
+      "h": 794,
+      "shows": "Miami causeway traffic with palms and downtown towers",
+      "vehicle": null,
+      "text": false,
+      "slots": [
+        "fig",
+        "pair"
+      ],
+      "tags": [
+        "road",
+        "city"
+      ]
+    },
+    {
+      "id": "759164",
+      "url": "https://service.secureoffersites.com/images/GetLibraryImage?fileNameOrId=759164&type=webp&quality=85",
+      "w": 1659,
+      "h": 930,
+      "shows": "Red Mazda CX-5 parked at a marina with Miami skyline across the water",
+      "vehicle": "2022+ Mazda CX-5",
+      "text": false,
+      "slots": [
+        "fig",
+        "pair"
+      ],
+      "tags": [
+        "vehicle-exterior",
+        "city"
+      ]
+    },
+    {
+      "id": "759150",
+      "url": "https://service.secureoffersites.com/images/GetLibraryImage?fileNameOrId=759150&type=webp&quality=85",
+      "w": 943,
+      "h": 877,
+      "shows": "Gray Mazda CX-30 driving on a road with a city skyline behind",
+      "vehicle": "Mazda CX-30",
+      "text": false,
+      "slots": [
+        "pair"
+      ],
+      "tags": [
+        "vehicle-exterior",
+        "road"
+      ]
+    },
+    {
+      "id": "759154",
+      "url": "https://service.secureoffersites.com/images/GetLibraryImage?fileNameOrId=759154&type=webp&quality=85",
+      "w": 914,
+      "h": 606,
+      "shows": "Female Mazda technician kneeling to check a tire",
+      "vehicle": null,
+      "text": false,
+      "slots": [
+        "pair"
+      ],
+      "tags": [
+        "technician",
+        "tires"
+      ]
+    }
+  ]
+}

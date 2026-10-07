@@ -1,0 +1,446 @@
+{
+  "dealer": "toyota-downtown-chicago",
+  "generated": "2026-10-07",
+  "note": "Images already in this dealer's Apollo library. Reuse before asking for new uploads. View before use; match the article's model year.",
+  "images": [
+    {
+      "id": "790750",
+      "url": "https://service.secureoffersites.com/images/GetLibraryImage?fileNameOrId=790750&type=webp&quality=85",
+      "w": 1366,
+      "h": 768,
+      "shows": "Toyota of Downtown Chicago building with red TOYOTA sign on N Fremont St, Chicago skyline behind",
+      "vehicle": null,
+      "text": false,
+      "slots": [
+        "fig",
+        "pair",
+        "store"
+      ],
+      "tags": [
+        "storefront",
+        "city"
+      ]
+    },
+    {
+      "id": "708323",
+      "url": "https://service.secureoffersites.com/images/GetLibraryImage?fileNameOrId=708323&type=webp&quality=85",
+      "w": 2454,
+      "h": 608,
+      "shows": "Logo: Toyota emblem + Chicago skyline/star mark + \"TOYOTA of Downtown Chicago\" (color artwork on transparent)",
+      "vehicle": null,
+      "text": true,
+      "slots": [
+        "logo"
+      ],
+      "tags": []
+    },
+    {
+      "id": "745136",
+      "url": "https://service.secureoffersites.com/images/GetLibraryImage?fileNameOrId=745136&type=webp&quality=85",
+      "w": 5734,
+      "h": 3824,
+      "shows": "Dealership team member in gray polo welcoming a female customer in a bright showroom lobby",
+      "vehicle": null,
+      "text": false,
+      "slots": [
+        "hero",
+        "fig",
+        "pair"
+      ],
+      "tags": [
+        "people",
+        "showroom"
+      ]
+    },
+    {
+      "id": "745117",
+      "url": "https://service.secureoffersites.com/images/GetLibraryImage?fileNameOrId=745117&type=webp&quality=85",
+      "w": 8192,
+      "h": 5464,
+      "shows": "Technician working under a vehicle raised on a yellow lift, shallow focus",
+      "vehicle": null,
+      "text": false,
+      "slots": [
+        "hero",
+        "fig",
+        "pair"
+      ],
+      "tags": [
+        "technician",
+        "service-bay"
+      ]
+    },
+    {
+      "id": "744528",
+      "url": "https://service.secureoffersites.com/images/GetLibraryImage?fileNameOrId=744528&type=webp&quality=85",
+      "w": 4624,
+      "h": 3918,
+      "shows": "Advisor in red shirt and customer kneeling at the wheel of a white Toyota Camry in a Toyota Service Center",
+      "vehicle": "2025+ Toyota Camry",
+      "text": false,
+      "slots": [
+        "hero",
+        "fig",
+        "pair"
+      ],
+      "tags": [
+        "people",
+        "service-bay",
+        "tires"
+      ]
+    },
+    {
+      "id": "744527",
+      "url": "https://service.secureoffersites.com/images/GetLibraryImage?fileNameOrId=744527&type=webp&quality=85",
+      "w": 5518,
+      "h": 3688,
+      "shows": "Advisor in red Toyota shirt smiling with a customer across a service desk",
+      "vehicle": null,
+      "text": false,
+      "slots": [
+        "hero",
+        "fig",
+        "pair"
+      ],
+      "tags": [
+        "people",
+        "showroom"
+      ]
+    },
+    {
+      "id": "744820",
+      "url": "https://service.secureoffersites.com/images/GetLibraryImage?fileNameOrId=744820&type=webp&quality=85",
+      "w": 4571,
+      "h": 3042,
+      "shows": "Exterior of a modern Toyota Service Center drive-through canopy with cars queued (generic Toyota facility, not confirmed as this store)",
+      "vehicle": null,
+      "text": false,
+      "slots": [
+        "hero",
+        "fig",
+        "pair"
+      ],
+      "tags": [
+        "service-bay"
+      ]
+    },
+    {
+      "id": "744577",
+      "url": "https://service.secureoffersites.com/images/GetLibraryImage?fileNameOrId=744577&type=webp&quality=85",
+      "w": 5125,
+      "h": 3844,
+      "shows": "Driver at the wheel of a Toyota with a large touchscreen in view, trees outside",
+      "vehicle": "Toyota (recent model, large touchscreen)",
+      "text": false,
+      "slots": [
+        "hero",
+        "fig",
+        "pair"
+      ],
+      "tags": [
+        "vehicle-interior",
+        "people"
+      ]
+    },
+    {
+      "id": "790736",
+      "url": "https://service.secureoffersites.com/images/GetLibraryImage?fileNameOrId=790736&type=webp&quality=85",
+      "w": 8368,
+      "h": 5584,
+      "shows": "Toyota technician pouring Toyota motor oil into an engine in a bright service bay",
+      "vehicle": null,
+      "text": false,
+      "slots": [
+        "hero",
+        "fig",
+        "pair"
+      ],
+      "tags": [
+        "technician",
+        "oil",
+        "service-bay"
+      ]
+    },
+    {
+      "id": "791164",
+      "url": "https://service.secureoffersites.com/images/GetLibraryImage?fileNameOrId=791164&type=webp&quality=85",
+      "w": 14204,
+      "h": 10652,
+      "shows": "White Toyota crossover driving past brick city buildings, motion blur",
+      "vehicle": "Toyota crossover (current bZ-family look)",
+      "text": false,
+      "slots": [
+        "hero",
+        "fig",
+        "pair"
+      ],
+      "tags": [
+        "vehicle-exterior",
+        "city",
+        "road"
+      ]
+    },
+    {
+      "id": "744960",
+      "url": "https://service.secureoffersites.com/images/GetLibraryImage?fileNameOrId=744960&type=webp&quality=85",
+      "w": 2001,
+      "h": 1335,
+      "shows": "Technician servicing the brake rotor of a red Toyota with an on-car brake lathe",
+      "vehicle": null,
+      "text": false,
+      "slots": [
+        "hero",
+        "fig",
+        "pair"
+      ],
+      "tags": [
+        "technician",
+        "brakes"
+      ]
+    },
+    {
+      "id": "744968",
+      "url": "https://service.secureoffersites.com/images/GetLibraryImage?fileNameOrId=744968&type=webp&quality=85",
+      "w": 1425,
+      "h": 950,
+      "shows": "Female technician working on the front brake/suspension of a blue Toyota Tacoma on a lift",
+      "vehicle": "2024+ Toyota Tacoma (4th gen)",
+      "text": false,
+      "slots": [
+        "fig",
+        "pair"
+      ],
+      "tags": [
+        "technician",
+        "brakes",
+        "service-bay"
+      ]
+    },
+    {
+      "id": "745053",
+      "url": "https://service.secureoffersites.com/images/GetLibraryImage?fileNameOrId=745053&type=webp&quality=85",
+      "w": 5299,
+      "h": 3538,
+      "shows": "Advisor in red shirt helping a female customer choose tires at a tire rack, Toyota Service Center door",
+      "vehicle": null,
+      "text": false,
+      "slots": [
+        "hero",
+        "fig",
+        "pair"
+      ],
+      "tags": [
+        "people",
+        "tires"
+      ]
+    },
+    {
+      "id": "816453",
+      "url": "https://service.secureoffersites.com/images/GetLibraryImage?fileNameOrId=816453&type=webp&quality=85",
+      "w": 2048,
+      "h": 1366,
+      "shows": "Female technician removing a wheel with an impact wrench in a red-and-white Toyota bay",
+      "vehicle": null,
+      "text": false,
+      "slots": [
+        "hero",
+        "fig",
+        "pair"
+      ],
+      "tags": [
+        "technician",
+        "tires",
+        "service-bay"
+      ]
+    },
+    {
+      "id": "790743",
+      "url": "https://service.secureoffersites.com/images/GetLibraryImage?fileNameOrId=790743&type=webp&quality=85",
+      "w": 8192,
+      "h": 4760,
+      "shows": "Technicians in Toyota jackets working on a vehicle raised on a lift",
+      "vehicle": null,
+      "text": false,
+      "slots": [
+        "hero",
+        "fig",
+        "pair"
+      ],
+      "tags": [
+        "technician",
+        "service-bay"
+      ]
+    },
+    {
+      "id": "745162",
+      "url": "https://service.secureoffersites.com/images/GetLibraryImage?fileNameOrId=745162&type=webp&quality=85",
+      "w": 2752,
+      "h": 1536,
+      "shows": "Technician mounting an alignment sensor on a silver Toyota wheel, alignment screen behind",
+      "vehicle": null,
+      "text": false,
+      "slots": [
+        "hero",
+        "fig",
+        "pair"
+      ],
+      "tags": [
+        "technician",
+        "tires"
+      ]
+    },
+    {
+      "id": "744682",
+      "url": "https://service.secureoffersites.com/images/GetLibraryImage?fileNameOrId=744682&type=webp&quality=85",
+      "w": 3840,
+      "h": 2160,
+      "shows": "Front of a dark Toyota EV crossover on a wet street at night in the rain",
+      "vehicle": "Toyota bZ-family EV (2025+ look)",
+      "text": false,
+      "slots": [
+        "hero",
+        "fig",
+        "pair"
+      ],
+      "tags": [
+        "vehicle-exterior",
+        "road",
+        "city"
+      ]
+    },
+    {
+      "id": "744866",
+      "url": "https://service.secureoffersites.com/images/GetLibraryImage?fileNameOrId=744866&type=webp&quality=85",
+      "w": 1323,
+      "h": 815,
+      "shows": "Green Toyota pickup driving toward camera on a snowy mountain road",
+      "vehicle": "Toyota Tundra/Tacoma (2022+ generation)",
+      "text": false,
+      "slots": [
+        "fig",
+        "pair"
+      ],
+      "tags": [
+        "vehicle-exterior",
+        "road"
+      ]
+    },
+    {
+      "id": "790740",
+      "url": "https://service.secureoffersites.com/images/GetLibraryImage?fileNameOrId=790740&type=webp&quality=85",
+      "w": 8368,
+      "h": 5584,
+      "shows": "Close-up of a technician tightening lug nuts on a red Toyota wheel",
+      "vehicle": null,
+      "text": false,
+      "slots": [
+        "hero",
+        "fig",
+        "pair"
+      ],
+      "tags": [
+        "technician",
+        "tires"
+      ]
+    },
+    {
+      "id": "819226",
+      "url": "https://service.secureoffersites.com/images/GetLibraryImage?fileNameOrId=819226&type=webp&quality=85",
+      "w": 892,
+      "h": 626,
+      "shows": "Toyota team member hand-wiping the door of a white vehicle (detailing)",
+      "vehicle": null,
+      "text": false,
+      "slots": [
+        "pair"
+      ],
+      "tags": [
+        "technician",
+        "vehicle-exterior"
+      ]
+    },
+    {
+      "id": "745054",
+      "url": "https://service.secureoffersites.com/images/GetLibraryImage?fileNameOrId=745054&type=webp&quality=85",
+      "w": 1126,
+      "h": 835,
+      "shows": "Dark gray Toyota SUV front three-quarter under stormy sky by the lakefront skyline",
+      "vehicle": "Toyota SUV (current gen)",
+      "text": false,
+      "slots": [
+        "fig",
+        "pair"
+      ],
+      "tags": [
+        "vehicle-exterior",
+        "city"
+      ]
+    },
+    {
+      "id": "899018",
+      "url": "https://service.secureoffersites.com/images/GetLibraryImage?fileNameOrId=899018&type=webp&quality=85",
+      "w": 1280,
+      "h": 720,
+      "shows": "Gray-green Toyota RAV4 Woodland driving on a forest dirt road, front three-quarter",
+      "vehicle": "2026 Toyota RAV4 Woodland Hybrid (per alt; verify generation)",
+      "text": false,
+      "slots": [
+        "fig",
+        "pair"
+      ],
+      "tags": [
+        "vehicle-exterior",
+        "road"
+      ]
+    },
+    {
+      "id": "899017",
+      "url": "https://service.secureoffersites.com/images/GetLibraryImage?fileNameOrId=899017&type=webp&quality=85",
+      "w": 3055,
+      "h": 2037,
+      "shows": "Toyota RAV4 interior: driver display, wide center touchscreen and console",
+      "vehicle": "2026 Toyota RAV4 Hybrid",
+      "text": false,
+      "slots": [
+        "hero",
+        "fig",
+        "pair"
+      ],
+      "tags": [
+        "vehicle-interior"
+      ]
+    },
+    {
+      "id": "899021",
+      "url": "https://service.secureoffersites.com/images/GetLibraryImage?fileNameOrId=899021&type=webp&quality=85",
+      "w": 1200,
+      "h": 800,
+      "shows": "Toyota RAV4 Hybrid engine bay, hood open",
+      "vehicle": "2026 Toyota RAV4 Hybrid",
+      "text": false,
+      "slots": [
+        "fig",
+        "pair"
+      ],
+      "tags": [
+        "vehicle-exterior"
+      ]
+    },
+    {
+      "id": "899022",
+      "url": "https://service.secureoffersites.com/images/GetLibraryImage?fileNameOrId=899022&type=webp&quality=85",
+      "w": 1200,
+      "h": 800,
+      "shows": "Toyota RAV4 front cabin and center console from the rear seat",
+      "vehicle": "2026 Toyota RAV4 Limited",
+      "text": false,
+      "slots": [
+        "fig",
+        "pair"
+      ],
+      "tags": [
+        "vehicle-interior"
+      ]
+    }
+  ]
+}

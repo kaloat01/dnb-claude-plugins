@@ -1,0 +1,410 @@
+{
+  "dealer": "honda-libertyville",
+  "generated": "2026-10-07",
+  "note": "Images already in this dealer's Apollo library. Reuse before asking for new uploads. View before use; match the article's model year.",
+  "images": [
+    {
+      "id": "181233",
+      "url": "https://service.secureoffersites.com/images/GetLibraryImage?fileNameOrId=181233&type=webp&quality=85",
+      "w": 430,
+      "h": 100,
+      "shows": "Logo: Honda wing mark + \"Honda LIBERTYVILLE\" + \"A Proud Member of the Murgado Automotive Group\" (white artwork on transparent)",
+      "vehicle": null,
+      "text": true,
+      "slots": [
+        "logo"
+      ],
+      "tags": []
+    },
+    {
+      "id": "771584",
+      "url": "https://service.secureoffersites.com/images/GetLibraryImage?fileNameOrId=771584&type=webp&quality=85",
+      "w": 1024,
+      "h": 683,
+      "shows": "Honda technician under a car on a lift draining oil (NOT a storefront despite its \"service center and showroom\" alt)",
+      "vehicle": null,
+      "text": false,
+      "slots": [
+        "pair"
+      ],
+      "tags": [
+        "technician",
+        "service-bay",
+        "oil"
+      ]
+    },
+    {
+      "id": "771587",
+      "url": "https://service.secureoffersites.com/images/GetLibraryImage?fileNameOrId=771587&type=webp&quality=85",
+      "w": 1024,
+      "h": 683,
+      "shows": "Close-up of a Honda technician pouring Honda oil through a funnel (no price text despite alt)",
+      "vehicle": null,
+      "text": false,
+      "slots": [
+        "pair"
+      ],
+      "tags": [
+        "technician",
+        "oil"
+      ]
+    },
+    {
+      "id": "771588",
+      "url": "https://service.secureoffersites.com/images/GetLibraryImage?fileNameOrId=771588&type=webp&quality=85",
+      "w": 1024,
+      "h": 683,
+      "shows": "Service advisor talking with a female owner beside a black Honda Ridgeline in a service drive",
+      "vehicle": "2017-2020 Honda Ridgeline (2nd gen)",
+      "text": false,
+      "slots": [
+        "pair"
+      ],
+      "tags": [
+        "people",
+        "service-bay"
+      ]
+    },
+    {
+      "id": "771569",
+      "url": "https://service.secureoffersites.com/images/GetLibraryImage?fileNameOrId=771569&type=webp&quality=85",
+      "w": 1024,
+      "h": 683,
+      "shows": "Technician using an impact wrench on the wheel of a lime-green Honda (no offer text despite alt)",
+      "vehicle": null,
+      "text": false,
+      "slots": [
+        "pair"
+      ],
+      "tags": [
+        "technician",
+        "tires"
+      ]
+    },
+    {
+      "id": "771571",
+      "url": "https://service.secureoffersites.com/images/GetLibraryImage?fileNameOrId=771571&type=webp&quality=85",
+      "w": 1024,
+      "h": 683,
+      "shows": "Advisor with tablet and a female customer at a bright dealership service desk",
+      "vehicle": null,
+      "text": false,
+      "slots": [
+        "pair"
+      ],
+      "tags": [
+        "people",
+        "showroom"
+      ]
+    },
+    {
+      "id": "846736",
+      "url": "https://service.secureoffersites.com/images/GetLibraryImage?fileNameOrId=846736&type=webp&quality=85",
+      "w": 1024,
+      "h": 683,
+      "shows": "Technician running an A/C service machine under the hood of a yellow Honda",
+      "vehicle": null,
+      "text": false,
+      "slots": [
+        "pair"
+      ],
+      "tags": [
+        "technician",
+        "service-bay"
+      ]
+    },
+    {
+      "id": "824056",
+      "url": "https://service.secureoffersites.com/images/GetLibraryImage?fileNameOrId=824056&type=webp&quality=85",
+      "w": 1024,
+      "h": 683,
+      "shows": "Honda technician inspecting the engine bay of a lime-green Honda",
+      "vehicle": null,
+      "text": false,
+      "slots": [
+        "pair"
+      ],
+      "tags": [
+        "technician",
+        "service-bay"
+      ]
+    },
+    {
+      "id": "771582",
+      "url": "https://service.secureoffersites.com/images/GetLibraryImage?fileNameOrId=771582&type=webp&quality=85",
+      "w": 1376,
+      "h": 768,
+      "shows": "Army officer in dress uniform standing on a tree-lined autumn street",
+      "vehicle": null,
+      "text": false,
+      "slots": [
+        "fig",
+        "pair"
+      ],
+      "tags": [
+        "people"
+      ]
+    },
+    {
+      "id": "771576",
+      "url": "https://service.secureoffersites.com/images/GetLibraryImage?fileNameOrId=771576&type=webp&quality=85",
+      "w": 1024,
+      "h": 683,
+      "shows": "Technician hand-wiping the front of a lime-green Honda Civic",
+      "vehicle": "2016-2021 Honda Civic (10th gen)",
+      "text": false,
+      "slots": [
+        "pair"
+      ],
+      "tags": [
+        "technician",
+        "vehicle-exterior"
+      ]
+    },
+    {
+      "id": "771577",
+      "url": "https://service.secureoffersites.com/images/GetLibraryImage?fileNameOrId=771577&type=webp&quality=85",
+      "w": 1024,
+      "h": 683,
+      "shows": "Technician vacuuming the rear seats of a Honda with light interior",
+      "vehicle": null,
+      "text": false,
+      "slots": [
+        "pair"
+      ],
+      "tags": [
+        "technician",
+        "vehicle-interior"
+      ]
+    },
+    {
+      "id": "771573",
+      "url": "https://service.secureoffersites.com/images/GetLibraryImage?fileNameOrId=771573&type=webp&quality=85",
+      "w": 1024,
+      "h": 683,
+      "shows": "Customer using a tablet in a dealership lounge with coffee",
+      "vehicle": null,
+      "text": false,
+      "slots": [
+        "pair"
+      ],
+      "tags": [
+        "people",
+        "showroom"
+      ]
+    },
+    {
+      "id": "771598",
+      "url": "https://service.secureoffersites.com/images/GetLibraryImage?fileNameOrId=771598&type=webp&quality=85",
+      "w": 1376,
+      "h": 768,
+      "shows": "Close-up of a water-filled pothole in broken asphalt",
+      "vehicle": null,
+      "text": false,
+      "slots": [
+        "fig",
+        "pair"
+      ],
+      "tags": [
+        "road"
+      ]
+    },
+    {
+      "id": "771603",
+      "url": "https://service.secureoffersites.com/images/GetLibraryImage?fileNameOrId=771603&type=webp&quality=85",
+      "w": 1024,
+      "h": 683,
+      "shows": "Technician mounting a tire/wheel on a green Honda raised on a lift",
+      "vehicle": null,
+      "text": false,
+      "slots": [
+        "pair"
+      ],
+      "tags": [
+        "technician",
+        "tires",
+        "service-bay"
+      ]
+    },
+    {
+      "id": "771601",
+      "url": "https://service.secureoffersites.com/images/GetLibraryImage?fileNameOrId=771601&type=webp&quality=85",
+      "w": 1024,
+      "h": 683,
+      "shows": "Two Honda technicians at a blue alignment rack with wheel targets",
+      "vehicle": null,
+      "text": false,
+      "slots": [
+        "pair"
+      ],
+      "tags": [
+        "technician",
+        "tires",
+        "service-bay"
+      ]
+    },
+    {
+      "id": "771572",
+      "url": "https://service.secureoffersites.com/images/GetLibraryImage?fileNameOrId=771572&type=webp&quality=85",
+      "w": 970,
+      "h": 640,
+      "shows": "Red fire engine parked outside a brick fire station",
+      "vehicle": null,
+      "text": false,
+      "slots": [
+        "pair"
+      ],
+      "tags": [
+        "people"
+      ]
+    },
+    {
+      "id": "771580",
+      "url": "https://service.secureoffersites.com/images/GetLibraryImage?fileNameOrId=771580&type=webp&quality=85",
+      "w": 1239,
+      "h": 928,
+      "shows": "Nurse in navy scrubs with stethoscope in a hospital hallway",
+      "vehicle": null,
+      "text": false,
+      "slots": [
+        "fig",
+        "pair"
+      ],
+      "tags": [
+        "people"
+      ]
+    },
+    {
+      "id": "771585",
+      "url": "https://service.secureoffersites.com/images/GetLibraryImage?fileNameOrId=771585&type=webp&quality=85",
+      "w": 1024,
+      "h": 767,
+      "shows": "Technician with flashlight inspecting the underside of a vehicle on a lift",
+      "vehicle": null,
+      "text": false,
+      "slots": [
+        "pair"
+      ],
+      "tags": [
+        "technician",
+        "service-bay"
+      ]
+    },
+    {
+      "id": "771599",
+      "url": "https://service.secureoffersites.com/images/GetLibraryImage?fileNameOrId=771599&type=webp&quality=85",
+      "w": 1376,
+      "h": 768,
+      "shows": "Silver Honda CR-V parked on a snow-dusted residential street with tire tracks",
+      "vehicle": "2017-2022 Honda CR-V (5th gen)",
+      "text": false,
+      "slots": [
+        "fig",
+        "pair"
+      ],
+      "tags": [
+        "vehicle-exterior",
+        "road"
+      ]
+    },
+    {
+      "id": "826264",
+      "url": "https://service.secureoffersites.com/images/GetLibraryImage?fileNameOrId=826264&type=webp&quality=85",
+      "w": 1201,
+      "h": 717,
+      "shows": "Honda Odyssey dashboard and front cabin, city view through the windshield",
+      "vehicle": "Honda Odyssey (2018+ 5th gen)",
+      "text": false,
+      "slots": [
+        "fig",
+        "pair"
+      ],
+      "tags": [
+        "vehicle-interior"
+      ]
+    },
+    {
+      "id": "898927",
+      "url": "https://service.secureoffersites.com/images/GetLibraryImage?fileNameOrId=898927&type=webp&quality=85",
+      "w": 1916,
+      "h": 821,
+      "shows": "Red Honda Pilot towing a small camper trailer on a lakeside road",
+      "vehicle": "2026 Honda Pilot",
+      "text": false,
+      "slots": [
+        "hero",
+        "fig",
+        "pair"
+      ],
+      "tags": [
+        "vehicle-exterior",
+        "road"
+      ]
+    },
+    {
+      "id": "898926",
+      "url": "https://service.secureoffersites.com/images/GetLibraryImage?fileNameOrId=898926&type=webp&quality=85",
+      "w": 1200,
+      "h": 800,
+      "shows": "Close-up of a Honda Pilot center console with drive-mode and i-VTM4 controls",
+      "vehicle": "2026 Honda Pilot",
+      "text": false,
+      "slots": [
+        "fig",
+        "pair"
+      ],
+      "tags": [
+        "vehicle-interior"
+      ]
+    },
+    {
+      "id": "898928",
+      "url": "https://service.secureoffersites.com/images/GetLibraryImage?fileNameOrId=898928&type=webp&quality=85",
+      "w": 1360,
+      "h": 907,
+      "shows": "Large bright Honda service bay with SUVs on lifts",
+      "vehicle": "Honda Pilot (current gen)",
+      "text": false,
+      "slots": [
+        "fig",
+        "pair"
+      ],
+      "tags": [
+        "service-bay"
+      ]
+    },
+    {
+      "id": "898924",
+      "url": "https://service.secureoffersites.com/images/GetLibraryImage?fileNameOrId=898924&type=webp&quality=85",
+      "w": 1200,
+      "h": 800,
+      "shows": "Green Honda CR-V Hybrid parked on a beach road, front three-quarter",
+      "vehicle": "2026 Honda CR-V Sport-L Hybrid",
+      "text": false,
+      "slots": [
+        "fig",
+        "pair"
+      ],
+      "tags": [
+        "vehicle-exterior"
+      ]
+    },
+    {
+      "id": "898925",
+      "url": "https://service.secureoffersites.com/images/GetLibraryImage?fileNameOrId=898925&type=webp&quality=85",
+      "w": 1600,
+      "h": 1067,
+      "shows": "Red Honda Pilot driving on a mountain road, front three-quarter",
+      "vehicle": "2026 Honda Pilot",
+      "text": false,
+      "slots": [
+        "fig",
+        "pair"
+      ],
+      "tags": [
+        "vehicle-exterior",
+        "road"
+      ]
+    }
+  ]
+}

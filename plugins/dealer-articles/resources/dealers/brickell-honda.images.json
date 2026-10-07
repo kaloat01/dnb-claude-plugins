@@ -1,0 +1,320 @@
+{
+  "dealer": "brickell-honda",
+  "generated": "2026-10-07",
+  "note": "Images already in this dealer's Apollo library. Reuse before asking for new uploads. View before use; match the article's model year.",
+  "images": [
+    {
+      "id": "49187",
+      "url": "https://service.secureoffersites.com/images/GetLibraryImage?fileNameOrId=49187&type=webp&quality=85",
+      "w": 1000,
+      "h": 550,
+      "shows": "Aerial view of the Brickell Honda showroom and palm-lined front lot on SW 8th St, Miami skyline behind",
+      "vehicle": null,
+      "text": false,
+      "slots": [
+        "pair",
+        "store"
+      ],
+      "tags": [
+        "storefront",
+        "city"
+      ]
+    },
+    {
+      "id": "108908",
+      "url": "https://service.secureoffersites.com/images/GetLibraryImage?fileNameOrId=108908&type=webp&quality=85",
+      "w": 860,
+      "h": 200,
+      "shows": "Logo lockup: Honda wing mark + Brickell Honda oval + \"A Proud Member of the Murgado Automotive Group\" (color artwork on white)",
+      "vehicle": null,
+      "text": true,
+      "slots": [
+        "logo"
+      ],
+      "tags": []
+    },
+    {
+      "id": "717462",
+      "url": "https://service.secureoffersites.com/images/GetLibraryImage?fileNameOrId=717462&type=webp&quality=85",
+      "w": 1024,
+      "h": 683,
+      "shows": "Honda technician under a car on a lift, draining oil, Civic in background",
+      "vehicle": null,
+      "text": false,
+      "slots": [
+        "pair"
+      ],
+      "tags": [
+        "technician",
+        "service-bay",
+        "oil"
+      ]
+    },
+    {
+      "id": "717456",
+      "url": "https://service.secureoffersites.com/images/GetLibraryImage?fileNameOrId=717456&type=webp&quality=85",
+      "w": 1024,
+      "h": 683,
+      "shows": "Close-up of a Honda technician pouring Honda motor oil through a funnel into an engine (lime-green Honda)",
+      "vehicle": null,
+      "text": false,
+      "slots": [
+        "pair"
+      ],
+      "tags": [
+        "technician",
+        "oil"
+      ]
+    },
+    {
+      "id": "717464",
+      "url": "https://service.secureoffersites.com/images/GetLibraryImage?fileNameOrId=717464&type=webp&quality=85",
+      "w": 5207,
+      "h": 3471,
+      "shows": "Yellow piggy bank and stacked coins on the hood of a blue car (savings concept)",
+      "vehicle": null,
+      "text": false,
+      "slots": [
+        "hero",
+        "fig",
+        "pair"
+      ],
+      "tags": [
+        "vehicle-exterior"
+      ]
+    },
+    {
+      "id": "717457",
+      "url": "https://service.secureoffersites.com/images/GetLibraryImage?fileNameOrId=717457&type=webp&quality=85",
+      "w": 1024,
+      "h": 683,
+      "shows": "Service advisor in white shirt talking with a female owner beside a black Honda Ridgeline in a service drive",
+      "vehicle": "2017-2020 Honda Ridgeline (2nd gen)",
+      "text": false,
+      "slots": [
+        "pair"
+      ],
+      "tags": [
+        "people",
+        "service-bay"
+      ]
+    },
+    {
+      "id": "717468",
+      "url": "https://service.secureoffersites.com/images/GetLibraryImage?fileNameOrId=717468&type=webp&quality=85",
+      "w": 1024,
+      "h": 683,
+      "shows": "Honda technician holding a brake rotor next to a genuine Honda parts box",
+      "vehicle": null,
+      "text": false,
+      "slots": [
+        "pair"
+      ],
+      "tags": [
+        "technician",
+        "brakes"
+      ]
+    },
+    {
+      "id": "717448",
+      "url": "https://service.secureoffersites.com/images/GetLibraryImage?fileNameOrId=717448&type=webp&quality=85",
+      "w": 1024,
+      "h": 767,
+      "shows": "Technician in Honda uniform testing a battery under an open hood (green Honda) with a handheld tester",
+      "vehicle": null,
+      "text": false,
+      "slots": [
+        "pair"
+      ],
+      "tags": [
+        "technician",
+        "battery"
+      ]
+    },
+    {
+      "id": "717451",
+      "url": "https://service.secureoffersites.com/images/GetLibraryImage?fileNameOrId=717451&type=webp&quality=85",
+      "w": 1024,
+      "h": 683,
+      "shows": "Two Honda technicians at a blue alignment rack with wheel targets mounted",
+      "vehicle": null,
+      "text": false,
+      "slots": [
+        "pair"
+      ],
+      "tags": [
+        "technician",
+        "service-bay",
+        "tires"
+      ]
+    },
+    {
+      "id": "717443",
+      "url": "https://service.secureoffersites.com/images/GetLibraryImage?fileNameOrId=717443&type=webp&quality=85",
+      "w": 1254,
+      "h": 840,
+      "shows": "Close-up of a wheel alignment target clamped to a tire in a bright shop",
+      "vehicle": null,
+      "text": false,
+      "slots": [
+        "fig",
+        "pair"
+      ],
+      "tags": [
+        "tires",
+        "service-bay"
+      ]
+    },
+    {
+      "id": "717465",
+      "url": "https://service.secureoffersites.com/images/GetLibraryImage?fileNameOrId=717465&type=webp&quality=85",
+      "w": 5400,
+      "h": 3600,
+      "shows": "Technician checking a windshield wiper blade with a cloth in the service bay",
+      "vehicle": null,
+      "text": false,
+      "slots": [
+        "hero",
+        "fig",
+        "pair"
+      ],
+      "tags": [
+        "technician"
+      ]
+    },
+    {
+      "id": "717467",
+      "url": "https://service.secureoffersites.com/images/GetLibraryImage?fileNameOrId=717467&type=webp&quality=85",
+      "w": 1024,
+      "h": 683,
+      "shows": "Product shot of two wiper blades on a dark gradient background",
+      "vehicle": null,
+      "text": false,
+      "slots": [
+        "pair"
+      ],
+      "tags": []
+    },
+    {
+      "id": "717458",
+      "url": "https://service.secureoffersites.com/images/GetLibraryImage?fileNameOrId=717458&type=webp&quality=85",
+      "w": 1024,
+      "h": 683,
+      "shows": "Service advisor reviewing paperwork with a mother and son beside a black Honda Ridgeline",
+      "vehicle": "2017-2020 Honda Ridgeline (2nd gen)",
+      "text": false,
+      "slots": [
+        "pair"
+      ],
+      "tags": [
+        "people",
+        "service-bay"
+      ]
+    },
+    {
+      "id": "717444",
+      "url": "https://service.secureoffersites.com/images/GetLibraryImage?fileNameOrId=717444&type=webp&quality=85",
+      "w": 1434,
+      "h": 717,
+      "shows": "Gray Honda CR-V parked on cracked, patched pavement on a palm-lined Miami street",
+      "vehicle": "2017-2022 Honda CR-V (5th gen)",
+      "text": false,
+      "slots": [
+        "fig",
+        "pair"
+      ],
+      "tags": [
+        "vehicle-exterior",
+        "road",
+        "city"
+      ]
+    },
+    {
+      "id": "717455",
+      "url": "https://service.secureoffersites.com/images/GetLibraryImage?fileNameOrId=717455&type=webp&quality=85",
+      "w": 1344,
+      "h": 768,
+      "shows": "Driver-level view of a Miami street with orange construction barrels; bottom edge fades to black",
+      "vehicle": null,
+      "text": false,
+      "slots": [
+        "fig",
+        "pair"
+      ],
+      "tags": [
+        "road",
+        "city"
+      ]
+    },
+    {
+      "id": "717446",
+      "url": "https://service.secureoffersites.com/images/GetLibraryImage?fileNameOrId=717446&type=webp&quality=85",
+      "w": 1434,
+      "h": 818,
+      "shows": "Miami traffic seen through a windshield on a sunny day; dashboard foreground is dark",
+      "vehicle": null,
+      "text": false,
+      "slots": [
+        "fig",
+        "pair"
+      ],
+      "tags": [
+        "road",
+        "city"
+      ]
+    },
+    {
+      "id": "717460",
+      "url": "https://service.secureoffersites.com/images/GetLibraryImage?fileNameOrId=717460&type=webp&quality=85",
+      "w": 1200,
+      "h": 1200,
+      "shows": "Aerial of dense traffic on a tree-lined downtown Miami/Brickell street between towers (square)",
+      "vehicle": null,
+      "text": false,
+      "slots": [
+        "fig",
+        "pair"
+      ],
+      "tags": [
+        "road",
+        "city"
+      ]
+    },
+    {
+      "id": "717453",
+      "url": "https://service.secureoffersites.com/images/GetLibraryImage?fileNameOrId=717453&type=webp&quality=85",
+      "w": 1920,
+      "h": 1080,
+      "shows": "Orange sunset over a busy Miami highway with skyline silhouette",
+      "vehicle": null,
+      "text": false,
+      "slots": [
+        "hero",
+        "fig",
+        "pair"
+      ],
+      "tags": [
+        "road",
+        "city"
+      ]
+    },
+    {
+      "id": "717450",
+      "url": "https://service.secureoffersites.com/images/GetLibraryImage?fileNameOrId=717450&type=webp&quality=85",
+      "w": 4787,
+      "h": 3192,
+      "shows": "Miami expressway traffic under green overhead signs, bay and skyline behind",
+      "vehicle": null,
+      "text": false,
+      "slots": [
+        "hero",
+        "fig",
+        "pair"
+      ],
+      "tags": [
+        "road",
+        "city"
+      ]
+    }
+  ]
+}
