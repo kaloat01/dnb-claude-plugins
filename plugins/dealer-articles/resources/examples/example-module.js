@@ -146,7 +146,7 @@ module.exports = {
   dealerSection: {
     eyebrow: 'Visit us in Miami',
     h: 'Get your Honda appraised on SW 8th Street',
-    p: 'Our sales team is at 690 SW 8th St, a short trip from Brickell, Downtown Miami and Little Havana. Start online with the trade value tool, then bring the car in so an appraiser can review it and give you a figure in person. Brickell Honda is a proud member of the Murgado Automotive Group.',
+    p: 'Our sales team is at 690 SW 8th St in Miami. Start online with the trade value tool, then bring the car in so an appraiser can review it and give you a figure in person. Brickell Honda is a proud member of the Murgado Automotive Group.',
   },
   closer: {
     h: 'Start with a number. Finish with an appraisal.',

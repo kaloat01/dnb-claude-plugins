@@ -83,7 +83,8 @@ offers a plug-in hybrid.")*
 "if the message does not disappear…"). *(Battery article P0: frozen-battery and EV conditions were missing before the
 jump-start steps.)*
 
-**R15. Scripted edits are verified.** Edit `module.js` with the Edit tool. For any scripted replacement use a function
+**R15. Scripted edits are verified.** Edit `module.js` with the Edit tool (always for text containing `\'` or quotes: in testing,
+scripted replacements silently missed 2 of 6 such strings). For any scripted replacement use a function
 replacer or split/join when the text contains `$`; write scripts to a file (not heredoc or `node -e`); every patch reports
 applied/missing counts; then `node --check module.js` and rebuild. *(Patches silently failed or broke escaping, e.g. an
 apostrophe inside single quotes; `$1,099` was read as a regex capture group.)*
@@ -208,7 +209,7 @@ wording ("As posted on MM/DD/YYYY, the service specials page listed…") and inv
 
 - 12–25 unique links, every one from the allow-list, with descriptive anchors (never "click here").
 - Always: a hub up-link (service hub or the relevant sales hub), money pages (schedule service, specials, inventory, finance),
-  1–3 area pages, and a related guide. *(A battery article was missing its `/service/` up-link.)*
+  1–3 area pages (if the sitemap has any), and a related guide. *(A battery article was missing its `/service/` up-link.)*
 - Never link as proof or as a recommendation: pages that contradict OEM facts, broken or "unavailable" tools, trade-in /
   lease / exchange pages with unqualified promises ("top dollar", "lower payment", limited-time claims), pages with
   placeholder text, redirects to the homepage. List them as dealer flags instead.

@@ -10,7 +10,7 @@
  *  - NO "01, 02" numbering on H2s, TOC or lists (reads as AI-written). Steps blocks number themselves.
  *  - 8 to 9 question H2s, 1,700 to 2,300 body words, sentences of 25 words or fewer, 12 to 25 unique internal links.
  *  - FAQ: 9 to 10 questions, each answer 40 to 90 words, plain text (no HTML), not repeating the body verbatim.
- *  - No em dashes; en dashes only inside number ranges. No toll-free (8xx) numbers. No "$" figures unless
+ *  - No em dashes; en dashes only inside number ranges. Phones only via {{PHONE}}/{{SALESPHONE}}/{{SERVICEPHONE}} (dealer file; never typed by hand). No "$" figures unless
  *    allowMsrp: true and the word "MSRP" sits within 140 characters. No banned phrases (see ${CLAUDE_PLUGIN_ROOT}/resources/rules/rigor-and-content.md,
  *    plus the dealer's "bans"). Local framing only with the dealer's "areas"; never its "excluded" towns.
  *  - Internal links: root-relative paths ("/scheduleservice") from the dealer sitemap snapshot or allowedLinks.

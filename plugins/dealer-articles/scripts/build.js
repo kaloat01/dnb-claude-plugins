@@ -2,7 +2,7 @@
 /* dealer-articles engine: "Editorial v2" long-form article builder for Apollo (Team Velocity) custom pages.
  * Dealers: resources/dealers/<key>.json (./dealers/<key>.json in the working folder overrides). Pure Node >= 18, no deps.
  * Spec: repository docs/CONTRACT.md (maintainers).  node build.js env | dealers | new --dealer "<name>" --title "<title>" [--out <dir>]
- *   | status <job> | build <job> [--final] | shot <job> [--widths 1280,375] | images <job> */
+ *   | status <job> | build <job> [--final] | shot <job> [--widths 1280,375] [--height N] | images <job> | page <url> [--out file] */
 'use strict';
 const fs = require('fs');
 const path = require('path');
@@ -52,7 +52,7 @@ const dealerDirs = () => [path.join(process.cwd(), 'dealers'), path.join(RES, 'd
 function dealerFile(key, ext = '.json') { for (const d of dealerDirs()) { const f = path.join(d, key + ext); if (fs.existsSync(f)) return f; } return null; }
 function listDealers() {
   const keys = new Set();
-  for (const d of dealerDirs()) if (fs.existsSync(d)) fs.readdirSync(d).filter((f) => /\.json$/i.test(f)).forEach((f) => keys.add(f.replace(/\.json$/i, '')));
+  for (const d of dealerDirs()) if (fs.existsSync(d)) fs.readdirSync(d).filter((f) => /\.json$/i.test(f) && !/\.images\.json$/i.test(f)).forEach((f) => keys.add(f.replace(/\.json$/i, '')));
   return [...keys].sort().map((k) => { try { return Object.assign({ key: k }, readJson(dealerFile(k)), { file: dealerFile(k) }); } catch (e) { return { key: k, name: `(unreadable: ${e.message})`, aliases: [], file: dealerFile(k) }; } });
 }
 function loadDealer(k) {
@@ -669,7 +669,7 @@ ${shellClose}
   fs.writeFileSync(out.seo, `# ${mod.slug}: Apollo SEO settings (General SEO Settings)\n\n`
     + f('URL / slug', mod.path) + f('H1 Tag Text', 'leave blank (the H1 is in the page content)') + f('Page Title', mod.title) + f('Meta Description', mod.meta)
     + f('Canonical Url', url) + f('OG Site Name', '#DealerName') + f('OG Title', mod.ogTitle || mod.title) + f('OG Description', mod.meta) + f('OG Locale', 'en_US')
-    + f('Meta Keywords', 'leave empty') + f('Robots', 'leave all unchecked') + f('Focus keyword', mod.focus) + f('Hero image URL', heroPkg || 'MISSING (no Apollo id yet)')
+    + f('Meta Keywords', 'leave empty') + f('Robots', 'leave all unchecked') + f('Focus keyword', mod.focus) + f('Hero image URL (schema only; Apollo has no og:image field)', heroPkg || 'MISSING (no Apollo id yet)')
     + f('Custom Structured Data', `paste ${path.basename(out.sd)} and CHECK "Replace Structured Data"`));
   const imgList = Object.entries(images).filter(([k, v]) => v && used.has(k)).map(([k, v]) => `- ${k}: ${apolloUrl(v.apollo, v.w) || 'MISSING Apollo id (placeholder)'}${v.desc ? ` · ${v.desc}` : ''}`).join('\n');
   fs.writeFileSync(out.readme, `# ${mod.slug}: Apollo upload map (${D.name})\n\n`
@@ -755,19 +755,19 @@ ${shellClose}
   warnG('H1 ≤80', stripTags(mod.h1).length > 80 ? [`${stripTags(mod.h1).length} chars`] : [], `${stripTags(mod.h1).length}`);
   const blockText = (b) => b.html || b.text || (b.t === 'list' ? b.items.join(' ') : b.t === 'steps' ? b.items.map((i) => i.h + ' ' + i.html).join(' ') : b.t === 'table' ? [...b.head, ...b.rows.flat()].join(' ') : b.t === 'stats' ? b.items.map((s) => s.n + ' ' + s.l).join(' ') : '');
   const bodyWords = countWords(decode(stripTags(mod.blocks.map(blockText).join(' '))));
-  warnG('Body words 1,700–2,300 (blocks only)', bodyWords < 1700 || bodyWords > 2300 ? [`${bodyWords} words`] : [], `${bodyWords}`);
+  gate('Body words 1,700–2,300 (blocks only)', bodyWords < 1700 || bodyWords > 2300 ? [`${bodyWords} words`] : [], `${bodyWords}`);
   const modText = decode(stripTags([mod.title, mod.h1, mod.dek, ...mod.blocks.map(blockText)].join(' ')));
   warnG('Dealer fit (brand + city in article copy)', [!modText.includes(D.brand) && `brand "${D.brand}" never mentioned`, !modText.includes(D.city) && `city "${D.city}" never mentioned`].filter(Boolean));
-  warnG('Question H2s 8–9', h2s.length < 8 || h2s.length > 9 ? [`${h2s.length} H2s`] : [], `${h2s.length}`);
+  gate('Question H2s 8–9', h2s.length < 8 || h2s.length > 9 ? [`${h2s.length} H2s`] : [], `${h2s.length}`);
   const faqW = mod.faq.map((q) => countWords(q.a));
   const faqMsg = [];
   if (mod.faq.length < 9 || mod.faq.length > 10) faqMsg.push(`${mod.faq.length} questions (want 9–10)`);
   const offW = faqW.map((w, i) => [w, i + 1]).filter(([w]) => w < 40 || w > 90);
   if (offW.length) faqMsg.push(`answers outside 40–90 words: ${offW.map(([w, i]) => `#${i}=${w}`).join(', ')}`);
-  warnG('FAQ 9–10 × 40–90 words', faqMsg, `${mod.faq.length} × ${Math.min(...faqW)}–${Math.max(...faqW)} words`);
+  gate('FAQ 9–10 × 40–90 words', faqMsg, `${mod.faq.length} × ${Math.min(...faqW)}–${Math.max(...faqW)} words`);
   warnG('≥12 unique internal links', uniq.length < 12 ? [`${uniq.length}`] : [], `${uniq.length}`);
   const bodyText = decode(stripTags([mod.dek, ...mod.glance, ...mod.blocks.filter((b) => !/^(h2|h3|table|stats)$/.test(b.t)).map(blockText), ...mod.faq.map((q) => q.a)].join(' ')));
-  const longS = bodyText.split(/(?<=[.!?])\s+/).filter((s) => countWords(s) > 25).length;
+  const longS = bodyText.split(/(?<=[.!?])\s+/).filter((s) => countWords(s) > 25 && !/["“”]/.test(s)).length; // verbatim quotes exempt
   warnG('Sentences ≤25 words', longS ? [`${longS} sentence(s) over 25 words`] : []);
   if (!opts.final) warnG('Images sourced', placeholders.map((k) => `${k} placeholder`), `${slots.size} article slots with Apollo values`);
   warnG('Dealer images (optional)', [...(hasStore ? [] : ['no STORE photo → text-only dealership section']), ...(hasLogo ? [] : ['no LOGO → dealer name text band'])], logoSmall ? 'small LOGO emblem + name band' : 'STORE + LOGO');
@@ -817,7 +817,7 @@ function cmdDealers() {
   ds.forEach((d) => console.log(`${String(d.key).padEnd(26)} ${String(d.prefix || '?').padEnd(5)} ${String(d.name).padEnd(30)} ${d.platform || ''}  aliases: ${(d.aliases || []).join(', ')}${d.lastVerified ? `  (verified ${d.lastVerified})` : ''}${d.file && d.file.startsWith(process.cwd() + path.sep + 'dealers') ? '  [local override]' : ''}`));
 }
 function cmdNew(a) {
-  if (!a.dealer || !a.title) die('Usage: build.js new --dealer "<name or key>" --title "<title>" [--out <dir>]');
+  if (!a.dealer || !a.title) die('Usage: build.js new --dealer "<name or key>" --title "<title>" [--slug <short-slug>] [--out <dir>]');
   const m = matchDealer(a.dealer);
   if (!m.hit) {
     const list = (m.cands.length ? m.cands : m.all).map((d) => `  ${d.key}  (${d.name}; aliases: ${(d.aliases || []).join(', ')})`).join('\n');
@@ -825,7 +825,7 @@ function cmdNew(a) {
     process.exit(2);
   }
   const D = loadDealer(m.hit.key);
-  const slug = slugify(a.title);
+  const slug = slugify(a.slug || a.title);
   if (!slug) die('Title produces an empty slug');
   const dir = path.resolve(a.out || 'articles', D.key, slug);
   if (fs.existsSync(path.join(dir, 'module.js'))) die(`Job already exists (not overwritten): ${dir}`);
@@ -885,10 +885,12 @@ function cmdShot(arg, a) {
   const prof = fs.mkdtempSync(path.join(os.tmpdir(), 'da-shot-'));
   let bad = 0;
   for (const w of widths) {
-    const h = a.height ? parseInt(a.height, 10) : w <= 480 ? 9000 : 7000;
+    const h = a.height ? parseInt(a.height, 10) : w <= 480 ? 18000 : 12000;
+    // headless Chrome/Edge cannot open a window narrower than ~500px: render narrow widths inside an iframe of that width
+    const target = w < 500 ? (() => { const wrap = path.join(qa, `_frame-${w}.html`); fs.writeFileSync(wrap, `<!doctype html><html><body style="margin:0;background:#fff"><iframe src="${pathToFileURL(prev).href}" style="width:${w}px;height:${h}px;border:0;display:block"></iframe></body></html>`); return pathToFileURL(wrap).href; })() : pathToFileURL(prev).href;
     const png = path.join(qa, `preview-${w}.png`);
     try { fs.unlinkSync(png); } catch (e) { /* none */ }
-    const r = cp.spawnSync(br, ['--headless=new', '--disable-gpu', '--hide-scrollbars', '--no-first-run', '--no-default-browser-check', `--user-data-dir=${prof}`, '--virtual-time-budget=8000', `--screenshot=${png}`, `--window-size=${w},${h}`, pathToFileURL(prev).href], { timeout: 120000, stdio: 'pipe' });
+    const r = cp.spawnSync(br, ['--headless=new', '--disable-gpu', '--hide-scrollbars', '--no-first-run', '--no-default-browser-check', `--user-data-dir=${prof}`, '--virtual-time-budget=8000', `--screenshot=${png}`, `--window-size=${Math.max(w, 500)},${h}`, target], { timeout: 120000, stdio: 'pipe' });
     if (fs.existsSync(png) && fs.statSync(png).size > 1000) console.log(`✅ ${w}×${h} → ${png}`);
     else { bad++; console.log(`⚠️ ${w}px screenshot failed (${r.error ? r.error.message : 'exit ' + r.status}) ${String(r.stderr || '').split('\n').slice(-3).join(' ').trim()}`); }
   }
@@ -903,6 +905,20 @@ function advice(role, w) {
   if (role === 'pair') return w >= 800 ? 'pair: OK (pairs suit images ≤1000)' : 'pair <800 → replace';
   if (role === 'dealer') return 'dealer section';
   return 'unplaced → ' + (w >= 1900 ? 'hero or fig' : w >= 1100 ? 'fig' : w >= 880 ? 'prose fig' : 'pair');
+}
+function cmdPage(url, a) {
+  if (!url || !/^https?:\/\//.test(url)) die('Usage: build.js page <https://url> [--out <file>]');
+  const br = findBrowser();
+  if (!br) die('No Edge/Chrome/Chromium found; ask the user to save the page or PDF into <job>/sources/ instead.');
+  const prof = fs.mkdtempSync(path.join(os.tmpdir(), 'da-page-'));
+  const r = cp.spawnSync(br, ['--headless=new', '--disable-gpu', '--no-first-run', '--no-default-browser-check', `--user-data-dir=${prof}`, '--virtual-time-budget=10000', '--dump-dom', url], { timeout: 90000, maxBuffer: 64 * 1024 * 1024, encoding: 'utf8' });
+  try { fs.rmSync(prof, { recursive: true, force: true }); } catch (e) { /* ignore */ }
+  const dom = String(r.stdout || '');
+  if (dom.length < 500) die(`Page dump failed or empty (${r.error ? r.error.message : 'exit ' + r.status}). Ask the user to save the page/PDF into <job>/sources/.`);
+  const links = [...new Set([...dom.matchAll(/href=\"(https?:[^\"#]+|\/[^\"#]*)\"/g)].map((m) => m[1]))].slice(0, 300);
+  const text = decode(dom.replace(/<!--[\s\S]*?-->/g, ' ').replace(/<script[\s\S]*?<\/script>|<style[\s\S]*?<\/style>|<noscript[\s\S]*?<\/noscript>/gi, ' ').replace(/<\/(p|div|li|h[1-6]|tr|section|article|br)>/gi, '\n').replace(/<[^>]+>/g, ' ')).replace(/[ \t]+/g, ' ').replace(/\n\s*\n+/g, '\n').trim();
+  const outTxt = `SOURCE: ${url}\nRETRIEVED: ${new Date().toISOString().slice(0, 10)} (system browser DOM)\n\n${text}\n\nLINKS:\n${links.join('\n')}\n`;
+  if (a.out) { fs.mkdirSync(path.dirname(path.resolve(a.out)), { recursive: true }); fs.writeFileSync(path.resolve(a.out), outTxt); console.log(`✅ ${text.length} chars of text, ${links.length} links → ${path.resolve(a.out)}`); } else process.stdout.write(outTxt);
 }
 async function cmdImages(arg) {
   const { job, modFile } = resolveJob(arg);
@@ -959,9 +975,9 @@ if (require.main === module) {
   const job = a._[1];
   const run = {
     env: () => cmdEnv(), dealers: () => cmdDealers(), new: () => cmdNew(a), status: () => cmdStatus(job),
-    build: () => cmdBuild(job, { final: !!a.final }), shot: () => cmdShot(job, a), images: () => cmdImages(job),
+    build: () => cmdBuild(job, { final: !!a.final }), shot: () => cmdShot(job, a), images: () => cmdImages(job), page: () => cmdPage(job, a),
   }[cmd];
-  if (!run) die('Usage: node build.js <env|dealers|new|status|build|shot|images> ...\n  new --dealer "<name>" --title "<title>" [--out <dir>]\n  build <job> [--final] · shot <job> [--widths 1280,375] · images <job> · status <job>');
+  if (!run) die('Usage: node build.js <env|dealers|new|status|build|shot|images|page> ...\n  new --dealer "<name>" --title "<title>" [--out <dir>]\n  build <job> [--final] · shot <job> [--widths 1280,375] · images <job> · status <job>');
   Promise.resolve().then(run).catch((e) => die('❌ ' + (e && e.stack ? e.stack : e)));
 }
 module.exports = { build, loadDealer, listDealers, matchDealer, slugify, fullCss, sitewideCss, cssScopeIssues, imageSize, apolloUrl };

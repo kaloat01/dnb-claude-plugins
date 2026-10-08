@@ -25,9 +25,12 @@ tool owner describing its own tool (with its disclaimers verbatim). Magazines, b
 dealer competitors and AI summaries are finding aids only: anything that only they support goes to **HOLD**.
 
 **When a page will not load:** OEM and dealer sites often block plain fetches or return an empty JavaScript shell. Try, in
-order: Firecrawl (if available in this session), the OEM newsroom/press release for the same model year, the spec or
-owner's-manual PDF, fueleconomy.gov / nhtsa.gov for the same fact. The plugin's `build.js` is not a browser; do not try to
-fetch pages with it. If nothing works, mark the fact **UNVERIFIED** and keep going. Never log in anywhere, submit forms, or
+order: (1) the system-browser page dump `node "<plugin root>/scripts/build.js" page "<url>" --out "<job>/sources/<name>.txt"`
+(renders JavaScript and gets past most blocks; it worked on toyota.com where WebFetch got 403); (2) Firecrawl, if available
+in this session; (3) the OEM newsroom/press release for the same model year, the spec or owner's-manual PDF,
+fueleconomy.gov / nhtsa.gov for the same fact; (4) list the documents you could not reach (e.g. the Warranty & Maintenance
+Guide PDF) in your return so the lead can ask the user to save them into `<job>/sources/`, then read them from there.
+If nothing works, mark the fact **UNVERIFIED** and keep going. Never log in anywhere, submit forms, or
 accept cookies/terms on anyone's behalf.
 
 ## TASK 1 — Premise test (FIRST, before anything else)

@@ -96,7 +96,7 @@
       "h": 3688,
       "shows": "Advisor in red Toyota shirt smiling with a customer across a service desk",
       "vehicle": null,
-      "text": false,
+      "text": true,
       "slots": [
         "hero",
         "fig",
@@ -105,7 +105,8 @@
       "tags": [
         "people",
         "showroom"
-      ]
+      ],
+      "avoid": "Desk sign reads \"Toyota-trained Certified Technicians\" (a banned claim); do not use, or crop the sign out"
     },
     {
       "id": "744820",

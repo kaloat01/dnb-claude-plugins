@@ -44,12 +44,14 @@ under the folder Claude Code was started in.
 
 ## Phase 0 — Preflight (do immediately)
 1. Run `DA env`. If Node is missing or < 18: stop and tell the user to run `/article-setup`.
-2. Parse dealer + title from `$ARGUMENTS`. Run `DA new --dealer "<dealer>" --title "<title>"`.
+2. Parse dealer + title from `$ARGUMENTS`. Run `DA new --dealer "<dealer>" --title "<title>" --slug "<short-slug>"`
+   (slug: 3–8 words, focus keyword + city, e.g. `toyota-hybrid-battery-care-chicago`; it becomes the URL and file names).
    Exit 2 → ambiguous/unknown dealer: show candidates, ask. Exit 1 "Job already exists" → read its `job.json`, resume at its phase.
 3. Tell the user in 2 lines: dealer matched, job folder, what happens next. Read the dealer JSON and `rigor-and-content.md`.
 
 ## Phase 1 — Image request (first deliverable, non-blocking)
-Read `image-brief.md` and the dealer's `<key>.images.json` (if present). Reuse suitable library images for generic slots
+Read `image-brief.md` and the dealer's `<key>.images.json` (if present). To look at any Apollo image, put its ID in
+`module.js` and run `DA images "<job>"` (it downloads with browser headers; plain fetches get HTTP 406), then Read the file. Reuse suitable library images for generic slots
 (storefront, service bay, technician, city/road) and request only what's missing. Print the 5-slot request (IMG_HERO,
 IMG_FIG1, IMG_FIG2 full-width, IMG_PAIR1, IMG_PAIR2): **"current-generation <model> (model year confirmed after research)"**,
 angle, setting, min width, no text/watermarks, rights note, Apollo upload + "send me the Image ID or URL". Write each slot's
@@ -57,8 +59,9 @@ angle, setting, min width, no text/watermarks, rights note, Apollo upload + "sen
 
 ## Phase 2 — Intake (only what changes the article)
 1. **Existing page check (stop if found):** search the dealer sitemap for the title's main terms (models, topic). If a page
-   with the same intent exists (e.g. `/blog/<similar-slug>`), ⛔ AskUserQuestion: refresh that URL (recommended: set module
-   `path` to it; note a 301 if it moves) · new angle (state it) · stop. Record the choice in `job.json` notes and never list
+   with the same intent exists (e.g. `/blog/<similar-slug>`), ⛔ AskUserQuestion: replace it with this article as a NEW custom page at a
+   root slug (recommended; Apollo articles are never blog posts) and ask the dealer/webmaster for a 301 from the old URL to
+   the new one · new angle (state it) · stop. Record the choice in `job.json` notes and never list
    that page in `related`.
 2. Infer article type (comparison · buying guide · service/maintenance guide · ownership/cost) and department. Set in
    `module.js`: `dept`, `eyebrow`, `section`, `crumbs`, `faqCall`, `closer`, `cta`, and `allowMsrp` (true only for
@@ -73,6 +76,8 @@ dealer file path, sitemap path, job folder, today's date, pricing policy, allowe
   recommended = newest model year the OEM lists for both / corrected H1; alternative = each model's latest year, labeled
   cross-year (needs user approval). Also settle hybrid scope and outgoing-generation handling. If the year differs from
   the Phase 1 image request, re-send those slot lines and update their `desc`.
+- If the researcher lists primary documents it could not reach (OEM PDFs, manuals), ask the user once to save them into
+  `<job>/sources/` (optional; otherwise those facts stay UNVERIFIED and are not written).
 - Use only `verify[]`-free dealer facts, or ask the user to confirm the ones you need in one question.
 Phase → `draft`.
 
@@ -81,7 +86,7 @@ Read the example module and `rigor-and-content.md`. Write `module.js` from the l
 an inline bold answer ≤25 words; body 1,700–2,300 words; 1–3 sourced tables; 1 callout with verbatim OEM wording; 1 steps
 list; 1 stat strip; 1 inline CTA; hero + 2 full-width figures + 1 pair; local section (real places/climate only); FAQ 9–10 ×
 40–90 words with new value; dealership section copy; 3 related cards from the allow-list (12–25 unique internal links in
-total); fine print. Title 50–65 chars, meta 130–165. Run `DA build "<job>"`; fix every ❌ in `module.js`; rebuild until clean.
+total); fine print. Page Title (`title`) 50–65 chars; it may differ from the H1 (H1 ≤80). Meta 130–165. Depth gates (body words, H2 count, FAQ) are ❌, not ⚠️. Run `DA build "<job>"`; fix every ❌ in `module.js`; rebuild until clean.
 Phase → `seo`.
 
 ## Phase 5 — SEO + visual pass (always both skills)
@@ -93,7 +98,9 @@ Phase → `seo`.
 Phase → `review`.
 
 ## Phase 6 — Independent reviews (parallel, read-only)
-In ONE message spawn **`dealer-articles:article-compliance-reviewer`** and **`dealer-articles:golden-geo-reviewer`**, each
+In ONE message spawn **`dealer-articles:article-compliance-reviewer`** and **`dealer-articles:golden-geo-reviewer`** as
+separate agents (never review your own draft in this conversation: in testing, the writer's own fix-ups added 2 new unsourced
+claims), each
 with the plugin root path and the paths to `module.js`, the preview, the ledger and the dealer file, plus job context
 (article type, state, approved deviations from Phases 2–3). Apply all P0/P1 and golden-geo BLOCKERs, and sensible
 P2/WARNINGs (log skipped ones with a reason in `job.json` notes). Fix patterns everywhere in the article. Rebuild → clean.
