@@ -13,6 +13,9 @@
   - Phones and hours come from each dealer's About Us page seen from the US, using About Us numbers when there is no local number.
   - Verified Apollo image catalogs per dealer.
 
+## Shipped 10/08
+- **v0.3:** Apollo merge tags for phones. **v0.4:** fixes from a fresh mock run (page fetch fallback, hard depth gates, true 375 screenshots, short slugs).
+
 ## Next
 1. A first full end-to-end article through the installed plugin, on a topic the dealer site does not already cover. Fix whatever it finds.
 2. Minor cleanups:
