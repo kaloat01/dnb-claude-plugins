@@ -32,6 +32,9 @@ fueleconomy.gov / nhtsa.gov for the same fact; (4) list the documents you could 
 Guide PDF) in your return so the lead can ask the user to save them into `<job>/sources/`, then read them from there.
 If nothing works, mark the fact **UNVERIFIED** and keep going. Never log in anywhere, submit forms, or
 accept cookies/terms on anyone's behalf.
+**Shell: one plain command per call** (`node "<plugin root>/scripts/build.js" page "<url>" --out "<job>/sources/<name>.txt"`).
+No `cd … &&`, `;`, variables, `mkdir`, `curl` or `ls` chains: they trigger permission prompts that stall the run. `page --out`
+creates the folder itself. Use Glob/Read to look at files. Firecrawl MCP tools may need user permission; if refused, move on.
 
 ## TASK 1 — Premise test (FIRST, before anything else)
 Does the OEM publish the number, model year, interval, message text or claim in the title? What is the current model year

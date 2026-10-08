@@ -538,7 +538,8 @@ function build(mod, D, job, opts = {}) {
     const ds = mod.dealerSection;
     const otherDept = Object.entries(D.depts).find(([k, d]) => k !== mod.dept && d && d.phone);
     const other = ds.other ? [ds.otherLabel || 'Main line', phoneLink(ds.other)]
-      : D.mainPhone ? [ds.otherLabel || 'Main line', mainLink()]
+      // package: a main line that is not a department number has no Apollo tag, so show the other department (tagged) instead
+      : D.mainPhone && !(phoneMode === 'package' && !Object.values(D.depts || {}).some((d) => d && d.phone && digits10(d.phone) === digits10(D.mainPhone))) ? [ds.otherLabel || 'Main line', mainLink()]
         : otherDept ? [otherDept[1].label, phoneLink(otherDept[1])] : null;
     // logo: wide lockup alone; small emblem (<300 px) + name band; no Apollo logo = name band only;
     // LOGO.onDark (white artwork) = logo on the Editorial v2 black brand band (as the Mercedes white star)
@@ -715,7 +716,8 @@ ${shellClose}
   const tollFree = (visible.match(/(?<![\d,$])\(?8(77|88|00|66|55|44|33)\)?[-. ]?\d{3}[-. ]\d{4}/g) || []).filter((n) => !fileDigits.has(n.replace(/\D/g, '').slice(-10)));
   gate('No Apollo tags in Structured Data', /#(Sales|Service|Parts|BodyShop)Number|#DealerName/.test(JSON.stringify(sd)) ? ['merge tag found in JSON-LD (tags are not replaced there)'] : []);
   { const html = fs.readFileSync(out.html, 'utf8'); const hard = Object.entries(D.depts || {}).filter(([k, d]) => d && d.phone && TAGS[k] && html.replace(/D/g, '').includes(digits10(d.phone))).map(([k]) => k);
-    gate('Package phones use Apollo tags', hard.length ? [`hard-coded ${hard.join('/')} number in package HTML`] : []); }
+    const telHard = (html.match(/tel:\+?\d[\d-]{9,}/g) || []);
+    gate('Package phones use Apollo tags', [...(hard.length ? [`hard-coded ${hard.join('/')} number in package HTML`] : []), ...(telHard.length ? [`hard-coded tel: link ${telHard[0]}`] : [])]); }
   gate('No toll-free numbers', tollFree.length ? [`8xx number not in the dealer file: ${tollFree[0]}`] : []);
   const dollars = [];
   for (const m of allText.matchAll(/\$\s?\d[\d,.]*/g)) { const ctx = allText.slice(Math.max(0, m.index - 140), m.index + 140); if (!mod.allowMsrp || !/MSRP/.test(ctx)) dollars.push(m[0]); }
