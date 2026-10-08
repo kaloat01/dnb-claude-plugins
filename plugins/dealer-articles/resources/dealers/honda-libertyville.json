@@ -138,8 +138,8 @@
   },
   "apollo": {
     "themeCss": [
-      "https://prod.cdn.secureoffersites.com/dist/p1162/css/websitegemini/vendor/vendor.css",
-      "https://prod.cdn.secureoffersites.com/dist/p1162/css/themes/Honda/styles.css"
+      "https://prod.cdn.secureoffersites.com/dist/p1168/css/websitegemini/vendor/vendor.css",
+      "https://prod.cdn.secureoffersites.com/dist/p1168/css/themes/Honda/styles.css"
     ],
     "themeFont": "Nunito",
     "shell": "gemini"
@@ -167,6 +167,7 @@
   "lastVerified": "2026-10-07",
   "sourcesNote": "Internal provenance for maintainers; colleagues do not need these files. Live checks use the About Us page (US location).",
   "sources": [
+    "Live theme build p1168 confirmed on the homepage (US geo), 2026-10-08",
     "https://www.hondalibertyville.com/about-us About Us, US geo, 2026-10-07: Sales and Service 847-595-5561 (visible and tel: links); main (847) 362-4300 in page JSON-LD; sales hours Mon-Fri 9-8, Sat 9-6 and service hours Mon-Thu 6:30-7, Fri 6:30-6:30, Sat 7:30-4, Sunday closed (page JSON-LD + today's header); CallRevu DNI script present, rendered numbers matched raw HTML",
     "https://www.hondalibertyville.com/contactus (live, 2026-10-07): address, Main (847) 362-4300, Sales and Service 847-595-5561, sales hours, service and parts hours",
     "https://www.hondalibertyville.com/ rawHtml (live, 2026-10-07): geo 42.2688444,-87.9517543, theme CSS p1162 websitegemini + Honda, header logo 181233 logo=y (white)",

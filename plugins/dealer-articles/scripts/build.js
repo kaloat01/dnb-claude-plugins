@@ -704,7 +704,9 @@ ${shellClose}
   gate('No em/en dashes', dash);
   const lower = allText.toLowerCase();
   const hits = [];
-  [...GLOBAL_BANNED, ...D.bans].forEach((b) => { if (/^[A-Z]+$/.test(b) ? allText.includes(b) : lower.includes(b.toLowerCase())) hits.push(`"${b}"`); });
+  // whole-word match (+ plural/-ly forms): "unlock" no longer trips on "unlocked", "guaranteed" not on "guarantee"
+  const wordRe = (b, flags) => new RegExp(`(?<![A-Za-z0-9])${b.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}(?:s|ly)?(?![A-Za-z0-9])`, flags);
+  [...GLOBAL_BANNED, ...D.bans].forEach((b) => { if (/^[A-Z]+$/.test(b) ? wordRe(b, '').test(allText) : wordRe(b.toLowerCase(), 'i').test(lower)) hits.push(`"${b}"`); });
   (mod.banned || []).forEach((re) => { if (new RegExp(re, 'i').test(allText)) hits.push(`/${re}/`); });
   gate('Banned phrases (global + dealer + module)', hits);
   gate('Excluded towns', D.excluded.filter((c) => allText.includes(c)));

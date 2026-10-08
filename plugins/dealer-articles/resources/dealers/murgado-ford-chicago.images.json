@@ -1,0 +1,414 @@
+{
+  "dealer": "murgado-ford-chicago",
+  "generated": "2026-10-08",
+  "note": "Images already in this dealer's Apollo library. Reuse before asking for new uploads. View before use; match the article's model year.",
+  "images": [
+    {
+      "id": "787482",
+      "url": "https://service.secureoffersites.com/images/GetLibraryImage?fileNameOrId=787482&type=webp&quality=85",
+      "w": 1920,
+      "h": 600,
+      "shows": "Murgado Ford of Chicago glass showroom building at dusk on N Elston Ave: Lincoln entrance left, Ford entrance right, MURGADO sign and M shield, cars displayed inside (very wide 3.2:1; Lincoln is the sister store at the same address)",
+      "vehicle": null,
+      "text": false,
+      "slots": [
+        "hero",
+        "fig",
+        "pair",
+        "store"
+      ],
+      "tags": [
+        "storefront",
+        "city"
+      ]
+    },
+    {
+      "id": "787473",
+      "url": "https://service.secureoffersites.com/images/GetLibraryImage?fileNameOrId=787473&type=webp&quality=85",
+      "w": 2520,
+      "h": 310,
+      "shows": "Logo lockup: navy Ford oval + black \"Murgado Ford of Chicago\" wordmark + red/navy M shield (color artwork on transparent, for light backgrounds)",
+      "vehicle": null,
+      "text": true,
+      "slots": [
+        "logo"
+      ],
+      "tags": []
+    },
+    {
+      "id": "787477",
+      "url": "https://service.secureoffersites.com/images/GetLibraryImage?fileNameOrId=787477&type=webp&quality=85",
+      "w": 1920,
+      "h": 720,
+      "shows": "Technician inspecting the underside of a vehicle on a lift in a bright service shop, other bays and a blue Ford behind",
+      "vehicle": null,
+      "text": false,
+      "slots": [
+        "hero",
+        "fig",
+        "pair"
+      ],
+      "tags": [
+        "technician",
+        "service-bay"
+      ]
+    },
+    {
+      "id": "787480",
+      "url": "https://service.secureoffersites.com/images/GetLibraryImage?fileNameOrId=787480&type=webp&quality=85",
+      "w": 2400,
+      "h": 2400,
+      "shows": "Ford technician in blue and gray uniform checking an oil dipstick beside a white Ford SUV in a service bay with open glass doors",
+      "vehicle": null,
+      "text": false,
+      "slots": [
+        "hero",
+        "fig",
+        "pair"
+      ],
+      "tags": [
+        "technician",
+        "oil",
+        "service-bay"
+      ]
+    },
+    {
+      "id": "787493",
+      "url": "https://service.secureoffersites.com/images/GetLibraryImage?fileNameOrId=787493&type=webp&quality=85",
+      "w": 3545,
+      "h": 1772,
+      "shows": "Ford Mobile Service Transit van parked on a residential street while a technician works on a car in a driveway",
+      "vehicle": "Ford Transit (Mobile Service livery)",
+      "text": true,
+      "slots": [
+        "hero",
+        "fig",
+        "pair"
+      ],
+      "tags": [
+        "mobile-service",
+        "vehicle-exterior"
+      ],
+      "avoid": "Van livery reads \"Ford Mobile Service\"; use only for mobile service content"
+    },
+    {
+      "id": "787465",
+      "url": "https://service.secureoffersites.com/images/GetLibraryImage?fileNameOrId=787465&type=webp&quality=85",
+      "w": 2080,
+      "h": 1440,
+      "shows": "Ford Mobile Service Transit van in a suburban home driveway beside a dark Ford SUV, trees and house behind",
+      "vehicle": "Ford Transit (Mobile Service livery)",
+      "text": true,
+      "slots": [
+        "hero",
+        "fig",
+        "pair"
+      ],
+      "tags": [
+        "mobile-service",
+        "vehicle-exterior"
+      ],
+      "avoid": "Van livery reads \"Ford Mobile Service\"; use only for mobile service content"
+    },
+    {
+      "id": "912814",
+      "url": "https://service.secureoffersites.com/images/GetLibraryImage?fileNameOrId=912814&type=webp&quality=85",
+      "w": 1920,
+      "h": 1280,
+      "shows": "Technician removing a wheel from a red Ford SUV raised on a lift in a bright service bay",
+      "vehicle": "Ford Explorer (2020+ generation)",
+      "text": false,
+      "slots": [
+        "hero",
+        "fig",
+        "pair"
+      ],
+      "tags": [
+        "technician",
+        "tires",
+        "service-bay"
+      ]
+    },
+    {
+      "id": "899945",
+      "url": "https://service.secureoffersites.com/images/GetLibraryImage?fileNameOrId=899945&type=webp&quality=85",
+      "w": 1920,
+      "h": 1080,
+      "shows": "White Ford Super Duty pickup towing on a highway, motion blur",
+      "vehicle": "Ford Super Duty (2023+ generation; source alt says 2026 F-350)",
+      "text": false,
+      "slots": [
+        "hero",
+        "fig",
+        "pair"
+      ],
+      "tags": [
+        "vehicle-exterior",
+        "towing",
+        "road"
+      ]
+    },
+    {
+      "id": "899951",
+      "url": "https://service.secureoffersites.com/images/GetLibraryImage?fileNameOrId=899951&type=webp&quality=85",
+      "w": 2048,
+      "h": 1154,
+      "shows": "White Ford Transit high-roof cargo van on a forest dirt road",
+      "vehicle": "Ford Transit cargo van (source alt says 2026)",
+      "text": false,
+      "slots": [
+        "hero",
+        "fig",
+        "pair"
+      ],
+      "tags": [
+        "vehicle-exterior",
+        "commercial",
+        "road"
+      ]
+    },
+    {
+      "id": "899944",
+      "url": "https://service.secureoffersites.com/images/GetLibraryImage?fileNameOrId=899944&type=webp&quality=85",
+      "w": 1600,
+      "h": 600,
+      "shows": "Gray Ford F-150 towing a boat on a trailer along a lakeside driveway",
+      "vehicle": "Ford F-150 (2024+ refresh; source alt says 2026)",
+      "text": false,
+      "slots": [
+        "fig",
+        "pair"
+      ],
+      "tags": [
+        "vehicle-exterior",
+        "towing"
+      ]
+    },
+    {
+      "id": "899948",
+      "url": "https://service.secureoffersites.com/images/GetLibraryImage?fileNameOrId=899948&type=webp&quality=85",
+      "w": 1200,
+      "h": 800,
+      "shows": "White Ford F-150 front three-quarter beside a lake at sunset, reflections on wet pavement",
+      "vehicle": "Ford F-150 (2024+ refresh; source alt says 2026)",
+      "text": false,
+      "slots": [
+        "fig",
+        "pair"
+      ],
+      "tags": [
+        "vehicle-exterior"
+      ]
+    },
+    {
+      "id": "899962",
+      "url": "https://service.secureoffersites.com/images/GetLibraryImage?fileNameOrId=899962&type=webp&quality=85",
+      "w": 1600,
+      "h": 901,
+      "shows": "Black Ford F-150 crew cab parked in a dry hillside pasture with fencing and cattle",
+      "vehicle": "Ford F-150 (2024+ refresh; source alt says 2026 XLT)",
+      "text": false,
+      "slots": [
+        "fig",
+        "pair"
+      ],
+      "tags": [
+        "vehicle-exterior",
+        "commercial"
+      ]
+    },
+    {
+      "id": "899946",
+      "url": "https://service.secureoffersites.com/images/GetLibraryImage?fileNameOrId=899946&type=webp&quality=85",
+      "w": 1243,
+      "h": 931,
+      "shows": "Engine bay of a white Ford F-150 with the hood open, studio white background",
+      "vehicle": "Ford F-150 (2024+ refresh; source alt says 2026)",
+      "text": false,
+      "slots": [
+        "fig",
+        "pair"
+      ],
+      "tags": [
+        "engine",
+        "vehicle-exterior"
+      ]
+    },
+    {
+      "id": "899949",
+      "url": "https://service.secureoffersites.com/images/GetLibraryImage?fileNameOrId=899949&type=webp&quality=85",
+      "w": 1200,
+      "h": 800,
+      "shows": "Ford F-150 digital instrument cluster with a vehicle graphic and maintenance readout",
+      "vehicle": "Ford F-150 (2024+; source alt says 2026, oil life display)",
+      "text": true,
+      "slots": [
+        "fig",
+        "pair"
+      ],
+      "tags": [
+        "vehicle-interior",
+        "oil"
+      ],
+      "avoid": "Small on-screen UI text; check the screen matches the caption"
+    },
+    {
+      "id": "787475",
+      "url": "https://service.secureoffersites.com/images/GetLibraryImage?fileNameOrId=787475&type=webp&quality=85",
+      "w": 1396,
+      "h": 768,
+      "shows": "Dark blue Ford F-150 driving through snow and slush on a city street",
+      "vehicle": "Ford F-150 (2021-2023 generation)",
+      "text": false,
+      "slots": [
+        "fig",
+        "pair"
+      ],
+      "tags": [
+        "vehicle-exterior",
+        "winter",
+        "city"
+      ],
+      "avoid": "Pre-2024 F-150 front; do not caption as a 2026 model"
+    },
+    {
+      "id": "787471",
+      "url": "https://service.secureoffersites.com/images/GetLibraryImage?fileNameOrId=787471&type=webp&quality=85",
+      "w": 1200,
+      "h": 800,
+      "shows": "Chicago skyline at dusk over ice-covered Lake Michigan shoreline",
+      "vehicle": null,
+      "text": false,
+      "slots": [
+        "fig",
+        "pair"
+      ],
+      "tags": [
+        "city",
+        "winter"
+      ]
+    },
+    {
+      "id": "787470",
+      "url": "https://service.secureoffersites.com/images/GetLibraryImage?fileNameOrId=787470&type=webp&quality=85",
+      "w": 1260,
+      "h": 840,
+      "shows": "Man with a bag walking to a white Ford Explorer parked in a tree-lined home driveway",
+      "vehicle": "Ford Explorer (2020+ generation)",
+      "text": false,
+      "slots": [
+        "fig",
+        "pair"
+      ],
+      "tags": [
+        "pickup-delivery",
+        "vehicle-exterior",
+        "people"
+      ]
+    },
+    {
+      "id": "787474",
+      "url": "https://service.secureoffersites.com/images/GetLibraryImage?fileNameOrId=787474&type=webp&quality=85",
+      "w": 1264,
+      "h": 848,
+      "shows": "Service team member in a gray Ford polo handing keys to a customer beside a white Ford Explorer in a bright showroom",
+      "vehicle": "Ford Explorer (2016-2019 generation)",
+      "text": false,
+      "slots": [
+        "fig",
+        "pair"
+      ],
+      "tags": [
+        "people",
+        "showroom",
+        "pickup-delivery"
+      ],
+      "avoid": "Older Explorer; do not caption as a current model"
+    },
+    {
+      "id": "787466",
+      "url": "https://service.secureoffersites.com/images/GetLibraryImage?fileNameOrId=787466&type=webp&quality=85",
+      "w": 1260,
+      "h": 714,
+      "shows": "Hands holding a phone with a vehicle app showing mileage, white Ford Explorer behind",
+      "vehicle": "Ford Explorer (2020+ generation)",
+      "text": true,
+      "slots": [
+        "fig",
+        "pair"
+      ],
+      "tags": [
+        "people",
+        "vehicle-exterior"
+      ],
+      "avoid": "Phone screen shows app UI text and a mileage figure"
+    },
+    {
+      "id": "787468",
+      "url": "https://service.secureoffersites.com/images/GetLibraryImage?fileNameOrId=787468&type=webp&quality=85",
+      "w": 1200,
+      "h": 900,
+      "shows": "Ford technician holding Motorcraft wiper blade packages at a workbench, white Ford Focus behind",
+      "vehicle": "Ford Focus (2015-2018; no longer sold in the US)",
+      "text": true,
+      "slots": [
+        "fig",
+        "pair"
+      ],
+      "tags": [
+        "technician",
+        "wipers"
+      ],
+      "avoid": "Motorcraft packaging text; the Focus is discontinued in the US, avoid for current-model articles"
+    },
+    {
+      "id": "787467",
+      "url": "https://service.secureoffersites.com/images/GetLibraryImage?fileNameOrId=787467&type=webp&quality=85",
+      "w": 1200,
+      "h": 900,
+      "shows": "Close-up of a wiper blade on a rain-covered windshield",
+      "vehicle": null,
+      "text": false,
+      "slots": [
+        "fig",
+        "pair"
+      ],
+      "tags": [
+        "wipers",
+        "winter"
+      ]
+    },
+    {
+      "id": "787476",
+      "url": "https://service.secureoffersites.com/images/GetLibraryImage?fileNameOrId=787476&type=webp&quality=85",
+      "w": 900,
+      "h": 800,
+      "shows": "Ford technician holding a torque wrench in a service bay, a Ford Explorer on a lift and a blue Mustang behind",
+      "vehicle": "Ford Mustang (2015-2017) and Explorer in the background",
+      "text": false,
+      "slots": [
+        "pair"
+      ],
+      "tags": [
+        "technician",
+        "service-bay"
+      ]
+    },
+    {
+      "id": "809672",
+      "url": "https://service.secureoffersites.com/images/GetLibraryImage?fileNameOrId=809672&type=webp&quality=85",
+      "w": 1060,
+      "h": 597,
+      "shows": "Ford technician using an impact wrench on the wheel of a red Ford SUV",
+      "vehicle": null,
+      "text": false,
+      "slots": [
+        "pair"
+      ],
+      "tags": [
+        "technician",
+        "tires"
+      ]
+    }
+  ]
+}

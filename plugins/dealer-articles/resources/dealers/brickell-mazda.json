@@ -146,8 +146,8 @@
   },
   "apollo": {
     "themeCss": [
-      "https://prod.cdn.secureoffersites.com/dist/p1162/css/websitemazdaoem/vendor/vendor.css",
-      "https://prod.cdn.secureoffersites.com/dist/p1162/css/themes/Mazda_OEM/styles.css"
+      "https://prod.cdn.secureoffersites.com/dist/p1168/css/websitemazdaoem/vendor/vendor.css",
+      "https://prod.cdn.secureoffersites.com/dist/p1168/css/themes/Mazda_OEM/styles.css"
     ],
     "themeFont": "MazdaType-Regular",
     "shell": "other"
@@ -174,6 +174,7 @@
   "lastVerified": "2026-10-07",
   "sourcesNote": "Internal provenance for maintainers; colleagues do not need these files. Live checks use the About Us page (US location).",
   "sources": [
+    "Live theme build p1168 confirmed on the homepage (US geo), 2026-10-08",
     "https://www.brickellmazda.com/about-us About Us, US geo, 2026-10-07: Sales 786-410-6484, Service and Parts 786-481-4541 (main line (888) 652-3918 and header banner 855-639-0120 are toll-free); sales hours Sun 11-7, Mon-Thu 9-9, Fri-Sat 9-8; service Mon-Fri 7-6, Sat 8-4, Sunday blank; no CallRevu DNI script",
     "https://www.brickellmazda.com/contactus (live, 2026-10-07): address, Sales 786-410-6484, Service and Parts 786-481-4541, sales and service hours",
     "https://www.brickellmazda.com/ rawHtml (live, 2026-10-07): AutoDealer JSON-LD department hours and contactPoints, geo 25.7658441,-80.2045486, theme CSS p1162 websitemazdaoem + Mazda_OEM, header logo 56364 logo=y",

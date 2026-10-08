@@ -1,0 +1,418 @@
+{
+  "dealer": "murgado-lincoln-chicago",
+  "generated": "2026-10-08",
+  "note": "Images already in this dealer's Apollo library. Reuse before asking for new uploads. View before use; match the article's model year.",
+  "images": [
+    {
+      "id": "818521",
+      "url": "https://service.secureoffersites.com/images/GetLibraryImage?fileNameOrId=818521&type=webp&quality=85",
+      "w": 2204,
+      "h": 1200,
+      "shows": "Murgado Lincoln of Chicago glass showroom at dusk: Lincoln signs, \"Experience The Difference\" window graphic, Murgado M shield, older-generation Lincolns parked out front",
+      "vehicle": null,
+      "text": true,
+      "slots": [
+        "hero",
+        "fig",
+        "pair",
+        "store"
+      ],
+      "tags": [
+        "storefront",
+        "city"
+      ],
+      "avoid": "Cars out front are older Lincoln generations; do not use to illustrate a current model"
+    },
+    {
+      "id": "818523",
+      "url": "https://service.secureoffersites.com/images/GetLibraryImage?fileNameOrId=818523&type=webp&quality=85",
+      "w": 2520,
+      "h": 310,
+      "shows": "Logo: red and navy Murgado M shield + black Lincoln star + \"MURGADO LINCOLN OF CHICAGO\" wordmark (black artwork on transparent; light backgrounds only)",
+      "vehicle": null,
+      "text": true,
+      "slots": [
+        "logo"
+      ],
+      "tags": []
+    },
+    {
+      "id": "459120",
+      "url": "https://service.secureoffersites.com/images/GetLibraryImage?fileNameOrId=459120&type=webp&quality=85",
+      "w": 430,
+      "h": 100,
+      "shows": "Logo: Murgado M shield + white Lincoln star with \"LINCOLN\" + white \"Murgado Lincoln of Chicago\" wordmark (white artwork on transparent; the live site header logo)",
+      "vehicle": null,
+      "text": true,
+      "slots": [
+        "logo"
+      ],
+      "tags": [],
+      "onDark": true
+    },
+    {
+      "id": "900154",
+      "url": "https://service.secureoffersites.com/images/GetLibraryImage?fileNameOrId=900154&type=webp&quality=85",
+      "w": 3770,
+      "h": 1616,
+      "shows": "Silver Lincoln Nautilus front three-quarter view outside a modern glass building at sunset",
+      "vehicle": "Lincoln Nautilus (2024+ generation)",
+      "text": false,
+      "slots": [
+        "hero",
+        "fig",
+        "pair"
+      ],
+      "tags": [
+        "vehicle-exterior"
+      ]
+    },
+    {
+      "id": "900151",
+      "url": "https://service.secureoffersites.com/images/GetLibraryImage?fileNameOrId=900151&type=webp&quality=85",
+      "w": 3840,
+      "h": 1683,
+      "shows": "Lincoln Nautilus cabin at dusk: wide panoramic display across the dash, center touchscreen and steering wheel",
+      "vehicle": "Lincoln Nautilus (2024+ generation)",
+      "text": false,
+      "slots": [
+        "hero",
+        "fig",
+        "pair"
+      ],
+      "tags": [
+        "vehicle-interior"
+      ]
+    },
+    {
+      "id": "900157",
+      "url": "https://service.secureoffersites.com/images/GetLibraryImage?fileNameOrId=900157&type=webp&quality=85",
+      "w": 2048,
+      "h": 1151,
+      "shows": "Gray Lincoln Nautilus head-on view in front of a concrete building with steps",
+      "vehicle": "Lincoln Nautilus (2024+ generation)",
+      "text": false,
+      "slots": [
+        "hero",
+        "fig",
+        "pair"
+      ],
+      "tags": [
+        "vehicle-exterior"
+      ]
+    },
+    {
+      "id": "900150",
+      "url": "https://service.secureoffersites.com/images/GetLibraryImage?fileNameOrId=900150&type=webp&quality=85",
+      "w": 2000,
+      "h": 1500,
+      "shows": "Lincoln Nautilus front cabin with light leather seats, panoramic display and center touchscreen, seen from the passenger side",
+      "vehicle": "Lincoln Nautilus (2024+ generation)",
+      "text": false,
+      "slots": [
+        "hero",
+        "fig",
+        "pair"
+      ],
+      "tags": [
+        "vehicle-interior"
+      ]
+    },
+    {
+      "id": "900152",
+      "url": "https://service.secureoffersites.com/images/GetLibraryImage?fileNameOrId=900152&type=webp&quality=85",
+      "w": 2160,
+      "h": 926,
+      "shows": "White Lincoln Nautilus rear three-quarter view parked on a stone plaza with palm trees and a beach behind",
+      "vehicle": "Lincoln Nautilus (2024+ generation)",
+      "text": false,
+      "slots": [
+        "hero",
+        "fig",
+        "pair"
+      ],
+      "tags": [
+        "vehicle-exterior"
+      ],
+      "avoid": "Palm trees and beach: do not present as a Chicago scene"
+    },
+    {
+      "id": "818522",
+      "url": "https://service.secureoffersites.com/images/GetLibraryImage?fileNameOrId=818522&type=webp&quality=85",
+      "w": 1600,
+      "h": 1200,
+      "shows": "Technician in a Lincoln-logo work shirt and safety glasses leaning into an open engine bay",
+      "vehicle": null,
+      "text": false,
+      "slots": [
+        "fig",
+        "pair"
+      ],
+      "tags": [
+        "technician",
+        "service-bay"
+      ]
+    },
+    {
+      "id": "818530",
+      "url": "https://service.secureoffersites.com/images/GetLibraryImage?fileNameOrId=818530&type=webp&quality=85",
+      "w": 1600,
+      "h": 1200,
+      "shows": "Technician in safety glasses pouring fresh oil from a jug into an engine, service bay behind",
+      "vehicle": null,
+      "text": false,
+      "slots": [
+        "fig",
+        "pair"
+      ],
+      "tags": [
+        "technician",
+        "oil",
+        "service-bay"
+      ]
+    },
+    {
+      "id": "818531",
+      "url": "https://service.secureoffersites.com/images/GetLibraryImage?fileNameOrId=818531&type=webp&quality=85",
+      "w": 1600,
+      "h": 1200,
+      "shows": "Technician checking tire tread depth on a Lincoln wheel in a service bay",
+      "vehicle": "Lincoln SUV (model not identifiable)",
+      "text": false,
+      "slots": [
+        "fig",
+        "pair"
+      ],
+      "tags": [
+        "technician",
+        "tires",
+        "service-bay"
+      ]
+    },
+    {
+      "id": "818535",
+      "url": "https://service.secureoffersites.com/images/GetLibraryImage?fileNameOrId=818535&type=webp&quality=85",
+      "w": 1600,
+      "h": 1200,
+      "shows": "Technician in a Lincoln-logo shirt holding a tablet under a raised hood, vehicle on a lift",
+      "vehicle": null,
+      "text": false,
+      "slots": [
+        "fig",
+        "pair"
+      ],
+      "tags": [
+        "technician",
+        "service-bay"
+      ]
+    },
+    {
+      "id": "818517",
+      "url": "https://service.secureoffersites.com/images/GetLibraryImage?fileNameOrId=818517&type=webp&quality=85",
+      "w": 1600,
+      "h": 1200,
+      "shows": "Female technician in safety glasses holding an engine air filter over an open Lincoln engine bay",
+      "vehicle": null,
+      "text": false,
+      "slots": [
+        "fig",
+        "pair"
+      ],
+      "tags": [
+        "technician",
+        "filters",
+        "service-bay"
+      ]
+    },
+    {
+      "id": "818534",
+      "url": "https://service.secureoffersites.com/images/GetLibraryImage?fileNameOrId=818534&type=webp&quality=85",
+      "w": 1600,
+      "h": 1202,
+      "shows": "Female technician holding a new wiper blade above a windshield in a service bay",
+      "vehicle": null,
+      "text": false,
+      "slots": [
+        "fig",
+        "pair"
+      ],
+      "tags": [
+        "technician",
+        "wipers"
+      ]
+    },
+    {
+      "id": "818526",
+      "url": "https://service.secureoffersites.com/images/GetLibraryImage?fileNameOrId=818526&type=webp&quality=85",
+      "w": 1525,
+      "h": 1143,
+      "shows": "Mobile Service technician working under the open hood of a Lincoln SUV outdoors, a \"Mobile\" banner behind him",
+      "vehicle": "Lincoln Navigator (grille)",
+      "text": true,
+      "slots": [
+        "fig",
+        "pair"
+      ],
+      "tags": [
+        "technician",
+        "mobile-service"
+      ]
+    },
+    {
+      "id": "818529",
+      "url": "https://service.secureoffersites.com/images/GetLibraryImage?fileNameOrId=818529&type=webp&quality=85",
+      "w": 1600,
+      "h": 1200,
+      "shows": "Service advisor with a tablet talking with a customer at a table in a bright showroom lounge",
+      "vehicle": null,
+      "text": false,
+      "slots": [
+        "fig",
+        "pair"
+      ],
+      "tags": [
+        "people",
+        "showroom"
+      ]
+    },
+    {
+      "id": "818533",
+      "url": "https://service.secureoffersites.com/images/GetLibraryImage?fileNameOrId=818533&type=webp&quality=85",
+      "w": 1106,
+      "h": 920,
+      "shows": "Driver seated in a Lincoln cabin touching the center screen while an advisor with a tablet stands at the open window",
+      "vehicle": "Lincoln (recent model, model not identifiable)",
+      "text": false,
+      "slots": [
+        "fig",
+        "pair"
+      ],
+      "tags": [
+        "vehicle-interior",
+        "people"
+      ]
+    },
+    {
+      "id": "818519",
+      "url": "https://service.secureoffersites.com/images/GetLibraryImage?fileNameOrId=818519&type=webp&quality=85",
+      "w": 1600,
+      "h": 1158,
+      "shows": "Black Lincoln Navigator in a snowy small-town square at dusk, holiday lights and a gazebo behind",
+      "vehicle": "Lincoln Navigator (2025+ generation)",
+      "text": false,
+      "slots": [
+        "fig",
+        "pair"
+      ],
+      "tags": [
+        "vehicle-exterior",
+        "winter"
+      ],
+      "avoid": "Storybook village square: do not present as a Chicago street"
+    },
+    {
+      "id": "818537",
+      "url": "https://service.secureoffersites.com/images/GetLibraryImage?fileNameOrId=818537&type=webp&quality=85",
+      "w": 1600,
+      "h": 1200,
+      "shows": "Woman walking toward a black Lincoln Navigator parked in a tree-lined driveway at dusk",
+      "vehicle": "Lincoln Navigator (2025+ generation)",
+      "text": false,
+      "slots": [
+        "fig",
+        "pair"
+      ],
+      "tags": [
+        "vehicle-exterior",
+        "people"
+      ]
+    },
+    {
+      "id": "900155",
+      "url": "https://service.secureoffersites.com/images/GetLibraryImage?fileNameOrId=900155&type=webp&quality=85",
+      "w": 1784,
+      "h": 1190,
+      "shows": "Close-up of a key fob handoff over the hood of a dark Lincoln with a chrome grille",
+      "vehicle": "Lincoln SUV (chrome grille, model not identifiable)",
+      "text": false,
+      "slots": [
+        "fig",
+        "pair"
+      ],
+      "tags": [
+        "people",
+        "keys"
+      ]
+    },
+    {
+      "id": "900153",
+      "url": "https://service.secureoffersites.com/images/GetLibraryImage?fileNameOrId=900153&type=webp&quality=85",
+      "w": 1500,
+      "h": 438,
+      "shows": "Service bay with Lincoln SUVs on lifts and two technicians at work (wide banner crop)",
+      "vehicle": "Lincoln Navigator (2018-2024) and Nautilus (2019-2023), older generations",
+      "text": false,
+      "slots": [
+        "fig",
+        "pair"
+      ],
+      "tags": [
+        "technician",
+        "service-bay"
+      ],
+      "avoid": "Older-generation Navigator and Nautilus; do not use to illustrate a current model year"
+    },
+    {
+      "id": "900156",
+      "url": "https://service.secureoffersites.com/images/GetLibraryImage?fileNameOrId=900156&type=webp&quality=85",
+      "w": 1600,
+      "h": 1067,
+      "shows": "Copper Lexus RX front three-quarter view on a foggy forest road",
+      "vehicle": "Lexus RX (2023+ generation), competitor",
+      "text": false,
+      "slots": [
+        "fig",
+        "pair"
+      ],
+      "tags": [
+        "vehicle-exterior",
+        "competitor"
+      ],
+      "avoid": "Competitor vehicle: use only in a Lincoln vs Lexus comparison"
+    },
+    {
+      "id": "818527",
+      "url": "https://service.secureoffersites.com/images/GetLibraryImage?fileNameOrId=818527&type=webp&quality=85",
+      "w": 960,
+      "h": 718,
+      "shows": "Close-up of a Lincoln key fob passed between two hands",
+      "vehicle": null,
+      "text": false,
+      "slots": [
+        "pair"
+      ],
+      "tags": [
+        "people",
+        "keys"
+      ]
+    },
+    {
+      "id": "818516",
+      "url": "https://service.secureoffersites.com/images/GetLibraryImage?fileNameOrId=818516&type=webp&quality=85",
+      "w": 780,
+      "h": 519,
+      "shows": "Kennedy Expressway at dusk: heavy traffic, Chicago skyline and Willis Tower behind, green Kimball Ave exit sign overhead",
+      "vehicle": null,
+      "text": true,
+      "slots": [
+        "fig"
+      ],
+      "tags": [
+        "city",
+        "road",
+        "traffic"
+      ],
+      "avoid": "780w: narrow prose figure only (prose: true), never full width or pair"
+    }
+  ]
+}

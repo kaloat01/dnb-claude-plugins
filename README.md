@@ -56,8 +56,9 @@ Output goes to `./articles/<dealer>/<slug>/`:
 
 Re-paste the site-wide CSS only if its first comment (`dealer-articles css <hash>`) differs from the live one.
 
-### Dealers (pilot)
-Brickell Honda · Brickell Mazda · Honda Libertyville · Toyota of Downtown Chicago · Bentley Jacksonville.
+### Dealers (Apollo, 8)
+Brickell Honda · Brickell Mazda · Honda Libertyville · Toyota of Downtown Chicago · Bentley Jacksonville ·
+Murgado Ford of Chicago · Murgado Lincoln of Chicago · Bentley Edison. Run `/article-setup` to see the current list.
 
 To add or correct a dealer without waiting for an update, put a `dealers/<key>.json` file in your working folder. Use
 the same format as `plugins/dealer-articles/resources/dealers/`; your local file overrides the shipped one.

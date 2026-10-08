@@ -1,0 +1,175 @@
+{
+  "key": "murgado-ford-chicago",
+  "prefix": "mfc",
+  "platform": "apollo",
+  "name": "Murgado Ford of Chicago",
+  "aliases": [
+    "murgado ford of chicago",
+    "murgado ford chicago",
+    "murgado ford",
+    "ford of chicago",
+    "mfc"
+  ],
+  "brand": "Ford",
+  "group": "Murgado Automotive Group",
+  "domain": "https://www.murgadofordchicago.com",
+  "address": {
+    "street": "2501 N Elston Ave",
+    "city": "Chicago",
+    "region": "IL",
+    "zip": "60647",
+    "country": "US"
+  },
+  "geo": [
+    41.92758505,
+    -87.68007112
+  ],
+  "departments": {
+    "service": {
+      "label": "Service",
+      "phone": "779-243-5517",
+      "cta": {
+        "label": "Schedule Service",
+        "href": "/schedule-service"
+      },
+      "hours": [
+        [
+          [
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday"
+          ],
+          "07:00",
+          "19:00"
+        ],
+        [
+          [
+            "Saturday"
+          ],
+          "07:30",
+          "15:00"
+        ]
+      ]
+    },
+    "sales": {
+      "label": "Sales",
+      "phone": "779-244-6471",
+      "cta": {
+        "label": "Shop New Inventory",
+        "href": "/inventory/new"
+      },
+      "hours": [
+        [
+          [
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday"
+          ],
+          "09:00",
+          "20:00"
+        ],
+        [
+          [
+            "Saturday"
+          ],
+          "09:00",
+          "19:00"
+        ]
+      ]
+    }
+  },
+  "routes": {
+    "directions": "/get-directions",
+    "serviceHub": "/service",
+    "specials": "/specials/service-specials",
+    "scheduleService": "/schedule-service",
+    "newInventory": "/inventory/new",
+    "usedInventory": "/inventory/used",
+    "cpoInventory": "/inventory/cpo",
+    "vehicleSpecials": "/specials/vehicle-specials",
+    "financing": "/getfinancing",
+    "valueYourTrade": "/shopperwizard/mytradevalue",
+    "about": "/about-us",
+    "contact": "/contactus"
+  },
+  "areas": [
+    "Chicago",
+    "Lincoln Park",
+    "Bucktown",
+    "Wicker Park",
+    "Logan Square",
+    "Avondale",
+    "Humboldt Park",
+    "Ukrainian Village",
+    "Roscoe Village",
+    "North Center",
+    "Irving Park",
+    "Albany Park",
+    "Lakeview"
+  ],
+  "excluded": [],
+  "climate": "Chicago: harsh winters with sub-zero wind chills and lake-effect snow, heavy road salt from November through March (undercarriage corrosion), freeze-thaw potholes in March and April, sub-zero cold starts that strain oil and batteries, hot humid summers and dense stop-and-go traffic on the Kennedy Expressway.",
+  "bans": [],
+  "brandNaming": [
+    "Say 'genuine Ford parts' (the dealer's About Us wording); use 'Motorcraft' only for parts the dealer names as Motorcraft (synthetic blend oil and oil filter in its oil change offer, Motorcraft wiper blades)",
+    "Never write 'Ford Certified Technicians', 'certified technicians' or 'factory-trained', even though the dealer's own copy uses them; describe the work, not credentials",
+    "Use the dealer's service names as written: Quick Lane (/quick-lane), Express Service Lane (no appointment), Ford Mobile Service (/specials/mobile-service), Pickup & Delivery (/specials/pickup-delivery)",
+    "Ford Intelligent Oil-Life Monitor: service within 2 weeks or 500 miles of the oil-change message, reset after each service (Ford owner manual)",
+    "Current F-150 model year is 2026; do not cite the leaked 2027 F-150 order guide",
+    "Murgado Lincoln of Chicago shares the 2501 N Elston Ave building; do not mention Lincoln unless relevant, and never link the Lincoln page /service/lincoln-oil-change-services from a Ford article",
+    "The store was formerly Fox Ford of Chicago; mention only if relevant. Do not repeat About Us superlatives (such as 'Chicago's largest Ford inventory') as fact"
+  ],
+  "style": {
+    "linkColor": "#0276B3",
+    "linkHover": "#00095B",
+    "linkUnderline": false,
+    "importantWaiver": false,
+    "exceptions": []
+  },
+  "apollo": {
+    "themeCss": [
+      "https://prod.cdn.secureoffersites.com/dist/p1168/css/websitegemini/vendor/vendor.css",
+      "https://prod.cdn.secureoffersites.com/dist/p1168/css/fordcustompage.css",
+      "https://prod.cdn.secureoffersites.com/dist/p1168/css/custompage.css",
+      "https://prod.cdn.secureoffersites.com/dist/p1168/css/themes/Ford/styles.css"
+    ],
+    "themeFont": "ford-antennaWGL-light",
+    "shell": "gemini"
+  },
+  "images": {
+    "STORE": {
+      "apollo": "787482",
+      "alt": "Murgado Ford of Chicago dealership building at dusk on N Elston Ave with Ford, Lincoln and Murgado signs",
+      "w": 1920,
+      "h": 600,
+      "desc": "Murgado Ford of Chicago glass showroom building at dusk, Ford and Lincoln entrances, MURGADO sign and M shield"
+    },
+    "LOGO": {
+      "apollo": "787473",
+      "alt": "Ford oval and Murgado Ford of Chicago wordmark with the Murgado M shield",
+      "w": 2520,
+      "h": 310,
+      "desc": "Full-color lockup on transparent: navy Ford oval, black 'Murgado Ford of Chicago' wordmark, red and navy M shield; for light backgrounds"
+    }
+  },
+  "verify": [],
+  "lastVerified": "2026-10-08",
+  "sourcesNote": "Internal provenance for maintainers; colleagues do not need these files. Live checks use the About Us page (US location).",
+  "sources": [
+    "https://www.murgadofordchicago.com/about-us About Us header, body and footer, US geo, 2026-10-08: Sales 779-244-6471, Service 779-243-5517, Parts 779-243-5517 (no separate main number); page JSON-LD hours: sales Mon-Fri 9-8, Sat 9-7, service and parts Mon-Fri 7-7, Sat 7:30-3, no Sunday; CallRevu DNI script present, rendered markdown and raw HTML showed the same numbers",
+    "The About Us numbers and hours match MurgadoFordChicago/design.json and BUILD_NOTES.md; the older sales-number conflict (888-369-0058 vs 224-451-1524) in 10_PHASE_A_DISCOVERY_FINDINGS.md is superseded by About Us",
+    "https://www.murgadofordchicago.com/ rawHtml (live, 2026-10-08): address 2501 North Elston Ave, Chicago, IL 60647; geo 41.92758505,-87.68007112 (page JSON-LD); header logo 459135 logo=y (white on transparent, 430x100)",
+    "https://www.murgadofordchicago.com/2026-ford-f-150-maintenance-schedule-chicago-guide.html rawHtml (live custom page, 2026-10-08): theme CSS p1168 websitegemini vendor + fordcustompage + custompage + themes/Ford (fontawesome.css also loads, not listed); Gemini shell #_website_gemini + #custompageblock",
+    "https://prod.cdn.secureoffersites.com/dist/p1168/css/themes/Ford/styles.css (2026-10-08): body{font-family:ford-antennaWGL-light,sans-serif!important}; vendor.css body h1{font-size:20px!important}; fordcustompage.css a{text-decoration:none!important}",
+    "Routes live 2026-10-08: /schedule-service is canonical (/scheduleservice canonicalizes to it); /get-directions (Hours and Directions page), /service, /specials/service-specials, /specials/vehicle-specials, /inventory/new, /inventory/used, /inventory/cpo, /getfinancing, /shopperwizard/mytradevalue, /about-us, /contactus",
+    "MurgadoFordChicago/design.json: neighborhoods, climate context, link colors (#0276B3 accent, #00095B navy); no rule against !important",
+    "APOLLO/APOLLO-TAGS-AND-PAGE-STANDARD.md: #ServiceNumber renders 779-243-5517 on the live site (10/07 test)",
+    "2026-08-17-Illinois-Article-Production/10_PHASE_A_DISCOVERY_FINDINGS.md: Intelligent Oil-Life Monitor wording, 2026 F-150 current, 2027 leak not citable, Lincoln shares the rooftop",
+    "MurgadoFordChicago/monthly-updates/2026.10 packages: STORE 787482, logo lockup 787473, image catalog IDs",
+    "firecrawl map https://www.murgadofordchicago.com (2026-10-08): sitemap snapshot"
+  ]
+}

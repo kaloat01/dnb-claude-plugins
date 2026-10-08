@@ -1,0 +1,164 @@
+{
+  "key": "bentley-edison",
+  "prefix": "be",
+  "platform": "apollo",
+  "name": "Bentley Edison",
+  "aliases": [
+    "bentley edison",
+    "bentley of edison",
+    "edison bentley",
+    "be"
+  ],
+  "brand": "Bentley",
+  "group": "Murgado Automotive Group",
+  "domain": "https://bentleyedison.com",
+  "address": {
+    "street": "808 US Route 1",
+    "city": "Edison",
+    "region": "NJ",
+    "zip": "08817",
+    "country": "US"
+  },
+  "geo": [
+    40.5114128,
+    -74.3798693
+  ],
+  "mainPhone": "(732) 253-4230",
+  "departments": {
+    "service": {
+      "label": "Service",
+      "phone": "732-831-7261",
+      "cta": {
+        "label": "Schedule Service",
+        "href": "/scheduleservice"
+      },
+      "hours": [
+        [
+          [
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday"
+          ],
+          "08:00",
+          "17:00"
+        ]
+      ]
+    },
+    "sales": {
+      "label": "Sales",
+      "phone": "732-410-4886",
+      "cta": {
+        "label": "Shop New Inventory",
+        "href": "/inventory/new"
+      },
+      "hours": [
+        [
+          [
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday"
+          ],
+          "09:00",
+          "19:00"
+        ],
+        [
+          [
+            "Friday"
+          ],
+          "09:00",
+          "18:00"
+        ],
+        [
+          [
+            "Saturday"
+          ],
+          "09:00",
+          "17:00"
+        ]
+      ]
+    }
+  },
+  "routes": {
+    "directions": "/get-directions",
+    "serviceHub": "/service-department",
+    "specials": "/specials/service-specials",
+    "scheduleService": "/scheduleservice",
+    "newInventory": "/inventory/new",
+    "usedInventory": "/inventory/used",
+    "cpoInventory": "/inventory/cpo",
+    "financing": "/getfinancing",
+    "valueYourTrade": "/shopperwizard/mytradevalue",
+    "about": "/about-us",
+    "contact": "/contactus"
+  },
+  "areas": [
+    "Edison",
+    "Metuchen",
+    "Woodbridge",
+    "Iselin",
+    "Menlo Park",
+    "New Brunswick",
+    "Highland Park",
+    "Piscataway",
+    "South Plainfield",
+    "Colonia",
+    "Fords",
+    "Perth Amboy"
+  ],
+  "excluded": [],
+  "climate": "Central New Jersey (Middlesex County, US Route 1 corridor): cold winters with snow, ice and sub-freezing mornings that strain batteries and thicken oil; heavy road salt on Route 1, the New Jersey Turnpike and local roads from November through March (undercarriage, brake-line and rocker-panel corrosion); freeze-thaw potholes from February through April (tires, wheels, alignment); hot, humid summers with stop-and-go Route 1 and Turnpike traffic (cooling and A/C load).",
+  "bans": [],
+  "brandNaming": [
+    "Write 'Bentley' and model names in full (Bentayga, Bentayga EWB, Continental GT, Continental GTC, Flying Spur)",
+    "'Genuine Bentley Parts', 'Bentley Service Advisor' and 'Bentley-trained' are the dealer's own offer wording; use them only in that sense and make no other expertise claims",
+    "Do not mention Maserati unless the article is about it (sister store Maserati of Central New Jersey is at 816 US Route 1, Edison); the same applies to Ferrari (Ferrari of Central New Jersey, also at 816 Route 1)"
+  ],
+  "style": {
+    "linkColor": "#3f6f5a",
+    "linkHover": "#294a3d",
+    "linkUnderline": false,
+    "importantWaiver": false,
+    "exceptions": []
+  },
+  "apollo": {
+    "themeCss": [
+      "https://prod.cdn.secureoffersites.com/dist/p1168/css/websitegemini/vendor/vendor.css",
+      "https://prod.cdn.secureoffersites.com/dist/p1168/css/themes/Bentley/styles.css"
+    ],
+    "themeFont": "Bentley-Regular",
+    "shell": "gemini"
+  },
+  "images": {
+    "STORE": {
+      "apollo": "903422",
+      "alt": "Bentley Edison showroom, a tan single-story building with a Bentley wings fascia and a Bentley monument sign out front",
+      "w": 1000,
+      "h": 500,
+      "desc": "Bentley Edison building in daylight, trees behind, Bentley monument sign at left; same photo the live About Bentley Edison page shows"
+    },
+    "LOGO": {
+      "apollo": "903423&Width=0&Height=0&logo=y",
+      "alt": "Bentley wings emblem and Bentley Edison wordmark",
+      "w": 7520,
+      "h": 1080,
+      "onDark": false,
+      "desc": "Black logo artwork on transparent PNG (Bentley wings | BENTLEY EDISON); shown on a light background"
+    }
+  },
+  "verify": [],
+  "lastVerified": "2026-10-08",
+  "sourcesNote": "Internal provenance for maintainers; colleagues do not need these files. Live checks use the About Us page (US location).",
+  "sources": [
+    "https://bentleyedison.com/about-us About Us, US geo, 2026-10-08: address 808 US Route 1, Edison, NJ 08817; Main (732) 253-4230, Sales 732-410-4886, Service 732-831-7261 (no separate Parts number shown); sales Mon-Thu 9-7, Fri 9-6, Sat 9-5 and service Mon-Fri 8-5, Sat and Sun closed (page list + JSON-LD); CallRevu and Invoca DNI scripts present, rendered numbers matched raw HTML",
+    "https://bentleyedison.com/get-directions and /contactus (live, 2026-10-08): address, Sales and Service numbers match About Us",
+    "https://bentleyedison.com/ rawHtml (live, 2026-10-08): geo 40.5114128,-74.3798693 (JSON-LD), theme CSS p1168 websitegemini vendor + themes/Bentley (body font Bentley-Regular), header logo 564268 logo=y (same artwork as 903423, on white)",
+    "https://bentleyedison.com/about-bentley-edison (live, 2026-10-08): store photo 40662 is the same image as library 903422, confirming the STORE photo is the Edison building",
+    "BentleyEdison/bentley_edison_design_1.json: phones and hours (match live), local areas, climate context, colors, content quality rules",
+    "BentleyJacksonville/bentley_jacksonville_service_image_mapping.csv (bentley-edison-dealership.jpg 903422, bentley-edison-logo.png 903423) + BentleyEdison service-specials and 6 individual packages: image IDs",
+    "Murgado Automotive Group locations page (saved snapshot): Maserati of Central New Jersey and Ferrari of Central New Jersey at 816 Route 1, Edison",
+    "firecrawl map https://bentleyedison.com (2026-10-08) + live status check of every path: sitemap snapshot (redirecting paths dropped; /about-us and /service-department added as live 200 pages)"
+  ]
+}

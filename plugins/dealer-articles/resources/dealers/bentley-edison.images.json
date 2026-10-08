@@ -1,0 +1,424 @@
+{
+  "dealer": "bentley-edison",
+  "generated": "2026-10-08",
+  "note": "Images already in this dealer's Apollo library (shared Bentley library). Reuse before asking for new uploads. View before use; match the article's model year. Excluded: Bentley Jacksonville store and logo images, home-page offer banners with baked-in text, 40662 (same photo as 903422) and 564268 (same logo as 903423, on white).",
+  "images": [
+    {
+      "id": "903422",
+      "url": "https://service.secureoffersites.com/images/GetLibraryImage?fileNameOrId=903422&type=webp&quality=85",
+      "w": 1000,
+      "h": 500,
+      "shows": "Bentley Edison showroom: tan single-story building with a Bentley wings fascia, Bentley monument sign at left, trees behind, daylight",
+      "vehicle": null,
+      "text": false,
+      "slots": [
+        "pair",
+        "store"
+      ],
+      "tags": [
+        "storefront"
+      ]
+    },
+    {
+      "id": "903423",
+      "url": "https://service.secureoffersites.com/images/GetLibraryImage?fileNameOrId=903423&type=webp&quality=85",
+      "w": 7520,
+      "h": 1080,
+      "shows": "Logo: Bentley wings + \"BENTLEY | BENTLEY EDISON\" (black artwork on transparent)",
+      "vehicle": null,
+      "text": true,
+      "slots": [
+        "logo"
+      ],
+      "tags": []
+    },
+    {
+      "id": "903412",
+      "url": "https://service.secureoffersites.com/images/GetLibraryImage?fileNameOrId=903412&type=webp&quality=85",
+      "w": 1920,
+      "h": 670,
+      "shows": "Dark Bentley under a Bentley-branded fender cover, hood open, in a bright white service workshop (wide strip)",
+      "vehicle": null,
+      "text": false,
+      "slots": [
+        "hero",
+        "fig",
+        "pair"
+      ],
+      "tags": [
+        "service-bay"
+      ]
+    },
+    {
+      "id": "903407",
+      "url": "https://service.secureoffersites.com/images/GetLibraryImage?fileNameOrId=903407&type=webp&quality=85",
+      "w": 1920,
+      "h": 1433,
+      "shows": "Senior Bentley technician working overhead under a car on a lift",
+      "vehicle": null,
+      "text": false,
+      "slots": [
+        "hero",
+        "fig",
+        "pair"
+      ],
+      "tags": [
+        "technician",
+        "service-bay"
+      ]
+    },
+    {
+      "id": "903413",
+      "url": "https://service.secureoffersites.com/images/GetLibraryImage?fileNameOrId=903413&type=webp&quality=85",
+      "w": 1920,
+      "h": 1080,
+      "shows": "Technician with a tablet inspecting the wheel of a blue Bentley on a lift",
+      "vehicle": null,
+      "text": false,
+      "slots": [
+        "hero",
+        "fig",
+        "pair"
+      ],
+      "tags": [
+        "technician",
+        "tires",
+        "service-bay"
+      ]
+    },
+    {
+      "id": "903420",
+      "url": "https://service.secureoffersites.com/images/GetLibraryImage?fileNameOrId=903420&type=webp&quality=85",
+      "w": 1920,
+      "h": 873,
+      "shows": "Technician beside an alignment monitor with a blue Continental GT on the alignment rack",
+      "vehicle": "Bentley Continental GT",
+      "text": false,
+      "slots": [
+        "hero",
+        "fig",
+        "pair"
+      ],
+      "tags": [
+        "technician",
+        "tires",
+        "service-bay"
+      ]
+    },
+    {
+      "id": "903408",
+      "url": "https://service.secureoffersites.com/images/GetLibraryImage?fileNameOrId=903408&type=webp&quality=85",
+      "w": 2048,
+      "h": 1366,
+      "shows": "Technician using a torque wrench on the wheel of a blue Bentley",
+      "vehicle": null,
+      "text": false,
+      "slots": [
+        "hero",
+        "fig",
+        "pair"
+      ],
+      "tags": [
+        "technician",
+        "tires"
+      ]
+    },
+    {
+      "id": "903410",
+      "url": "https://service.secureoffersites.com/images/GetLibraryImage?fileNameOrId=903410&type=webp&quality=85",
+      "w": 2048,
+      "h": 1366,
+      "shows": "Blue Continental GT raised on a lift in a bright white Bentley workshop, white Bentley in the foreground",
+      "vehicle": "Bentley Continental GT",
+      "text": false,
+      "slots": [
+        "hero",
+        "fig",
+        "pair"
+      ],
+      "tags": [
+        "service-bay"
+      ]
+    },
+    {
+      "id": "903452",
+      "url": "https://service.secureoffersites.com/images/GetLibraryImage?fileNameOrId=903452&type=webp&quality=85",
+      "w": 1920,
+      "h": 1080,
+      "shows": "Dark red Bentley Continental GTC convertible on a winding countryside road with cypress trees",
+      "vehicle": "Bentley Continental GTC",
+      "text": false,
+      "slots": [
+        "hero",
+        "fig",
+        "pair"
+      ],
+      "tags": [
+        "vehicle-exterior",
+        "road"
+      ]
+    },
+    {
+      "id": "903397",
+      "url": "https://service.secureoffersites.com/images/GetLibraryImage?fileNameOrId=903397&type=webp&quality=85",
+      "w": 2000,
+      "h": 1333,
+      "shows": "Mulliner leather picnic hamper set open in a Bentley cargo area (accessories)",
+      "vehicle": "Bentley Bentayga (Mulliner)",
+      "text": false,
+      "slots": [
+        "hero",
+        "fig",
+        "pair"
+      ],
+      "tags": [
+        "vehicle-interior"
+      ]
+    },
+    {
+      "id": "903394",
+      "url": "https://service.secureoffersites.com/images/GetLibraryImage?fileNameOrId=903394&type=webp&quality=85",
+      "w": 2048,
+      "h": 1536,
+      "shows": "Bentley Bentayga dark interior with orange ambient lighting",
+      "vehicle": "Bentley Bentayga",
+      "text": false,
+      "slots": [
+        "hero",
+        "fig",
+        "pair"
+      ],
+      "tags": [
+        "vehicle-interior"
+      ]
+    },
+    {
+      "id": "903414",
+      "url": "https://service.secureoffersites.com/images/GetLibraryImage?fileNameOrId=903414&type=webp&quality=85",
+      "w": 1784,
+      "h": 1004,
+      "shows": "Bentley wheels and tires on display, one wheel lit blue, studio shot",
+      "vehicle": null,
+      "text": false,
+      "slots": [
+        "fig",
+        "pair"
+      ],
+      "tags": [
+        "tires"
+      ]
+    },
+    {
+      "id": "903444",
+      "url": "https://service.secureoffersites.com/images/GetLibraryImage?fileNameOrId=903444&type=webp&quality=85",
+      "w": 1400,
+      "h": 933,
+      "shows": "Green Bentley Flying Spur, rear view, parked on coastal rocks at dusk",
+      "vehicle": "Bentley Flying Spur (current gen)",
+      "text": false,
+      "slots": [
+        "fig",
+        "pair"
+      ],
+      "tags": [
+        "vehicle-exterior"
+      ]
+    },
+    {
+      "id": "903440",
+      "url": "https://service.secureoffersites.com/images/GetLibraryImage?fileNameOrId=903440&type=webp&quality=85",
+      "w": 1565,
+      "h": 633,
+      "shows": "White Bentley Bentayga kicking up desert sand (wide strip)",
+      "vehicle": "Bentley Bentayga",
+      "text": false,
+      "slots": [
+        "fig",
+        "pair"
+      ],
+      "tags": [
+        "vehicle-exterior"
+      ]
+    },
+    {
+      "id": "903443",
+      "url": "https://service.secureoffersites.com/images/GetLibraryImage?fileNameOrId=903443&type=webp&quality=85",
+      "w": 1269,
+      "h": 508,
+      "shows": "Blue Bentley Continental GT driving at sunset (wide strip)",
+      "vehicle": "Bentley Continental GT (current gen)",
+      "text": false,
+      "slots": [
+        "fig",
+        "pair"
+      ],
+      "tags": [
+        "vehicle-exterior",
+        "road"
+      ]
+    },
+    {
+      "id": "903445",
+      "url": "https://service.secureoffersites.com/images/GetLibraryImage?fileNameOrId=903445&type=webp&quality=85",
+      "w": 1167,
+      "h": 616,
+      "shows": "Blue Bentley Continental GT driving a coastal road, front three-quarter view",
+      "vehicle": "Bentley Continental GT (current 2025+ gen)",
+      "text": false,
+      "slots": [
+        "fig",
+        "pair"
+      ],
+      "tags": [
+        "vehicle-exterior",
+        "road"
+      ]
+    },
+    {
+      "id": "903446",
+      "url": "https://service.secureoffersites.com/images/GetLibraryImage?fileNameOrId=903446&type=webp&quality=85",
+      "w": 1167,
+      "h": 616,
+      "shows": "Blue Bentley Continental GT side profile close-up, forest blurred behind",
+      "vehicle": "Bentley Continental GT (current gen)",
+      "text": false,
+      "slots": [
+        "fig",
+        "pair"
+      ],
+      "tags": [
+        "vehicle-exterior"
+      ]
+    },
+    {
+      "id": "903447",
+      "url": "https://service.secureoffersites.com/images/GetLibraryImage?fileNameOrId=903447&type=webp&quality=85",
+      "w": 1167,
+      "h": 616,
+      "shows": "Blue Bentley Bentayga driving a coastal road at sunset",
+      "vehicle": "Bentley Bentayga (current gen)",
+      "text": false,
+      "slots": [
+        "fig",
+        "pair"
+      ],
+      "tags": [
+        "vehicle-exterior",
+        "road"
+      ]
+    },
+    {
+      "id": "903449",
+      "url": "https://service.secureoffersites.com/images/GetLibraryImage?fileNameOrId=903449&type=webp&quality=85",
+      "w": 1167,
+      "h": 616,
+      "shows": "Green Bentley Continental GTC convertible driving a coastal road, rear three-quarter view",
+      "vehicle": "Bentley Continental GTC (current gen)",
+      "text": false,
+      "slots": [
+        "fig",
+        "pair"
+      ],
+      "tags": [
+        "vehicle-exterior",
+        "road"
+      ]
+    },
+    {
+      "id": "903450",
+      "url": "https://service.secureoffersites.com/images/GetLibraryImage?fileNameOrId=903450&type=webp&quality=85",
+      "w": 1167,
+      "h": 616,
+      "shows": "Bentley dashboard with tan leather, steering wheel and digital cluster",
+      "vehicle": "Bentley Bentayga (current gen)",
+      "text": false,
+      "slots": [
+        "fig",
+        "pair"
+      ],
+      "tags": [
+        "vehicle-interior"
+      ]
+    },
+    {
+      "id": "903392",
+      "url": "https://service.secureoffersites.com/images/GetLibraryImage?fileNameOrId=903392&type=webp&quality=85",
+      "w": 1200,
+      "h": 600,
+      "shows": "Gloved technician wiping the headlight of a dark Bentley (detailing)",
+      "vehicle": null,
+      "text": false,
+      "slots": [
+        "fig",
+        "pair"
+      ],
+      "tags": [
+        "technician",
+        "vehicle-exterior"
+      ]
+    },
+    {
+      "id": "903415",
+      "url": "https://service.secureoffersites.com/images/GetLibraryImage?fileNameOrId=903415&type=webp&quality=85",
+      "w": 1024,
+      "h": 1280,
+      "shows": "Technician inspecting the underside of a car on a lift with a flashlight, white Bentley below (portrait)",
+      "vehicle": null,
+      "text": false,
+      "slots": [
+        "pair"
+      ],
+      "tags": [
+        "technician",
+        "service-bay"
+      ]
+    },
+    {
+      "id": "903403",
+      "url": "https://service.secureoffersites.com/images/GetLibraryImage?fileNameOrId=903403&type=webp&quality=85",
+      "w": 680,
+      "h": 450,
+      "shows": "Bentley key fob handed from one hand to another, red flowers behind (delivery / handoff)",
+      "vehicle": null,
+      "text": false,
+      "slots": [
+        "pair"
+      ],
+      "tags": [
+        "people"
+      ]
+    },
+    {
+      "id": "903406",
+      "url": "https://service.secureoffersites.com/images/GetLibraryImage?fileNameOrId=903406&type=webp&quality=85",
+      "w": 900,
+      "h": 600,
+      "shows": "Technician measuring tire tread on a Bentley wheel on a lift, tablet in hand",
+      "vehicle": null,
+      "text": false,
+      "slots": [
+        "pair"
+      ],
+      "tags": [
+        "technician",
+        "tires"
+      ]
+    },
+    {
+      "id": "903393",
+      "url": "https://service.secureoffersites.com/images/GetLibraryImage?fileNameOrId=903393&type=webp&quality=85",
+      "w": 900,
+      "h": 600,
+      "shows": "Technician running diagnostics on a laptop inside a blue Bentley cabin",
+      "vehicle": null,
+      "text": false,
+      "slots": [
+        "pair"
+      ],
+      "tags": [
+        "technician",
+        "vehicle-interior"
+      ]
+    }
+  ]
+}

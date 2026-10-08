@@ -1,0 +1,188 @@
+{
+  "key": "murgado-lincoln-chicago",
+  "prefix": "mlc",
+  "platform": "apollo",
+  "name": "Murgado Lincoln of Chicago",
+  "aliases": [
+    "murgado lincoln of chicago",
+    "murgado lincoln chicago",
+    "murgado lincoln",
+    "lincoln of chicago",
+    "lincoln chicago",
+    "mlc"
+  ],
+  "brand": "Lincoln",
+  "group": "Murgado Automotive Group",
+  "domain": "https://www.murgadolincolnchicago.com",
+  "address": {
+    "street": "2501 N Elston Ave",
+    "city": "Chicago",
+    "region": "IL",
+    "zip": "60647",
+    "country": "US"
+  },
+  "geo": [
+    41.9272568,
+    -87.6802645
+  ],
+  "departments": {
+    "service": {
+      "label": "Service",
+      "phone": "779-246-4787",
+      "cta": {
+        "label": "Schedule Service",
+        "href": "/scheduleservice"
+      },
+      "hours": [
+        [
+          [
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday"
+          ],
+          "07:00",
+          "19:00"
+        ],
+        [
+          [
+            "Saturday"
+          ],
+          "07:30",
+          "15:00"
+        ]
+      ]
+    },
+    "sales": {
+      "label": "Sales",
+      "phone": "779-368-1793",
+      "cta": {
+        "label": "Shop New Inventory",
+        "href": "/inventory/new"
+      },
+      "hours": [
+        [
+          [
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday"
+          ],
+          "09:00",
+          "20:00"
+        ],
+        [
+          [
+            "Saturday"
+          ],
+          "09:00",
+          "19:00"
+        ]
+      ]
+    }
+  },
+  "routes": {
+    "directions": "/get-directions",
+    "serviceHub": "/lincoln-service",
+    "specials": "/offers/service-offers",
+    "scheduleService": "/scheduleservice",
+    "newInventory": "/inventory/new",
+    "usedInventory": "/inventory/used",
+    "cpoInventory": "/inventory/cpo",
+    "vehicleSpecials": "/specials/vehicle-specials",
+    "financing": "/getfinancing",
+    "valueYourTrade": "/shopperwizard/mytradevalue",
+    "parts": "/parts",
+    "about": "/about-us",
+    "blog": "/blog",
+    "contact": "/contactus"
+  },
+  "areas": [
+    "Chicago",
+    "Lincoln Park",
+    "Bucktown",
+    "Wicker Park",
+    "Logan Square",
+    "Avondale",
+    "Humboldt Park",
+    "Ukrainian Village",
+    "Roscoe Village",
+    "North Center",
+    "Irving Park",
+    "Albany Park",
+    "Lakeview"
+  ],
+  "excluded": [],
+  "climate": "Chicago: harsh winters with sub-zero wind chills and heavy snow, road salt from November through March that speeds underbody corrosion, freeze-thaw potholes in March and April, cold starts that strain batteries and thicken oil, and hot, humid summers with stop-and-go traffic on the Kennedy Expressway and city streets.",
+  "bans": [],
+  "brandNaming": [
+    "Write Lincoln model names as Lincoln styles them (Corsair, Corsair Grand Touring, Nautilus, Aviator, Navigator, Navigator L); the Nautilus hybrid is an available Nautilus powertrain, not a separate model line",
+    "Say 'Lincoln Certified' (service, technicians or pre-owned) only when quoting a cited Lincoln or dealer source; do not describe staff as certified, factory-trained or master technicians; attribute service capability to the dealer's /lincoln-service page",
+    "No Ford branding, Ford model names or Ford copy; name Ford Motor Company only when a cited source (such as Lincoln warranty documents) requires it",
+    "Murgado Ford of Chicago shares the 2501 N Elston Ave address; do not mention it unless the article is about it, and never link murgadofordchicago.com from a Lincoln article",
+    "Use the dealer's program names as written on its site (Lincoln Pickup & Delivery at /pickup-and-delivery, Mobile Service at /mobile-auto-service, Lincoln Access Rewards at /lincoln-access-rewards) and quote terms from those pages or lincoln.com, not from memory",
+    "Do not repeat About Us superlatives (such as 'the newest and largest Lincoln dealership in Chicagoland') as fact"
+  ],
+  "style": {
+    "linkColor": "#111111",
+    "linkHover": "#9A1B26",
+    "linkUnderline": true,
+    "importantWaiver": true,
+    "exceptions": [
+      {
+        "rule": "Lincoln accent red is accent-only (design.json); links are ink + underline, red on hover",
+        "source": "MurgadoLincolnChicago/design.json"
+      },
+      {
+        "rule": "Apollo heading/body guards use !important",
+        "source": "platform (Lincoln styles.css sets body font ProximaNova-Reg-webfont!important and h1,h2,h3 ProximaNova-Bold-webfont!important; Gemini vendor.css sets body h1{font-size:20px!important}); no forced uppercase on h1-h6"
+      }
+    ]
+  },
+  "apollo": {
+    "themeCss": [
+      "https://prod.cdn.secureoffersites.com/dist/p1168/css/websitegemini/vendor/vendor.css",
+      "https://prod.cdn.secureoffersites.com/dist/p1168/css/lincolncustompage.css",
+      "https://prod.cdn.secureoffersites.com/dist/p1168/css/custompage.css",
+      "https://prod.cdn.secureoffersites.com/dist/p1168/css/themes/Lincoln/styles.css"
+    ],
+    "themeFont": "ProximaNova-Reg-webfont",
+    "shell": "gemini"
+  },
+  "images": {
+    "STORE": {
+      "apollo": "818521",
+      "alt": "Murgado Lincoln of Chicago glass showroom building at dusk with Lincoln signs and the Murgado M shield",
+      "w": 2204,
+      "h": 1200,
+      "desc": "Murgado Lincoln of Chicago building at dusk: glass showroom, Lincoln signs, 'Experience The Difference' window graphic, M shield, cars out front"
+    },
+    "LOGO": {
+      "apollo": "818523&Width=0&Height=0&logo=y",
+      "alt": "Murgado M shield, Lincoln star emblem and Murgado Lincoln of Chicago wordmark",
+      "w": 2520,
+      "h": 310,
+      "desc": "Full-color lockup on transparent: red and navy M shield, black Lincoln star and black wordmark; for light backgrounds"
+    }
+  },
+  "verify": [
+    "Do not state Sunday service hours; the About Us service and parts schedule leaves Sunday blank, so confirm with the dealer first if an article needs Sunday service.",
+    "The live /blog/<slug> posts declare root-level canonicals (/<slug>) that redirect to the homepage or inventory; confirm the canonical URL for any new article with the dealer before publishing."
+  ],
+  "lastVerified": "2026-10-08",
+  "sourcesNote": "Internal provenance for maintainers; colleagues do not need these files. Live checks use the About Us page (US location).",
+  "sources": [
+    "https://www.murgadolincolnchicago.com/about-us About Us, US geo, 2026-10-08: address 2501 North Elston Ave, Chicago, IL 60647; Sales 779-368-1793, Service and Parts 779-246-4787 (no main or toll-free line shown); sales Mon-Fri 9-8, Sat 9-7, Sun closed; service and parts Mon-Fri 7-7, Sat 7:30-3, Sunday blank; CallRevu DNI script present, rendered numbers matched raw HTML and the page JSON-LD contactPoints",
+    "https://www.murgadolincolnchicago.com/contactus (live, 2026-10-08): same address, phones and hours as About Us",
+    "https://www.murgadolincolnchicago.com/ and /about-us rawHtml (live, 2026-10-08): AutoDealer JSON-LD geo 41.9272568,-87.6802645; theme CSS p1168 websitegemini vendor + lincolncustompage + custompage + themes/Lincoln; header logo 459120 logo=y (white artwork)",
+    "https://prod.cdn.secureoffersites.com/dist/p1168/css/themes/Lincoln/styles.css and websitegemini/vendor/vendor.css (2026-10-08): body ProximaNova-Reg-webfont!important, h1,h2,h3 ProximaNova-Bold-webfont!important, body h1 20px!important; no heading uppercase",
+    "Live route checks 2026-10-08 (unknown paths redirect to the homepage): /lincoln-service, /scheduleservice and /offers/service-offers self-canonical; /specials/service-specials and /offers/vehicle-offers canonicalize to /offers/service-offers and /specials/vehicle-specials; /get-directions, /parts, /blog (4 posts) live",
+    "MurgadoLincolnChicago/design.json: phones and hours (match live), neighborhoods, climate context, accent-red rule, doNotCarryOver (no Ford branding, phones, URLs, colors or font), certification language",
+    "MurgadoLincolnChicago/BUILD_NOTES.md: certification language and safe service wording",
+    "MurgadoLincolnChicago/monthly-updates/2026.10 packages: service phone 779-246-4787, STORE image 818521, LOGO image 818523",
+    "2026-08-17-Illinois-Article-Production/10_PHASE_A_DISCOVERY_FINDINGS.md: group-site numbers 224-459-0002 and 331-232-6033 not used (About Us wins); Nautilus hybrid is a powertrain, not a separate model",
+    "firecrawl map https://www.murgadolincolnchicago.com (2026-10-08): sitemap snapshot, plus /get-directions, /blog and /specials/vehicle-specials verified live"
+  ]
+}

@@ -22,7 +22,7 @@
    - Make `shot` detect the full page height automatically (defaults are taller since v0.4).
    - Make the banned-phrase gate match whole words.
    - Test on macOS.
-3. Add the remaining Apollo dealers: Murgado Ford Chicago, Murgado Lincoln Chicago and Bentley Edison.
+3. ~~Add the remaining Apollo dealers~~: done in v0.5 (all 8 Apollo dealers).
 4. Platform adapters:
    - Dealer.com: a block with no H1 where the page name is the H1, px units with a 16px wrapper, `!important` CTA fills, and no Google Fonts where the dealer forbids them.
    - DealerInspire: WordPress posts via the Text tab, shortcodes, Yoast fields.

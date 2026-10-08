@@ -3,7 +3,8 @@ Shared spec for the engine (`scripts/build.js`), the dealer data files and the s
 is referenced from `${CLAUDE_PLUGIN_ROOT}` = `plugins/dealer-articles/`. Pure Node ≥18, **zero npm dependencies**.
 
 ## 1. Dealer data — `resources/dealers/<key>.json`
-Keys (MVP): `brickell-honda`, `brickell-mazda`, `honda-libertyville`, `toyota-downtown-chicago`, `bentley-jacksonville`.
+Keys: `brickell-honda`, `brickell-mazda`, `honda-libertyville`, `toyota-downtown-chicago`, `bentley-jacksonville`,
+`murgado-ford-chicago`, `murgado-lincoln-chicago`, `bentley-edison`. Each also has `<key>.sitemap.txt` and `<key>.images.json`.
 A file with the same name in the user's working folder `./dealers/<key>.json` overrides the shipped one.
 ```jsonc
 {
