@@ -19,8 +19,7 @@
 ## Next
 1. A first full end-to-end article through the installed plugin, on a topic the dealer site does not already cover. Fix whatever it finds.
 2. Minor cleanups:
-   - Use one value for each number across the rules files: title 50–65 characters, internal links 12–25, pair images ≥800 px.
-   - Make `shot` capture the full page.
+   - Make `shot` detect the full page height automatically (defaults are taller since v0.4).
    - Make the banned-phrase gate match whole words.
    - Test on macOS.
 3. Add the remaining Apollo dealers: Murgado Ford Chicago, Murgado Lincoln Chicago and Bentley Edison.
