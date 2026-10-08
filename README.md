@@ -38,12 +38,17 @@ Start Claude Code in the folder where you want your articles saved. Then:
 /article-apollo "Brickell Mazda" "Mazda CX-50 or CX-5: Which One Fits a Downtown Miami Garage?"
 ```
 What happens:
-1. It asks for **5 images** first: hero, 2 full-width figures and 1 pair. Each comes with a plain description and a
-   minimum size. Upload them to the dealer's **Apollo Image Manager** and send back the Image IDs or URLs.
-2. While you source the images, it researches the topic, tests the title's premise (it asks you if the title needs
-   correcting), drafts the article, builds it and runs the reviews.
-3. It hands you a **draft package** with a preview that uses placeholders. When the images are uploaded, send the IDs
-   (or run `/article-images "<dealer>" "<title>"`) to get the **final package**.
+1. It checks the dealer's **`<key>.images.json` catalog first** and reuses suitable images already in that dealer's
+   Apollo library. The first image list covers all **5 article slots**: hero, 2 full-width figures and 1 pair. Reused
+   slots are marked **"already in your library (ID …)"**; only missing slots need sourcing and uploading. Storefront
+   and logo are separate, supplied by the dealer data.
+2. For missing slots, the list gives a plain description and minimum size. Upload only those photos to the dealer's
+   **Apollo Image Manager** and send back their Image IDs or URLs. While you source them, it researches the topic,
+   tests the title's premise (it asks you if the title needs correcting), drafts the article, builds it and runs the
+   reviews. Vehicle photos must match the model year confirmed by research; reused photos are viewed before use.
+3. If any slots are still missing, it hands you a **draft package** with placeholders only for those slots. Send the
+   remaining IDs (or run `/article-images "<dealer>" "<title>"`) to get the **final package**. If all slots are filled
+   with suitable Apollo images, it can deliver the final package without asking for new uploads.
 
 Output goes to `./articles/<dealer>/<slug>/`:
 
