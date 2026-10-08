@@ -30,7 +30,7 @@ allowed-tools:
 6. **Build final:** `DA build "<job>" --final` → all gates ✅ (fix `module.js` if not). `DA shot "<job>"` → Read the PNGs →
    check crops (subject visible at the hero ratio), no broken images, mobile layout.
 7. **Deliver** (same format as /article-apollo Phase 7): package folder path, the 4 files, SEO lines verbatim, paste steps,
-   site-wide CSS note (paste once per dealer; re-paste only if the `dealer-articles css <hash>` differs from live), open
+   site-wide CSS note (paste once per dealer; re-paste only if `--da-css-version` in the live page source differs from the file), open
    flags. Update `job.json` phase → `done`.
 After publishing, suggest a quick live check: open the page, confirm 1 visible H1, images, buttons not underlined, FAQ
 toggles, and run Google's Rich Results Test on the URL.

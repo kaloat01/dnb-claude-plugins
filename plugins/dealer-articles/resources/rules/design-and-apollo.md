@@ -28,8 +28,16 @@ closer #0A0A0A · radius 2px · link = the dealer's link color (the only brand t
 - Steps: plain serif 1, 2, 3 in gray. Checklist: check bullets. Stat strip: 3 columns, serif numerals.
 - Inline CTA: ink rules top and bottom. Buttons: ink, uppercase, letter-spacing 0.08em, 2px radius; white + ghost on dark.
 - FAQ: 2 columns, a 300px sticky intro with the phone line, `<details>` accordions with +/− markers.
-- Dealership section: gray panel, 3px ink top rule; storefront photo left; black brand band with the white logo; eyebrow,
-  H2, paragraph, facts list (address, department phone, department hours, other department phone), ink + outline buttons.
+- Dealership section (layout "Bentley-style", user 10/08/2026, modelled on the dealers' service-specials Brand Anchor):
+  gray panel, 3px ink top rule. **With a storefront photo:** photo at its natural shape (never cropped tall) in the left
+  column, a black band BELOW the photo with "<DEPT> DEPARTMENT" + address, content in the right column (vertically
+  centred); on mobile photo → band → content. **Without a photo:** text-only single column. Content: logo (white logos on
+  a black band; logos over 1,000px are requested at 700px), eyebrow, H2, paragraph, factual value lines (days open, book
+  online, current specials link, group; no credential claims), facts (address, department phone, department hours, other
+  department phone) as div/span (never `<dl>`: Apollo's editor moves `<div>` groups out of `<dl>`), ink + outline buttons.
+- Site-wide CSS is paste-safe: one rule per line, ASCII only, no backslash escapes; it ends with
+  `.<p>-art{--da-css-version:v<hash>}`. After pasting, search the live page source for `da-css-version` (if missing, the
+  paste was cut off). Always copy paste files from the file itself (Notepad), never from a chat window.
 - Closer: black full-bleed band, centered, "<Department> Hours:" line, 2 CTAs.
 - Keep reading: 3 cards with a 2px ink top rule. Fine print last.
 - Everything is scoped to one root class with the dealer prefix (`.<p>-art`); chrome outside the root is reached only via
@@ -99,7 +107,7 @@ by inventory routing. The canonical equals that exact URL.
 **The 4 paste slots (in this order):**
 1. **Site-wide CSS slot** (applies to every page): `<p>-articles-sitewide-CSS.html`. Paste **once per dealer**. One
    `<style>` block, Roboto `@import` first, every rule scoped to `.<p>-art`, no icon kit, no scripts. Re-paste only when the
-   `dealer-articles css <hash>` comment differs from what is live.
+   `--da-css-version` value (last rule; Apollo strips comments) differs from what is live.
 2. **Page HTML:** `<slug>-HTML.html`. It must be a **fragment**: it starts with `<div class="<p>-art <p>-art-<slug>">` and
    ends with `</div>`; no doctype, html, head, body, title, meta, link, style or script. *(A service page whose root class sat
    on `<body>` went live unstyled: the browser drops a nested body's class.)*

@@ -32,7 +32,7 @@ dealer already has a page on the topic. Pick the recommended option unless you k
 ## 5. Review and publish
 You get a **preview** (`<slug>-preview.html`, open it in your browser) and a **package** folder:
 1. `<prefix>-articles-sitewide-CSS.html`: paste ONCE per dealer into Apollo's site-wide style slot (all pages).
-   Re-paste only if its `dealer-articles css <code>` line differs from the live one.
+   Copy it from the file in Notepad (never from a chat). Re-paste only if `da-css-version` in the live page source differs from the file.
 2. New **custom page** at `/<slug>` (never a blog post) → paste `<slug>-HTML.html` into the page HTML.
 3. **Custom Structured Data** → paste `<slug>-Structured-Data.txt` and **check "Replace Structured Data"**.
 4. **SEO Settings** → enter each `* Field  →  value` line from `<slug>-SEO.md` (leave the H1 field blank).

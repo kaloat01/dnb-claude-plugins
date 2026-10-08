@@ -93,7 +93,8 @@ Same shape as the proven Apollo modules (see `resources/examples/`), with:
                                    doctype/html/head/body/style/script/link/meta
 <job>/package/<p>-articles-sitewide-CSS.html   ONE <style>…</style>, every rule scoped to .<p>-art / body:has(.<p>-art) /
                                    #custompageblock:has(.<p>-art); first line Roboto @import; first comment carries
-                                   "dealer-articles css <sha1-8>" (deterministic: no dates) so users can compare with live
+                                   "dealer-articles css <sha1-8>" (deterministic: no dates); one rule per line, ASCII only, no backslashes; last
+                                   rule `.<p>-art{--da-css-version:v<sha1-8>}` survives Apollo reformatting so users can compare with live
 <job>/package/<slug>-Structured-Data.txt   raw JSON @graph (WebSite, WebPage, BreadcrumbList, AutoDealer+AutoRepair
                                    #organization w/ departments + hours, BlogPosting, FAQPage) — paste with Replace checked
 <job>/package/<slug>-SEO.md        hand-entry sheet, ONE line per field: "* Field  →  value" (URL/slug, H1 Tag Text → leave

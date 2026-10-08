@@ -120,7 +120,7 @@ Phase → `deliver`.
 Reply with: preview path (`<job>/<slug>-preview.html`), package folder (`<job>/package/`, 4 files + README), word/H2/FAQ
 counts, review verdicts (what was fixed), open `verify[]` items, legal flags (MSRP comparisons: dealer counsel sign-off where
 required), a note that the HTML uses Apollo merge tags `#SalesNumber` / `#ServiceNumber` for phones (Structured Data keeps real numbers), the SEO lines from `<slug>-SEO.md` verbatim (`* Field  →  value`), short paste steps, and: "Site-wide CSS: one
-file per dealer for ALL articles; paste once, re-paste only if its `dealer-articles css <hash>` differs from what is live."
+file per dealer for ALL articles; paste once (copy from the file in Notepad, never from chat), re-paste only if `--da-css-version` (last rule) differs from what is live; after pasting, search the live page source for `da-css-version`."
 If images are placeholders: "Upload the images, then send me the Image IDs here or run `/article-images`." If the user
 already sent IDs, follow `${CLAUDE_PLUGIN_ROOT}/skills/article-images/SKILL.md` now. Phase → `images` (or `done`).
 

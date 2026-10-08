@@ -41,3 +41,9 @@
 - Skill + researcher: one plain shell command per call (chained `cd &&`, variables, `mkdir`, `curl` caused permission prompts).
 - Package HTML: no hard-coded numbers at all. A main line that is not a department number is replaced by the other department's tag; new gate fails on any `tel:+1…` in the package.
 - Added docs/QUICKSTART.md (first article, end to end, for colleagues).
+
+## 2026-10-08 — v0.7 (from the Brickell Mazda live fix; local, not yet pushed)
+- Paste-safe site-wide CSS: one rule per line, ASCII only, no backslash escapes (FAQ +/− drawn with CSS), end marker `.{p}-art{--da-css-version:v<hash>}`; new gate.
+- Dealer facts use div/span (Apollo's editor moves <div> groups out of <dl>); CSS also styles the structure already saved by Apollo.
+- Dealership layout = Bentley-style (user choice) for ALL dealers with a storefront photo: photo at natural shape, black Department band below the photo, two columns from 768px; text-only when no photo.
+- Logos wider than 1,000px are requested at 700px (Bentley Edison 541 KB -> 13 KB; fixes its logo not loading; Toyota/Ford/Lincoln lighter).

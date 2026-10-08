@@ -56,7 +56,7 @@ Output goes to `./articles/<dealer>/<slug>/`:
 | `package/<slug>-SEO.md` | Enter into Apollo SEO Settings, one line per field. Leave the H1 field blank |
 | `package/README.md` | Paste steps and post-publish checks |
 
-Re-paste the site-wide CSS only if its first comment (`dealer-articles css <hash>`) differs from the live one.
+Re-paste the site-wide CSS only if its version (`--da-css-version:v<hash>`, the last rule in the file) differs from the live one: search the live page source for `da-css-version`. Copy paste files from the file itself (Notepad), never from a chat window.
 
 ### Dealers (Apollo, 8)
 Brickell Honda · Brickell Mazda · Honda Libertyville · Toyota of Downtown Chicago · Bentley Jacksonville ·

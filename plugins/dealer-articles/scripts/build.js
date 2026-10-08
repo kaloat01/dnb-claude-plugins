@@ -214,24 +214,24 @@ ${R} .${P}-faq details{border-bottom:1px solid var(${V}-line);margin:0}
 ${R} .${P}-faq details:first-of-type{border-top:1px solid var(${V}-ink)}
 ${R} .${P}-faq summary{display:block;list-style:none;cursor:pointer;position:relative;padding:20px 44px 20px 0;font-size:18px;line-height:1.45;font-weight:600;color:var(${V}-ink)}
 ${R} .${P}-faq summary::-webkit-details-marker{display:none}
-${R} .${P}-faq summary::after{content:"+";position:absolute;right:4px;top:15px;font-size:26px;font-weight:300;line-height:1;color:var(${V}-ink)}
-${R} .${P}-faq details[open] summary::after{content:"\\2212"}
+${R} .${P}-faq summary::after{content:"";position:absolute;right:4px;top:22px;width:14px;height:14px;background-image:linear-gradient(var(${V}-ink),var(${V}-ink)),linear-gradient(var(${V}-ink),var(${V}-ink));background-position:center center,center center;background-size:14px 2px,2px 14px;background-repeat:no-repeat}
+${R} .${P}-faq details[open] summary::after{background-size:14px 2px,0 0}
 ${R} .${P}-faq details p{font-size:16px;line-height:1.7;margin:0 0 22px;padding:0 20px 0 0}
 /* dealership section (hairline frame, square corners, ink buttons) */
 ${R} .${P}-dealer{max-width:1160px;margin:80px auto 0;padding:0 20px}
 ${R} .${P}-dealer-in{display:grid;grid-template-columns:1fr;gap:0;border-top:3px solid var(${V}-ink);background:var(${V}-gray)}
-${R} .${P}-dealer-media{margin:0;min-height:260px;background:var(${V}-gray)}
-${R} .${P}-dealer-media img{width:100%;height:100%;min-height:260px;object-fit:cover}
+${R} .${P}-dealer-media{margin:0;display:flex;flex-direction:column;background:var(${V}-dark)}
+${R} .${P}-dealer-media img{width:100%;height:auto;object-fit:cover}
 ${R} .${P}-dealer-body{padding:30px 26px 32px}
 ${R} .${P}-dealer-logo{display:block;width:100%;max-width:340px;height:auto;margin:0 0 22px;mix-blend-mode:multiply}
 ${R} .${P}-dealer-logo.${P}-dealer-logo-sm{width:auto;max-width:96px;margin:0 0 16px}
 ${R} .${P}-dealer-band{background:var(${V}-dark);padding:20px 24px;margin:0 0 22px;border-radius:var(${V}-radius)}
 ${R} .${P}-dealer-band .${P}-dealer-logo{margin:0;mix-blend-mode:normal}
 ${R} .${P}-dealer-solo .${P}-dealer-body{max-width:860px}
-${R} .${P}-dealer-media{position:relative;overflow:hidden}
-${R} .${P}-dealer-plaque{position:absolute;left:0;right:0;bottom:0;display:flex;flex-direction:column;gap:4px;padding:56px 24px 20px;background:linear-gradient(to top,rgba(10,10,10,0.88),rgba(10,10,10,0));color:#fff}
-${R} .${P}-dealer-plaque-label{font-family:${B.body};font-size:11px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#fff}
-${R} .${P}-dealer-plaque-addr{font-family:${B.body};font-size:15px;line-height:1.4;color:#fff}
+${R} .${P}-dealer-media{position:relative}
+${R} .${P}-dealer-plaque{position:static;display:flex;flex-direction:column;gap:2px;padding:16px 22px 18px;background:var(${V}-dark);color:#fff}
+${R} .${P}-dealer-plaque-label{font-family:${B.body};font-size:11px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:rgba(255,255,255,0.65)}
+${R} .${P}-dealer-plaque-addr{font-family:${B.body};font-size:15px;font-weight:700;line-height:1.4;color:#fff}
 ${R} .${P}-dealer-values{list-style:none;display:grid;grid-template-columns:1fr;gap:10px 28px;margin:0 0 22px;padding:0}
 ${R} .${P}-dealer-values li{position:relative;margin:0;padding:0 0 0 18px;font-size:15px;line-height:1.5;color:var(${V}-text)}
 ${R} .${P}-dealer-values li::before{content:"";position:absolute;left:0;top:8px;width:6px;height:6px;background:var(${V}-marker)}
@@ -243,6 +243,16 @@ ${R} .${P}-dealer-facts{display:grid;grid-template-columns:1fr;gap:12px 28px;mar
 ${R} .${P}-dealer-facts div{margin:0}
 ${R} .${P}-dealer-facts dt{font-size:11px;letter-spacing:0.14em;text-transform:uppercase;font-weight:700;color:var(${V}-soft);margin:0 0 2px}
 ${R} .${P}-dealer-facts dd{font-size:15px;line-height:1.5;color:var(${V}-ink);margin:0}
+${R} .${P}-dealer-facts .${P}-fact{margin:0}
+${R} .${P}-dealer-facts .${P}-fact-k{display:block;font-size:11px;letter-spacing:0.14em;text-transform:uppercase;font-weight:700;color:var(${V}-soft);margin:0 0 2px;line-height:1.5}
+${R} .${P}-dealer-facts .${P}-fact-v{display:block;font-size:15px;line-height:1.5;color:var(${V}-ink);margin:0}
+${R} .${P}-dealer-facts:empty{display:none}
+${R} .${P}-dealer-body>div:has(>dl){display:inline-block;vertical-align:top;width:100%;margin:0 0 12px;padding:0}
+${R} .${P}-dealer-values:has(+div>dl){border-bottom:1px solid var(${V}-line);padding-bottom:18px;margin-bottom:16px}
+${R} .${P}-dealer-body>div>dl{margin:0;padding:0}
+${R} .${P}-dealer-body>div>dl dt{font-size:11px;letter-spacing:0.14em;text-transform:uppercase;font-weight:700;color:var(${V}-soft);margin:0 0 2px;line-height:1.5}
+${R} .${P}-dealer-body>div>dl dd{font-size:15px;line-height:1.5;color:var(${V}-ink);margin:0}
+${R} .${P}-dealer-body>div>dl a{color:var(${V}-link);text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:3px;text-decoration-color:var(${V}-link-soft)}
 ${R} .${P}-dealer .${P}-ctas{justify-content:flex-start;margin:0}
 /* closer */
 ${R} .${P}-closer{background:var(${V}-dark);color:#ffffff;margin:80px 0 0;padding:72px 20px 76px;text-align:center}
@@ -273,12 +283,13 @@ ${R} .${P}-fine{max-width:760px;margin:26px auto 0;padding:0 20px;font-size:12px
 ${R} .${P}-toc ol{grid-template-columns:1fr 1fr}
 ${R} .${P}-more-grid{grid-template-columns:repeat(3,1fr);gap:28px}
 ${R} .${P}-dealer-facts{grid-template-columns:1fr 1fr}
+${R} .${P}-dealer-body>div:has(>dl){width:calc(50% - 16px);margin-right:12px}
 ${R} .${P}-dealer-values{grid-template-columns:1fr 1fr}
 }
 @media (min-width:768px){
 ${R} h1.${P}-title{font-size:40px}
 ${R} .${P}-body h2{font-size:30px}
-${R} .${P}-dealer-in{grid-template-columns:1.05fr 1fr}
+${R} .${P}-dealer-in{grid-template-columns:1.05fr 1fr;align-items:center}
 ${R} .${P}-dealer-in.${P}-dealer-solo{grid-template-columns:1fr}
 ${R} .${P}-dealer-body{padding:40px 40px 42px}
 }
@@ -355,7 +366,10 @@ const fullCss = (D) => { const B = tokens(D); return css(D.P, B) + (D.platform =
 function sitewideCss(D) {
   const min = minCss(fullCss(D));
   const hash = crypto.createHash('sha1').update(min).digest('hex').slice(0, 8);
-  const text = `<style>\n@import url("${GOOGLE_FONT}");\n/* dealer-articles css ${hash} */\n/* ${D.name} editorial articles: site-wide CSS (Apollo style slot, applies to all pages; every rule scoped to .${D.P}-art) */\n${min}\n</style>\n`;
+  // one rule per line (paste-safe: long single lines get truncated when copied from some viewers) + an end marker that
+  // survives Apollo's reformatting (it strips comments): search the live page source for "da-css-version"
+  const pretty = min.replace(/\}/g, '}\n').replace(/\{(?=[^{}]*\{)/g, '{\n').replace(/\n+/g, '\n').trim();
+  const text = `<style>\n@import url("${GOOGLE_FONT}");\n/* dealer-articles css ${hash} */\n/* ${D.name} editorial articles: site-wide CSS (Apollo style slot, applies to all pages; every rule scoped to .${D.P}-art) */\n${pretty}\n.${D.P}-art{--da-css-version:v${hash}}\n</style>\n`;
   return { min, hash, text };
 }
 function splitTop(s) { const out = []; let d = 0, cur = ''; for (const ch of s) { if (ch === '(') d++; if (ch === ')') d--; if (ch === ',' && !d) { out.push(cur); cur = ''; } else cur += ch; } out.push(cur); return out; }
@@ -453,6 +467,11 @@ function build(mod, D, job, opts = {}) {
   const images = Object.assign({}, D.shared, mod.images);
   // dealer images are optional: STORE without Apollo id = text-only dealership section; LOGO without = name band
   const hasLogo = !!(images.LOGO && images.LOGO.apollo);
+  // oversized library logos (e.g. 7520px / 541 KB) are requested at 700px wide (Apollo resizes; ~10-80 KB, transparency kept)
+  if (hasLogo && images.LOGO.w > 1000 && !/^https?:/i.test(images.LOGO.apollo)) {
+    const L = images.LOGO, id = String(L.apollo).split('&')[0];
+    images.LOGO = Object.assign({}, L, { apollo: `${id}&Width=700&Height=0${/logo=y/.test(L.apollo) ? '&logo=y' : ''}`, w: 700, h: L.h ? Math.round(L.h * 700 / L.w) : L.h });
+  }
   const logoSmall = hasLogo && images.LOGO.w > 0 && images.LOGO.w < 300;
   const hasStore = !!(images.STORE && images.STORE.apollo);
   const slots = new Set([mod.hero]);
@@ -546,7 +565,7 @@ function build(mod, D, job, opts = {}) {
     const logoImg = hasLogo ? imgTag('LOGO', mode, `${P}-dealer-logo${logoSmall ? ` ${P}-dealer-logo-sm` : ''}`) : '';
     const logo = (hasLogo && images.LOGO.onDark ? `<div class="${P}-dealer-band">${logoImg}</div>` : logoImg) + (hasLogo && !logoSmall ? '' : `<div class="${P}-dealer-name">${esc(D.name)}</div>`);
     const facts = [['Address', `${D.street}, ${D.city}, ${D.region} ${D.zip}`], dept.phone && [dept.label, phoneLink(dept)], hrs(dept) && [`${dept.label} hours`, hrs(dept).replace(/ {2}· {2}/g, '<br>')], other]
-      .filter(Boolean).map(([t, d]) => `<div><dt>${t}</dt><dd>${d}</dd></div>`).join('');
+      .filter(Boolean).map(([t, d]) => `<div class="${P}-fact"><span class="${P}-fact-k">${t}</span><span class="${P}-fact-v">${d}</span></div>`).join('');
     // storefront plaque (department + address) and factual value lines: the structure of the dealers' service-specials
     // "Brand Anchor", restyled in Editorial v2 ink. Facts only from the dealer file: no credential or capability claims.
     const plaque = `<figcaption class="${P}-dealer-plaque"><span class="${P}-dealer-plaque-label">${esc(dept.label)} Department</span><span class="${P}-dealer-plaque-addr">${esc(D.street)} · ${esc(D.city)}, ${esc(D.region)} ${esc(D.zip)}</span></figcaption>`;
@@ -560,7 +579,7 @@ function build(mod, D, job, opts = {}) {
       specials ? [mod.dept === 'service' ? 'Current service specials' : 'Current offers', `<a href="${specials}">See this month's ${mod.dept === 'service' ? 'service specials' : 'offers'}</a> and their terms.`] : null,
       D.group ? [esc(D.group), `${esc(D.name)} is part of the ${esc(D.group)}.`] : null,
     ].filter(Boolean).slice(0, 4).map(([t, d]) => `<li><strong>${t}</strong>${d}</li>`).join('');
-    const dealer = `<section class="${P}-dealer" aria-labelledby="${P}-dealer-h"><div class="${P}-dealer-in${hasStore ? '' : ` ${P}-dealer-solo`}">${media}<div class="${P}-dealer-body">${logo}<div class="${P}-eyebrow">${ds.eyebrow || `Visit us in ${D.city}`}</div><h2 id="${P}-dealer-h">${ds.h}</h2><p>${fill(ds.p)}</p>${values ? `<ul class="${P}-dealer-values">${values}</ul>` : ''}<dl class="${P}-dealer-facts">${facts}</dl>${btns(ctaBtn('ink'), D.directions ? `<a class="${P}-btn ${P}-btn-outline" href="${D.directions}">Get Directions</a>` : '')}</div></div></section>`;
+    const dealer = `<section class="${P}-dealer" aria-labelledby="${P}-dealer-h"><div class="${P}-dealer-in${hasStore ? '' : ` ${P}-dealer-solo`}">${media}<div class="${P}-dealer-body">${logo}<div class="${P}-eyebrow">${ds.eyebrow || `Visit us in ${D.city}`}</div><h2 id="${P}-dealer-h">${ds.h}</h2><p>${fill(ds.p)}</p>${values ? `<ul class="${P}-dealer-values">${values}</ul>` : ''}<div class="${P}-dealer-facts">${facts}</div>${btns(ctaBtn('ink'), D.directions ? `<a class="${P}-btn ${P}-btn-outline" href="${D.directions}">Get Directions</a>` : '')}</div></div></section>`;
     return `<div class="${P}-art ${P}-art-${mod.slug}">`
       + `<figure class="${P}-hero${mod.heroContained ? ` ${P}-hero-contained` : ''}">${imgTag(mod.hero, mode, 'eager')}</figure>`
       + `<header class="${P}-head"><div class="${P}-eyebrow">${mod.eyebrow}</div><h1 class="${P}-title">${mod.h1}</h1><p class="${P}-dek">${fill(mod.dek)}</p><div class="${P}-meta"><span>${D.name}</span><span>Updated ${mod.updatedLabel}</span><span>${readMin} min read</span></div>`
@@ -675,7 +694,7 @@ ${shellClose}
   const imgList = Object.entries(images).filter(([k, v]) => v && used.has(k)).map(([k, v]) => `- ${k}: ${apolloUrl(v.apollo, v.w) || 'MISSING Apollo id (placeholder)'}${v.desc ? ` · ${v.desc}` : ''}`).join('\n');
   fs.writeFileSync(out.readme, `# ${mod.slug}: Apollo upload map (${D.name})\n\n`
     + (isFinal ? '' : `> **DRAFT: do not paste.** Built without \`--final\`${placeholders.length ? ` and ${placeholders.length} image(s) are still placeholders (${placeholders.join(', ')})` : ''}. Rebuild with \`build <job> --final\` after approval.\n\n`)
-    + `1. **Site-wide CSS (once per dealer, shared by all articles):** paste \`${path.basename(out.css)}\` into the site-wide style slot (applies to all pages). Version: \`dealer-articles css ${sw.hash}\`. Re-paste only if the live site shows a different hash (view source, search "dealer-articles css").\n`
+    + `1. **Site-wide CSS (once per dealer, shared by all articles):** paste \`${path.basename(out.css)}\` into the site-wide style slot (applies to all pages). Version: \`--da-css-version:v${sw.hash}\` (search the live page source for it; \`dealer-articles css ${sw.hash}\`. Re-paste only if the live site shows a different hash (view source, search "dealer-articles css").\n`
     + `2. **New custom page** at \`${mod.path}\` → paste \`${path.basename(out.html)}\` into the page HTML/content area (source view).\n`
     + `3. **Custom Structured Data** → paste \`${path.basename(out.sd)}\` and CHECK "Replace Structured Data".\n`
     + `   Phones: the page HTML uses Apollo merge tags #SalesNumber / #ServiceNumber (Apollo fills in the dealer's number). Structured Data keeps the real numbers; never put a tag there.\n`
@@ -750,6 +769,7 @@ ${shellClose}
   gate('Fragment is Apollo-safe', fragBad);
   const scope = cssScopeIssues(sw.min, P);
   gate('Site-wide CSS fully scoped', scope.slice(0, 5).map((s) => 'unscoped: ' + s), `css ${sw.hash}`);
+  gate('Site-wide CSS paste-safe (ASCII, no backslash)', [/\\/.test(sw.text) && 'backslash escape found', /[^\x09\x0a\x0d\x20-\x7e]/.test(sw.text) && 'non-ASCII character found'].filter(Boolean), `${sw.text.split('\n').length} lines`);
   if (opts.final) gate('Final: every article image has an Apollo value', placeholders.map((k) => k + ' has no Apollo id/URL'), `${slots.size} slots`);
   // warnings
   const cleanForNum = frag.replace(/\d{2}\/\d{2}\/\d{4}/g, '');
