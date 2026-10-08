@@ -8,7 +8,7 @@
  *    then a normal paragraph. The builder runs the bold answer INLINE into that next paragraph. A bold-only
  *    paragraph followed by anything other than a 'p' block fails the gate.
  *  - NO "01, 02" numbering on H2s, TOC or lists (reads as AI-written). Steps blocks number themselves.
- *  - 8 to 9 question H2s, 1,700 to 2,300 body words, sentences of 25 words or fewer, 12+ unique internal links.
+ *  - 8 to 9 question H2s, 1,700 to 2,300 body words, sentences of 25 words or fewer, 12 to 25 unique internal links.
  *  - FAQ: 9 to 10 questions, each answer 40 to 90 words, plain text (no HTML), not repeating the body verbatim.
  *  - No em dashes; en dashes only inside number ranges. No toll-free (8xx) numbers. No "$" figures unless
  *    allowMsrp: true and the word "MSRP" sits within 140 characters. No banned phrases (see ${CLAUDE_PLUGIN_ROOT}/resources/rules/rigor-and-content.md,
@@ -23,7 +23,7 @@ module.exports = {
   // cta: { label: 'Schedule Service', href: '/scheduleservice' },   // optional: override the department CTA button
   slug: '__SLUG__',
   path: '__PATH__',                  // Apollo custom page URL (root-relative)
-  title: '__TITLE__',                // Page Title (<=65 chars), contains the focus keyword
+  title: '__TITLE__',                // Page Title (50 to 65 chars), contains the focus keyword
   ogTitle: 'TODO OG title (may be longer and more inviting than the page title)',
   meta: 'TODO meta description, 130 to 165 characters, answers the query and names __CITY__ or the dealer.',
   focus: 'TODO focus keyword (e.g. "__BRAND__ <topic> __CITY__")',

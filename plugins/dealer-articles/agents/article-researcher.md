@@ -57,7 +57,7 @@ Then a **Do-not-claim / HOLDs** list: tempting claims with no primary source, th
 as OEM conditions, any price outside the policy, UNVERIFIED items.
 
 ## TASK 3 — Dealer site: links, contradictions, risks
-- **Internal links ONLY from the sitemap allow-list file.** Recommend 14–24 with descriptive anchors, paths written exactly
+- **Internal links ONLY from the sitemap allow-list file.** Recommend 12–25 with descriptive anchors, paths written exactly
   as in the file: a hub up-link, schedule/specials/inventory/finance as relevant, 1–3 area pages, related guides. Never
   invent or "fix" a URL. List "not linked" pages with the reason.
 - Fetch the dealer pages that overlap the topic (from the sitemap). List **Contradictions** with OEM/government facts

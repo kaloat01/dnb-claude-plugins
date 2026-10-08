@@ -155,6 +155,7 @@
   },
   "verify": [],
   "lastVerified": "2026-10-07",
+  "sourcesNote": "Internal provenance for maintainers; colleagues do not need these files. Live checks use the About Us page (US location).",
   "sources": [
     "https://bentleyjacksonville.com/about-us About Us, US geo, 2026-10-07: address 7137 Bentley Rd, Jacksonville, FL 32256; Sales 904-490-9953, Service and Parts 904-490-8530; sales Mon-Fri 9-7, Sat 9-6 and service Mon-Fri 8-6, Sat 8-3, no Sunday (page JSON-LD + today's header); CallRevu DNI script present, rendered numbers matched raw HTML",
     "https://bentleyjacksonville.com/contactus (live, 2026-10-07): address, Main and Sales 904-490-9953, Service and Parts 904-490-8530, sales hours, service hours",

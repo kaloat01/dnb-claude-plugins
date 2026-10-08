@@ -178,6 +178,7 @@
     "/kbb-ico participating dealer listing shows a different store name and an 877 number; confirm before linking it as Brickell Honda's own offer."
   ],
   "lastVerified": "2026-10-07",
+  "sourcesNote": "Internal provenance for maintainers; colleagues do not need these files. Live checks use the About Us page (US location).",
   "sources": [
     "https://www.brickellhonda.com/about-us About Us, US geo, 2026-10-07: address 690 SW 8th St, Miami, FL 33130; main (305) 856-3000; Sales 786-480-1304; Service and Parts 786-628-0577; sales hours and service hours incl. Sunday service 9:00 AM-3:00 PM; no call-tracking script (disableDNIScripts True)",
     "Editorial v2 Apollo builder dealer config (09/28/2026)",

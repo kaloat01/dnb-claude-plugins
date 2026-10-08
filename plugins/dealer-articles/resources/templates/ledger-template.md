@@ -81,7 +81,7 @@ mileage; the Maintenance Minder shows sub-item 4. Recommended H1: soften "at 100
 | <model inventory, e.g. new CR-V> | /<path> | |
 | <area page> | /<path> | 1–3 area pages |
 | <related guide> | /<path> | link only if not contradicting (see Contradictions) |
-<!-- Recommend 14–24 links, each path written exactly as in the sitemap file. List "not linked" pages with the reason. -->
+<!-- Recommend 12–25 links, each path written exactly as in the sitemap file. List "not linked" pages with the reason. -->
 
 ## Keyword cluster
 - **Primary:** <focus keyphrase> (must appear in title, H1, dek, first bold answer)

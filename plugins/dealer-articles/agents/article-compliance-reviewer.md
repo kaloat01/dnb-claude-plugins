@@ -29,7 +29,7 @@ comparison fairness, pricing policy, local framing).
 5. Run the 13-point checklist in `compliance.md`: pricing/advertising law (FTC + the dealer's state pointers), MSRP labeling,
    warranty wording, dealer promises, brand/program naming (dealer `brandNaming` wins), trademarks and endorsement, ratings
    scope, local framing (`areas` only, never `excluded`), schema (FAQPage equals the visible FAQ word for word; NAP and
-   department phone match; no AggregateRating/Offer), SEO/AEO (title ≤65, meta 130–165, keyphrase in title/H1/dek/first bold
+   department phone match; no AggregateRating/Offer), SEO/AEO (title 50–65, meta 130–165, keyphrase in title/H1/dek/first bold
    answer, FAQ 9–10 × 40–90 words with new value, links only from the allow-list, hub up-link), readability (sentences over
    25 words, banned phrases, dashes, numbering, stand-alone bold).
 6. For comparisons: same model year, rival's leads conceded, equivalent facts for both brands, verdict = "which buyer fits

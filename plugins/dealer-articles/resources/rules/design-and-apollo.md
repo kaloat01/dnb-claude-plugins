@@ -103,6 +103,7 @@ by inventory routing. The canonical equals that exact URL.
 2. **Page HTML:** `<slug>-HTML.html`. It must be a **fragment**: it starts with `<div class="<p>-art <p>-art-<slug>">` and
    ends with `</div>`; no doctype, html, head, body, title, meta, link, style or script. *(A service page whose root class sat
    on `<body>` went live unstyled: the browser drops a nested body's class.)*
+   **Phone numbers = Apollo merge tags** (live-tested 10/07/2026): in the page HTML every sales number is `#SalesNumber` and every service number `#ServiceNumber` (text and `tel:` links); Apollo swaps in the dealer's number. The builder does this automatically; the preview shows real numbers. **Never** put a tag in Structured Data: Apollo does not replace it there, and an unquoted tag breaks the JSON-LD (the builder fails the build if it finds one).
 3. **Custom Structured Data:** `<slug>-Structured-Data.txt`, raw JSON (not wrapped in `<script>`), with **"Replace Structured
    Data" checked** (unchecked = appended to the theme's own schema). Graph: WebSite, WebPage (`primaryImageOfPage` = hero),
    BreadcrumbList, AutoDealer + AutoRepair `#organization` with department nodes and hours, BlogPosting, FAQPage.

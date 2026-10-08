@@ -473,7 +473,14 @@ function build(mod, D, job, opts = {}) {
     return `<img src="${esc(src)}" alt="${esc(im.alt || '')}"${im.w ? ` width="${im.w}" height="${im.h}"` : ''}${extra === 'eager' ? ' fetchpriority="high"' : ' loading="lazy"'} decoding="async"${extra && extra !== 'eager' ? ` class="${extra}"` : ''}>`;
   }
   // a department phone may be null (e.g. only a toll-free number exists): never print or link one, never fall back
-  const phoneLink = (d) => (d && d.phone ? `<a href="${telHref(d.phone)}">${d.phone}</a>` : '');
+  // Apollo merge tags (APOLLO-TAGS standard, 10/07): in the PACKAGE html every sales number is #SalesNumber and every
+  // service number #ServiceNumber (Apollo swaps in the dealer's number); the preview shows real numbers; Structured
+  // Data always keeps real numbers (tags are not replaced there and break the JSON-LD).
+  let phoneMode = 'preview';
+  const TAGS = { sales: '#SalesNumber', service: '#ServiceNumber', parts: '#PartsNumber' };
+  const tagFor = (d) => { const k = Object.keys(D.depts || {}).find((x) => D.depts[x] === d); return k && TAGS[k]; };
+  const phoneLink = (d) => { if (!(d && d.phone)) return ''; const t = phoneMode === 'package' && tagFor(d); return t ? `<a href="tel:${t}">${t}</a>` : `<a href="${telHref(d.phone)}">${d.phone}</a>`; };
+  const mainLink = () => { const same = Object.values(D.depts || {}).find((d) => d && d.phone && digits10(d.phone) === digits10(D.mainPhone)); return same ? phoneLink(same) : `<a href="${telHref(D.mainPhone)}">${D.mainPhone}</a>`; };
   const phoneMiss = new Map();
   const tokPhone = (t, d, name) => { if (d && d.phone) return phoneLink(d); phoneMiss.set(t, `${t}: token for a dept with no phone (${name})`); return t; };
   const fill = (html) => String(html).replace(/\{\{PHONE\}\}/g, (t) => tokPhone(t, dept, mod.dept))
@@ -485,6 +492,7 @@ function build(mod, D, job, opts = {}) {
   const h2s = mod.blocks.filter((b) => b.t === 'h2' && b.id);
 
   function blocksHtml(mode) {
+    phoneMode = mode;
     let out = '';
     let open = false;
     let lead = '';
@@ -523,13 +531,14 @@ function build(mod, D, job, opts = {}) {
   const readMin = Math.max(1, Math.round(words / 230));
 
   function article(mode) {
+    phoneMode = mode;
     const faq = mod.faq.map((f) => `<details><summary>${esc(f.q)}</summary><p>${esc(f.a)}</p></details>`).join('');
     const more = mod.related.map((r) => `<div class="${P}-more-card"><span class="${P}-more-k">${r.k}</span><a class="${P}-more-link" href="${r.href}"><span class="${P}-more-t">${r.t}</span></a><span class="${P}-more-d">${r.d}</span></div>`).join('');
     const toc = h2s.length ? `<nav class="${P}-toc" aria-label="In this article"><div class="${P}-label">In this article</div><ol>${h2s.map((h) => `<li><a href="#${P}-${h.id}">${h.toc || stripTags(h.text)}</a></li>`).join('')}</ol></nav>` : '';
     const ds = mod.dealerSection;
     const otherDept = Object.entries(D.depts).find(([k, d]) => k !== mod.dept && d && d.phone);
     const other = ds.other ? [ds.otherLabel || 'Main line', phoneLink(ds.other)]
-      : D.mainPhone ? [ds.otherLabel || 'Main line', `<a href="${telHref(D.mainPhone)}">${D.mainPhone}</a>`]
+      : D.mainPhone ? [ds.otherLabel || 'Main line', mainLink()]
         : otherDept ? [otherDept[1].label, phoneLink(otherDept[1])] : null;
     // logo: wide lockup alone; small emblem (<300 px) + name band; no Apollo logo = name band only;
     // LOGO.onDark (white artwork) = logo on the Editorial v2 black brand band (as the Mercedes white star)
@@ -668,6 +677,7 @@ ${shellClose}
     + `1. **Site-wide CSS (once per dealer, shared by all articles):** paste \`${path.basename(out.css)}\` into the site-wide style slot (applies to all pages). Version: \`dealer-articles css ${sw.hash}\`. Re-paste only if the live site shows a different hash (view source, search "dealer-articles css").\n`
     + `2. **New custom page** at \`${mod.path}\` → paste \`${path.basename(out.html)}\` into the page HTML/content area (source view).\n`
     + `3. **Custom Structured Data** → paste \`${path.basename(out.sd)}\` and CHECK "Replace Structured Data".\n`
+    + `   Phones: the page HTML uses Apollo merge tags #SalesNumber / #ServiceNumber (Apollo fills in the dealer's number). Structured Data keeps the real numbers; never put a tag there.\n`
     + `4. **SEO Settings** → enter each line of \`${path.basename(out.seo)}\` (leave H1 Tag Text blank).\n`
     + `5. **Publish.**\n`
     + `6. **Checks:** exactly one H1; headings render in Georgia${ap.themeFont ? ` (not ${ap.themeFont})` : ''}; images load; buttons show white or ink text, not underlined; FAQ items open; Rich Results Test detects Article, FAQ and Breadcrumb; canonical is ${url}.\n\n`
@@ -701,6 +711,9 @@ ${shellClose}
   // toll-free numbers are allowed only when they are the dealer file's verified About Us number for a department/main line
   const fileDigits = new Set([D.mainPhone, ...Object.values(D.depts || {}).map((d) => d && d.phone)].filter(Boolean).map((p) => String(p).replace(/\D/g, '').slice(-10)));
   const tollFree = (visible.match(/(?<![\d,$])\(?8(77|88|00|66|55|44|33)\)?[-. ]?\d{3}[-. ]\d{4}/g) || []).filter((n) => !fileDigits.has(n.replace(/\D/g, '').slice(-10)));
+  gate('No Apollo tags in Structured Data', /#(Sales|Service|Parts|BodyShop)Number|#DealerName/.test(JSON.stringify(sd)) ? ['merge tag found in JSON-LD (tags are not replaced there)'] : []);
+  { const html = fs.readFileSync(out.html, 'utf8'); const hard = Object.entries(D.depts || {}).filter(([k, d]) => d && d.phone && TAGS[k] && html.replace(/D/g, '').includes(digits10(d.phone))).map(([k]) => k);
+    gate('Package phones use Apollo tags', hard.length ? [`hard-coded ${hard.join('/')} number in package HTML`] : []); }
   gate('No toll-free numbers', tollFree.length ? [`8xx number not in the dealer file: ${tollFree[0]}`] : []);
   const dollars = [];
   for (const m of allText.matchAll(/\$\s?\d[\d,.]*/g)) { const ctx = allText.slice(Math.max(0, m.index - 140), m.index + 140); if (!mod.allowMsrp || !/MSRP/.test(ctx)) dollars.push(m[0]); }
@@ -737,7 +750,7 @@ ${shellClose}
   // warnings
   const cleanForNum = frag.replace(/\d{2}\/\d{2}\/\d{4}/g, '');
   warnG('No "01, 02" numbering', /\b0[1-9]\b(?=[^<]*<\/(li|h2|h3|span|div)>)/.test(cleanForNum) ? ['possible "01, 02" style numbering'] : []);
-  warnG('Title length ≤65', mod.title.length > 65 ? [`${mod.title.length} chars`] : [], `${mod.title.length}`);
+  warnG('Title length 50–65', (mod.title.length > 65 || mod.title.length < 50) ? [`${mod.title.length} chars`] : [], `${mod.title.length}`);
   warnG('Meta 130–165', mod.meta.length < 130 || mod.meta.length > 165 ? [`${mod.meta.length} chars`] : [], `${mod.meta.length}`);
   warnG('H1 ≤80', stripTags(mod.h1).length > 80 ? [`${stripTags(mod.h1).length} chars`] : [], `${stripTags(mod.h1).length}`);
   const blockText = (b) => b.html || b.text || (b.t === 'list' ? b.items.join(' ') : b.t === 'steps' ? b.items.map((i) => i.h + ' ' + i.html).join(' ') : b.t === 'table' ? [...b.head, ...b.rows.flat()].join(' ') : b.t === 'stats' ? b.items.map((s) => s.n + ' ' + s.l).join(' ') : '');
@@ -887,7 +900,7 @@ function advice(role, w) {
   if (role === 'hero') return w >= 1900 ? 'hero: full-bleed OK' : 'hero <1900 wide → set heroContained: true';
   if (role === 'fig') return w >= 1100 ? 'fig: wide OK' : w >= 880 ? 'fig <1100 → use prose: true (880 column)' : 'fig <880 → use in a pair or replace';
   if (role === 'fig-prose') return w >= 880 ? 'narrow fig: OK' : 'narrow fig <880 → use in a pair or replace';
-  if (role === 'pair') return w >= 500 ? 'pair: OK (pairs suit images ≤1000)' : 'pair <500 → replace';
+  if (role === 'pair') return w >= 800 ? 'pair: OK (pairs suit images ≤1000)' : 'pair <800 → replace';
   if (role === 'dealer') return 'dealer section';
   return 'unplaced → ' + (w >= 1900 ? 'hero or fig' : w >= 1100 ? 'fig' : w >= 880 ? 'prose fig' : 'pair');
 }

@@ -153,6 +153,7 @@
   },
   "verify": [],
   "lastVerified": "2026-10-07",
+  "sourcesNote": "Internal provenance for maintainers; colleagues do not need these files. Live checks use the About Us page (US location).",
   "sources": [
     "https://www.dttoyotachicago.com/about-us About Us header + body, US geo, 2026-10-07: Sales 877-413-8672 (no local sales number published; About Us number used per user rule)",
     "https://www.dttoyotachicago.com/about-us About Us, US geo, 2026-10-07: main (888) 539-0910 and Sales 877-413-8672 (both toll-free), Service and Parts 872-353-8943; sales Mon-Fri 9-8, Sat 9-6, Sun closed; service and parts Mon-Fri 7-7, Sat 8-5, Sun closed; CallRevu DNI script present, rendered numbers matched raw HTML",

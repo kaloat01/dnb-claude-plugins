@@ -14,7 +14,7 @@ Related files: `${CLAUDE_PLUGIN_ROOT}/resources/rules/compliance.md` (review gat
 | **Depth** | Body (intro to last H2) 1,700–2,300 words. 8–9 question H2s, each opened by an inline bold answer. 9–10 FAQs of 40–90 words that add new value. 1–3 sourced tables, 1 callout with verbatim OEM/legal wording, 1 steps list, 1 stat strip, 1 inline CTA, a local section using real places and climate only. |
 | **Fairness** (comparisons) | Same model year and same source type for both vehicles. The rival's real advantages stated plainly. A "which buyer fits which" verdict. No disparagement. Every comparative claim substantiated. Pitch from documented strengths only. |
 | **Compliance** | Independent adversarial review returns no open P0/P1 (see `compliance.md`). |
-| **SEO/GEO/AEO** | Title ≤65 chars, meta 130–165. Keyphrase in title, H1, dek and first bold answer. One H1. JSON-LD parses. FAQPage equals the visible FAQ word for word. 12–25 internal links, all from the dealer's sitemap allow-list. golden-geo review with no open blockers. |
+| **SEO/GEO/AEO** | Title 50–65 chars, meta 130–165. Keyphrase in title, H1, dek and first bold answer. One H1. JSON-LD parses. FAQPage equals the visible FAQ word for word. 12–25 internal links, all from the dealer's sitemap allow-list. golden-geo review with no open blockers. |
 | **Design** | Editorial v2, identical for every dealer; brand color on links only. Hero + 2 full-width figures + 1 pair. No "01, 02" numbering. |
 | **Platform safety** | Renders correctly in the Apollo shell at 1280 and 375: one visible H1, no theme font leak, no overflow, buttons not underlined, grids intact. |
 | **Live truth** | After publishing: one visible H1, head tags equal the SEO form fields, structured data parses, images load. |

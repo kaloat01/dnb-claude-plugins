@@ -102,7 +102,7 @@ and log any skipped P2 with a reason. Apply a pattern fix everywhere it occurs (
     context, not as an OEM-listed condition; no unsourced local geography claims.
 11. **Schema.** FAQPage questions and answers equal the visible FAQ exactly; stable `@id`s; NAP and the department phone in
     schema equal the visible page; BlogPosting dates equal the visible "Updated" date; no AggregateRating; no offers.
-12. **SEO/AEO.** Title ≤65 chars, meta 130–165; keyphrase in title, H1, dek and first bold answer; every H2 answers first;
+12. **SEO/AEO.** Title 50–65 chars, meta 130–165; keyphrase in title, H1, dek and first bold answer; every H2 answers first;
     FAQ 9–10 × 40–90 words with new value; every internal link from the allow-list; hub up-link present; no cannibalization
     of an existing dealer page with the same intent (flag it).
 13. **Readability.** Sentences over 25 words (list them), clichés and banned phrases, em/en dashes, any "01, 02" numbering,
