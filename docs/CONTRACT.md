@@ -1,4 +1,4 @@
-# dealer-articles — internal contract (v0.1, 2026-10-07)
+# dealer-articles — internal contract (v0.2 image-catalog contract, 2026-10-07)
 Shared spec for the engine (`scripts/build.js`), the dealer data files and the skills. Everything inside the plugin
 is referenced from `${CLAUDE_PLUGIN_ROOT}` = `plugins/dealer-articles/`. Pure Node ≥18, **zero npm dependencies**.
 
@@ -57,6 +57,65 @@ A file with the same name in the user's working folder `./dealers/<key>.json` ov
 ```
 Sitemap snapshot: `resources/dealers/<key>.sitemap.txt` — one root-relative path per line (no inventory/VDP URLs),
 first line `# <domain> snapshot YYYY-MM-DD`. It is the default internal-link allow-list.
+
+### Image catalog — `resources/dealers/<key>.images.json` (introduced in v0.2)
+Optional catalog of images already in this dealer's Apollo library, verified and viewed when cataloged. It is read
+by the article skill; the builder does not automatically select or import catalog entries. The documented local
+`./dealers/<key>.json` override applies to dealer data, not an automatic image-catalog override.
+
+```json
+{
+  "dealer": "brickell-mazda",
+  "generated": "2026-10-07",
+  "note": "Reuse before asking for new uploads. View before use; match the article's model year.",
+  "images": [
+    {
+      "id": "789270",
+      "url": "https://service.secureoffersites.com/images/GetLibraryImage?fileNameOrId=789270&type=webp&quality=85",
+      "w": 4128,
+      "h": 2752,
+      "shows": "Bright, spotless Mazda service workshop with red Mazdas on lifts",
+      "vehicle": null,
+      "text": false,
+      "slots": ["hero", "fig", "pair"],
+      "tags": ["service-bay"]
+    }
+  ]
+}
+```
+
+| Field | Meaning |
+|---|---|
+| `dealer` | Dealer key matching `<key>` |
+| `generated` | Catalog date (`YYYY-MM-DD`) |
+| `note` | Catalog-level reuse and verification guidance |
+| `images` | Array of catalog entries |
+| `id`, `url` | Apollo Image ID (string) and full `GetLibraryImage` URL |
+| `w`, `h` | Verified pixel dimensions; check actual size again before final use |
+| `shows` | Description of what was visually observed; use it to assess topic fit |
+| `vehicle` | Vehicle/model/generation description, or `null`; not proof of the article's model year |
+| `text` | Whether visible text was observed; inspect the photo for disallowed offer text, prices or watermarks |
+| `slots` | Placement hints: `hero`, `fig`, `pair`, `store`, `logo` |
+| `tags` | Descriptive search/filter hints, such as `service-bay`, `technician`, `city`, `road` |
+| `avoid` | Optional warning in current catalogs; account for the stated reason before selecting |
+| `onDark` | Optional logo presentation hint in current catalogs |
+
+**Reuse-first flow:** read the catalog if present before requesting uploads. Select suitable images by `shows`,
+placement hints, dimensions and article context; view every selected photo before writing alt text. Vehicle photos
+must match the researched model year/generation; vague catalog labels do not establish that match. Do not reuse one
+photo twice in the article. Respect rights and the rejection rules in `resources/rules/image-brief.md`.
+
+The first user-facing list covers `IMG_HERO`, `IMG_FIG1`, `IMG_FIG2`, `IMG_PAIR1`, `IMG_PAIR2`. Mark reused slots
+"already in your library (ID …)" and request only missing slots. `hero` maps to `IMG_HERO`, `fig` to either full-width
+figure, and `pair` to either pair image; `store` and `logo` are separate dealer-section assets from the dealer JSON.
+Write each selected ID/URL into the corresponding `module.js` image's `apollo` field, with its viewed `alt`, dimensions
+and slot `desc`. The catalog's `shows` is not copied blindly as alt text.
+
+If the catalog is absent or no entries fit, request all missing article slots (possibly all five). Continue research
+and drafting while the user sources them. Unfilled slots keep `apollo: null` and render as placeholders in a DRAFT;
+filled slots retain their Apollo images. Run `images <job>` to verify selected URLs and actual dimensions and view the
+saved files. With all images filled and gates passing, `build <job> --final` produces the final package; new uploads
+are unnecessary when suitable existing images fill every slot.
 
 ## 2. Content module — `<job>/module.js` (CommonJS, the single source of truth for an article)
 Same shape as the proven Apollo modules (see `resources/examples/`), with:
