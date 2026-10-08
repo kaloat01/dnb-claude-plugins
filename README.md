@@ -14,6 +14,8 @@ Turns a dealer name + article title into a **publication-ready, compliance-revie
 - **Apollo package:** an HTML fragment, the site-wide CSS, Structured Data, the SEO fields and paste steps, plus a
   local preview.
 
+**First article? Follow [docs/QUICKSTART.md](docs/QUICKSTART.md).**
+
 ### Install (one time, about 2 minutes)
 1. Install **Node.js 18+**. On Windows: `winget install OpenJS.NodeJS.LTS`. On macOS: `brew install node`, or the
    LTS installer from nodejs.org.
