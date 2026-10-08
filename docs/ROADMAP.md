@@ -20,7 +20,6 @@
 1. A first full end-to-end article through the installed plugin, on a topic the dealer site does not already cover. Fix whatever it finds.
 2. Minor cleanups:
    - Make `shot` detect the full page height automatically (defaults are taller since v0.4).
-   - Make the banned-phrase gate match whole words.
    - Test on macOS.
 3. ~~Add the remaining Apollo dealers~~: done in v0.5 (all 8 Apollo dealers).
 4. Platform adapters:
