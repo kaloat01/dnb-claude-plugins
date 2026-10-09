@@ -46,7 +46,7 @@ statements ("Our service page lists…") or phrase them as "can" / "ask".
 *(Reviewers caught "close to I-64", "a short drive from VA-288", "Our team uses them…", "we also serve drivers from across
 the area", "line up a back-to-back drive".)*
 
-**R6. No dollar figures** unless they are OEM-published MSRP (labeled "MSRP", dated, model-year labeled, exclusions stated)
+**R6. No dollar figures** unless they are OEM-published MSRP (Toyota: **TSRP**; see `brand-terms.json`) (labeled "MSRP", dated, model-year labeled, exclusions stated)
 or dealer-published, current, with verbatim disclaimers. Trade-in and valuation topics never carry dollar figures.
 "What it costs" topics are answered with cost drivers (section 9). *(FTC and state dealer-advertising rules; see
 `compliance.md`.)*
@@ -181,7 +181,8 @@ exact phrase to the module's `allowPhrases`. Never paraphrase a legal line to do
 ## 8. Pricing policy
 
 - **Default: no dollar figures at all.** No dealer prices, option prices, payments, rebates, trade values or "save $X".
-- **MSRP only in comparisons**, and only when both OEMs publish it for the stated model year. Each figure: the word "MSRP",
+- **MSRP only in comparisons** (Toyota: **TSRP**, never "MSRP"; Mercedes-Benz: never "coupon", always "offer"; all brand
+  wording rules live in `brand-terms.json`), and only when both OEMs publish it for the stated model year. Each figure: the word "MSRP",
   the model year, the trim, the retrieval date ("as listed on MM/DD/YYYY"). Exclusions (destination, taxes, title,
   registration, options; "not dealer selling prices") appear in **the first bold answer that mentions price AND in the table
   note**. State each OEM's destination treatment exactly as published, or say it is not stated.

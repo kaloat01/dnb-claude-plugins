@@ -47,3 +47,8 @@
 - Dealer facts use div/span (Apollo's editor moves <div> groups out of <dl>); CSS also styles the structure already saved by Apollo.
 - Dealership layout = Bentley-style (user choice) for ALL dealers with a storefront photo: photo at natural shape, black Department band below the photo, two columns from 768px; text-only when no photo.
 - Logos wider than 1,000px are requested at 700px (Bentley Edison 541 KB -> 13 KB; fixes its logo not loading; Toyota/Ford/Lincoln lighter).
+
+## 2026-10-09 — v0.8: brand compliance terms ledger
+- New `resources/rules/brand-terms.json`: OEM wording rules with id, brand, banned term, replacement, severity, source, date. MB-001 Mercedes-Benz never "coupon" (use "Offer"/"Service Offer"); TOY-001 Toyota "TSRP" not "MSRP".
+- Build gate "Brand terms ledger" (copy, titles, meta, alt text, slug); dollar gate uses the brand price term (TSRP for Toyota).
+- Compliance reviewer reads the ledger (violation = P0) and proposes NEW LEDGER CANDIDATE rows; compliance.md §2b, rigor R6, SKILL rule 4 updated.

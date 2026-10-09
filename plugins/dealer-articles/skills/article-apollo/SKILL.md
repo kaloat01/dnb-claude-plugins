@@ -31,7 +31,9 @@ under the folder Claude Code was started in.
 1. **Evidence before prose.** Every fact comes from the job's source ledger (primary sources: OEM, owner's manuals, government, statute). No ledger row → don't write it.
 2. **Premise test first.** If the title's model year, number or claim isn't published by the OEM, stop and ask (4 of the last 5 titles failed this).
 3. **Never invent dealer facts:** no prices, ratings, awards, "certified/factory-trained technicians", urgency, guarantees, inventory or road-proximity claims. Attribute ("Our service page lists…") or turn into an ask.
-4. **No dollar figures** except labeled, dated, model-year MSRP in comparisons (exclusions stated). "What it costs" → cost drivers.
+4. **No dollar figures** except labeled, dated, model-year MSRP in comparisons (exclusions stated). Toyota uses **TSRP**,
+   never MSRP; Mercedes-Benz says **offer**, never coupon. All OEM wording rules: `${CLAUDE_PLUGIN_ROOT}/resources/rules/brand-terms.json`
+   (the build fails on violations; add a row whenever an OEM review fails something). "What it costs" → cost drivers.
 5. **Independent review before the user sees the article:** compliance reviewer + golden-geo reviewer; fix every P0/P1 (golden-geo BLOCKER = P0/P1, WARNING = P2). Writers never grade their own work.
 6. **Design = Editorial v2, identical for every dealer.** Brand color on links only (+ logo). Never "01, 02" numbering. Don't restyle.
 7. **Internal links only from the dealer's sitemap allow-list.** Phones/hours only from the dealer file (verified on the dealer's About Us page from a US location; call trackers swap numbers by geo). Prefer local numbers; if a department has no local number, use the number the About Us page shows for it (header/main line), even if toll-free. Never invent or guess a number.

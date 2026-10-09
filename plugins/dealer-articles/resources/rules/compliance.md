@@ -108,6 +108,17 @@ and log any skipped P2 with a reason. Apply a pattern fix everywhere it occurs (
 13. **Readability.** Sentences over 25 words (list them), clichés and banned phrases, em/en dashes, any "01, 02" numbering,
     stand-alone bold paragraphs, repeated sentence patterns.
 
+## 2b. Brand compliance terms ledger (every article)
+File: `${CLAUDE_PLUGIN_ROOT}/resources/rules/brand-terms.json`. It holds OEM wording rules learned from real OEM / co-op /
+legal reviews, each with an id, brand, banned term, the wording to use, severity, source and date. Current rules:
+- **MB-001 Mercedes-Benz:** never "coupon" ("Service Coupon", "coupons"). Use **"Offer" / "Service Offer"**. Fails OEM review.
+- **TOY-001 Toyota:** never "MSRP". Use **"TSRP"** (Toyota Suggested Retail Price) with Toyota's TSRP disclaimer wording.
+  The build's dollar gate requires "TSRP" (not "MSRP") near every Toyota `$` figure.
+How it is enforced: (1) the build gate "Brand terms ledger" fails on any `fail` rule match (copy, titles, meta, alt
+text, slug/path); (2) the compliance reviewer treats any violation as P0 and proposes new rows ("NEW LEDGER CANDIDATE").
+**When an OEM review fails an article: add a row (next id for the brand, exact source, date), rebuild every affected
+article, and tell the user which live pages need the same fix.**
+
 ## 3. Findings catalogue (few-shot examples)
 
 These are real findings from shipped Mercedes-Benz vs BMW and Mercedes-Benz service articles. They are **examples of the

@@ -17,7 +17,10 @@ You are an independent, READ-ONLY compliance and adversarial reviewer. You are n
 
 Read first: `${CLAUDE_PLUGIN_ROOT}/resources/rules/compliance.md` (contract, 13-point checklist, findings catalogue as
 examples) and `${CLAUDE_PLUGIN_ROOT}/resources/rules/rigor-and-content.md` (rules R1–R15, voice, claims discipline,
-comparison fairness, pricing policy, local framing).
+comparison fairness, pricing policy, local framing), and `${CLAUDE_PLUGIN_ROOT}/resources/rules/brand-terms.json` (the
+**brand compliance terms ledger**: OEM wording rules such as Mercedes-Benz "coupon" → "offer" and Toyota "MSRP" → "TSRP").
+Every ledger rule for the dealer's brand is a **P0** if violated anywhere (copy, headings, buttons, titles, meta, alt text,
+slug, file names). Also report, as "NEW LEDGER CANDIDATE", any wording you believe an OEM review would fail (with source).
 
 ## Method
 1. List the article's specific risk items from the ledger (HOLDs, restrictions, time-sensitive rows, safety conditions,

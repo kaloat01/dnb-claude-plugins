@@ -13,6 +13,11 @@ const { pathToFileURL } = require('url');
 
 const ROOT = path.resolve(__dirname, '..');
 const RES = path.join(ROOT, 'resources');
+// brand compliance terms ledger: banned OEM terms + the wording to use instead (e.g. Mercedes-Benz "coupon" → "offer",
+// Toyota "MSRP" → "TSRP"). Every OEM/compliance review finding becomes a row here; the build gate enforces it.
+function loadTermsLedger() { try { return JSON.parse(fs.readFileSync(path.join(RES, 'rules', 'brand-terms.json'), 'utf8')); } catch (e) { return { rules: [], priceTerms: {} }; } }
+function brandTermRules(D) { const L = loadTermsLedger(); const b = String(D.brand || '').toLowerCase(); return (L.rules || []).filter((r) => (r.brands || []).some((x) => x.toLowerCase() === b) || (r.dealers || []).includes(D.key) || (r.brands || []).includes('*')); }
+function priceTerm(D) { const L = loadTermsLedger(); return ((L.priceTerms || {})[D.brand]) || 'MSRP'; }
 const APOLLO_IMG = 'https://service.secureoffersites.com/images/GetLibraryImage?fileNameOrId=';
 const GOOGLE_FONT = 'https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap';
 
@@ -739,8 +744,15 @@ ${shellClose}
     gate('Package phones use Apollo tags', [...(hard.length ? [`hard-coded ${hard.join('/')} number in package HTML`] : []), ...(telHard.length ? [`hard-coded tel: link ${telHard[0]}`] : [])]); }
   gate('No toll-free numbers', tollFree.length ? [`8xx number not in the dealer file: ${tollFree[0]}`] : []);
   const dollars = [];
-  for (const m of allText.matchAll(/\$\s?\d[\d,.]*/g)) { const ctx = allText.slice(Math.max(0, m.index - 140), m.index + 140); if (!mod.allowMsrp || !/MSRP/.test(ctx)) dollars.push(m[0]); }
-  gate('$ figures only as MSRP (allowMsrp)', dollars.length ? [`${dollars.slice(0, 5).join(', ')} without allowMsrp + "MSRP" within 140 chars`] : []);
+  const PT = priceTerm(D);
+  for (const m of allText.matchAll(/\$\s?\d[\d,.]*/g)) { const ctx = allText.slice(Math.max(0, m.index - 140), m.index + 140); if (!mod.allowMsrp || !new RegExp('\\b' + PT + '\\b').test(ctx)) dollars.push(m[0]); }
+  gate(`$ figures only as ${PT} (allowMsrp)`, dollars.length ? [`${dollars.slice(0, 5).join(', ')} without allowMsrp + "${PT}" within 140 chars`] : []);
+  // brand compliance terms ledger (copy, titles, meta, alt text, slug/path)
+  { const scopeText = allText + ' ' + (mod.slug || '') + ' ' + (mod.path || '') + ' ' + Object.values(images).map((v) => (v && v.alt) || '').join(' ');
+    const termHits = brandTermRules(D).filter((r) => r.severity !== 'warn' && new RegExp(r.match, r.flags || 'i').test(scopeText)).map((r) => `${r.id}: "${(scopeText.match(new RegExp(r.match, r.flags || 'i')) || [''])[0]}" → use ${r.use}`);
+    gate('Brand terms ledger', termHits, `${brandTermRules(D).length} rule(s) for ${D.brand}`);
+    const termWarn = brandTermRules(D).filter((r) => r.severity === 'warn' && new RegExp(r.match, r.flags || 'i').test(scopeText)).map((r) => `${r.id}: ${r.use}`);
+    if (termWarn.length) warnG('Brand terms ledger (advisory)', termWarn); }
   const norm = (p) => (p.length > 1 ? p.replace(/\/+$/, '') : p);
   const links = [];
   for (const m of frag.matchAll(/href="([^"]*)"/g)) {

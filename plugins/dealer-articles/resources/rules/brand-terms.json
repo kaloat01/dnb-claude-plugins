@@ -1,0 +1,36 @@
+{
+  "name": "Brand compliance terms ledger",
+  "updated": "2026-10-09",
+  "howToUse": "Every OEM / co-op / legal review finding about wording becomes a row here. The build gate 'Brand terms ledger' fails the build when a rule with severity 'fail' matches the article copy, titles, meta, image alt text or slug/path; 'warn' rules print an advisory. The compliance reviewer agent also checks this file. Add new rows with the next id for the brand, the exact source and the date.",
+  "priceTerms": {
+    "Toyota": "TSRP"
+  },
+  "rules": [
+    {
+      "id": "MB-001",
+      "brands": ["Mercedes-Benz"],
+      "term": "coupon",
+      "match": "\\bcoupons?\\b",
+      "flags": "i",
+      "use": "\"Offer\" or \"Service Offer\" (e.g. \"Service Offers\", \"View Service Offers\")",
+      "severity": "fail",
+      "scope": "all copy, headings, buttons, titles, meta, alt text, URLs/slugs, file names",
+      "reason": "Mercedes-Benz OEM advertising review fails the word \"coupon\".",
+      "source": "Client OEM compliance review result relayed by Nasko, 10/09/2026",
+      "added": "2026-10-09"
+    },
+    {
+      "id": "TOY-001",
+      "brands": ["Toyota"],
+      "term": "MSRP",
+      "match": "\\bMSRPs?\\b",
+      "flags": "",
+      "use": "\"TSRP\" (Toyota Suggested Retail Price), with Toyota's TSRP disclaimer wording",
+      "severity": "fail",
+      "scope": "all copy, tables, headings, titles, meta, alt text",
+      "reason": "Toyota price references use TSRP, not MSRP.",
+      "source": "Client OEM compliance guidance relayed by Nasko, 10/09/2026",
+      "added": "2026-10-09"
+    }
+  ]
+}
