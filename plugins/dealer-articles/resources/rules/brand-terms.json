@@ -36,7 +36,7 @@
       "reason": "Toyota price references use TSRP, not MSRP.",
       "source": "Client OEM compliance guidance relayed by Nasko, 10/09/2026. Supporting: Southeast Toyota window sticker \"TOTAL SUGGESTED RETAIL PRICE\" (https://sync.dealeralchemist.com/ddoa/monroney/5TDYRKEC4TS326778); Toyota dealer sites use TSRP since ~10/2023. Note: toyota.com model pages still say \"Starting MSRP\" (https://www.toyota.com/camry/). Toyota Dealer Advertising Covenant (TDAC) is login-only.",
       "added": "2026-10-09",
-      "confidence": "HIGH (client rule); scope by region to confirm"
+      "confidence": "HIGH (client rule; Nasko 10/09: always TSRP for every Toyota dealer)"
     },
     {
       "id": "MB-002",
