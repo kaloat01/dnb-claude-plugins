@@ -8,7 +8,9 @@
   "rules": [
     {
       "id": "MB-001",
-      "brands": ["Mercedes-Benz"],
+      "brands": [
+        "Mercedes-Benz"
+      ],
       "term": "coupon",
       "match": "\\bcoupons?\\b",
       "flags": "i",
@@ -16,21 +18,74 @@
       "severity": "fail",
       "scope": "all copy, headings, buttons, titles, meta, alt text, URLs/slugs, file names",
       "reason": "Mercedes-Benz OEM advertising review fails the word \"coupon\".",
-      "source": "Client OEM compliance review result relayed by Nasko, 10/09/2026",
-      "added": "2026-10-09"
+      "source": "Client OEM compliance review relayed by Nasko, 10/09/2026. Supporting: Mercedes-Benz USA Brand Communication Standards Rev.10 (Aug 2015) p.6 lists \"Coupon\" among terms dealers may not use (public copy: https://retrocdn.net/images/0/08/MercedesBenz_BrandCommunicationStandards_2015-08-20.pdf); current standards are login-only (MBUSA dealer portal).",
+      "added": "2026-10-09",
+      "confidence": "HIGH"
     },
     {
       "id": "TOY-001",
-      "brands": ["Toyota"],
+      "brands": [
+        "Toyota"
+      ],
       "term": "MSRP",
       "match": "\\bMSRPs?\\b",
       "flags": "",
-      "use": "\"TSRP\" (Toyota Suggested Retail Price), with Toyota's TSRP disclaimer wording",
+      "use": "\"TSRP\" (Total Suggested Retail Price: MSRP + distributor-installed options + delivery, processing and handling), with the region's TSRP disclaimer; never label a TSRP figure \"MSRP\"",
       "severity": "fail",
       "scope": "all copy, tables, headings, titles, meta, alt text",
       "reason": "Toyota price references use TSRP, not MSRP.",
-      "source": "Client OEM compliance guidance relayed by Nasko, 10/09/2026",
+      "source": "Client OEM compliance guidance relayed by Nasko, 10/09/2026. Supporting: Southeast Toyota window sticker \"TOTAL SUGGESTED RETAIL PRICE\" (https://sync.dealeralchemist.com/ddoa/monroney/5TDYRKEC4TS326778); Toyota dealer sites use TSRP since ~10/2023. Note: toyota.com model pages still say \"Starting MSRP\" (https://www.toyota.com/camry/). Toyota Dealer Advertising Covenant (TDAC) is login-only.",
+      "added": "2026-10-09",
+      "confidence": "HIGH (client rule); scope by region to confirm"
+    },
+    {
+      "id": "MB-002",
+      "brands": [
+        "Mercedes-Benz"
+      ],
+      "term": "distress / pressure wording",
+      "match": "\\b(clearance|liquidation|blow-?out|overstock(ed)?|tent sale|super ?store|factory incentives?)\\b",
+      "flags": "i",
+      "use": "neutral wording; describe the actual offer",
+      "severity": "warn",
+      "scope": "all copy",
+      "reason": "MBUSA standards ban distress wording in dealer advertising.",
+      "source": "MBUSA Brand Communication Standards Rev.10 (2015) p.6/p.20 (public copy above); current version login-only",
+      "confidence": "MED",
+      "added": "2026-10-09"
+    },
+    {
+      "id": "MB-003",
+      "brands": [
+        "Mercedes-Benz"
+      ],
+      "term": "pricing-claim wording",
+      "match": "\\b(dealer cost|invoice price|certificates?|rebates?|cash back)\\b",
+      "flags": "i",
+      "use": "avoid; articles carry no dealer pricing",
+      "severity": "warn",
+      "scope": "all copy",
+      "reason": "MBUSA standards list these among terms dealers may not use.",
+      "source": "MBUSA Brand Communication Standards Rev.10 (2015) p.6",
+      "confidence": "MED",
+      "added": "2026-10-09"
+    },
+    {
+      "id": "MB-004",
+      "brands": [
+        "Mercedes-Benz"
+      ],
+      "term": "unsubstantiated superlatives",
+      "match": "\\b(the best|largest|the first|the only|#1|number one)\\b",
+      "flags": "i",
+      "use": "remove, or cite the substantiating source in the copy",
+      "severity": "warn",
+      "scope": "all copy",
+      "reason": "MBUSA requires substantiation and a source disclaimer for superlatives.",
+      "source": "MBUSA Brand Communication Standards Rev.10 (2015) p.20",
+      "confidence": "MED",
       "added": "2026-10-09"
     }
-  ]
+  ],
+  "research": "Sources and open questions: SALES_ARTICLES/2026.10.09-COMPLIANCE-TERMS-LEDGER.md (project). OEM ad standards / co-op portals are login-only (MBUSA, Toyota TDAC, Ansira co-op for Ford/Honda, Mazda co-op): ask the client for current PDFs to replace 2015 citations."
 }

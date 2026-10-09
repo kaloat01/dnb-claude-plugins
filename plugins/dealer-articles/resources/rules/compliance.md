@@ -112,7 +112,8 @@ and log any skipped P2 with a reason. Apply a pattern fix everywhere it occurs (
 File: `${CLAUDE_PLUGIN_ROOT}/resources/rules/brand-terms.json`. It holds OEM wording rules learned from real OEM / co-op /
 legal reviews, each with an id, brand, banned term, the wording to use, severity, source and date. Current rules:
 - **MB-001 Mercedes-Benz:** never "coupon" ("Service Coupon", "coupons"). Use **"Offer" / "Service Offer"**. Fails OEM review.
-- **TOY-001 Toyota:** never "MSRP". Use **"TSRP"** (Toyota Suggested Retail Price) with Toyota's TSRP disclaimer wording.
+- **TOY-001 Toyota:** never "MSRP". Use **"TSRP"** (Total Suggested Retail Price = MSRP + distributor options + delivery, processing and handling) with the region's TSRP disclaimer; never label a TSRP figure "MSRP".
+- **MB-002/003/004 (advisory):** distress wording (clearance, blowout…), pricing-claim words (dealer cost, invoice, rebates, cash back) and unsubstantiated superlatives (the best, the only, #1) are flagged for review.
   The build's dollar gate requires "TSRP" (not "MSRP") near every Toyota `$` figure.
 How it is enforced: (1) the build gate "Brand terms ledger" fails on any `fail` rule match (copy, titles, meta, alt
 text, slug/path); (2) the compliance reviewer treats any violation as P0 and proposes new rows ("NEW LEDGER CANDIDATE").
