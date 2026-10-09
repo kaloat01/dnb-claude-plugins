@@ -77,6 +77,8 @@ function loadDealer(k) {
     depts: j.departments, routes, areas: j.areas || [], excluded: j.excluded || [], bans: j.bans || [],
     directions: routes.directions || null, // builder-owned buttons are emitted only for routes the dealer file has
     style: j.style || {}, apollo: j.apollo || {}, shared: j.images || {}, file: f,
+    allowPhrases: j.allowPhrases || [], // official OEM program names that contain a banned word (e.g. 'Premier Prepaid Maintenance')
+    di: j.di || null, // DealerInspire: { uploads, template: post|composer, postLayout, category, parentPath, shortcodes{dept:option}, hoursDepartments{dept:label} }
   };
 }
 function loadSitemap(key) {
@@ -112,7 +114,8 @@ function tokens(D) {
   const st = D.style || {};
   const link = st.linkColor || BASE.ink;
   const u = !!st.linkUnderline;
-  return Object.assign({}, BASE, {
+  const f = st.fonts || {}; // optional brand font stacks (e.g. Mercedes-Benz Corporate A/S, matching the live Mercedes articles); fallbacks stay Georgia/Roboto
+  return Object.assign({}, BASE, f.head ? { head: f.head } : {}, f.body ? { body: f.body } : {}, {
     link: u ? BASE.ink : link,
     linkSoft: u ? BASE.ink : hexRgba(link, 0.35),
     linkHover: st.linkHover || link,
@@ -367,7 +370,85 @@ ${on(x('.~-glance a:hover', '.~-faq a:hover', '.~-dealer-facts a:hover', '.~-dea
 ${R} .${P}-faq summary:focus-visible,${R} a:focus-visible{outline:2px solid var(${V}-ink);outline-offset:3px}
 `;
 }
-const fullCss = (D) => { const B = tokens(D); return css(D.P, B) + (D.platform === 'apollo' ? cssApollo(D.P, B) : ''); };
+/* DealerInspire (WordPress) hardening, proven on the Mercedes rooftops (DI builder 09/15–10/07): the embed is pasted in the
+ * Classic Text tab (posts) or a Page Composer "Use WordPress Content" row (pages); wpautop wraps inline runs in <p> and turns
+ * newlines into <br>; the theme sets html{font-size:10px} (px only) and colors/underlines every link; Page Composer sizes
+ * headings under #di-page-composer. Shortcode output ([di_option]/[di_hours]) is linked/condensed by diScript(). */
+function cssDI(D, B) {
+  const P = D.P;
+  const R = `.${P}-art`;
+  const V = `--${P}a`;
+  const C = `#di-page-composer ${R}`;
+  const post = D.di && D.di.template === 'post';
+  const contents = ['pair', 'stats', 'stat', 'more-grid', 'more-card', 'ctas', 'meta', 'toc ol', 'glance ul', 'dealer-in', 'dealer-media', 'dealer-plaque', 'dealer-facts', 'fact', 'dealer-values', 'faq', 'faq-grid', 'hero', 'fig', 'table-scroll', 'hours-inline'];
+  return `
+/* DealerInspire hardening (wpautop + theme); scoped to .${P}-art */
+${R} p:empty{display:none}
+${R} p:has(script){display:none!important;margin:0!important}
+${R}>p:last-child:not(.${P}-fine){display:none!important}
+${R} br{display:none}
+${contents.map((c) => `${R} .${P}-${c}>p`).join(',')},${R} .${P}-inline-cta>p:empty,${R} .${P}-dealer-body>p:empty,${R} .${P}-closer-in>p:empty{display:contents}
+.fullcontentrow:has(${R}){padding:0!important}
+body:has(${R}) #di-page-composer{margin-top:0!important}
+body:has(${R}) .modelpagebuilder.contentcontainer{margin-top:0!important}
+body:has(${R}) .entry-title{display:none!important}
+${post ? `.col-sm-8:has(${R}){width:100%!important;float:none!important}
+.col-sm-8:has(${R})+.col-sm-4{display:none!important}
+body:has(${R}) .post-content>.meta-below-title{display:none!important}
+body:has(${R}) .post-content{padding-top:0!important}
+` : ''}${R} h1,${R} h2,${R} h3{font-family:${B.head};font-weight:${B.headWeight};text-transform:none;letter-spacing:0}
+${R} .${P}-body h3{font-family:${B.body};font-weight:700}
+${C} h1.${P}-title,${R} h1.${P}-title{font-size:32px}
+${C} .${P}-body h2{font-size:26px}
+${C} .${P}-closer h2{font-size:28px}
+${C} .${P}-dealer h2{font-size:24px}
+${C} a,${R} a{text-decoration:none!important}
+${C} .${P}-body a:not(.${P}-btn),${C} .${P}-glance a,${C} .${P}-faq a,${C} .${P}-dealer-facts a,${C} .${P}-dealer-values a,${R} .${P}-body a:not(.${P}-btn),${R} .${P}-glance a,${R} .${P}-faq a,${R} .${P}-dealer-facts a,${R} .${P}-dealer-values a{color:var(${V}-link)!important;-webkit-text-fill-color:var(${V}-link)!important;text-decoration:underline!important;text-decoration-color:var(${V}-link-soft)!important;text-underline-offset:3px}
+${C} .${P}-toc a,${R} .${P}-toc a,${R} a.${P}-more-link,${C} a.${P}-more-link{color:var(${V}-ink)!important;-webkit-text-fill-color:var(${V}-ink)!important}
+${R} a.${P}-btn-ink,${R} a.${P}-btn-ink:hover,${C} a.${P}-btn-ink,${R} a.${P}-btn-ghost,${R} a.${P}-btn-ghost:hover,${C} a.${P}-btn-ghost{color:#ffffff!important;-webkit-text-fill-color:#ffffff!important;text-decoration:none!important}
+${R} a.${P}-btn-white,${R} a.${P}-btn-white:hover,${C} a.${P}-btn-white,${R} a.${P}-btn-outline,${R} a.${P}-btn-outline:hover,${C} a.${P}-btn-outline{color:#111111!important;-webkit-text-fill-color:#111111!important;text-decoration:none!important}
+${R} .${P}-phone-inline a,${C} .${P}-phone-inline a{color:var(${V}-link)!important;-webkit-text-fill-color:var(${V}-link)!important;text-decoration:none!important}
+${R} .${P}-closer-phone a,${R} .${P}-closer-phone .${P}-phone-inline a,${C} .${P}-closer-phone .${P}-phone-inline a{color:#ffffff!important;-webkit-text-fill-color:#ffffff!important;text-decoration:none!important}
+${R} .${P}-hours-inline{display:flex;flex-wrap:wrap;align-items:baseline;gap:2px 8px}
+${R} .${P}-hours-inline ul.hours{display:flex;flex-wrap:wrap;gap:2px 14px;margin:0;padding:0;list-style:none;max-width:none;font-size:15px}
+${R} .${P}-hours-inline ul.hours li{display:flex;gap:5px;padding:0;margin:0;border:0;background:none;white-space:nowrap}
+${R} .${P}-hours-line{margin:0;font-size:15px;line-height:1.5}
+${R} .${P}-hours-src{display:none!important}
+${R} .${P}-closer-hours,${R} .${P}-closer-hours .${P}-hours-line{justify-content:center;font-size:13px;color:rgba(255,255,255,0.7)}
+${R} .${P}-closer-hours{margin:0 0 18px}
+@media (min-width:768px){${C} h1.${P}-title,${R} h1.${P}-title{font-size:40px}${C} .${P}-body h2{font-size:30px}${C} .${P}-closer h2{font-size:36px}${C} .${P}-dealer h2{font-size:28px}}
+@media (min-width:1100px){${C} h1.${P}-title,${R} h1.${P}-title{font-size:${B.h1}px}${C} .${P}-body h2{font-size:${B.h2}px}}
+`;
+}
+/* phone + hours helper for DealerInspire shortcode output (no tracking): [di_option] prints a plain number → tel: link;
+ * [di_hours] prints <ul class="hours"><li>Mon<span class="right"> 7:00 AM - 7:00 PM</span></li>… → one condensed line */
+function diScript(P) {
+  return `<script>(function(){var R=".${P}-art";function linkPhones(){var slots=document.querySelectorAll(R+" .${P}-phone-inline");Array.prototype.forEach.call(slots,function(slot){if(slot.querySelector('a[href^="tel:"]')){return}var w=document.createTreeWalker(slot,NodeFilter.SHOW_TEXT);var re=/\\(?\\d{3}\\)?[-.\\s]?\\d{3}[-.\\s]?\\d{4}/;var node,hit=null,m=null;while((node=w.nextNode())){m=re.exec(node.nodeValue);if(m){hit=node;break}}if(!hit){return}var t=hit.nodeValue,i=m.index,num=m[0],d=num.replace(/\\D/g,"");if(d.length===10){d="1"+d}var a=document.createElement("a");a.setAttribute("href","tel:+"+d);a.setAttribute("data-phone",slot.getAttribute("data-dept")||"");a.appendChild(document.createTextNode(num));var pn=hit.parentNode;pn.insertBefore(document.createTextNode(t.slice(0,i)),hit);pn.insertBefore(a,hit);pn.insertBefore(document.createTextNode(t.slice(i+num.length)),hit);pn.removeChild(hit)})}function condense(){var bs=document.querySelectorAll(R+" .${P}-hours-inline");Array.prototype.forEach.call(bs,function(b){var ul=b.querySelector("ul.hours");if(!ul||b.querySelector(".${P}-hours-line")){return}var rows=[].map.call(ul.querySelectorAll("li"),function(li){var sp=li.querySelector(".right");var tm=sp?(sp.textContent||"").trim():"";var cl=li.cloneNode(true);var s2=cl.querySelector(".right");if(s2){s2.parentNode.removeChild(s2)}return{d:(cl.textContent||"").trim(),t:tm}});if(!rows.length){return}var gs=[],cur=null;rows.forEach(function(r){if(cur&&cur.t===r.t){cur.e=r.d}else{cur={s:r.d,e:null,t:r.t};gs.push(cur)}});var parts=gs.map(function(g){return(g.e?g.s+" to "+g.e:g.s)+": "+g.t});var out=document.createElement("span");out.className="${P}-hours-line";out.appendChild(document.createTextNode(parts.join("  \\u00b7  ")));ul.parentNode.insertBefore(out,ul);ul.className="hours ${P}-hours-src"})}function boot(){linkPhones();condense()}if(document.readyState!=="loading"){boot()}else{document.addEventListener("DOMContentLoaded",boot)}})();</script>`;
+}
+/* WordPress wpautop (port used by the project's DI render QA): what the Text tab / wp_html does to the pasted embed */
+function wpautop(pee) {
+  const bl = 'table|thead|tfoot|caption|col|colgroup|tbody|tr|td|th|div|dl|dd|dt|ul|ol|li|pre|form|map|area|blockquote|address|math|style|p|h[1-6]|hr|fieldset|legend|section|article|aside|hgroup|header|footer|nav|figure|figcaption|details|menu|summary';
+  if (pee.trim() === '') return '';
+  pee = pee + '\n';
+  pee = pee.replace(new RegExp('(<(?:' + bl + ')(?:\\s[^>]*)?>)', 'g'), '\n$1');
+  pee = pee.replace(new RegExp('(</(?:' + bl + ')>)', 'g'), '$1\n\n');
+  pee = pee.replace(/\r\n|\r/g, '\n').replace(/\n\n+/g, '\n\n');
+  pee = pee.split(/\n\s*\n/).filter((x) => x.trim() !== '').map((t) => '<p>' + t.replace(/^\s+|\s+$/g, '') + '</p>\n').join('');
+  pee = pee.replace(/<p>\s*<\/p>/g, '');
+  pee = pee.replace(new RegExp('<p>\\s*(</?(?:' + bl + ')(?:\\s[^>]*)?>)\\s*</p>', 'g'), '$1');
+  pee = pee.replace(new RegExp('<p>\\s*(</?(?:' + bl + ')(?:\\s[^>]*)?>)', 'g'), '$1');
+  pee = pee.replace(new RegExp('(</?(?:' + bl + ')(?:\\s[^>]*)?>)\\s*</p>', 'g'), '$1');
+  pee = pee.replace(/\n(?!<)/g, '<br />\n');
+  return pee.trim();
+}
+/* [di_hours] as DealerInspire renders it (rows from the dealer file; days without hours = Closed) */
+function diHoursUl(rows) {
+  const open = {};
+  (rows || []).forEach(([days, o, c]) => days.forEach((d) => { open[d] = `${t12(o)} - ${t12(c)}`; }));
+  return `<ul class="hours">${Object.keys(DAY).map((d) => `<li>${DAY[d]}<span class="right"> ${open[d] || 'Closed'}</span></li>`).join('')}</ul>`;
+}
+const DI_UPLOADS = /^https:\/\/di-uploads-pod\d+\.dealerinspire\.com\/[^/]+\/uploads\/\d{4}\/\d{2}\//i;
+const fullCss = (D) => { const B = tokens(D); return css(D.P, B) + (D.platform === 'apollo' ? cssApollo(D.P, B) : D.platform === 'dealerinspire' ? cssDI(D, B) : ''); };
 function sitewideCss(D) {
   const min = minCss(fullCss(D));
   const hash = crypto.createHash('sha1').update(min).digest('hex').slice(0, 8);
@@ -378,15 +459,15 @@ function sitewideCss(D) {
   return { min, hash, text };
 }
 function splitTop(s) { const out = []; let d = 0, cur = ''; for (const ch of s) { if (ch === '(') d++; if (ch === ')') d--; if (ch === ',' && !d) { out.push(cur); cur = ''; } else cur += ch; } out.push(cur); return out; }
-function cssScopeIssues(min, P) {
-  const roots = [`.${P}-art`, `body .${P}-art`, `body:has(.${P}-art)`, `#custompageblock:has(.${P}-art)`, `#custompageblock .editor:has(.${P}-art)`];
+function cssScopeIssues(min, P, extraRoots = []) {
+  const roots = [`.${P}-art`, `body .${P}-art`, `body:has(.${P}-art)`, `#custompageblock:has(.${P}-art)`, `#custompageblock .editor:has(.${P}-art)`, ...extraRoots];
   const bad = [];
   const re = /([^{}]+)\{/g;
   let m;
   while ((m = re.exec(min))) {
     const pre = m[1].trim();
     if (!pre || pre.startsWith('@')) continue;
-    for (const sel of splitTop(pre).map((s) => s.trim())) if (!roots.some((r) => sel === r || (sel.startsWith(r) && /^[ .:[>]/.test(sel.slice(r.length))))) bad.push(sel);
+    for (const sel of splitTop(pre).map((s) => s.trim())) if (!roots.some((r) => sel === r || (sel.startsWith(r) && /^[ .:[>+~]/.test(sel.slice(r.length))))) bad.push(sel);
   }
   return bad;
 }
@@ -470,6 +551,10 @@ function build(mod, D, job, opts = {}) {
   if (!dept) die(`❌ dept "${mod.dept}" not in dealer ${D.key} (has: ${Object.keys(D.depts).join(', ')})`);
   const cta = mod.cta || dept.cta;
   const images = Object.assign({}, D.shared, mod.images);
+  const isDI = D.platform === 'dealerinspire';
+  // DealerInspire: images are WordPress Media Library URLs in `di`; internally `apollo` carries the platform image value
+  // (an Apollo id/URL, or the DealerInspire uploads URL), so the shared Editorial v2 code path stays one code path.
+  if (isDI) for (const k of Object.keys(images)) if (images[k]) images[k] = Object.assign({}, images[k], { apollo: images[k].di || null });
   // dealer images are optional: STORE without Apollo id = text-only dealership section; LOGO without = name band
   const hasLogo = !!(images.LOGO && images.LOGO.apollo);
   // oversized library logos (e.g. 7520px / 541 KB) are requested at 700px wide (Apollo resizes; ~10-80 KB, transparency kept)
@@ -489,21 +574,30 @@ function build(mod, D, job, opts = {}) {
     if (!im) die(`❌ image "${key}" is used but not defined in module.images or dealer images`);
     const u = apolloUrl(im.apollo, im.w);
     if (u) return u;
-    return mode === 'preview' ? placeholderSvg(key, im, key === mod.hero) : null;
+    return mode === 'preview' || mode === 'dipreview' ? placeholderSvg(key, im, key === mod.hero) : null;
   }
   function imgTag(key, mode, extra) {
     const im = images[key];
-    const src = img(key, mode) || `MISSING-APOLLO-ID-${key}`;
+    const src = img(key, mode) || `${isDI ? 'MISSING-DI-IMAGE-' : 'MISSING-APOLLO-ID-'}${key}`;
     return `<img src="${esc(src)}" alt="${esc(im.alt || '')}"${im.w ? ` width="${im.w}" height="${im.h}"` : ''}${extra === 'eager' ? ' fetchpriority="high"' : ' loading="lazy"'} decoding="async"${extra && extra !== 'eager' ? ` class="${extra}"` : ''}>`;
   }
   // a department phone may be null (e.g. only a toll-free number exists): never print or link one, never fall back
   // Apollo merge tags (APOLLO-TAGS standard, 10/07): in the PACKAGE html every sales number is #SalesNumber and every
   // service number #ServiceNumber (Apollo swaps in the dealer's number); the preview shows real numbers; Structured
   // Data always keeps real numbers (tags are not replaced there and break the JSON-LD).
+  // DealerInspire: phones are [di_option] shortcodes (verified per site in di.shortcodes; diScript links them), hours are
+  // [di_hours]; the 'dipreview' mode renders exactly the paste markup with placeholder images (shortcodes substituted later).
   let phoneMode = 'preview';
-  const TAGS = { sales: '#SalesNumber', service: '#ServiceNumber', parts: '#PartsNumber' };
+  const TAGS = isDI ? Object.assign({}, (D.di && D.di.shortcodes) || {}) : { sales: '#SalesNumber', service: '#ServiceNumber', parts: '#PartsNumber' };
+  const pkgMode = () => phoneMode === 'package' || phoneMode === 'dipreview';
   const tagFor = (d) => { const k = Object.keys(D.depts || {}).find((x) => D.depts[x] === d); return k && TAGS[k]; };
-  const phoneLink = (d) => { if (!(d && d.phone)) return ''; const t = phoneMode === 'package' && tagFor(d); return t ? `<a href="tel:${t}">${t}</a>` : `<a href="${telHref(d.phone)}">${d.phone}</a>`; };
+  const phoneLink = (d) => {
+    if (!(d && d.phone)) return '';
+    const t = pkgMode() && tagFor(d);
+    if (t && isDI) return `<span class="${P}-phone-inline" data-dept="${Object.keys(D.depts).find((x) => D.depts[x] === d)}">[di_option option="${t}"]</span>`;
+    return t ? `<a href="tel:${t}">${t}</a>` : `<a href="${telHref(d.phone)}">${d.phone}</a>`;
+  };
+  const diHrs = () => isDI && pkgMode() && D.di && D.di.hoursDepartments && D.di.hoursDepartments[mod.dept];
   const mainLink = () => { const same = Object.values(D.depts || {}).find((d) => d && d.phone && digits10(d.phone) === digits10(D.mainPhone)); return same ? phoneLink(same) : `<a href="${telHref(D.mainPhone)}">${D.mainPhone}</a>`; };
   const phoneMiss = new Map();
   const tokPhone = (t, d, name) => { if (d && d.phone) return phoneLink(d); phoneMiss.set(t, `${t}: token for a dept with no phone (${name})`); return t; };
@@ -563,14 +657,15 @@ function build(mod, D, job, opts = {}) {
     const otherDept = Object.entries(D.depts).find(([k, d]) => k !== mod.dept && d && d.phone);
     const other = ds.other ? [ds.otherLabel || 'Main line', phoneLink(ds.other)]
       // package: a main line that is not a department number has no Apollo tag, so show the other department (tagged) instead
-      : D.mainPhone && !(phoneMode === 'package' && !Object.values(D.depts || {}).some((d) => d && d.phone && digits10(d.phone) === digits10(D.mainPhone))) ? [ds.otherLabel || 'Main line', mainLink()]
+      : D.mainPhone && !(pkgMode() && !Object.values(D.depts || {}).some((d) => d && d.phone && digits10(d.phone) === digits10(D.mainPhone))) ? [ds.otherLabel || 'Main line', mainLink()]
         : otherDept ? [otherDept[1].label, phoneLink(otherDept[1])] : null;
     // logo: wide lockup alone; small emblem (<300 px) + name band; no Apollo logo = name band only;
     // LOGO.onDark (white artwork) = logo on the Editorial v2 black brand band (as the Mercedes white star)
     const logoImg = hasLogo ? imgTag('LOGO', mode, `${P}-dealer-logo${logoSmall ? ` ${P}-dealer-logo-sm` : ''}`) : '';
     const logo = (hasLogo && images.LOGO.onDark ? `<div class="${P}-dealer-band">${logoImg}</div>` : logoImg) + (hasLogo && !logoSmall ? '' : `<div class="${P}-dealer-name">${esc(D.name)}</div>`);
-    const facts = [['Address', `${D.street}, ${D.city}, ${D.region} ${D.zip}`], dept.phone && [dept.label, phoneLink(dept)], hrs(dept) && [`${dept.label} hours`, hrs(dept).replace(/ {2}· {2}/g, '<br>')], other]
-      .filter(Boolean).map(([t, d]) => `<div class="${P}-fact"><span class="${P}-fact-k">${t}</span><span class="${P}-fact-v">${d}</span></div>`).join('');
+    const hoursFact = diHrs() ? [`${dept.label} hours`, `[di_hours department="${diHrs()}"]`, `${P}-hours-inline`] : hrs(dept) && [`${dept.label} hours`, hrs(dept).replace(/ {2}· {2}/g, '<br>')];
+    const facts = [['Address', `${D.street}, ${D.city}, ${D.region} ${D.zip}`], dept.phone && [dept.label, phoneLink(dept)], hoursFact, other]
+      .filter(Boolean).map(([t, d, cls]) => cls ? `<div class="${P}-fact"><span class="${P}-fact-k">${t}</span><div class="${P}-fact-v ${cls}">${d}</div></div>` : `<div class="${P}-fact"><span class="${P}-fact-k">${t}</span><span class="${P}-fact-v">${d}</span></div>`).join('');
     // storefront plaque (department + address) and factual value lines: the structure of the dealers' service-specials
     // "Brand Anchor", restyled in Editorial v2 ink. Facts only from the dealer file: no credential or capability claims.
     const plaque = `<figcaption class="${P}-dealer-plaque"><span class="${P}-dealer-plaque-label">${esc(dept.label)} Department</span><span class="${P}-dealer-plaque-addr">${esc(D.street)} · ${esc(D.city)}, ${esc(D.region)} ${esc(D.zip)}</span></figcaption>`;
@@ -592,7 +687,7 @@ function build(mod, D, job, opts = {}) {
       + blocksHtml(mode)
       + `<section class="${P}-faq-sec"><div class="${P}-wrap ${P}-body ${P}-faq-grid"><div class="${P}-faq-intro"><h2 id="${P}-faq">${mod.faqTitle || 'Frequently asked questions'}</h2><p>${mod.faqIntro || 'Quick, straight answers to the questions drivers ask most.'}</p><p class="${P}-faq-call">${fill(mod.faqCall || (dept.phone ? `Questions about your ${D.brand}? Call our ${dept.label.toLowerCase()} team at {{PHONE}}.` : `Questions about your ${D.brand}? ${D.routes.contact ? `<a href="${D.routes.contact}">Contact our ${dept.label.toLowerCase()} team</a>.` : `Ask our ${dept.label.toLowerCase()} team.`}`))}</p></div><div class="${P}-faq">${faq}</div></div></section>`
       + dealer
-      + `<section class="${P}-closer"><div class="${P}-closer-in"><div class="${P}-eyebrow">${D.name}</div><h2>${mod.closer.h}</h2><p>${fill(mod.closer.p)}</p>${dept.phone ? `<p class="${P}-closer-phone"><strong>${dept.label}:</strong> ${phoneLink(dept)}</p>` : ''}${hrs(dept) ? `<p class="${P}-closer-hours"><strong>${dept.label} Hours:</strong> ${hrs(dept)}</p>` : ''}${btns(ctaBtn('white'), mod.closer.secondary ? `<a class="${P}-btn ${P}-btn-ghost" href="${mod.closer.secondary.href}">${mod.closer.secondary.label}</a>` : '')}</div></section>`
+      + `<section class="${P}-closer"><div class="${P}-closer-in"><div class="${P}-eyebrow">${D.name}</div><h2>${mod.closer.h}</h2><p>${fill(mod.closer.p)}</p>${dept.phone ? `<p class="${P}-closer-phone"><strong>${dept.label}:</strong> ${phoneLink(dept)}</p>` : ''}${diHrs() ? `<div class="${P}-closer-hours ${P}-hours-inline"><strong>${dept.label} Hours:</strong> [di_hours department="${diHrs()}"]</div>` : hrs(dept) ? `<p class="${P}-closer-hours"><strong>${dept.label} Hours:</strong> ${hrs(dept)}</p>` : ''}${btns(ctaBtn('white'), mod.closer.secondary ? `<a class="${P}-btn ${P}-btn-ghost" href="${mod.closer.secondary.href}">${mod.closer.secondary.label}</a>` : '')}</div></section>`
       + `<section class="${P}-more"><div class="${P}-label">Keep reading</div><div class="${P}-more-grid">${more}</div></section>`
       + (mod.fine ? `<p class="${P}-fine">${mod.fine}</p>` : '')
       + `</div>`;
@@ -638,16 +733,55 @@ function build(mod, D, job, opts = {}) {
     };
   }
 
+  // DealerInspire: Yoast already emits WebPage/WebSite/Organization/Breadcrumb, so the embed carries only the dealer node
+  // (#autodealer, never Yoast's #organization), BlogPosting and FAQPage. Hours come live from [di_hours], so no fixed hours
+  // here (they would drift); telephones are real numbers (shortcodes do not run reliably inside JSON-LD).
+  function schemaDI() {
+    const id = D.domain + '/#autodealer';
+    const storeUrl = hasStore ? images.STORE.apollo : null;
+    const heroUrl = img(mod.hero, 'package') || storeUrl || undefined;
+    const tel = (p) => (p ? e164(p) : undefined);
+    return {
+      '@context': 'https://schema.org',
+      '@graph': [
+        {
+          '@type': ['AutoDealer', 'AutoRepair'], '@id': id, name: D.name, url: D.domain + '/',
+          telephone: tel(dept.phone || D.mainPhone),
+          address: { '@type': 'PostalAddress', streetAddress: D.street, addressLocality: D.city, addressRegion: D.region, postalCode: D.zip, addressCountry: D.country },
+          geo: D.geo ? { '@type': 'GeoCoordinates', latitude: D.geo[0], longitude: D.geo[1] } : undefined,
+          areaServed: D.areas.length ? D.areas.map((a) => ({ '@type': 'City', name: a })) : undefined,
+          brand: { '@type': 'Brand', name: D.brand },
+          image: storeUrl || undefined,
+          logo: hasLogo ? images.LOGO.apollo : undefined,
+          contactPoint: Object.values(D.depts).filter((d) => d && d.phone).map((d) => ({ '@type': 'ContactPoint', contactType: d.label.toLowerCase(), telephone: tel(d.phone), areaServed: 'US', availableLanguage: 'English' })),
+        },
+        {
+          '@type': 'BlogPosting', '@id': url + '#article', mainEntityOfPage: url, url,
+          headline: stripTags(mod.h1).trim(), description: mod.meta, image: heroUrl ? [heroUrl] : undefined,
+          datePublished: mod.datePublished, dateModified: mod.dateModified, inLanguage: 'en-US',
+          author: { '@id': id }, publisher: { '@id': id },
+          keywords: mod.keywords.join(', '), articleSection: mod.section, wordCount: words,
+          about: mod.about || undefined,
+        },
+        { '@type': 'FAQPage', '@id': url + '#faq', mainEntity: mod.faq.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })) },
+      ],
+    };
+  }
+
   const out = outPaths(job, mod, P);
   fs.mkdirSync(out.pkg, { recursive: true });
   const cssText = fullCss(D);
   const sw = sitewideCss(D);
-  const sd = schema();
+  const sd = isDI ? schemaDI() : schema();
   const sdJson = JSON.stringify(sd);
   const frag = article('package');
   const isFinal = !!opts.final && !placeholders.length;
   const heroPkg = img(mod.hero, 'package');
 
+  let diOut = null, paste = '', diSeo = {}, diInjectedP = 0;
+  if (isDI) {
+    ({ diOut, paste, diSeo, diInjectedP } = writeDI());
+  } else {
   /* preview: dealer Apollo theme CSS + Gemini-like shell + site-wide CSS inline + schema inline */
   const ap = D.apollo || {};
   const font = ap.themeFont ? `:root{--fontBold:"${ap.themeFont}";--fontRegular:"${ap.themeFont}";--website-primary-theme-color:${ap.themeColor || B.link}}` : '';
@@ -707,6 +841,90 @@ ${shellClose}
     + `5. **Publish.**\n`
     + `6. **Checks:** exactly one H1; headings render in Georgia${ap.themeFont ? ` (not ${ap.themeFont})` : ''}; images load; buttons show white or ink text, not underlined; FAQ items open; Rich Results Test detects Article, FAQ and Breadcrumb; canonical is ${url}.\n\n`
     + `Images:\n${imgList}\n`);
+  }
+
+  /* DealerInspire package: ONE paste file (one line: inline <style> + article + helper script + trimmed JSON-LD), the
+   * Yoast/WordPress hand-entry sheet and the README; plus a local preview = the paste file after wpautop, with the
+   * shortcodes rendered as DealerInspire renders them, inside a DI theme shell (Page Composer or Classic post). */
+  function writeDI() {
+    const o = { preview: out.preview, pkg: out.pkg, wired: path.join(out.pkg, `${mod.slug}-embed-Wired.html`), seo: out.seo, readme: out.readme };
+    for (const stale of [out.html, out.css, out.sd]) { try { fs.unlinkSync(stale); } catch (e) { /* not there */ } }
+    const ld = JSON.stringify(sd).replace(/</g, '\\u003c');
+    const open = `<div class="${P}-art ${P}-art-${mod.slug}">`;
+    const wrap = (art) => open + `<style>${minCss(cssText)}</style>` + art.slice(open.length, -'</div>'.length) + diScript(P) + `<script type="application/ld+json">${ld}</script></div>`;
+    const oneLine = (s) => s.replace(/\s*\r?\n\s*/g, ' ');
+    const pasteText = oneLine(wrap(frag));
+    fs.writeFileSync(o.wired, pasteText); // no trailing newline: wpautop would add a <br>
+    // preview: what WordPress renders (wpautop first, then shortcodes), with placeholder images where none are wired yet
+    const sc = D.di || {};
+    const phoneOf = (opt) => { const k = Object.keys(sc.shortcodes || {}).find((x) => sc.shortcodes[x] === opt); return (k && D.depts[k] && D.depts[k].phone) || ''; };
+    const hoursOf = (lab) => { const k = Object.keys(sc.hoursDepartments || {}).find((x) => sc.hoursDepartments[x] === lab); return diHoursUl(k && D.depts[k] ? D.depts[k].hours : []); };
+    const autop = wpautop(oneLine(wrap(article('dipreview'))).replace(/href="\/(?!\/)/g, `href="${D.domain}/`));
+    const injectedP = (autop.match(/<p>/g) || []).length;
+    const rendered = autop.replace(/\[di_option option="([^"]+)"\]/g, (m, x) => phoneOf(x)).replace(/\[di_hours department="([^"]+)"\]/g, (m, x) => hoursOf(x));
+    const h1Text = esc(stripTags(mod.h1).trim());
+    const isPost = sc.template === 'post';
+    const shell = isPost
+      ? `<div class="container-wide contentcontainer"><div class="row"><div class="col-sm-12 content"><div class="row"><div class="col-sm-8"><div class="posts-wrap"><main><div class="post type-post"><div class="post-content"><h1 class="entry-title">${h1Text}</h1><div class="meta-below-title">${esc(mod.updatedLabel)} by ${esc(D.name)}</div>\n${rendered}\n</div></div></main></div></div><div class="col-sm-4"><ul class="sidebar vertical"><li>Dealership Info sidebar (hidden on article pages)</li></ul></div></div></div></div></div>`
+      : `<h1 class="entry-title">${h1Text}</h1><div id="di-page-composer"><div class="fullcontentrow">\n${rendered}\n</div></div>`;
+    const heroUrl = img(mod.hero, 'package');
+    const preview = `<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>${esc(mod.title)}</title>
+<meta name="description" content="${esc(mod.meta)}">
+<link rel="canonical" href="${url}">
+<link rel="stylesheet" href="${GOOGLE_FONT}">
+<style>
+/* PREVIEW GROUND ONLY (not in the paste file): DealerInspire theme rules that matter for the article */
+html{font-size:10px}body{margin:0;background:#fff;color:#111;font-family:Arial,sans-serif}
+#di-page-composer a{color:#000}#di-page-composer a:not(.button){text-decoration:underline}#di-page-composer h2{font-size:32px}#di-page-composer h1{font-size:40px}
+.container-wide{width:90%;max-width:1400px;margin:0 auto;padding:30px 15px 0}.row{margin:0 -15px}.row:after{content:"";display:table;clear:both}.col-sm-12,.col-sm-8,.col-sm-4{padding:0 15px;box-sizing:border-box;float:left}.col-sm-12{width:100%}.col-sm-8{width:66.666%}.col-sm-4{width:33.333%}
+.content{color:#111;font-family:Roboto,sans-serif;font-size:13px;line-height:170%}h1{font-size:30px;font-weight:400}h2{font-size:24px;font-weight:400;margin:0 10px}h3{font-size:18px;margin:0 10px}a{color:${(D.style && D.style.linkColor) || '#176db7'}}
+.post-content{display:block;margin-bottom:20px;clear:both;padding-top:10px}.post-content h2{margin:20px 0 10px}.meta-below-title{margin:10px 0}.sidebar{background:#f3f3f3;padding:20px;min-height:400px;list-style:none}
+.pv-bar{position:sticky;top:0;z-index:50;background:${isFinal ? '#e9f7ee' : '#fffbe6'};border-bottom:1px solid ${isFinal ? '#2e8b57' : '#e0c200'};font:12px/1.5 Arial,sans-serif;color:#333;padding:8px 16px}
+.pv-bar b{color:#000}.pv-hdr{height:88px;background:#000;color:#fff;display:flex;align-items:center;padding:0 28px;font:14px Arial;letter-spacing:.2em;text-transform:uppercase}
+.pv-ftr{height:120px;background:#1a1a1a;margin-top:0}
+</style></head><body>
+<div class="pv-bar"><b>${isFinal ? 'LOCAL PREVIEW · FINAL' : 'LOCAL PREVIEW · DRAFT (placeholders) · not for pasting'}</b> · DealerInspire ${isPost ? 'Classic post' : 'Page Composer page'} after wpautop + shortcodes · SEO title (${mod.title.length}): <b>${esc(mod.title)}</b> · Meta (${mod.meta.length}) · Focus: <b>${esc(mod.focus)}</b> · ${url}${(D.style && D.style.fonts) ? ' · Brand fonts load on the live site; this preview shows their fallbacks.' : ''}</div>
+<div class="pv-hdr">${esc(D.name)} · site header (DealerInspire theme)</div>
+${shell}
+<div class="pv-ftr"></div>
+</body></html>
+`;
+    fs.writeFileSync(o.preview, preview);
+    // Yoast + WordPress hand-entry sheet (one line per field; social fields never empty: they fall back to the theme's 200x200 default)
+    const img4 = heroUrl || 'MISSING: upload the hero image, then run /article-images';
+    const seo = {
+      [isPost ? 'Post title' : 'Page title']: stripTags(mod.h1).trim(),
+      Slug: mod.slug,
+      ...(isPost ? { Category: sc.category || 'News' } : { 'Parent page': sc.parentPath || '(none)' }),
+      'Featured image': img4,
+      'SEO title': mod.title,
+      'Meta description': mod.meta,
+      'Focus keyphrase': mod.focus,
+      'Facebook title': mod.ogTitle || mod.title,
+      'Facebook description': mod.meta,
+      'Facebook image': img4,
+      'Twitter title': mod.ogTitle || mod.title,
+      'Twitter description': mod.meta,
+      'Twitter image': img4,
+    };
+    const fl = (k, v) => `* ${k}  →  ${v}\n`;
+    fs.writeFileSync(o.seo, `# ${mod.slug}: DealerInspire (WordPress + Yoast) fields, ${D.name}\n\n`
+      + Object.entries(seo).map(([k, v]) => fl(k, v)).join('')
+      + fl('Canonical URL', `leave the Yoast field empty (reference: ${url})`)
+      + `\nDelete Yoast's snippet-variable pills (Title, Page, Separator, Site title) before typing the SEO title.\n`);
+    const used2 = Object.entries(images).filter(([k, v]) => v && used.has(k)).map(([k, v]) => `- ${k}: ${v.apollo || 'MISSING WordPress Media Library URL (placeholder)'}${v.desc ? ` · ${v.desc}` : ''}`).join('\n');
+    fs.writeFileSync(o.readme, `# ${mod.slug}: DealerInspire paste steps (${D.name})\n\n`
+      + (isFinal ? '' : `> **DRAFT: do not paste.** Built without \`--final\`${placeholders.length ? ` and ${placeholders.length} image(s) are still placeholders (${placeholders.join(', ')})` : ''}. Rebuild with \`build <job> --final\` after approval.\n\n`)
+      + (isPost
+        ? `1. WordPress admin → **Posts → Add New**. Title: the Post title line in \`${path.basename(o.seo)}\`.\n2. Switch the editor to the **Text** tab (never Visual). Open \`${path.basename(o.wired)}\` in Notepad, Select All, Copy, and paste it as the whole post body. Never use a Raw HTML block (it stops the [di_*] shortcodes).\n3. Category: **${sc.category || 'News'}**. Featured image: the hero (Media Library).\n`
+        : `1. WordPress admin → **Pages → Add New**. Title: the Page title line in \`${path.basename(o.seo)}\`. Parent: **${sc.parentPath || '(none)'}**, so the URL is ${url}.\n2. Page Composer: add a full-width row with a **"Use WordPress Content"** element, and paste \`${path.basename(o.wired)}\` (open it in Notepad, Select All, Copy) into the page's **Text** tab (never Visual, never a Raw HTML element: it stops the [di_*] shortcodes).\n3. Featured image: the hero (Media Library).\n`)
+      + `4. **Yoast SEO** → enter every line of \`${path.basename(o.seo)}\` (SEO title, meta, focus keyphrase; Social tab: Facebook + Twitter title, description and image). Never leave a social image empty.\n`
+      + `5. **Publish**, then DealerInspire **Reload Cache** (admin bar).\n`
+      + `6. **Checks** (open the URL with ?cb=<anything>): exactly one visible H1 (the theme title is hidden by the embed); phone numbers are links; hours show on one line; images load; buttons are not underlined; FAQ items open; Rich Results Test detects Article + FAQ; the Yoast title and social image are the new ones (not the theme default).\n\n`
+      + `Phones and hours: the embed uses DealerInspire shortcodes ([di_option] / [di_hours]); the JSON-LD keeps the real numbers.\n\nImages (WordPress Media Library URLs):\n${used2}\n`);
+    return { diOut: o, paste: pasteText, diSeo: seo, diInjectedP: injectedP };
+  }
 
   /* ---------------- QA gates ---------------- */
   const G = [];
@@ -714,7 +932,7 @@ ${shellClose}
   const warnG = (name, msgs, ok) => G.push(msgs.length ? ['⚠️', name, msgs.join('; ')] : ['✅', name, ok || '']);
   const visible = decode(stripTags(frag)).replace(/’/g, "'");
   const seoText = [mod.title, mod.ogTitle || '', mod.meta, mod.h1].join(' ').replace(/’/g, "'");
-  const allText = (mod.allowPhrases || []).reduce((t, a) => t.split(a).join(' '), visible + ' ' + seoText);
+  const allText = [...(mod.allowPhrases || []), ...(D.allowPhrases || [])].reduce((t, a) => t.split(a).join(' '), visible + ' ' + seoText);
   let ok = true;
   try { JSON.parse(sdJson); } catch (e) { ok = false; gate('JSON-LD parses', [e.message]); }
   if (ok) gate('JSON-LD parses', [], `${sd['@graph'].length} nodes`);
@@ -738,10 +956,24 @@ ${shellClose}
   // toll-free numbers are allowed only when they are the dealer file's verified About Us number for a department/main line
   const fileDigits = new Set([D.mainPhone, ...Object.values(D.depts || {}).map((d) => d && d.phone)].filter(Boolean).map((p) => String(p).replace(/\D/g, '').slice(-10)));
   const tollFree = (visible.match(/(?<![\d,$])\(?8(77|88|00|66|55|44|33)\)?[-. ]?\d{3}[-. ]\d{4}/g) || []).filter((n) => !fileDigits.has(n.replace(/\D/g, '').slice(-10)));
+  // department numbers written out in visible HTML (phone-shaped matches only; JSON-LD excluded) → must be tags/shortcodes
+  const hardPhones = (html) => { const shown = new Set((html.replace(/<script[\s\S]*?<\/script>/gi, ' ').match(/(?<!\d)\(?\d{3}\)?[-. ]?\d{3}[-. ]?\d{4}(?!\d)/g) || []).map(digits10)); return Object.entries(D.depts || {}).filter(([k, d]) => d && d.phone && TAGS[k] && shown.has(digits10(d.phone))).map(([k]) => k); };
+  if (!isDI) {
   gate('No Apollo tags in Structured Data', /#(Sales|Service|Parts|BodyShop)Number|#DealerName/.test(JSON.stringify(sd)) ? ['merge tag found in JSON-LD (tags are not replaced there)'] : []);
-  { const html = fs.readFileSync(out.html, 'utf8'); const hard = Object.entries(D.depts || {}).filter(([k, d]) => d && d.phone && TAGS[k] && html.replace(/D/g, '').includes(digits10(d.phone))).map(([k]) => k);
+  { const html = fs.readFileSync(out.html, 'utf8'); const hard = hardPhones(html);
     const telHard = (html.match(/tel:\+?\d[\d-]{9,}/g) || []);
     gate('Package phones use Apollo tags', [...(hard.length ? [`hard-coded ${hard.join('/')} number in package HTML`] : []), ...(telHard.length ? [`hard-coded tel: link ${telHard[0]}`] : [])]); }
+  } else {
+    const ldText = (paste.match(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/) || [])[1] || '';
+    gate('JSON-LD has no shortcodes, %% tokens, tags or "<"', [/\[di_/.test(ldText) && '[di_ shortcode', /%%/.test(ldText) && '%% token', /#(Sales|Service|Parts|BodyShop)Number/.test(ldText) && 'Apollo merge tag', /</.test(ldText) && 'raw "<"'].filter(Boolean));
+    const hard = hardPhones(paste);
+    const telHard = (paste.match(/tel:\+?\d[\d-]{9,}/g) || []);
+    const noSc = Object.entries(D.depts || {}).filter(([k, d]) => d && d.phone && !TAGS[k]).map(([k]) => k);
+    gate('Phones use DealerInspire shortcodes ([di_option])', [...(hard.length ? [`hard-coded ${hard.join('/')} number in the paste file`] : []), ...(telHard.length ? [`hard-coded tel: link ${telHard[0]}`] : [])], `${Object.keys(TAGS).join('/') || 'none'} via [di_option]`);
+    if (noSc.length) warnG('Shortcode coverage', [`${noSc.join('/')} has no verified [di_option] shortcode in the dealer file → number written out`]);
+    const deptHrs = D.di && D.di.hoursDepartments && D.di.hoursDepartments[mod.dept];
+    gate('Hours only via [di_hours]', deptHrs && /\b\d{1,2}:\d{2}\s?(AM|PM)\b/i.test(visible) ? ['clock times written in the article; use [di_hours] (prose never states hours)'] : [], deptHrs ? `[di_hours department="${deptHrs}"]` : 'no verified [di_hours] department → text hours from the dealer file');
+  }
   gate('No toll-free numbers', tollFree.length ? [`8xx number not in the dealer file: ${tollFree[0]}`] : []);
   const dollars = [];
   const PT = priceTerm(D);
@@ -776,6 +1008,7 @@ ${shellClose}
   gate('No stand-alone bold paragraph', bare ? [`${bare} found (bold answers must run inline into the next paragraph)`] : []);
   const tok = [...new Set([...(frag + ' ' + seoText + ' ' + (mod.focus || '')).matchAll(/\{\{[^}]*\}?\}?|__[A-Z][A-Z0-9_]*__/g)].map((m) => m[0]))];
   gate('No unresolved {{tokens}} / __MARKERS__', tok.map((t) => phoneMiss.get(t) || t.slice(0, 30)));
+  if (!isDI) {
   const fragBad = [];
   if (/<(style|script|link|meta|html|head|body)\b|<!doctype/i.test(frag)) fragBad.push('contains style/script/link/meta/doctype/html/head/body');
   if (!frag.startsWith(`<div class="${P}-art ${P}-art-${mod.slug}">`) || !frag.endsWith('</div>')) fragBad.push('must start with the .' + P + '-art wrapper div and end with </div>');
@@ -784,6 +1017,32 @@ ${shellClose}
   gate('Site-wide CSS fully scoped', scope.slice(0, 5).map((s) => 'unscoped: ' + s), `css ${sw.hash}`);
   gate('Site-wide CSS paste-safe (ASCII, no backslash)', [/\\/.test(sw.text) && 'backslash escape found', /[^\x09\x0a\x0d\x20-\x7e]/.test(sw.text) && 'non-ASCII character found'].filter(Boolean), `${sw.text.split('\n').length} lines`);
   if (opts.final) gate('Final: every article image has an Apollo value', placeholders.map((k) => k + ' has no Apollo id/URL'), `${slots.size} slots`);
+  } else {
+    const open = `<div class="${P}-art ${P}-art-${mod.slug}"><style>`;
+    const shape = [];
+    if (/\n/.test(paste)) shape.push('paste file is not one line (wpautop turns newlines into <br>)');
+    if (!paste.startsWith(open)) shape.push('must start with the .' + P + '-art wrapper div and its <style>');
+    if (!/<\/script><script type="application\/ld\+json">[\s\S]*<\/script><\/div>$/.test(paste)) shape.push('must end with the helper script, the JSON-LD script and </div>');
+    if (/<(link|meta|html|head|body)\b|<!doctype/i.test(paste)) shape.push('contains link/meta/doctype/html/head/body');
+    if ((paste.match(/<style\b/g) || []).length !== 1) shape.push('exactly one <style> expected');
+    gate('Paste file shape (one line, root div, style, script, JSON-LD)', shape, `${Math.round(paste.length / 1024)} KB`);
+    gate('No <br>, <pre> or <textarea> (wpautop)', /<(br|pre|textarea)\b|white-space:\s*pre\b/i.test(frag) ? ['found in the article markup'] : []);
+    const aBlocks = (frag.match(/<a\b[^>]*>(?:(?!<\/a>)[\s\S])*?<(div|p|h[1-6]|ul|ol|li|figure|section|table|details)\b/g) || []).length;
+    gate('No <a> wrapping block elements (wpautop clones it)', aBlocks ? [`${aBlocks} link(s) wrap block elements; use a stretched link`] : []);
+    let scriptOk = []; try { const vm = require('vm'); new vm.Script(diScript(P).replace(/^<script>|<\/script>$/g, '')); } catch (e) { scriptOk = ['helper script does not compile: ' + e.message]; }
+    gate('Helper script compiles (linkPhones/condense)', scriptOk);
+    const diCss = minCss(cssText);
+    const scope = cssScopeIssues(diCss, P, [`#di-page-composer .${P}-art`, `.fullcontentrow:has(.${P}-art)`, `.col-sm-8:has(.${P}-art)`]);
+    gate('Inline CSS fully scoped', scope.slice(0, 5).map((s) => 'unscoped: ' + s), `${Math.round(diCss.length / 1024)} KB`);
+    const emptySeo = Object.entries(diSeo).filter(([k, v]) => !String(v || '').trim()).map(([k]) => k);
+    const missImg = Object.entries(diSeo).filter(([k, v]) => /image/i.test(k) && /^MISSING/.test(v)).map(([k]) => k);
+    gate('Yoast sheet complete (social images never empty)', [...emptySeo.map((k) => k + ' empty'), ...(opts.final ? missImg.map((k) => k + ' missing') : [])], `${Object.keys(diSeo).length} fields`);
+    if (opts.final) {
+      const off = [...slots].filter((k) => images[k] && images[k].apollo && !(DI_UPLOADS.test(images[k].apollo) && (!D.di || !D.di.uploads || images[k].apollo.startsWith(D.di.uploads))));
+      gate('Final: every article image is a DealerInspire upload of this site', [...placeholders.map((k) => k + ' has no WordPress Media Library URL'), ...off.map((k) => `${k} is not on ${D.di && D.di.uploads ? D.di.uploads : 'di-uploads-pod*.dealerinspire.com'}`)], `${slots.size} slots`);
+    }
+    warnG('wpautop simulation', [], `${diInjectedP} <p> added by wpautop (stray ones are hidden by the hardening CSS; check the preview)`);
+  }
   // warnings
   const cleanForNum = frag.replace(/\d{2}\/\d{2}\/\d{4}/g, '');
   warnG('No "01, 02" numbering', /\b0[1-9]\b(?=[^<]*<\/(li|h2|h3|span|div)>)/.test(cleanForNum) ? ['possible "01, 02" style numbering'] : []);
@@ -815,7 +1074,7 @@ ${shellClose}
   console.log(`\n=== ${D.name} · ${mod.slug} ${opts.final ? '(FINAL)' : '(draft)'} ===  words≈${words} (body ${bodyWords})  read=${readMin}min  h2=${h2s.length}  faq=${mod.faq.length}  links=${uniq.length}  css=${sw.hash}`);
   G.forEach(([s, n, m]) => console.log(`  ${s} ${n}${m ? ': ' + m : ''}`));
   console.log(`RESULT: ${fails ? `❌ FAIL (${fails} gate${fails > 1 ? 's' : ''})` : '✅ PASS'}${warns ? `, ${warns} warning${warns > 1 ? 's' : ''}` : ''}`);
-  console.log(`Outputs:\n  ${out.preview}\n  ${out.pkg}${path.sep}  (${[out.html, out.css, out.sd, out.seo, out.readme].map((p) => path.basename(p)).join(', ')})`);
+  console.log(`Outputs:\n  ${out.preview}\n  ${out.pkg}${path.sep}  (${(isDI ? [diOut.wired, out.seo, out.readme] : [out.html, out.css, out.sd, out.seo, out.readme]).map((p) => path.basename(p)).join(', ')})`);
   return { fails, warns, words, hash: sw.hash, isFinal };
 }
 
@@ -870,9 +1129,17 @@ function cmdNew(a) {
   if (!fs.existsSync(tplFile)) die('Missing template ' + tplFile);
   const t = today();
   const js = (s) => String(s).replace(/\\/g, '\\\\').replace(/'/g, "\\'").replace(/\r?\n/g, ' ');
-  const map = { DEALER_NAME: D.name, DEALER: D.key, BRAND: D.brand, CITY: D.city, TITLE: a.title, SLUG: slug, PATH: '/' + slug, DATE_LABEL: t.label, DATE: t.iso };
+  // permalinks: Apollo custom pages are extensionless with no trailing slash; DealerInspire posts are /<slug>/ and Page
+  // Composer pages sit under the dealer's article parent page (di.parentPath, e.g. /service/service-and-parts-tips/)
+  const di = D.platform === 'dealerinspire' ? (D.di || {}) : null;
+  const pagePath = di ? (di.template === 'composer' && di.parentPath ? di.parentPath.replace(/\/?$/, '/') + slug + '/' : '/' + slug + '/') : '/' + slug;
+  const map = { DEALER_NAME: D.name, DEALER: D.key, BRAND: D.brand, CITY: D.city, TITLE: a.title, SLUG: slug, PATH: pagePath, DATE_LABEL: t.label, DATE: t.iso };
   let src = fs.readFileSync(tplFile, 'utf8');
   for (const [k, v] of Object.entries(map)) src = src.split(`__${k}__`).join(js(v));
+  if (di) { // DealerInspire jobs: image values are WordPress Media Library URLs (`di`), not Apollo ids
+    src = src.replace(/\bapollo: null/g, 'di: null')
+      .replace(/\/\* Images: apollo = [\s\S]*?\*\//, "/* Images: di = the WordPress Media Library file URL (https://di-uploads-podN.dealerinspire.com/<site>/uploads/YYYY/MM/<file>).\n   * Leave di: null until the image is uploaded; the preview shows a gray placeholder with `desc`, and the package\n   * stays DRAFT (build --final fails). w/h = real pixel size (run: build.js images <job> to read them). */");
+  }
   fs.mkdirSync(dir, { recursive: true });
   fs.writeFileSync(path.join(dir, 'module.js'), src);
   fs.writeFileSync(path.join(dir, 'job.json'), JSON.stringify({ dealer: D.key, title: a.title, slug, phase: 'intake', created: new Date().toISOString() }, null, 2) + '\n');
@@ -885,12 +1152,14 @@ function cmdStatus(arg) {
   let mod = null;
   try { mod = loadModule(modFile); } catch (e) { console.log(`❌ module.js does not load: ${e.message}`); }
   const slug = (mod && mod.slug) || (fs.existsSync(jf) && readJson(jf).slug) || '?';
-  let P = '?';
-  try { if (mod) P = loadDealer(mod.dealer).P; } catch (e) { /* reported by build */ }
+  let P = '?', platform = 'apollo';
+  try { if (mod) { const D = loadDealer(mod.dealer); P = D.P; platform = D.platform; } } catch (e) { /* reported by build */ }
   const o = outPaths(job, { slug }, P);
   const qa = path.join(job, 'qa');
   const imgs = path.join(job, 'images');
-  [['module.js', modFile], ['preview', o.preview], ['package HTML', o.html], ['site-wide CSS', o.css], ['Structured Data', o.sd], ['SEO sheet', o.seo], ['README', o.readme]]
+  (platform === 'dealerinspire'
+    ? [['module.js', modFile], ['preview', o.preview], ['paste file', path.join(o.pkg, `${slug}-embed-Wired.html`)], ['Yoast sheet', o.seo], ['README', o.readme]]
+    : [['module.js', modFile], ['preview', o.preview], ['package HTML', o.html], ['site-wide CSS', o.css], ['Structured Data', o.sd], ['SEO sheet', o.seo], ['README', o.readme]])
     .forEach(([n, p]) => console.log(`${fs.existsSync(p) ? '✅' : '—'} ${n.padEnd(16)} ${p}`));
   console.log(`${fs.existsSync(qa) ? '✅' : '—'} screenshots      ${fs.existsSync(qa) ? fs.readdirSync(qa).filter((x) => /\.png$/.test(x)).join(', ') : qa}`);
   console.log(`${fs.existsSync(imgs) ? '✅' : '—'} images           ${fs.existsSync(imgs) ? fs.readdirSync(imgs).join(', ') : imgs}`);
@@ -920,14 +1189,21 @@ function cmdShot(arg, a) {
   fs.mkdirSync(qa, { recursive: true });
   const widths = String(a.widths || '1280,375').split(',').map((s) => parseInt(s, 10)).filter((n) => n > 0);
   const prof = fs.mkdtempSync(path.join(os.tmpdir(), 'da-shot-'));
+  // Windows: the browser cannot open or write paths longer than ~250 chars (deep synced folders) → work in a short temp folder
+  const longPath = process.platform === 'win32' && path.join(qa, '_frame-375.html').length > 200;
+  const work = longPath ? prof : qa;
+  const src = longPath ? path.join(work, 'preview.html') : prev;
+  if (longPath) fs.copyFileSync(prev, src); // the preview is self-contained (absolute links, data-URI placeholders)
   let bad = 0;
   for (const w of widths) {
     const h = a.height ? parseInt(a.height, 10) : w <= 480 ? 18000 : 12000;
     // headless Chrome/Edge cannot open a window narrower than ~500px: render narrow widths inside an iframe of that width
-    const target = w < 500 ? (() => { const wrap = path.join(qa, `_frame-${w}.html`); fs.writeFileSync(wrap, `<!doctype html><html><body style="margin:0;background:#fff"><iframe src="${pathToFileURL(prev).href}" style="width:${w}px;height:${h}px;border:0;display:block"></iframe></body></html>`); return pathToFileURL(wrap).href; })() : pathToFileURL(prev).href;
+    const target = w < 500 ? (() => { const wrap = path.join(work, `_frame-${w}.html`); fs.writeFileSync(wrap, `<!doctype html><html><body style="margin:0;background:#fff"><iframe src="${pathToFileURL(src).href}" style="width:${w}px;height:${h}px;border:0;display:block"></iframe></body></html>`); return pathToFileURL(wrap).href; })() : pathToFileURL(src).href;
     const png = path.join(qa, `preview-${w}.png`);
+    const shotFile = longPath ? path.join(work, `shot-${w}.png`) : png;
     try { fs.unlinkSync(png); } catch (e) { /* none */ }
-    const r = cp.spawnSync(br, ['--headless=new', '--disable-gpu', '--hide-scrollbars', '--no-first-run', '--no-default-browser-check', `--user-data-dir=${prof}`, '--virtual-time-budget=8000', `--screenshot=${png}`, `--window-size=${Math.max(w, 500)},${h}`, target], { timeout: 120000, stdio: 'pipe' });
+    const r = cp.spawnSync(br, ['--headless=new', '--disable-gpu', '--hide-scrollbars', '--no-first-run', '--no-default-browser-check', `--user-data-dir=${prof}`, '--virtual-time-budget=8000', `--screenshot=${shotFile}`, `--window-size=${Math.max(w, 500)},${h}`, target], { timeout: 120000, stdio: 'pipe' });
+    if (longPath && fs.existsSync(shotFile)) fs.copyFileSync(shotFile, png);
     if (fs.existsSync(png) && fs.statSync(png).size > 1000) console.log(`✅ ${w}×${h} → ${png}`);
     else { bad++; console.log(`⚠️ ${w}px screenshot failed (${r.error ? r.error.message : 'exit ' + r.status}) ${String(r.stderr || '').split('\n').slice(-3).join(' ').trim()}`); }
   }
@@ -973,8 +1249,11 @@ async function cmdImages(arg) {
   for (const [k, im] of Object.entries(images)) {
     const r = role[k] || 'unplaced';
     if (!im) { rows.push([k, r, '—', 'not set (optional dealer image)', '', '', '']); continue; }
-    if (!im.apollo) { rows.push([k, r, '—', r === 'dealer' ? 'no Apollo value (optional: text fallback)' : 'no Apollo value (placeholder)', '', '', im.desc || '']); continue; }
-    const u = fetchUrl(im.apollo);
+    const val = D.platform === 'dealerinspire' ? im.di : im.apollo; // DealerInspire: WordPress Media Library URL
+    const what = D.platform === 'dealerinspire' ? 'WordPress Media Library URL' : 'Apollo value';
+    if (!val) { rows.push([k, r, '—', r === 'dealer' ? `no ${what} (optional: text fallback)` : `no ${what} (placeholder)`, '', '', im.desc || '']); continue; }
+    if (D.platform === 'dealerinspire' && !DI_UPLOADS.test(val)) { bad++; rows.push([k, r, '❌', 'not a DealerInspire uploads URL (https://di-uploads-podN.dealerinspire.com/<site>/uploads/YYYY/MM/<file>)', '', '', val]); continue; }
+    const u = D.platform === 'dealerinspire' ? val : fetchUrl(val);
     try {
       const res = await fetch(u, { redirect: 'follow', signal: AbortSignal.timeout(30000), headers: { 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36', Accept: 'image/avif,image/webp,image/*,*/*;q=0.8', 'Accept-Language': 'en-US,en;q=0.9', Referer: D.domain + '/' } });
       const ct = (res.headers.get('content-type') || '').split(';')[0].trim().toLowerCase();
@@ -1017,4 +1296,4 @@ if (require.main === module) {
   if (!run) die('Usage: node build.js <env|dealers|new|status|build|shot|images|page> ...\n  new --dealer "<name>" --title "<title>" [--out <dir>]\n  build <job> [--final] · shot <job> [--widths 1280,375] · images <job> · status <job>');
   Promise.resolve().then(run).catch((e) => die('❌ ' + (e && e.stack ? e.stack : e)));
 }
-module.exports = { build, loadDealer, listDealers, matchDealer, slugify, fullCss, sitewideCss, cssScopeIssues, imageSize, apolloUrl };
+module.exports = { build, loadDealer, listDealers, matchDealer, slugify, fullCss, sitewideCss, cssScopeIssues, imageSize, apolloUrl, wpautop, diHoursUl, cssDI, diScript };

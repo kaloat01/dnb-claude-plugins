@@ -1,0 +1,242 @@
+{
+  "dealer": "mercedes-benz-foothill-ranch",
+  "generated": "2026-10-09",
+  "note": "Images already in this dealer's DealerInspire uploads library (full URLs, each verified 200 + image/* on 2026-10-09). Reuse before asking for new uploads. View before use; match the article's model year.",
+  "images": [
+    {
+      "di": "https://di-uploads-pod4.dealerinspire.com/mercedesbenzoffoothillranchredesign/uploads/2026/09/Mercedes-Foothill-Ranch-Dealership.jpg",
+      "w": 1366,
+      "h": 768,
+      "shows": "Mercedes-Benz of Foothill Ranch storefront: curved glass facade with the dealership sign and a row of eight current Mercedes-Benz and Mercedes-AMG models (incl. a blue G-Class) in front",
+      "vehicle": null,
+      "text": false,
+      "slots": [
+        "store",
+        "fig",
+        "pair"
+      ],
+      "tags": [
+        "storefront"
+      ]
+    },
+    {
+      "di": "https://di-uploads-pod4.dealerinspire.com/mercedesbenzoffoothillranchredesign/uploads/2026/09/mercedes-benz-light-no-space-desktop-logo.png",
+      "w": 60,
+      "h": 60,
+      "shows": "White Mercedes-Benz three-pointed star on a transparent background (PNG served with an image/webp content type); for dark bands",
+      "vehicle": null,
+      "text": false,
+      "slots": [
+        "logo"
+      ],
+      "tags": []
+    },
+    {
+      "di": "https://di-uploads-pod4.dealerinspire.com/mercedesbenzoffoothillranchredesign/uploads/2026/09/Mercedes-Service-Bay-HERO.jpg",
+      "w": 1366,
+      "h": 768,
+      "shows": "Long, bright service workshop with Mercedes-Benz SUVs raised on lifts on both sides (the Foothill Ranch service area shown on the dealer's About Us page)",
+      "vehicle": null,
+      "text": false,
+      "slots": [
+        "fig",
+        "pair"
+      ],
+      "tags": [
+        "service-bay"
+      ]
+    },
+    {
+      "di": "https://di-uploads-pod4.dealerinspire.com/mercedesbenzoffoothillranchredesign/uploads/2025/10/MB_Foothill_Ranch-Sales-Amenities.webp",
+      "w": 1366,
+      "h": 768,
+      "shows": "Customer lounge with dark leather chairs, plants and a large painting of Mercedes-Benz race cars; showroom vehicles at right (the dealer's About Us photo)",
+      "vehicle": null,
+      "text": false,
+      "slots": [
+        "fig",
+        "pair"
+      ],
+      "tags": [
+        "interior",
+        "lounge"
+      ]
+    },
+    {
+      "di": "https://di-uploads-pod4.dealerinspire.com/mercedesbenzoffoothillranchredesign/uploads/2026/09/2026_mercedes-benz_e-class_sedan_e-350-4matic_fq_oem_1_1600x1067.jpg",
+      "w": 1600,
+      "h": 1067,
+      "shows": "Sage-green Mercedes-Benz E-Class sedan, front three-quarter, on a palm-lined desert street; bottom edge fades to black",
+      "vehicle": "2024+ Mercedes-Benz E-Class sedan (W214); file name says 2026",
+      "text": false,
+      "slots": [
+        "hero",
+        "fig",
+        "pair"
+      ],
+      "tags": [
+        "vehicle-exterior",
+        "road"
+      ]
+    },
+    {
+      "di": "https://di-uploads-pod4.dealerinspire.com/mercedesbenzoffoothillranchredesign/uploads/2026/09/2026-Mercedes-Benz-GLC.jpg",
+      "w": 1193,
+      "h": 1080,
+      "shows": "Gray Mercedes-Benz GLC SUV, front three-quarter, on a pale sand-dune studio background (near-square)",
+      "vehicle": "2023+ Mercedes-Benz GLC (X254); file name says 2026",
+      "text": false,
+      "slots": [
+        "pair"
+      ],
+      "tags": [
+        "vehicle-exterior"
+      ]
+    },
+    {
+      "di": "https://di-uploads-pod4.dealerinspire.com/mercedesbenzoffoothillranchredesign/uploads/2026/09/mercedes-me-app-service-history.jpg",
+      "w": 1380,
+      "h": 900,
+      "shows": "Hands holding a phone with the Mercedes-Benz app open beside a bronze Mercedes-Benz SUV",
+      "vehicle": null,
+      "text": true,
+      "slots": [
+        "fig",
+        "pair"
+      ],
+      "tags": [
+        "people"
+      ]
+    },
+    {
+      "di": "https://di-uploads-pod4.dealerinspire.com/mercedesbenzoffoothillranchredesign/uploads/2026/09/mb-approved-oil-bottle.jpg",
+      "w": 1080,
+      "h": 1080,
+      "shows": "Bottle of Mercedes-Benz Genuine Engine Oil on a dark shelf (square)",
+      "vehicle": null,
+      "text": true,
+      "slots": [
+        "pair"
+      ],
+      "tags": [
+        "oil"
+      ]
+    },
+    {
+      "di": "https://di-uploads-pod4.dealerinspire.com/mercedesbenzoffoothillranchredesign/uploads/2026/09/Mercedes_OilChange-3_2020-1280x1280-1.jpg",
+      "w": 1280,
+      "h": 853,
+      "shows": "Technician pours engine oil through a red funnel into a Mercedes-Benz engine",
+      "vehicle": null,
+      "text": false,
+      "slots": [
+        "fig",
+        "pair"
+      ],
+      "tags": [
+        "technician",
+        "oil"
+      ]
+    },
+    {
+      "di": "https://di-uploads-pod4.dealerinspire.com/mercedesbenzoffoothillranchredesign/uploads/2026/09/mercedes-service-filter.jpg",
+      "w": 1900,
+      "h": 1069,
+      "shows": "Technician in a Mercedes-Benz uniform fits a new engine air filter under an open hood",
+      "vehicle": null,
+      "text": false,
+      "slots": [
+        "hero",
+        "fig",
+        "pair"
+      ],
+      "tags": [
+        "technician"
+      ]
+    },
+    {
+      "di": "https://di-uploads-pod4.dealerinspire.com/mercedesbenzoffoothillranchredesign/uploads/2026/09/mercedes-service-greeting.jpg",
+      "w": 1900,
+      "h": 1069,
+      "shows": "Service advisor in a suit greets the driver of a silver Mercedes-Benz GLB at a service drive; \"EXPRESS SERVICE\" signage visible at right",
+      "vehicle": "Mercedes-Benz GLB (X247)",
+      "text": true,
+      "slots": [
+        "hero",
+        "fig",
+        "pair"
+      ],
+      "tags": [
+        "people",
+        "service-bay"
+      ]
+    },
+    {
+      "di": "https://di-uploads-pod4.dealerinspire.com/mercedesbenzoffoothillranchredesign/uploads/2026/09/mercedes-service-consultation-appraisal.jpg",
+      "w": 1440,
+      "h": 960,
+      "shows": "Consultant with a tablet talks with a customer beside a dark blue Mercedes-Benz SUV in a bright showroom",
+      "vehicle": null,
+      "text": false,
+      "slots": [
+        "fig",
+        "pair"
+      ],
+      "tags": [
+        "people"
+      ]
+    },
+    {
+      "di": "https://di-uploads-pod4.dealerinspire.com/mercedesbenzoffoothillranchredesign/uploads/2026/10/mercedes-battery-hq.jpg",
+      "w": 1620,
+      "h": 1080,
+      "shows": "Gloved technician lowers a Mercedes-Benz Genuine Parts 12V battery into an engine bay (product label visible)",
+      "vehicle": null,
+      "text": false,
+      "slots": [
+        "hero",
+        "fig",
+        "pair"
+      ],
+      "tags": [
+        "technician",
+        "battery"
+      ]
+    },
+    {
+      "di": "https://di-uploads-pod4.dealerinspire.com/mercedesbenzoffoothillranchredesign/uploads/2026/10/Mercedes-BrakePads-Rotors-1280x1280-1.jpg",
+      "w": 1280,
+      "h": 853,
+      "shows": "Technician in safety glasses inspects brake components on a vehicle raised on a lift",
+      "vehicle": null,
+      "text": false,
+      "slots": [
+        "fig",
+        "pair"
+      ],
+      "tags": [
+        "technician",
+        "brakes",
+        "service-bay"
+      ]
+    },
+    {
+      "di": "https://di-uploads-pod4.dealerinspire.com/mercedesbenzoffoothillranchredesign/uploads/2026/09/mercedes-wheel-alignment.jpg",
+      "w": 1620,
+      "h": 1080,
+      "shows": "Technician mounts alignment targets on the front wheel of a dark blue Mercedes-EQ electric SUV on an alignment rack",
+      "vehicle": "Mercedes-EQ electric SUV (model not identifiable)",
+      "text": false,
+      "slots": [
+        "hero",
+        "fig",
+        "pair"
+      ],
+      "tags": [
+        "technician",
+        "tires",
+        "service-bay"
+      ]
+    }
+  ]
+}

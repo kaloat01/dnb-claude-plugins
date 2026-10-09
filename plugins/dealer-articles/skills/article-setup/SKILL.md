@@ -1,13 +1,13 @@
 ---
 name: article-setup
-description: One-time setup and health check for the dealer-articles plugin (Node.js, screenshot browser, frontend-design skill, auto-update). Use when first installing the plugin, when /article-apollo says setup is needed, or when the user asks to check or update the article tools.
+description: One-time setup and health check for the dealer-articles plugin (Node.js, screenshot browser, frontend-design skill, auto-update). Use when first installing the plugin, when /dealer-articles:article-apollo says setup is needed, or when the user asks to check or update the article tools.
 allowed-tools:
   - Bash(node:*)
   - Bash(claude plugin:*)
   - Read
 ---
 
-# /article-setup — check and prepare this computer
+# /dealer-articles:article-setup — check and prepare this computer
 
 **DA** = `node "${CLAUDE_PLUGIN_ROOT}/scripts/build.js"`
 
@@ -16,7 +16,7 @@ Run each check, then report a short ✅/❌ table with the exact fix for any ❌
 1. **Node.js ≥ 18** — run `node --version`.
    - Missing/old → Windows: `winget install OpenJS.NodeJS.LTS` (or the LTS installer from nodejs.org); macOS:
      `brew install node` (or the nodejs.org installer). Then **fully quit and reopen Claude Code** so the PATH updates, and
-     run `/article-setup` again.
+     run `/dealer-articles:article-setup` again.
 2. **Engine** — run `DA env`. Expect: Node version, plugin folder, dealers list, and a browser for screenshots
    (Microsoft Edge or Google Chrome). No browser → screenshots are skipped (the article still builds, but the visual check
    is weaker); suggest installing Chrome or Edge.
@@ -28,5 +28,7 @@ Run each check, then report a short ✅/❌ table with the exact fix for any ❌
 5. **Fewer permission prompts (optional)** — suggest the user allow, via `/permissions`: `WebSearch`, `WebFetch`,
    and `Bash(node:*)`. Research uses many web lookups.
 6. **Dealers available** — show the dealer list from `DA dealers` and how to start:
-   `/article-apollo "<dealer>" "<article title>"`. Articles are created under `./articles/` in the current folder, so start
-   Claude Code in the folder where you want your articles saved.
+   `/dealer-articles:article-apollo "<dealer>" "<article title>"` for Apollo dealers, `/dealer-articles:article-dealerinspire "<dealer>" "<article title>"`
+   for DealerInspire dealers (the Mercedes-Benz stores; the PLATFORM column of `DA dealers` says which). Both run the same
+   workflow and checks. Articles are created under `./articles/` in the current folder, so start Claude Code in the folder
+   where you want your articles saved.

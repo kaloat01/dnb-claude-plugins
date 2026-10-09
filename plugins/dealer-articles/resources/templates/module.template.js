@@ -22,7 +22,7 @@ module.exports = {
   dept: 'service',                   // 'service' or 'sales': picks phone, hours, CTA and schema department
   // cta: { label: 'Schedule Service', href: '/scheduleservice' },   // optional: override the department CTA button
   slug: '__SLUG__',
-  path: '__PATH__',                  // Apollo custom page URL (root-relative)
+  path: '__PATH__',                  // page URL, root-relative (Apollo: no trailing slash; DealerInspire: trailing slash, set by new)
   title: '__TITLE__',                // Page Title (50 to 65 chars), contains the focus keyword
   ogTitle: 'TODO OG title (may be longer and more inviting than the page title)',
   meta: 'TODO meta description, 130 to 165 characters, answers the query and names __CITY__ or the dealer.',

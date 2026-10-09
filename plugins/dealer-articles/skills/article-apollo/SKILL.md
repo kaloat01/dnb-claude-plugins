@@ -1,6 +1,6 @@
 ---
 name: article-apollo
-description: Draft a long-form, compliance-reviewed dealership article (Editorial v2 design) for an Apollo (Team Velocity) dealer website and package it for pasting (HTML fragment, site-wide CSS, Structured Data, SEO fields, local preview). Use when the user asks for a dealer article, blog post, comparison article, buying guide or service guide for an Apollo dealership, or types /article-apollo "<dealer>" "<title>".
+description: Draft a long-form, compliance-reviewed dealership article (Editorial v2 design) for an Apollo (Team Velocity) dealer website and package it for pasting (HTML fragment, site-wide CSS, Structured Data, SEO fields, local preview). Use when the user asks for a dealer article, blog post, comparison article, buying guide or service guide for an Apollo dealership, or types /dealer-articles:article-apollo "<dealer>" "<title>".
 argument-hint: "\"<dealer name>\" \"<article title>\""
 allowed-tools:
   - Bash(node:*)
@@ -16,7 +16,7 @@ allowed-tools:
   - AskUserQuestion
 ---
 
-# /article-apollo — dealership article, Apollo package
+# /dealer-articles:article-apollo — dealership article, Apollo package
 
 Input: `$ARGUMENTS` = dealer name + article title, e.g. `"Brickell Mazda" "Mazda CX-50 or CX-5: Which One Fits a Downtown Miami Garage?"`.
 Engine command (use exactly, always quoted): **DA** = `node "${CLAUDE_PLUGIN_ROOT}/scripts/build.js"`
@@ -45,10 +45,10 @@ under the folder Claude Code was started in.
 11. Plain words with the user. Ask only questions whose answer changes the article, with a recommended option first.
 
 ## Phases (job.json `phase` → section)
-`intake` → 0–2 · `research` → 3 · `draft` → 4 · `seo` → 5 · `review` → 6 · `deliver` → 7 · `images` → /article-images · `done`.
+`intake` → 0–2 · `research` → 3 · `draft` → 4 · `seo` → 5 · `review` → 6 · `deliver` → 7 · `images` → /dealer-articles:article-images · `done`.
 
 ## Phase 0 — Preflight (do immediately)
-1. Run `DA env`. If Node is missing or < 18: stop and tell the user to run `/article-setup`.
+1. Run `DA env`. If Node is missing or < 18: stop and tell the user to run `/dealer-articles:article-setup`.
 2. Parse dealer + title from `$ARGUMENTS`. Run `DA new --dealer "<dealer>" --title "<title>" --slug "<short-slug>"`
    (slug: 3–8 words, focus keyword + city, e.g. `toyota-hybrid-battery-care-chicago`; it becomes the URL and file names).
    Exit 2 → ambiguous/unknown dealer: show candidates, ask. Exit 1 "Job already exists" → read its `job.json`, resume at its phase.
@@ -105,7 +105,7 @@ Phase → `seo`.
 2. Run `DA shot "<job>"`; Read `<job>/qa/preview-1280.png` and `<job>/qa/preview-375.png`. Invoke the skill
    **`frontend-design:frontend-design`** for a craft review of the screenshots **within the locked Editorial v2** (rhythm,
    hierarchy, alignment, crops, mobile) — it must NOT change fonts, colors, layout or add brand styling. If it is not
-   installed, use the design QA checklist in `design-and-apollo.md` and tell the user to run `/article-setup`. Rebuild.
+   installed, use the design QA checklist in `design-and-apollo.md` and tell the user to run `/dealer-articles:article-setup`. Rebuild.
 Phase → `review`.
 
 ## Phase 6 — Independent reviews (parallel, read-only)
@@ -118,13 +118,13 @@ P2/WARNINGs (log skipped ones with a reason in `job.json` notes). Fix patterns e
 Phase → `deliver`.
 
 ## Phase 7 — Deliver
-`DA build "<job>"` (draft) or `DA build "<job>" --final` when every article image has an Apollo ID (see `/article-images`).
+`DA build "<job>"` (draft) or `DA build "<job>" --final` when every article image has an Apollo ID (see `/dealer-articles:article-images`).
 Reply with: preview path (`<job>/<slug>-preview.html`), package folder (`<job>/package/`, 4 files + README), word/H2/FAQ
 counts, review verdicts (what was fixed), open `verify[]` items, legal flags (MSRP comparisons: dealer counsel sign-off where
 required), a note that the HTML uses Apollo merge tags `#SalesNumber` / `#ServiceNumber` for phones (Structured Data keeps real numbers), the SEO lines from `<slug>-SEO.md` verbatim (`* Field  →  value`), short paste steps, and: "Site-wide CSS: one
 file per dealer for ALL articles; paste once (copy from the file in Notepad, never from chat), re-paste only if `--da-css-version` (last rule) differs from what is live; after pasting, search the live page source for `da-css-version`."
-If images are placeholders: "Upload the images, then send me the Image IDs here or run `/article-images`." If the user
+If images are placeholders: "Upload the images, then send me the Image IDs here or run `/dealer-articles:article-images`." If the user
 already sent IDs, follow `${CLAUDE_PLUGIN_ROOT}/skills/article-images/SKILL.md` now. Phase → `images` (or `done`).
 
 ## Resume
-`DA status "<job>"` shows the phase and outputs. Re-running `/article-apollo` with the same dealer + title resumes.
+`DA status "<job>"` shows the phase and outputs. Re-running `/dealer-articles:article-apollo` with the same dealer + title resumes.

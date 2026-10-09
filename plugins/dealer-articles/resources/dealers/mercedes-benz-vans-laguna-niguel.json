@@ -1,0 +1,215 @@
+{
+  "key": "mercedes-benz-vans-laguna-niguel",
+  "prefix": "mblv",
+  "platform": "dealerinspire",
+  "name": "Mercedes-Benz Vans of Laguna Niguel",
+  "aliases": [
+    "mercedes-benz vans of laguna niguel",
+    "mercedes benz vans laguna niguel",
+    "mercedes-benz vans laguna niguel",
+    "sprinter of laguna niguel",
+    "sprinter laguna niguel",
+    "laguna sprinter vans",
+    "lagunasprintervans",
+    "mb vans laguna",
+    "mblv"
+  ],
+  "brand": "Mercedes-Benz",
+  "brandLine": "Mercedes-Benz Vans",
+  "group": "Murgado Automotive Group",
+  "domain": "https://www.lagunasprintervans.com",
+  "address": {
+    "street": "1 Star Dr",
+    "city": "Laguna Niguel",
+    "region": "CA",
+    "zip": "92677",
+    "country": "US"
+  },
+  "geo": [
+    33.5418189,
+    -117.6755466
+  ],
+  "mainPhone": "(949) 693-4369",
+  "departments": {
+    "service": {
+      "label": "Service",
+      "phone": "949-558-3998",
+      "cta": {
+        "label": "Schedule Service",
+        "href": "/service/schedule-service/"
+      },
+      "hours": [
+        [
+          [
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday"
+          ],
+          "07:00",
+          "18:00"
+        ],
+        [
+          [
+            "Saturday"
+          ],
+          "08:00",
+          "13:00"
+        ]
+      ]
+    },
+    "sales": {
+      "label": "Sales",
+      "phone": "949-693-4369",
+      "cta": {
+        "label": "Shop New Inventory",
+        "href": "/new-vehicles/"
+      },
+      "hours": [
+        [
+          [
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday"
+          ],
+          "08:00",
+          "18:00"
+        ],
+        [
+          [
+            "Saturday"
+          ],
+          "09:00",
+          "17:00"
+        ]
+      ]
+    }
+  },
+  "routes": {
+    "directions": "/contact-us/",
+    "contact": "/contact-us/",
+    "about": "/about-us/",
+    "serviceHub": "/service/",
+    "specials": "/service/service-specials/",
+    "scheduleService": "/service/schedule-service/",
+    "serviceTips": "/service/service-parts-and-tips/",
+    "parts": "/parts/",
+    "newInventory": "/new-vehicles/",
+    "usedInventory": "/used-sprinter-vans/",
+    "financing": "/finance/apply-for-financing/",
+    "valueYourTrade": "/value-your-trade/",
+    "testDrive": "/schedule-test-drive/"
+  },
+  "areas": [
+    "Laguna Niguel",
+    "Mission Viejo",
+    "Aliso Viejo",
+    "Dana Point",
+    "San Juan Capistrano",
+    "San Clemente",
+    "Lake Forest",
+    "Irvine"
+  ],
+  "excluded": [],
+  "climate": "Mild Southern California coastal/inland climate; no snow or road salt.",
+  "bans": [
+    "snow",
+    "road salt",
+    "winter",
+    "Star-Certified",
+    "GLA",
+    "GLB",
+    "GLC",
+    "GLE",
+    "GLS",
+    "CLA",
+    "CLE",
+    "EQB",
+    "EQE",
+    "EQS",
+    "C-Class",
+    "E-Class",
+    "S-Class",
+    "G-Class",
+    "AMG GT",
+    "Maybach"
+  ],
+  "brandNaming": [
+    "This is a Mercedes-Benz Vans store: write \"Mercedes-Benz Sprinter\" and \"Mercedes-Benz eSprinter\" (Sprinter Cargo Van, Crew Van, Passenger Van); passenger-car models belong to the sister store Mercedes-Benz of Laguna Niguel on the same 1 Star Dr campus",
+    "Write \"Mercedes-Benz\" in full in copy and headings; do not shorten it to \"Mercedes\" or \"Benz\"",
+    "Say service \"offers\" or \"Service Offers\", never \"coupon\" or \"coupons\" (brand terms ledger MB-001)",
+    "Never use \"Star-Certified\"",
+    "Say \"Genuine Mercedes-Benz parts\": they are recommended, never required, and never say other parts \"void\" a warranty",
+    "When describing MBUX or driver-assistance features, add the Mercedes-Benz \"Digital Extras\" availability disclaimer",
+    "Service timing follows the Operator's Manual and the Maintenance Booklet; keep every service record"
+  ],
+  "style": {
+    "linkColor": "#176db7",
+    "linkHover": "#11528a",
+    "linkUnderline": false,
+    "importantWaiver": true,
+    "exceptions": [
+      {
+        "rule": "!important on article link and button colors (color plus -webkit-text-fill-color) and on #di-page-composer-prefixed heading sizes",
+        "source": "The DealerInspire theme sets global link colors (a, a:visited, a:active) and Page Composer heading sizes; the proven DI embeds need !important to keep the article's own link and button colors and type scale"
+      }
+    ],
+    "fonts": {
+      "head": "\"corpoademregular\",\"corpoaregular\",\"CorporateA\",Georgia,\"Times New Roman\",serif",
+      "body": "\"corposregular\",\"Roboto\",Arial,sans-serif",
+      "import": true
+    }
+  },
+  "di": {
+    "uploads": "https://di-uploads-pod43.dealerinspire.com/sprinterlagunaniguel/uploads/",
+    "template": "composer",
+    "postLayout": false,
+    "category": null,
+    "parentPath": "/service/service-parts-and-tips/",
+    "shortcodes": {
+      "service": "di_phone_service",
+      "sales": "di_phone_sales"
+    },
+    "hoursDepartments": {
+      "service": "Service"
+    }
+  },
+  "images": {
+    "STORE": {
+      "di": "https://di-uploads-pod43.dealerinspire.com/sprinterlagunaniguel/uploads/2025/10/Sprinter-Van-Dealer-Carousel.webp",
+      "alt": "Mercedes-Benz commercial van dealership building in Laguna Niguel, with its \"Commercial Vans\" sign and Service Reception entrance",
+      "w": 889,
+      "h": 592,
+      "desc": "Vans store building: glass front with \"Commercial Vans\" sign and \"Service Reception\" entrance, green hills behind, Sprinter vans at right"
+    },
+    "LOGO": {
+      "di": "https://di-uploads-pod43.dealerinspire.com/sprinterlagunaniguel/uploads/2026/09/mercedes-benz-light-no-space-desktop-logo.png",
+      "alt": "Mercedes-Benz",
+      "w": 60,
+      "h": 60,
+      "onDark": true,
+      "desc": "White Mercedes-Benz star, transparent PNG; shown on the black brand band"
+    }
+  },
+  "verify": [
+    "Store name: the live site calls the store \"Sprinter of Laguna Niguel\" / \"Sprinter Laguna Niguel\" (title, og:site_name, About Us, JSON-LD), while the live service-specials pages use \"Mercedes-Benz Vans of Laguna Niguel\". Confirm which name articles should use.",
+    "Sales hours shortcode [di_hours department=\"Sales\"] is not used on any live page of this site yet, so it is not verified; use the Service hours shortcode only, or confirm Sales on the first article that uses it.",
+    "STORE photo is the dealer's own carousel image (\"Commercial Vans\" building); its location was not independently confirmed."
+  ],
+  "lastVerified": "2026-10-09",
+  "sourcesNote": "internal provenance: project files + live site checks 2026-10-09",
+  "sources": [
+    "https://www.lagunasprintervans.com/about-us/ (US geo, 2026-10-09): 1 Star Dr, Laguna Niguel, CA 92677; header Sales 949-693-4369, Service 949-558-3998, main 949-693-4369; department hours in page JSON-LD",
+    "https://www.lagunasprintervans.com/contact-us/ (US geo, 2026-10-09): Sales Mon-Fri 8:00 AM-6:00 PM, Sat 9:00 AM-5:00 PM, Sun closed; Service Mon-Fri 7:00 AM-6:00 PM, Sat 8:00 AM-1:00 PM, Sun closed; Parts 949-485-5829",
+    "https://www.lagunasprintervans.com/service/service-specials/ (live, 2026-10-09): Page Composer page; [di_option] service and sales phones and [di_hours department=\"Service\"] render",
+    "https://www.lagunasprintervans.com/service/service-parts-and-tips/sprinter-van-oil-change-overview/ (live, 2026-10-09): tips articles are Page Composer child pages of /service/service-parts-and-tips/",
+    "https://www.lagunasprintervans.com/wp-content/themes/DealerInspireDealerTheme/css/style.css (2026-10-09): --maintextfont Lato, --headingfont corpoaregular, --primary and base links #186CB7",
+    "https://www.lagunasprintervans.com/sitemap_index.xml (Yoast page + post sitemaps, 2026-10-09): sitemap snapshot and route checks"
+  ],
+  "allowPhrases": [
+    "Premier Prepaid Maintenance"
+  ]
+}

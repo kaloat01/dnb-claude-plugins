@@ -1,6 +1,6 @@
 ---
 name: article-images
-description: Wire the user's uploaded Apollo images (Image IDs or GetLibraryImage URLs) into an existing dealer article job, verify and view each photo, place it by resolution, and produce the FINAL Apollo package. Use after /article-apollo when the user sends image IDs/URLs, or types /article-images "<dealer>" "<title or slug>".
+description: Wire the user's uploaded Apollo images (Image IDs or GetLibraryImage URLs) into an existing dealer article job, verify and view each photo, place it by resolution, and produce the FINAL Apollo package. Use after /dealer-articles:article-apollo when the user sends image IDs/URLs, or types /dealer-articles:article-images "<dealer>" "<title or slug>".
 argument-hint: "\"<dealer name>\" \"<article title or slug>\" [image IDs/URLs…]"
 allowed-tools:
   - Bash(node:*)
@@ -10,7 +10,7 @@ allowed-tools:
   - Glob
 ---
 
-# /article-images — wire images, build the final package
+# /dealer-articles:article-images — wire images, build the final package
 
 **DA** = `node "${CLAUDE_PLUGIN_ROOT}/scripts/build.js"` · rules: `${CLAUDE_PLUGIN_ROOT}/resources/rules/image-brief.md`
 
@@ -20,6 +20,10 @@ allowed-tools:
    Accept Image IDs, full Apollo URLs (`…GetLibraryImage?fileNameOrId=<ID>…`) or a list in slot order. If the mapping is
    unclear, show the slot list and ask once. Write each value into `module.js` → `images.<KEY>.apollo`. Reject thumbnails or
    non-Apollo URLs (images must live in the dealer's Apollo library).
+   **DealerInspire dealers** (dealer file `platform: "dealerinspire"`): accept the WordPress Media Library **File URL**
+   (`https://di-uploads-podN.dealerinspire.com/<site>/uploads/YYYY/MM/<file>`, the original, not a `-1024x683` copy) and
+   write it into `images.<KEY>.di`. It must be this store's uploads base (dealer file `di.uploads`). The final package is
+   `<slug>-embed-Wired.html` + `<slug>-SEO.md`; deliver as in `/dealer-articles:article-dealerinspire` step 9.
 3. **Verify.** Run `DA images "<job>"`: every image must return 200 + `image/*`; it saves copies to `<job>/images/` and prints
    real width × height. A failure → tell the user which slot and why (wrong ID, not public, 406) and stop for that slot.
 4. **View every photo** (Read each file in `<job>/images/`). Check: subject matches the slot request, **model year/generation
@@ -29,7 +33,7 @@ allowed-tools:
    (`prose: true`) or move it into the pair; pair images ≥800w; never upscale; no repeats. Swap slots if that fits better.
 6. **Build final:** `DA build "<job>" --final` → all gates ✅ (fix `module.js` if not). `DA shot "<job>"` → Read the PNGs →
    check crops (subject visible at the hero ratio), no broken images, mobile layout.
-7. **Deliver** (same format as /article-apollo Phase 7): package folder path, the 4 files, SEO lines verbatim, paste steps,
+7. **Deliver** (same format as /dealer-articles:article-apollo Phase 7): package folder path, the 4 files, SEO lines verbatim, paste steps,
    site-wide CSS note (paste once per dealer; re-paste only if `--da-css-version` in the live page source differs from the file), open
    flags. Update `job.json` phase → `done`.
 After publishing, suggest a quick live check: open the page, confirm 1 visible H1, images, buttons not underlined, FAQ

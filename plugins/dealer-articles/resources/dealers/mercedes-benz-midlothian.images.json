@@ -1,0 +1,235 @@
+{
+  "dealer": "mercedes-benz-midlothian",
+  "generated": "2026-10-09",
+  "note": "Images already in this dealer's DealerInspire uploads library (full URLs, each verified 200 + image/* on 2026-10-09). Reuse before asking for new uploads. View before use; match the article's model year.",
+  "images": [
+    {
+      "di": "https://di-uploads-pod5.dealerinspire.com/mercedesbenzofmidlothian/uploads/2026/09/MidlothianDealershipImage.jpg",
+      "w": 1024,
+      "h": 682,
+      "shows": "Mercedes-Benz of Midlothian storefront from above: silver facade with star pylon and dealership sign, front lot with customer and inventory vehicles, wooded hills behind; photographer signature watermark at bottom-left",
+      "vehicle": null,
+      "text": true,
+      "slots": [
+        "store",
+        "pair"
+      ],
+      "tags": [
+        "storefront"
+      ]
+    },
+    {
+      "di": "https://di-uploads-pod5.dealerinspire.com/mercedesbenzofmidlothian/uploads/2026/09/mercedes-benz-light-no-space-desktop-logo.png",
+      "w": 60,
+      "h": 60,
+      "shows": "White Mercedes-Benz three-pointed star on a transparent background (PNG served with an image/webp content type); for dark bands",
+      "vehicle": null,
+      "text": false,
+      "slots": [
+        "logo"
+      ],
+      "tags": []
+    },
+    {
+      "di": "https://di-uploads-pod5.dealerinspire.com/mercedesbenzofmidlothian/uploads/2026/09/Midlothian-Workshop-Hero.jpg",
+      "w": 1440,
+      "h": 1080,
+      "shows": "Mercedes-Benz of Midlothian service workshop: a silver E-Class on a lift with its wheels off, tires on the tiled floor, more vehicles and vans behind",
+      "vehicle": "2017-2023 Mercedes-Benz E-Class (W213, previous generation)",
+      "text": false,
+      "slots": [
+        "fig",
+        "pair"
+      ],
+      "tags": [
+        "service-bay"
+      ]
+    },
+    {
+      "di": "https://di-uploads-pod5.dealerinspire.com/mercedesbenzofmidlothian/uploads/2026/09/2027-Mercedes-GLE.jpg",
+      "w": 1621,
+      "h": 1080,
+      "shows": "Silver Mercedes-Benz GLE SUV, front three-quarter, on a winding coastal mountain road",
+      "vehicle": "Mercedes-Benz GLE (V167); file name says 2027",
+      "text": false,
+      "slots": [
+        "hero",
+        "fig",
+        "pair"
+      ],
+      "tags": [
+        "vehicle-exterior",
+        "road"
+      ]
+    },
+    {
+      "di": "https://di-uploads-pod5.dealerinspire.com/mercedesbenzofmidlothian/uploads/2026/09/2027-Mercedes-GLE-Interior.jpg",
+      "w": 1018,
+      "h": 678,
+      "shows": "Mercedes-Benz GLE dashboard with wide MBUX screens, seen from the rear seat",
+      "vehicle": "Mercedes-Benz GLE (V167); file name says 2027",
+      "text": false,
+      "slots": [
+        "pair"
+      ],
+      "tags": [
+        "interior"
+      ]
+    },
+    {
+      "di": "https://di-uploads-pod5.dealerinspire.com/mercedesbenzofmidlothian/uploads/2026/09/2027-Mercedes-GLE-Rear-Three-Quarter.jpg",
+      "w": 1018,
+      "h": 678,
+      "shows": "White Mercedes-Benz GLE SUV with its doors open, rear three-quarter view from above, dry hills behind",
+      "vehicle": "Mercedes-Benz GLE (V167); file name says 2027",
+      "text": false,
+      "slots": [
+        "pair"
+      ],
+      "tags": [
+        "vehicle-exterior"
+      ]
+    },
+    {
+      "di": "https://di-uploads-pod5.dealerinspire.com/mercedesbenzofmidlothian/uploads/2026/09/Richmond_VA_Skyline.jpg",
+      "w": 900,
+      "h": 600,
+      "shows": "Downtown Richmond, Virginia skyline at dusk",
+      "vehicle": null,
+      "text": false,
+      "slots": [
+        "pair"
+      ],
+      "tags": [
+        "city"
+      ]
+    },
+    {
+      "di": "https://di-uploads-pod5.dealerinspire.com/mercedesbenzofmidlothian/uploads/2026/09/2026-mercedes-benz-gls450-123-691cac8d8a245.jpg",
+      "w": 1620,
+      "h": 1080,
+      "shows": "Silver Mercedes-Benz GLS SUV driving on a palm-lined road (not Virginia scenery)",
+      "vehicle": "Mercedes-Benz GLS 450 (X167); file name says 2026",
+      "text": false,
+      "slots": [
+        "hero",
+        "fig",
+        "pair"
+      ],
+      "tags": [
+        "vehicle-exterior",
+        "road"
+      ]
+    },
+    {
+      "di": "https://di-uploads-pod5.dealerinspire.com/mercedesbenzofmidlothian/uploads/2026/09/2026_mercedes-benz_e-class_sedan_e-350-4matic_fq_oem_1_1600x1067.jpg",
+      "w": 1600,
+      "h": 1067,
+      "shows": "Sage-green Mercedes-Benz E-Class sedan, front three-quarter, on a palm-lined desert street; bottom edge fades to black (palm trees: not Virginia scenery)",
+      "vehicle": "2024+ Mercedes-Benz E-Class sedan (W214); file name says 2026",
+      "text": false,
+      "slots": [
+        "hero",
+        "fig",
+        "pair"
+      ],
+      "tags": [
+        "vehicle-exterior",
+        "road"
+      ]
+    },
+    {
+      "di": "https://di-uploads-pod5.dealerinspire.com/mercedesbenzofmidlothian/uploads/2026/09/mercedes-service-consultation-appraisal.jpg",
+      "w": 1440,
+      "h": 960,
+      "shows": "Consultant with a tablet talks with a customer beside a dark blue Mercedes-Benz SUV in a bright showroom",
+      "vehicle": null,
+      "text": false,
+      "slots": [
+        "fig",
+        "pair"
+      ],
+      "tags": [
+        "people"
+      ]
+    },
+    {
+      "di": "https://di-uploads-pod5.dealerinspire.com/mercedesbenzofmidlothian/uploads/2026/09/mercedes-key-handooff_small.jpg",
+      "w": 1600,
+      "h": 900,
+      "shows": "Close-up of a Mercedes-Benz key fob being handed from one person to another",
+      "vehicle": null,
+      "text": false,
+      "slots": [
+        "hero",
+        "fig",
+        "pair"
+      ],
+      "tags": [
+        "people"
+      ]
+    },
+    {
+      "di": "https://di-uploads-pod5.dealerinspire.com/mercedesbenzofmidlothian/uploads/2026/09/Mercedes-BrakePads-Rotors-1280x1280-1.jpg",
+      "w": 1280,
+      "h": 853,
+      "shows": "Technician in safety glasses inspects brake components on a vehicle raised on a lift",
+      "vehicle": null,
+      "text": false,
+      "slots": [
+        "fig",
+        "pair"
+      ],
+      "tags": [
+        "technician",
+        "brakes",
+        "service-bay"
+      ]
+    },
+    {
+      "di": "https://di-uploads-pod5.dealerinspire.com/mercedesbenzofmidlothian/uploads/2026/09/mercedes-fliud-change-coolant-or-antifreeze.jpg",
+      "w": 1024,
+      "h": 683,
+      "shows": "Technician pours fluid into the engine bay of a Mercedes-Benz in a bright workshop; \"Mercedes-Benz\" engine cover in the foreground",
+      "vehicle": null,
+      "text": false,
+      "slots": [
+        "pair"
+      ],
+      "tags": [
+        "technician"
+      ]
+    },
+    {
+      "di": "https://di-uploads-pod5.dealerinspire.com/mercedesbenzofmidlothian/uploads/2026/09/mercedes-engine-wipe-hq.jpg",
+      "w": 1620,
+      "h": 1080,
+      "shows": "Close-up of a hand wiping a Mercedes-Benz engine cover with the three-pointed star",
+      "vehicle": null,
+      "text": false,
+      "slots": [
+        "hero",
+        "fig",
+        "pair"
+      ],
+      "tags": [
+        "engine"
+      ]
+    },
+    {
+      "di": "https://di-uploads-pod5.dealerinspire.com/mercedesbenzofmidlothian/uploads/2026/09/Star-Member-Benefits-in-Car.jpg",
+      "w": 1366,
+      "h": 768,
+      "shows": "Service advisor with a tablet greets a smiling driver through the open window of a dark Mercedes-Benz sedan outdoors",
+      "vehicle": null,
+      "text": false,
+      "slots": [
+        "fig",
+        "pair"
+      ],
+      "tags": [
+        "people"
+      ]
+    }
+  ]
+}

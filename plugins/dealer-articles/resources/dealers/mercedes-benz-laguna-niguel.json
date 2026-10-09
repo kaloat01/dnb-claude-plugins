@@ -1,0 +1,212 @@
+{
+  "key": "mercedes-benz-laguna-niguel",
+  "prefix": "mbl",
+  "platform": "dealerinspire",
+  "name": "Mercedes-Benz of Laguna Niguel",
+  "aliases": [
+    "mercedes-benz of laguna niguel",
+    "mercedes benz laguna niguel",
+    "mercedes-benz laguna niguel",
+    "mb laguna",
+    "mb laguna niguel",
+    "mblaguna",
+    "laguna niguel mercedes",
+    "mbl"
+  ],
+  "brand": "Mercedes-Benz",
+  "group": "Murgado Automotive Group",
+  "domain": "https://www.mblaguna.com",
+  "address": {
+    "street": "1 Star Dr",
+    "city": "Laguna Niguel",
+    "region": "CA",
+    "zip": "92677",
+    "country": "US"
+  },
+  "geo": [
+    33.5449933,
+    -117.6754672
+  ],
+  "mainPhone": "(949) 347-3700",
+  "departments": {
+    "service": {
+      "label": "Service",
+      "phone": "949-347-3860",
+      "cta": {
+        "label": "Schedule Service",
+        "href": "/service/schedule-service/"
+      },
+      "hours": [
+        [
+          [
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday"
+          ],
+          "07:00",
+          "18:00"
+        ],
+        [
+          [
+            "Saturday"
+          ],
+          "08:00",
+          "13:00"
+        ]
+      ]
+    },
+    "sales": {
+      "label": "Sales",
+      "phone": "949-877-3942",
+      "cta": {
+        "label": "Shop New Inventory",
+        "href": "/new-vehicles/"
+      },
+      "hours": [
+        [
+          [
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday"
+          ],
+          "08:30",
+          "20:00"
+        ],
+        [
+          [
+            "Saturday"
+          ],
+          "09:00",
+          "19:00"
+        ],
+        [
+          [
+            "Sunday"
+          ],
+          "10:00",
+          "19:00"
+        ]
+      ]
+    }
+  },
+  "routes": {
+    "directions": "/contact-us/",
+    "contact": "/contact-us/",
+    "about": "/about-us/",
+    "serviceHub": "/service/",
+    "specials": "/service/service-specials/",
+    "scheduleService": "/service/schedule-service/",
+    "serviceTips": "/service/service-and-parts-tips/",
+    "parts": "/parts/",
+    "newInventory": "/new-vehicles/",
+    "usedInventory": "/used-vehicles/",
+    "cpoInventory": "/used-vehicles/certified-pre-owned-vehicles/",
+    "financing": "/finance/apply-for-financing/",
+    "valueYourTrade": "/value-your-trade/",
+    "testDrive": "/schedule-test-drive/"
+  },
+  "areas": [
+    "Laguna Niguel",
+    "Aliso Viejo",
+    "Dana Point",
+    "San Juan Capistrano",
+    "Laguna Hills",
+    "San Clemente",
+    "Rancho Santa Margarita"
+  ],
+  "excluded": [
+    "Mission Viejo",
+    "Laguna Beach",
+    "Lake Forest",
+    "Irvine",
+    "Newport Beach"
+  ],
+  "climate": "Mild Southern California coastal/inland climate; no snow or road salt.",
+  "bans": [
+    "snow",
+    "road salt",
+    "winter",
+    "Star-Certified",
+    "Sprinter",
+    "eSprinter",
+    "Metris"
+  ],
+  "brandNaming": [
+    "Write \"Mercedes-Benz\" in full in copy and headings; do not shorten it to \"Mercedes\" or \"Benz\"",
+    "Say service \"offers\" or \"Service Offers\", never \"coupon\" or \"coupons\" (brand terms ledger MB-001)",
+    "Never use \"Star-Certified\"",
+    "Say \"Genuine Mercedes-Benz parts\": they are recommended, never required, and never say other parts \"void\" a warranty",
+    "When describing MBUX or driver-assistance features, add the Mercedes-Benz \"Digital Extras\" availability disclaimer",
+    "Scheduled maintenance is \"Service A\" and \"Service B\"; timing comes from the Maintenance Booklet and the vehicle's ASSYST PLUS service indicator",
+    "Sprinter and eSprinter vans are sold and serviced by the sister store on the same 1 Star Dr campus (lagunasprintervans.com); keep this store's articles on passenger vehicles"
+  ],
+  "style": {
+    "linkColor": "#176db7",
+    "linkHover": "#11528a",
+    "linkUnderline": false,
+    "importantWaiver": true,
+    "exceptions": [
+      {
+        "rule": "!important on article link and button colors (color plus -webkit-text-fill-color) and on #di-page-composer-prefixed heading sizes",
+        "source": "The DealerInspire theme sets global link colors (a, a:visited, a:active) and Page Composer heading sizes; the proven DI embeds need !important to keep the article's own link and button colors and type scale"
+      }
+    ],
+    "fonts": {
+      "head": "\"corpoademregular\",\"corpoaregular\",\"CorporateA\",Georgia,\"Times New Roman\",serif",
+      "body": "\"corposregular\",\"Roboto\",Arial,sans-serif",
+      "import": true
+    }
+  },
+  "di": {
+    "uploads": "https://di-uploads-pod4.dealerinspire.com/mercedesbenzoflagunaniguelredesign/uploads/",
+    "template": "composer",
+    "postLayout": false,
+    "category": null,
+    "parentPath": "/service/service-and-parts-tips/",
+    "shortcodes": {
+      "service": "di_phone_service",
+      "sales": "di_phone_sales"
+    },
+    "hoursDepartments": {
+      "service": "Service"
+    }
+  },
+  "images": {
+    "STORE": {
+      "di": "https://di-uploads-pod4.dealerinspire.com/mercedesbenzoflagunaniguelredesign/uploads/2026/09/MercedesLaguna-Front-Dealership-Main_1900.jpg",
+      "alt": "Mercedes-Benz of Laguna Niguel showroom at 1 Star Dr, with its glass facade, white canopy and dealership sign",
+      "w": 1617,
+      "h": 1080,
+      "desc": "Mercedes-Benz of Laguna Niguel storefront: glass showroom under a wide white canopy, dealership sign, star pylon and landscaped entrance"
+    },
+    "LOGO": {
+      "di": "https://di-uploads-pod4.dealerinspire.com/mercedesbenzoflagunaniguelredesign/uploads/2026/09/mercedes-benz-light-no-space-desktop-logo.png",
+      "alt": "Mercedes-Benz",
+      "w": 60,
+      "h": 60,
+      "onDark": true,
+      "desc": "White Mercedes-Benz star, transparent PNG; shown on the black brand band"
+    }
+  },
+  "verify": [
+    "Sales hours shortcode [di_hours department=\"Sales\"] is not used on any live page of this site yet, so it is not verified; use the Service hours shortcode only, or confirm Sales on the first article that uses it."
+  ],
+  "lastVerified": "2026-10-09",
+  "sourcesNote": "internal provenance: project files + live site checks 2026-10-09",
+  "sources": [
+    "https://www.mblaguna.com/about-us/ (US geo, 2026-10-09): 1 Star Dr, Laguna Niguel, CA 92677; header Sales 949-877-3942, Service 949-347-3860, main 949-347-3700; department hours in page JSON-LD",
+    "https://www.mblaguna.com/contact-us/ (US geo, 2026-10-09): Sales Mon-Fri 8:30 AM-8:00 PM, Sat 9:00 AM-7:00 PM, Sun 10:00 AM-7:00 PM; Service Mon-Fri 7:00 AM-6:00 PM, Sat 8:00 AM-1:00 PM, Sun closed",
+    "https://www.mblaguna.com/service/service-specials/ (live, 2026-10-09): Page Composer page; [di_option] service and sales phones and [di_hours department=\"Service\"] render",
+    "https://www.mblaguna.com/service/service-and-parts-tips/mercedes-benz-wheels/ (live, 2026-10-09): existing tips articles are Page Composer child pages of /service/service-and-parts-tips/",
+    "https://www.mblaguna.com/wp-content/themes/DealerInspireDealerTheme/css/style.css (2026-10-09): --maintextfont corposregular, --headingfont corpoaregular, base links #111; #3376CF is the homepage banner button fill",
+    "https://www.mblaguna.com/wp-content/themes/DealerInspireCommonTheme/css/dealer-groups/mercedes-benz/mercedes-benz-fonts.css: @font-face corpoademregular, corpoaregular, corpoacond",
+    "https://www.mblaguna.com/sitemap_index.xml (Yoast page + post sitemaps, 2026-10-09): sitemap snapshot and route checks"
+  ],
+  "allowPhrases": [
+    "Premier Prepaid Maintenance"
+  ]
+}

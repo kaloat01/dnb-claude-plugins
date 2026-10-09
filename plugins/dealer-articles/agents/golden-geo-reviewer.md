@@ -19,8 +19,9 @@ Read first: `${CLAUDE_PLUGIN_ROOT}/skills/golden-geo/SKILL.md` (ARTICLE MODE rul
 
 ## Page-type caveat (state it, then apply it)
 This is an education / comparison article, not an offer page: "price in the first 100 words", Service/Offer/OfferCatalog
-schema and 8–12 FAQs do not apply. Platform: Apollo custom page; H1 in the content (SEO-form H1 blank); schema in the
-Custom Structured Data field (Replace checked); SEO fields in the Apollo form; no og:image field (the hero lives in schema).
+schema and 8–12 FAQs do not apply. Platform (see the dealer file's `platform`):
+- **Apollo custom page:** H1 in the content (SEO-form H1 blank); schema in the Custom Structured Data field (Replace checked); SEO fields in the Apollo form; no og:image field (the hero lives in schema).
+- **DealerInspire (WordPress) page:** H1 in the content (the theme title is hidden); Yoast emits WebPage/WebSite/Organization/Breadcrumb, so the embed's trimmed graph is AutoDealer+AutoRepair `#autodealer` + BlogPosting + FAQPage; Yoast fields (SEO title, meta, focus keyphrase, Facebook/Twitter title, description and image = hero) are in `<slug>-SEO.md`; phones and hours are `[di_option]`/`[di_hours]` shortcodes (not hard-coded); rules in `resources/rules/design-and-dealerinspire.md`.
 
 ## Checklist
 **Blockers:** 0 or 2+ H1 · JSON-LD not parseable or missing BlogPosting/FAQPage · FAQPage questions/answers ≠ visible FAQ ·

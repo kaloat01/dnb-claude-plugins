@@ -9,7 +9,8 @@
     {
       "id": "MB-001",
       "brands": [
-        "Mercedes-Benz"
+        "Mercedes-Benz",
+        "Mercedes-Benz Vans"
       ],
       "term": "coupon",
       "match": "\\bcoupons?\\b",
@@ -42,7 +43,8 @@
     {
       "id": "MB-002",
       "brands": [
-        "Mercedes-Benz"
+        "Mercedes-Benz",
+        "Mercedes-Benz Vans"
       ],
       "term": "distress / pressure wording",
       "match": "\\b(clearance|liquidation|blow-?out|overstock(ed)?|tent sale|super ?store|factory incentives?)\\b",
@@ -58,7 +60,8 @@
     {
       "id": "MB-003",
       "brands": [
-        "Mercedes-Benz"
+        "Mercedes-Benz",
+        "Mercedes-Benz Vans"
       ],
       "term": "pricing-claim wording",
       "match": "\\b(dealer cost|invoice price|certificates?|rebates?|cash back)\\b",
@@ -74,7 +77,8 @@
     {
       "id": "MB-004",
       "brands": [
-        "Mercedes-Benz"
+        "Mercedes-Benz",
+        "Mercedes-Benz Vans"
       ],
       "term": "unsubstantiated superlatives",
       "match": "\\b(the best|largest|the first|the only|#1|number one)\\b",

@@ -1,0 +1,196 @@
+{
+  "key": "mercedes-benz-midlothian",
+  "prefix": "mbm",
+  "platform": "dealerinspire",
+  "name": "Mercedes-Benz of Midlothian",
+  "aliases": [
+    "mercedes-benz of midlothian",
+    "mercedes benz midlothian",
+    "mercedes-benz midlothian",
+    "mb midlothian",
+    "mbofmidlothian",
+    "midlothian mercedes",
+    "mbm"
+  ],
+  "brand": "Mercedes-Benz",
+  "group": "Murgado Automotive Group",
+  "domain": "https://www.mbofmidlothian.com",
+  "address": {
+    "street": "12200 Midlothian Turnpike",
+    "city": "Midlothian",
+    "region": "VA",
+    "zip": "23113",
+    "country": "US"
+  },
+  "geo": [
+    37.5047588,
+    -77.6244011
+  ],
+  "mainPhone": "(804) 587-6113",
+  "departments": {
+    "service": {
+      "label": "Service",
+      "phone": "804-607-7529",
+      "cta": {
+        "label": "Schedule Service",
+        "href": "/service/schedule-service/"
+      },
+      "hours": [
+        [
+          [
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday"
+          ],
+          "07:30",
+          "18:00"
+        ],
+        [
+          [
+            "Saturday"
+          ],
+          "08:00",
+          "14:00"
+        ]
+      ]
+    },
+    "sales": {
+      "label": "Sales",
+      "phone": "804-587-6113",
+      "cta": {
+        "label": "Shop New Inventory",
+        "href": "/new-vehicles/"
+      },
+      "hours": [
+        [
+          [
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday"
+          ],
+          "09:00",
+          "19:00"
+        ],
+        [
+          [
+            "Saturday"
+          ],
+          "09:00",
+          "18:00"
+        ]
+      ]
+    }
+  },
+  "routes": {
+    "directions": "/contact-us/",
+    "contact": "/contact-us/",
+    "about": "/about-us/",
+    "serviceHub": "/service/",
+    "specials": "/service/service-specials/",
+    "scheduleService": "/service/schedule-service/",
+    "parts": "/parts/",
+    "newInventory": "/new-vehicles/",
+    "usedInventory": "/used-vehicles/",
+    "cpoInventory": "/used-vehicles/certified-pre-owned-vehicles/",
+    "financing": "/apply-for-financing/",
+    "valueYourTrade": "/value-your-trade/",
+    "testDrive": "/schedule-test-drive/"
+  },
+  "areas": [
+    "Midlothian",
+    "Richmond"
+  ],
+  "excluded": [
+    "Short Pump",
+    "Glen Allen",
+    "Innsbrook"
+  ],
+  "climate": "Central Virginia: hot, humid summers and winter freezes with occasional snow and ice. Use climate as context only, never as an OEM-listed service condition, and make no unsourced claims about road salt or local roads.",
+  "bans": [
+    "best price",
+    "lowest price",
+    "top dollar",
+    "guaranteed",
+    "certified technician",
+    "factory-trained",
+    "Star-Certified"
+  ],
+  "brandNaming": [
+    "Write \"Mercedes-Benz\" in full in copy and headings; do not shorten it to \"Mercedes\" or \"Benz\"",
+    "Say service \"offers\" or \"Service Offers\", never \"coupon\" or \"coupons\" (brand terms ledger MB-001)",
+    "Never use \"Star-Certified\"",
+    "Say \"Genuine Mercedes-Benz parts\": they are recommended, never required, and never say other parts \"void\" a warranty",
+    "When describing MBUX or driver-assistance features, add the Mercedes-Benz \"Digital Extras\" availability disclaimer",
+    "Scheduled maintenance is \"Service A\" and \"Service B\"; timing comes from the Maintenance Booklet and the vehicle's ASSYST PLUS service indicator",
+    "Do not write \"Service C\" or \"Flexible Service\"",
+    "This store also sells and services Mercedes-Benz Sprinter vans (Vans Specialist (804) 607-7523), so van topics are in scope here"
+  ],
+  "style": {
+    "linkColor": "#176db7",
+    "linkHover": "#11528a",
+    "linkUnderline": false,
+    "importantWaiver": true,
+    "exceptions": [
+      {
+        "rule": "!important on article link and button colors (color plus -webkit-text-fill-color) and on #di-page-composer-prefixed heading sizes",
+        "source": "The DealerInspire theme sets global link colors (a, a:visited, a:active) and Page Composer heading sizes; the proven DI embeds need !important to keep the article's own link and button colors and type scale"
+      }
+    ],
+    "fonts": {
+      "head": "\"corpoademregular\",\"corpoaregular\",\"CorporateA\",Georgia,\"Times New Roman\",serif",
+      "body": "\"corposregular\",\"Roboto\",Arial,sans-serif",
+      "import": true
+    }
+  },
+  "di": {
+    "uploads": "https://di-uploads-pod5.dealerinspire.com/mercedesbenzofmidlothian/uploads/",
+    "template": "composer",
+    "postLayout": false,
+    "category": null,
+    "parentPath": null,
+    "shortcodes": {
+      "service": "di_phone_service",
+      "sales": "di_phone_sales"
+    },
+    "hoursDepartments": {
+      "service": "Service",
+      "sales": "Sales"
+    }
+  },
+  "images": {
+    "STORE": {
+      "di": "https://di-uploads-pod5.dealerinspire.com/mercedesbenzofmidlothian/uploads/2026/09/MidlothianDealershipImage.jpg",
+      "alt": "Mercedes-Benz of Midlothian dealership on Midlothian Turnpike, seen from above with the dealership sign",
+      "w": 1024,
+      "h": 682,
+      "desc": "Mercedes-Benz of Midlothian storefront from above: silver facade, star pylon, dealership sign and front lot; photographer signature at bottom-left"
+    },
+    "LOGO": {
+      "di": "https://di-uploads-pod5.dealerinspire.com/mercedesbenzofmidlothian/uploads/2026/09/mercedes-benz-light-no-space-desktop-logo.png",
+      "alt": "Mercedes-Benz",
+      "w": 60,
+      "h": 60,
+      "onDark": true,
+      "desc": "White Mercedes-Benz star, transparent PNG; shown on the black brand band"
+    }
+  },
+  "verify": [],
+  "lastVerified": "2026-10-09",
+  "sourcesNote": "internal provenance: project files + live site checks 2026-10-09",
+  "sources": [
+    "https://www.mbofmidlothian.com/about-us/ (US geo, 2026-10-09): header Sales (804) 587-6113, Service (804) 607-7529, Parts (804) 607-7524, Vans Specialist (804) 607-7523; department hours in page JSON-LD",
+    "https://www.mbofmidlothian.com/contact-us/ (US geo, 2026-10-09): Sales Mon-Fri 9:00 AM-7:00 PM, Sat 9:00 AM-6:00 PM, Sun closed; Service Mon-Fri 7:30 AM-6:00 PM, Sat 8:00 AM-2:00 PM, Sun closed",
+    "https://www.mbofmidlothian.com/mercedes-benz-maintenance-costs-midlothian/ and https://www.mbofmidlothian.com/2027-mercedes-benz-gle-vs-bmw-x5-richmond/ (live, 2026-10-09): Page Composer pages at the site root, no category; [di_option] service and sales phones and [di_hours] Service and Sales render",
+    "https://www.mbofmidlothian.com/mercedes-benz-of-midlothian-donates-books-to-local-health-institutions/ (live, 2026-10-09): WordPress posts on this site use the category \"News\"",
+    "https://www.mbofmidlothian.com/service/schedule-service/ (live, 2026-10-09): 200, self-canonical (not listed in the Yoast sitemap)",
+    "https://www.mbofmidlothian.com/wp-content/themes/DealerInspireDealerTheme/css/style.css (2026-10-09): --maintextfont Roboto, --headingfont CorporateA, base links #176db7; @font-face CorporateA and CORPSR",
+    "https://www.mbofmidlothian.com/sitemap_index.xml (Yoast page + post sitemaps, 2026-10-09): sitemap snapshot and route checks"
+  ],
+  "allowPhrases": [
+    "Premier Prepaid Maintenance"
+  ]
+}
