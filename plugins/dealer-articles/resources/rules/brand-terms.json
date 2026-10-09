@@ -36,7 +36,8 @@
       "reason": "Toyota price references use TSRP, not MSRP.",
       "source": "Client OEM compliance guidance relayed by Nasko, 10/09/2026. Supporting: Southeast Toyota window sticker \"TOTAL SUGGESTED RETAIL PRICE\" (https://sync.dealeralchemist.com/ddoa/monroney/5TDYRKEC4TS326778); Toyota dealer sites use TSRP since ~10/2023. Note: toyota.com model pages still say \"Starting MSRP\" (https://www.toyota.com/camry/). Toyota Dealer Advertising Covenant (TDAC) is login-only.",
       "added": "2026-10-09",
-      "confidence": "HIGH (client rule; Nasko 10/09: always TSRP for every Toyota dealer)"
+      "confidence": "HIGH (client rule; Nasko 10/09: always TSRP for every Toyota dealer)",
+      "note": "Toyota pages never show competitor prices (Nasko 10/09/2026): compare rivals on specs/features only, so \"MSRP\" never appears on a Toyota page."
     },
     {
       "id": "MB-002",
@@ -85,6 +86,179 @@
       "source": "MBUSA Brand Communication Standards Rev.10 (2015) p.20",
       "confidence": "MED",
       "added": "2026-10-09"
+    },
+    {
+      "brands": [
+        "*"
+      ],
+      "appliesTo": "articles",
+      "flags": "i",
+      "added": "2026-10-09",
+      "id": "LAW-PRICE-01",
+      "term": "dealer-price / price-claim wording",
+      "match": "\\b(out[- ]the[- ]door (price )?(of |at |for |is )?\\$[\\d,]+|our price|you'?ll pay|no hidden fees|no dealer fees|no markups?|(at|below|under) (msrp|tsrp|invoice)|dealer cost|invoice price|lowest price|best price|price match)\\b",
+      "use": "remove; articles state no dealer price (MSRP/TSRP only as labeled OEM reference data)",
+      "severity": "fail",
+      "reason": "Advertised price must be the total any consumer can pay; price claims need full all-in pricing.",
+      "source": "FTC \"Automobile Industry Pricing Transparency: FAQs\" (press release 09/15/2026), https://www.ftc.gov/business-guidance/industry/automobiles; Va. Code 46.2-1581(7); CA SB 766"
+    },
+    {
+      "brands": [
+        "*"
+      ],
+      "appliesTo": "articles",
+      "flags": "i",
+      "added": "2026-10-09",
+      "id": "LAW-FIN-01",
+      "term": "credit trigger terms (Reg Z)",
+      "match": "(\\$[\\d,]+\\s*(down|per month|/mo\\b|a month|monthly))|(\\d+(\\.\\d+)?%\\s*(apr|financing|interest|down))|(\\b\\d{2,3}[- ]months?\\s+(loan|financing|term|payments?)\\b)",
+      "use": "remove; articles carry no finance terms (a trigger term forces full down-payment/terms/APR disclosure)",
+      "severity": "fail",
+      "reason": "12 CFR 1026.24(d)(1) trigger terms; rate must be stated as APR (1026.24(c)).",
+      "source": "Regulation Z 12 CFR 1026.24 (eCFR)"
+    },
+    {
+      "brands": [
+        "*"
+      ],
+      "appliesTo": "articles",
+      "flags": "i",
+      "added": "2026-10-09",
+      "id": "LAW-LEASE-01",
+      "term": "lease trigger terms (Reg M)",
+      "match": "(due at signing|\\$0 down|zero down|no money down|lease for \\$|lease from \\$|no payment required)",
+      "use": "remove; articles carry no lease terms",
+      "severity": "fail",
+      "reason": "12 CFR 1013.7(d)(1) trigger terms require full lease disclosures.",
+      "source": "Regulation M 12 CFR 1013.7 (eCFR)"
+    },
+    {
+      "brands": [
+        "*"
+      ],
+      "appliesTo": "articles",
+      "flags": "i",
+      "added": "2026-10-09",
+      "id": "LAW-REB-01",
+      "term": "savings / rebate amounts",
+      "match": "(save \\$[\\d,]+|\\$[\\d,]+ off|\\$[\\d,]+ (cash back|rebate|bonus))",
+      "use": "remove; no offer amounts in articles (link to the specials page instead)",
+      "severity": "fail",
+      "reason": "Rebate/savings amounts cannot be deducted from or substitute for an all-in price.",
+      "source": "FTC \"Automobile Industry Pricing Transparency: FAQs\" (press release 09/15/2026), https://www.ftc.gov/business-guidance/industry/automobiles; CA SB 766"
+    },
+    {
+      "brands": [
+        "*"
+      ],
+      "appliesTo": "articles",
+      "flags": "i",
+      "added": "2026-10-09",
+      "id": "LAW-REB-02",
+      "term": "rebate / incentive wording",
+      "match": "\\b(rebates?|incentives?|cash back)\\b",
+      "use": "only in neutral, educational context with an OEM source; never as an offer",
+      "severity": "warn",
+      "reason": "Offer-style wording in editorial copy reads as advertising.",
+      "source": "FTC \"Automobile Industry Pricing Transparency: FAQs\" (press release 09/15/2026), https://www.ftc.gov/business-guidance/industry/automobiles"
+    },
+    {
+      "brands": [
+        "*"
+      ],
+      "appliesTo": "articles",
+      "flags": "i",
+      "added": "2026-10-09",
+      "id": "LAW-FREE-01",
+      "term": "\"free\" claims",
+      "match": "\\b(free|complimentary|at no cost|no charge)\\b",
+      "use": "only with the OEM program name and its conditions (e.g. \"ToyotaCare covers…, see dealer for details\")",
+      "severity": "warn",
+      "reason": "\"Free\" only when no purchase is required, or with conditions stated.",
+      "source": "Va. Code 46.2-1581(11); FTC Guide Concerning Use of the Word \"Free\" (16 CFR 251)"
+    },
+    {
+      "brands": [
+        "*"
+      ],
+      "appliesTo": "articles",
+      "flags": "i",
+      "added": "2026-10-09",
+      "id": "LAW-AVAIL-01",
+      "term": "availability / urgency claims",
+      "match": "\\b(in stock|while supplies last|limited (time|availability|supply)|arriving soon|act now|won'?t last)\\b",
+      "use": "remove; no inventory or urgency claims",
+      "severity": "warn",
+      "reason": "Availability must be stated accurately; urgency claims are banned in the article standard.",
+      "source": "FTC \"Automobile Industry Pricing Transparency: FAQs\" (press release 09/15/2026), https://www.ftc.gov/business-guidance/industry/automobiles; Va. Code 46.2-1581(12a)"
+    },
+    {
+      "brands": [
+        "*"
+      ],
+      "appliesTo": "articles",
+      "flags": "i",
+      "added": "2026-10-09",
+      "id": "LAW-MSRP-01",
+      "term": "MSRP/TSRP must be labeled as not a dealer price",
+      "if": "\\b(MSRP|TSRP)\\b[^.]{0,120}\\$[\\d,]+|\\$[\\d,]+[^.]{0,120}\\b(MSRP|TSRP)\\b",
+      "require": "(not (a |an |the )?dealer(ship)?('s)? (selling )?(prices?|offers?)|not (a |an )?(dealer )?offers?|contact (the|our) dealership for (current )?pricing|not the price you pay)",
+      "use": "add: \"MSRP/TSRP is the manufacturer's suggested price as of MM/DD/YYYY, excludes destination, taxes, title, registration, dealer fees and options, and is not a dealer selling price. Contact the dealership for current pricing.\"",
+      "severity": "fail",
+      "reason": "MSRP may appear only as clearly-understood reference data, not the consumer's price.",
+      "source": "FTC \"Automobile Industry Pricing Transparency: FAQs\" (press release 09/15/2026), https://www.ftc.gov/business-guidance/industry/automobiles"
+    },
+    {
+      "brands": [
+        "*"
+      ],
+      "appliesTo": "articles",
+      "flags": "i",
+      "added": "2026-10-09",
+      "id": "LAW-MSRP-02",
+      "term": "MSRP without destination statement",
+      "if": "\\b(MSRP|TSRP)\\b[^.]{0,120}\\$[\\d,]+",
+      "require": "destination",
+      "use": "state the destination charge or \"excludes $X destination\"",
+      "severity": "warn",
+      "reason": "Advertised-price definitions include destination (FL, VA); OEM disclaimers state it.",
+      "source": "FTC \"Automobile Industry Pricing Transparency: FAQs\" (press release 09/15/2026), https://www.ftc.gov/business-guidance/industry/automobiles; Fla. Stat. 501.976(16); Va. Code 46.2-1581(8)"
+    },
+    {
+      "brands": [
+        "*"
+      ],
+      "appliesTo": "articles",
+      "flags": "i",
+      "added": "2026-10-09",
+      "id": "LAW-NJ-01",
+      "states": [
+        "NJ"
+      ],
+      "term": "any $ figure on New Jersey dealer articles",
+      "match": "\\$\\s?[\\d,]{3,}",
+      "use": "no dollar figures in NJ articles (NJ requires \"price(s) include(s) all costs…\" with any vehicle price, which would be false next to MSRP)",
+      "severity": "fail",
+      "reason": "N.J.A.C. 13:45A-26A.5 price statement requirement.",
+      "source": "N.J.A.C. 13:45A-26A.5"
+    },
+    {
+      "brands": [
+        "*"
+      ],
+      "appliesTo": "articles",
+      "flags": "i",
+      "added": "2026-10-09",
+      "id": "LAW-CA-01",
+      "states": [
+        "CA"
+      ],
+      "term": "any $ figure on California dealer articles",
+      "match": "\\$\\s?[\\d,]{3,}",
+      "use": "model-level OEM MSRP only in a labeled comparison table (no VIN/stock/inventory link) AND dealer-counsel sign-off before the first CA publish with $ figures; otherwise use relative wording (\"about $3K more than\")",
+      "severity": "warn",
+      "reason": "California CARS Act (SB 766), effective 10/01/2026: total-price rules for ads naming a vehicle; MSRP-with-disclaimer ads no longer sufficient per ComplyAuto.",
+      "source": "CA SB 766 (Assembly analysis 07/16/2025); ComplyAuto analysis 10/09/2025; CDK 09/22/2026"
     }
   ],
   "research": "Sources and open questions: SALES_ARTICLES/2026.10.09-COMPLIANCE-TERMS-LEDGER.md (project). OEM ad standards / co-op portals are login-only (MBUSA, Toyota TDAC, Ansira co-op for Ford/Honda, Mazda co-op): ask the client for current PDFs to replace 2015 citations."

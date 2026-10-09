@@ -53,3 +53,6 @@
 - Build gate "Brand terms ledger" (copy, titles, meta, alt text, slug); dollar gate uses the brand price term (TSRP for Toyota).
 - Compliance reviewer reads the ledger (violation = P0) and proposes NEW LEDGER CANDIDATE rows; compliance.md §2b, rigor R6, SKILL rule 4 updated.
 - Ledger research (10/09): TSRP corrected to Total Suggested Retail Price; sources added; advisory MB-002 (distress words), MB-003 (pricing-claim words), MB-004 (unsubstantiated superlatives).
+
+## 2026-10-09 — v0.9: verified legal rules + state scope
+- 11 LAW-* ledger rows (FTC Pricing Transparency FAQs 09/15/2026, Reg Z/Reg M trigger terms, rebates/savings, free, availability, MSRP "not a dealer price" requirement, NJ no $ figures, CA SB 766 advisory); engine supports `states`, `appliesTo` and `if`/`require` rules. Toyota articles show no competitor prices.

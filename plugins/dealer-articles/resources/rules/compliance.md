@@ -112,13 +112,24 @@ and log any skipped P2 with a reason. Apply a pattern fix everywhere it occurs (
 File: `${CLAUDE_PLUGIN_ROOT}/resources/rules/brand-terms.json`. It holds OEM wording rules learned from real OEM / co-op /
 legal reviews, each with an id, brand, banned term, the wording to use, severity, source and date. Current rules:
 - **MB-001 Mercedes-Benz:** never "coupon" ("Service Coupon", "coupons"). Use **"Offer" / "Service Offer"**. Fails OEM review.
-- **TOY-001 Toyota:** never "MSRP". Use **"TSRP"** (Total Suggested Retail Price = MSRP + distributor options + delivery, processing and handling) with the region's TSRP disclaimer; never label a TSRP figure "MSRP".
+- **TOY-001 Toyota:** never "MSRP". Use **"TSRP"** (Total Suggested Retail Price = MSRP + distributor options + delivery, processing and handling) with the region's TSRP disclaimer; never label a TSRP figure "MSRP". **Toyota articles never show competitor prices** (user 10/09): compare rivals on specs and features only.
 - **MB-002/003/004 (advisory):** distress wording (clearance, blowout…), pricing-claim words (dealer cost, invoice, rebates, cash back) and unsubstantiated superlatives (the best, the only, #1) are flagged for review.
   The build's dollar gate requires "TSRP" (not "MSRP") near every Toyota `$` figure.
 How it is enforced: (1) the build gate "Brand terms ledger" fails on any `fail` rule match (copy, titles, meta, alt
 text, slug/path); (2) the compliance reviewer treats any violation as P0 and proposes new rows ("NEW LEDGER CANDIDATE").
 **When an OEM review fails an article: add a row (next id for the brand, exact source, date), rebuild every affected
 article, and tell the user which live pages need the same fix.**
+
+## 2c. Legal rules in the ledger (articles; verified 10/09/2026)
+LAW-* rows in `brand-terms.json` encode:
+- **FTC Pricing Transparency FAQs (09/15/2026):** no dealer-price claims; MSRP/TSRP only as labeled reference data plus "not a dealer selling price".
+- **Reg Z / Reg M trigger terms:** no "$X down", "/mo", "% APR", "due at signing".
+- **No savings/rebate amounts.**
+- **"Free" only with program conditions.**
+- **No stock or urgency claims.**
+- **State scope:** New Jersey (no $ figures) and California (SB 766: model-level MSRP only, plus counsel sign-off).
+
+The build fails on FAIL rules; the reviewer treats them as P0.
 
 ## 3. Findings catalogue (few-shot examples)
 
