@@ -1,6 +1,6 @@
 ---
 name: article-apollo
-description: Draft a long-form, compliance-reviewed dealership article (Editorial v2 design) for an Apollo (Team Velocity) dealer website and package it for pasting (HTML fragment, site-wide CSS, Structured Data, SEO fields, local preview). Use when the user asks for a dealer article, blog post, comparison article, buying guide or service guide for an Apollo dealership, or types /dealer-articles:article-apollo "<dealer>" "<title>".
+description: Draft a long-form, compliance-reviewed dealership article (Editorial v2 design) for an Apollo (Team Velocity) dealer website and package it for pasting (HTML fragment, site-wide CSS, Structured Data, SEO fields, local preview). Works in the Claude Desktop app or claude.ai (Cowork or Chat) and in Claude Code. Use when the user asks for a dealer article, blog post, comparison article, buying guide or service guide for an Apollo dealership, or types /dealer-articles:article-apollo "<dealer>" "<title>".
 argument-hint: "\"<dealer name>\" \"<article title>\""
 allowed-tools:
   - Bash(node:*)
@@ -20,12 +20,14 @@ allowed-tools:
 
 Input: `$ARGUMENTS` = dealer name + article title, e.g. `"Brickell Mazda" "Mazda CX-50 or CX-5: Which One Fits a Downtown Miami Garage?"`.
 Engine command (use exactly, always quoted): **DA** = `node "${CLAUDE_PLUGIN_ROOT}/scripts/build.js"`
-Plugin root (pass this absolute path in every subagent brief): `${CLAUDE_PLUGIN_ROOT}`
+Plugin root (pass this absolute path in every subagent brief): `${CLAUDE_PLUGIN_ROOT}` (if it was not replaced by a real
+path, see the top of `skills/article/SKILL.md`; never write an article without the engine).
 Knowledge: `${CLAUDE_PLUGIN_ROOT}/resources/rules/` → `rigor-and-content.md`, `compliance.md`, `design-and-apollo.md`, `image-brief.md`;
 quality bar: `${CLAUDE_PLUGIN_ROOT}/resources/examples/example-module.js`; dealer data: `${CLAUDE_PLUGIN_ROOT}/resources/dealers/<key>.json`,
 `<key>.sitemap.txt` (internal-link allow-list) and `<key>.images.json` (images already in the dealer's Apollo library, if present).
 A `./dealers/<key>.json` in the working folder overrides the shipped dealer file. Jobs are created in `./articles/<dealer>/<slug>/`
-under the folder Claude Code was started in.
+under the working folder (Claude Code: the folder it was started in; Cowork and Chat: the task's folder or sandbox, so the
+user gets the files through `DA deliver` in Phase 7).
 
 ## Non-negotiable rules (keep these in mind for the whole run)
 1. **Evidence before prose.** Every fact comes from the job's source ledger (primary sources: OEM, owner's manuals, government, statute). No ledger row → don't write it.
@@ -34,7 +36,7 @@ under the folder Claude Code was started in.
 4. **No dollar figures** except labeled, dated, model-year MSRP in comparisons (exclusions stated). Toyota uses **TSRP**,
    never MSRP; Mercedes-Benz says **offer**, never coupon. All OEM wording rules: `${CLAUDE_PLUGIN_ROOT}/resources/rules/brand-terms.json`
    (the build fails on violations; add a row whenever an OEM review fails something). "What it costs" → cost drivers.
-5. **Independent review before the user sees the article:** compliance reviewer + golden-geo reviewer; fix every P0/P1 (golden-geo BLOCKER = P0/P1, WARNING = P2). Writers never grade their own work.
+5. **Independent review before the user sees the article:** compliance reviewer + golden-geo reviewer; fix every P0/P1 (golden-geo BLOCKER = P0/P1, WARNING = P2). Writers never grade their own work from memory: separate reviewer agents where the app has them, otherwise the single-conversation review protocol (Surface rules).
 6. **Design = Editorial v2, identical for every dealer.** Brand color on links only (+ logo). Never "01, 02" numbering. Don't restyle.
 7. **Internal links only from the dealer's sitemap allow-list.** Phones/hours only from the dealer file (verified on the dealer's About Us page from a US location; call trackers swap numbers by geo). Prefer local numbers; if a department has no local number, use the number the About Us page shows for it (header/main line), even if toll-free. Never invent or guess a number.
 8. **Images: general images, specific copy.** Reuse the dealer's Apollo library first (`<key>.images.json`). Vehicle photos must match the article's model year. View every photo before writing alt text.
@@ -43,19 +45,47 @@ under the folder Claude Code was started in.
     variables, `echo`, `mkdir` or `curl`: they trigger permission prompts that stall the run (seen in testing). `new` and
     `page --out` create folders themselves; use the Write tool for files.
 11. Plain words with the user. Ask only questions whose answer changes the article, with a recommended option first.
+12. **The run ends with the build's HANDOFF block, verbatim** (Phase 7). It carries the SEO/Yoast/social fields and paste steps.
+
+## Surface rules (Cowork, Chat, Claude Code: same rigor, different mechanics)
+The router (`${CLAUDE_PLUGIN_ROOT}/skills/article/SKILL.md`) decides the surface once. If you started here, do its Start steps 1–2 first.
+- **Questions:** use AskUserQuestion when you have it; otherwise ask in plain text, recommended option first, and wait.
+- **Skills:** if you cannot invoke a skill by name, Read `${CLAUDE_PLUGIN_ROOT}/skills/<name>/SKILL.md` and follow it.
+- **Researcher (Phase 3):** with a subagent tool, spawn it. Without one (Chat), Read `${CLAUDE_PLUGIN_ROOT}/agents/article-researcher.md`
+  and do its tasks yourself: same ledger file, same return block.
+- **Design check (Phase 5):** run `DA shot` only if `DA env` found a browser. Otherwise apply the design QA checklist
+  (`design-and-apollo.md` §4, "no browser") and tell the user so in one line.
+- **Reviews (Phase 6):** with a subagent tool, spawn the two reviewer agents. Without one (Chat), run the single-conversation review below.
+- **Images:** if `DA env --net` shows the image hosts blocked, follow the "unverified" path in `${CLAUDE_PLUGIN_ROOT}/skills/article-images/SKILL.md`.
+- **Files:** outside Claude Code the user gets the files only through `DA deliver` (Phase 7).
+
+**Single-conversation review (Chat only).** You wrote the draft, so you must not review it from memory.
+1. Read only these files, fresh: `module.js`, the preview, the package files, the ledger, the dealer file, and the two
+   reviewer files `${CLAUDE_PLUGIN_ROOT}/agents/article-compliance-reviewer.md` and `${CLAUDE_PLUGIN_ROOT}/agents/golden-geo-reviewer.md`.
+2. Two separate passes: first the compliance reviewer, then the golden-geo reviewer. Apply each file as a strict checklist,
+   sentence by sentence, with the article files open. While a pass runs you are that reviewer: no edits.
+3. Write each pass's report in that file's return format (P0/P1/P2 or BLOCKER/WARNING, exact quote → exact fix) in your
+   reply, before changing anything.
+4. Only then continue with Phase 6: apply the fixes, rebuild, record the review mode.
 
 ## Phases (job.json `phase` → section)
 `intake` → 0–2 · `research` → 3 · `draft` → 4 · `seo` → 5 · `review` → 6 · `deliver` → 7 · `images` → /dealer-articles:article-images · `done`.
 
 ## Phase 0 — Preflight (do immediately)
-1. Run `DA env`. If Node is missing or < 18: stop and tell the user to run `/dealer-articles:article-setup`.
+1. Run `DA env --net` (skip if the router just ran it) and show its version line in one line. If Node is missing or < 18:
+   in Claude Code, stop and tell the user to run `/dealer-articles:article-setup`; in Chat or Cowork, stop and ask them to
+   turn on Settings → Capabilities → Code execution and file creation.
 2. Parse dealer + title from `$ARGUMENTS`. Run `DA new --dealer "<dealer>" --title "<title>" --slug "<short-slug>"`
    (slug: 3–8 words, focus keyword + city, e.g. `toyota-hybrid-battery-care-chicago`; it becomes the URL and file names).
    Exit 2 → ambiguous/unknown dealer: show candidates, ask. Exit 1 "Job already exists" → read its `job.json`, resume at its phase.
+   **DealerInspire dealer** (the `new` output or the dealer file says `platform: "dealerinspire"`) and you are not already
+   following the DealerInspire workflow → Read `${CLAUDE_PLUGIN_ROOT}/skills/article-dealerinspire/SKILL.md` and follow it
+   from here (the job just created stays valid).
 3. Tell the user in 1 line: dealer matched + job folder. Read ONLY the dealer JSON now; go straight to Phase 1.
 
 ## Phase 1 — Image list FIRST (the user sources images while you work)
-**The image list is your first real message to the user, before any research, sitemap check or rules reading.**
+**The image list is your first real message to the user, before any research, sitemap check or rules reading** (only the
+version line and, in Chat, the one surface question come before it).
 Read only `image-brief.md` and the dealer's `<key>.images.json` (if present). Library images may fill generic slots
 (storefront, service bay, technician, city/road) when their `shows` fits; mark them "already in your library (ID …)".
 Print the list using the template in `image-brief.md` §6, **as plain text in your reply** (5 slots: IMG_HERO, IMG_FIG1,
@@ -66,11 +96,12 @@ rights note and the Apollo upload → "send me the Image IDs" steps. Save the sa
 file alone is NOT enough: in testing the user never saw a list that was only saved to disk). Do this before any other
 tool call. Write each slot's `desc` (and any reused `apollo` id) into `module.js`. End the message with: "Keep sourcing;
 I'm continuing with research and drafting now." Then continue immediately (do not wait). To look at an Apollo image, put its ID in `module.js` and run
-`DA images "<job>"` (plain fetches get HTTP 406), then Read the file. Read `rigor-and-content.md` at the start of Phase 2.
+`DA images "<job>"` (plain fetches get HTTP 406), then Read the file; if image hosts are blocked here, rely on the catalog's `shows` text.
+Read `rigor-and-content.md` at the start of Phase 2.
 
 ## Phase 2 — Intake (only what changes the article)
 1. **Existing page check (stop if found):** search the dealer sitemap for the title's main terms (models, topic). If a page
-   with the same intent exists (e.g. `/blog/<similar-slug>`), ⛔ AskUserQuestion: replace it with this article as a NEW custom page at a
+   with the same intent exists (e.g. `/blog/<similar-slug>`), ⛔ ask (AskUserQuestion or plain text): replace it with this article as a NEW custom page at a
    root slug (recommended; Apollo articles are never blog posts) and ask the dealer/webmaster for a 301 from the old URL to
    the new one · new angle (state it) · stop. Record the choice in `job.json` notes and never list
    that page in `related`.
@@ -80,15 +111,15 @@ I'm continuing with research and drafting now." Then continue immediately (do no
 Phase → `research`.
 
 ## Phase 3 — Research (ledger)
-Spawn **`dealer-articles:article-researcher`** (foreground) with: the plugin root path, title, slug, department, article type,
+Spawn **`dealer-articles:article-researcher`** (foreground; in Chat run it yourself, see Surface rules) with: the plugin root path, title, slug, department, article type,
 dealer file path, sitemap path, job folder, today's date, pricing policy, allowed local framing (`areas`, `climate`) and bans
 (`excluded`, `bans`). It writes `<job>/<slug>-source-ledger.md`. Then:
-- **Premise FAIL or PARTIAL** (e.g. no shared model year, title has no year, hybrid/outgoing generation unclear) → ⛔ AskUserQuestion:
+- **Premise FAIL or PARTIAL** (e.g. no shared model year, title has no year, hybrid/outgoing generation unclear) → ⛔ ask:
   recommended = newest model year the OEM lists for both / corrected H1; alternative = each model's latest year, labeled
   cross-year (needs user approval). Also settle hybrid scope and outgoing-generation handling. If the year differs from
   the Phase 1 image request, re-send those slot lines and update their `desc`.
 - If the researcher lists primary documents it could not reach (OEM PDFs, manuals), ask the user once to save them into
-  `<job>/sources/` (optional; otherwise those facts stay UNVERIFIED and are not written).
+  `<job>/sources/` (in Chat or Cowork: attach them to the conversation; optional; otherwise those facts stay UNVERIFIED and are not written).
 - Use only `verify[]`-free dealer facts, or ask the user to confirm the ones you need in one question.
 Phase → `draft`.
 
@@ -100,31 +131,49 @@ list; 1 stat strip; 1 inline CTA; hero + 2 full-width figures + 1 pair; local se
 total); fine print. Page Title (`title`) 50–65 chars; it may differ from the H1 (H1 ≤80). Meta 130–165. Depth gates (body words, H2 count, FAQ) are ❌, not ⚠️. Run `DA build "<job>"`; fix every ❌ in `module.js`; rebuild until clean.
 Phase → `seo`.
 
-## Phase 5 — SEO + visual pass (always both skills)
+## Phase 5 — SEO + visual pass (always both)
 1. Invoke the skill **`dealer-articles:golden-geo`** in **ARTICLE MODE**; apply its checks to `module.js`; rebuild.
-2. Run `DA shot "<job>"`; Read `<job>/qa/preview-1280.png` and `<job>/qa/preview-375.png`. Invoke the skill
+2. **Browser found by `DA env`:** run `DA shot "<job>"`; Read `<job>/qa/preview-1280.png` and `<job>/qa/preview-375.png`. Invoke the skill
    **`frontend-design:frontend-design`** for a craft review of the screenshots **within the locked Editorial v2** (rhythm,
    hierarchy, alignment, crops, mobile) — it must NOT change fonts, colors, layout or add brand styling. If it is not
-   installed, use the design QA checklist in `design-and-apollo.md` and tell the user to run `/dealer-articles:article-setup`. Rebuild.
+   installed, use the design QA checklist in `design-and-apollo.md` §4 and tell the user it can be added (Claude Code:
+   `/dealer-articles:article-setup`; Cowork/Chat: Customize → Plugins → Discover, if listed). Rebuild.
+   **No browser** (usual in Chat, sometimes in Cowork): apply the `design-and-apollo.md` §4 checklist ("no browser") to the
+   preview HTML and `module.js`, tell the user in one line, and list the items that need eyes in your Phase 7 summary. Rebuild.
 Phase → `review`.
 
-## Phase 6 — Independent reviews (parallel, read-only)
-In ONE message spawn **`dealer-articles:article-compliance-reviewer`** and **`dealer-articles:golden-geo-reviewer`** as
-separate agents (never review your own draft in this conversation: in testing, the writer's own fix-ups added 2 new unsourced
-claims), each
+## Phase 6 — Independent reviews (read-only)
+**With a subagent tool (Cowork, Claude Code):** in ONE message spawn **`dealer-articles:article-compliance-reviewer`** and
+**`dealer-articles:golden-geo-reviewer`** as separate agents (never review your own draft in this conversation when agents
+are available: in testing, the writer's own fix-ups added 2 new unsourced claims), each
 with the plugin root path and the paths to `module.js`, the preview, the ledger and the dealer file, plus job context
-(article type, state, approved deviations from Phases 2–3). Apply all P0/P1 and golden-geo BLOCKERs, and sensible
+(article type, state, approved deviations from Phases 2–3).
+**Without (Chat):** run the single-conversation review (Surface rules) with the same inputs and context.
+Apply all P0/P1 and golden-geo BLOCKERs, and sensible
 P2/WARNINGs (log skipped ones with a reason in `job.json` notes). Fix patterns everywhere in the article. Rebuild → clean.
+Then record how the reviews ran: `DA review "<job>" --mode separate` (agents) or `DA review "<job>" --mode single` (Chat).
 Phase → `deliver`.
 
 ## Phase 7 — Deliver
-`DA build "<job>"` (draft) or `DA build "<job>" --final` when every article image has an Apollo ID (see `/dealer-articles:article-images`).
-Reply with: preview path (`<job>/<slug>-preview.html`), package folder (`<job>/package/`, 4 files + README), word/H2/FAQ
-counts, review verdicts (what was fixed), open `verify[]` items, legal flags (MSRP comparisons: dealer counsel sign-off where
-required), a note that the HTML uses Apollo merge tags `#SalesNumber` / `#ServiceNumber` for phones (Structured Data keeps real numbers), the SEO lines from `<slug>-SEO.md` verbatim (`* Field  →  value`), short paste steps, and: "Site-wide CSS: one
-file per dealer for ALL articles; paste once (copy from the file in Notepad, never from chat), re-paste only if `--da-css-version` (last rule) differs from what is live; after pasting, search the live page source for `da-css-version`."
-If images are placeholders: "Upload the images, then send me the Image IDs here or run `/dealer-articles:article-images`." If the user
-already sent IDs, follow `${CLAUDE_PLUGIN_ROOT}/skills/article-images/SKILL.md` now. Phase → `images` (or `done`).
+If the user already sent image IDs that are not in `module.js` yet, follow `${CLAUDE_PLUGIN_ROOT}/skills/article-images/SKILL.md`
+now (it builds the final package and hands off) instead of the steps below.
+1. `DA build "<job>"` (draft) or `DA build "<job>" --final` when every article image has an Apollo ID (see `/dealer-articles:article-images`).
+   The build prints the handoff between `=== HANDOFF (show this to the user verbatim) ===` and `=== END HANDOFF ===` and
+   saves it as `<job>/HANDOFF.md`. Status **NOT READY** means a gate failed: fix `module.js` and rebuild; never hand off a
+   NOT READY build without telling the user why. Set `job.json` phase → `images` (placeholders left) or `done`, so a
+   resume kit made next resumes at the right step.
+2. **Downloads:** outside Claude Code, if `DA env` listed a download folder (or the app's documented outputs folder), run
+   `DA deliver "<job>" --to "<that folder>"`: the paste files, `<slug>-HANDOFF.md` and `<slug>-resume-kit.zip` appear as downloads.
+   In Claude Code skip this: the files are already in `./articles/`.
+3. **Reply.** At most 5 short lines first: the review verdicts (what was fixed), visual items to check in the preview (no
+   browser), anything the user must decide. Apollo reminder in one line: the site-wide CSS is pasted once per dealer, from
+   the file (Notepad), never from chat; re-paste only if `--da-css-version` differs from the live page source. DRAFT
+   (placeholders): "Upload the images, then send me the Image IDs here or run `/dealer-articles:article-images`."
+   Then **the HANDOFF block from the last build, verbatim and complete, as the last thing in your reply**, followed by one
+   line: where the files are (download folder or `<job>/package/`) and, outside Claude Code, "To finish later (for example
+   after uploading the images), attach `<slug>-resume-kit.zip` in a new Cowork task." Never shorten or paraphrase the handoff.
 
 ## Resume
-`DA status "<job>"` shows the phase and outputs. Re-running `/dealer-articles:article-apollo` with the same dealer + title resumes.
+`DA status "<job>"` shows the phase and outputs. Re-running `/dealer-articles:article-apollo` with the same dealer + title in
+the same folder resumes (Claude Code, or the same Cowork task). In a new Cowork task or chat: attach the job's
+`<slug>-resume-kit.zip` and run `DA resume "<zip path>"` first (see `skills/article/SKILL.md`, Start step 3).

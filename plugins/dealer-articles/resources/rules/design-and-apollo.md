@@ -75,7 +75,11 @@ explicit decision recorded in the dealer file.
 
 ## 4. Design QA (read the screenshots, every build that changes layout)
 
-Run `build.js shot <job>` and Read `qa/preview-1280.png` and `qa/preview-375.png`. Check:
+Run `build.js shot <job>` and Read `qa/preview-1280.png` and `qa/preview-375.png`.
+**No browser** (`build.js env` found none; usual in Chat, sometimes in Cowork): check the same list by reading the preview
+HTML and `module.js` (block order, counts, classes, alt text, captions, no numbering). Items that need eyes (crops, font
+leaks, overflow at 375, underlines) go to the user as "check in the preview" lines, and you say that no screenshots ran.
+Check:
 - [ ] Exactly **one visible H1**, at full size (not 20px), in Georgia.
 - [ ] H2/H3 headings in Georgia/sans as specified; **no theme font leak** (the dealer file's `apollo.themeFont`, e.g. Nunito,
       must not appear in headings or body).

@@ -10,10 +10,11 @@
  "cases": {
   "mercedes-benz-foothill-ranch|sales|draft": {
    "files": {
+    "HANDOFF.md": "60ed4c3e97b3e656",
     "honda-trade-in-value-miami-guide-preview.html": "75ec19fc39fd6b41",
     "package/honda-trade-in-value-miami-guide-embed-Wired.html": "3e3919376b87fe94",
     "package/honda-trade-in-value-miami-guide-SEO.md": "1ccac11059151474",
-    "package/README.md": "7940e411239e83ad"
+    "package/README.md": "0790594ab8891f8b"
    },
    "gates": [
     "  ✅ JSON-LD parses: 3 nodes",
@@ -42,6 +43,7 @@
     "  ✅ wpautop simulation: 35 <p> added by wpautop (stray ones are hidden by the hardening CSS; check the preview)",
     "  ⚠️ No \"01, 02\" numbering: possible \"01, 02\" style numbering",
     "  ✅ Title length 50–65: 55",
+    "  ✅ Social title ≤70: 69",
     "  ✅ Meta 130–165: 153",
     "  ✅ H1 ≤80: 69",
     "  ✅ Body words 1,700–2,300 (blocks only): 1840",
@@ -60,10 +62,11 @@
   },
   "mercedes-benz-foothill-ranch|sales|final": {
    "files": {
+    "HANDOFF.md": "374d9c7067e1b645",
     "honda-trade-in-value-miami-guide-preview.html": "75ec19fc39fd6b41",
     "package/honda-trade-in-value-miami-guide-embed-Wired.html": "3e3919376b87fe94",
     "package/honda-trade-in-value-miami-guide-SEO.md": "1ccac11059151474",
-    "package/README.md": "7940e411239e83ad"
+    "package/README.md": "9485ddc228de90c6"
    },
    "gates": [
     "  ✅ JSON-LD parses: 3 nodes",
@@ -93,6 +96,7 @@
     "  ✅ wpautop simulation: 35 <p> added by wpautop (stray ones are hidden by the hardening CSS; check the preview)",
     "  ⚠️ No \"01, 02\" numbering: possible \"01, 02\" style numbering",
     "  ✅ Title length 50–65: 55",
+    "  ✅ Social title ≤70: 69",
     "  ✅ Meta 130–165: 153",
     "  ✅ H1 ≤80: 69",
     "  ✅ Body words 1,700–2,300 (blocks only): 1840",
@@ -110,10 +114,11 @@
   },
   "mercedes-benz-foothill-ranch|service|draft": {
    "files": {
+    "HANDOFF.md": "82ae9cebd927634c",
     "honda-trade-in-value-miami-guide-preview.html": "944805153f0fc7fd",
     "package/honda-trade-in-value-miami-guide-embed-Wired.html": "2ee68f30e2e95210",
     "package/honda-trade-in-value-miami-guide-SEO.md": "1ccac11059151474",
-    "package/README.md": "7940e411239e83ad"
+    "package/README.md": "6be601989bee70ff"
    },
    "gates": [
     "  ✅ JSON-LD parses: 3 nodes",
@@ -142,6 +147,7 @@
     "  ✅ wpautop simulation: 35 <p> added by wpautop (stray ones are hidden by the hardening CSS; check the preview)",
     "  ⚠️ No \"01, 02\" numbering: possible \"01, 02\" style numbering",
     "  ✅ Title length 50–65: 55",
+    "  ✅ Social title ≤70: 69",
     "  ✅ Meta 130–165: 153",
     "  ✅ H1 ≤80: 69",
     "  ✅ Body words 1,700–2,300 (blocks only): 1840",
@@ -160,10 +166,11 @@
   },
   "mercedes-benz-foothill-ranch|service|final": {
    "files": {
+    "HANDOFF.md": "da9a2c34d344f82b",
     "honda-trade-in-value-miami-guide-preview.html": "944805153f0fc7fd",
     "package/honda-trade-in-value-miami-guide-embed-Wired.html": "2ee68f30e2e95210",
     "package/honda-trade-in-value-miami-guide-SEO.md": "1ccac11059151474",
-    "package/README.md": "7940e411239e83ad"
+    "package/README.md": "ec1dc858508620a0"
    },
    "gates": [
     "  ✅ JSON-LD parses: 3 nodes",
@@ -193,6 +200,7 @@
     "  ✅ wpautop simulation: 35 <p> added by wpautop (stray ones are hidden by the hardening CSS; check the preview)",
     "  ⚠️ No \"01, 02\" numbering: possible \"01, 02\" style numbering",
     "  ✅ Title length 50–65: 55",
+    "  ✅ Social title ≤70: 69",
     "  ✅ Meta 130–165: 153",
     "  ✅ H1 ≤80: 69",
     "  ✅ Body words 1,700–2,300 (blocks only): 1840",
@@ -210,10 +218,11 @@
   },
   "mercedes-benz-laguna-niguel|sales|draft": {
    "files": {
+    "HANDOFF.md": "1ee9d56ffee6d60e",
     "honda-trade-in-value-miami-guide-preview.html": "d91f16ff4c69e1d7",
     "package/honda-trade-in-value-miami-guide-embed-Wired.html": "f12dfd8323290da7",
     "package/honda-trade-in-value-miami-guide-SEO.md": "ae2a3809da3da414",
-    "package/README.md": "b9a7c517f064fe23"
+    "package/README.md": "4a88dfa148915eff"
    },
    "gates": [
     "  ✅ JSON-LD parses: 3 nodes",
@@ -242,6 +251,7 @@
     "  ✅ wpautop simulation: 35 <p> added by wpautop (stray ones are hidden by the hardening CSS; check the preview)",
     "  ⚠️ No \"01, 02\" numbering: possible \"01, 02\" style numbering",
     "  ✅ Title length 50–65: 55",
+    "  ✅ Social title ≤70: 69",
     "  ✅ Meta 130–165: 153",
     "  ✅ H1 ≤80: 69",
     "  ✅ Body words 1,700–2,300 (blocks only): 1840",
@@ -260,10 +270,11 @@
   },
   "mercedes-benz-laguna-niguel|sales|final": {
    "files": {
+    "HANDOFF.md": "03d555dc9e98ce57",
     "honda-trade-in-value-miami-guide-preview.html": "d91f16ff4c69e1d7",
     "package/honda-trade-in-value-miami-guide-embed-Wired.html": "f12dfd8323290da7",
     "package/honda-trade-in-value-miami-guide-SEO.md": "ae2a3809da3da414",
-    "package/README.md": "b9a7c517f064fe23"
+    "package/README.md": "9987b522c44395c0"
    },
    "gates": [
     "  ✅ JSON-LD parses: 3 nodes",
@@ -293,6 +304,7 @@
     "  ✅ wpautop simulation: 35 <p> added by wpautop (stray ones are hidden by the hardening CSS; check the preview)",
     "  ⚠️ No \"01, 02\" numbering: possible \"01, 02\" style numbering",
     "  ✅ Title length 50–65: 55",
+    "  ✅ Social title ≤70: 69",
     "  ✅ Meta 130–165: 153",
     "  ✅ H1 ≤80: 69",
     "  ✅ Body words 1,700–2,300 (blocks only): 1840",
@@ -310,10 +322,11 @@
   },
   "mercedes-benz-laguna-niguel|service|draft": {
    "files": {
+    "HANDOFF.md": "b7546390850797ff",
     "honda-trade-in-value-miami-guide-preview.html": "b980a61bff6286b8",
     "package/honda-trade-in-value-miami-guide-embed-Wired.html": "add540be4172f7d2",
     "package/honda-trade-in-value-miami-guide-SEO.md": "ae2a3809da3da414",
-    "package/README.md": "b9a7c517f064fe23"
+    "package/README.md": "f671689ddf0a533e"
    },
    "gates": [
     "  ✅ JSON-LD parses: 3 nodes",
@@ -342,6 +355,7 @@
     "  ✅ wpautop simulation: 35 <p> added by wpautop (stray ones are hidden by the hardening CSS; check the preview)",
     "  ⚠️ No \"01, 02\" numbering: possible \"01, 02\" style numbering",
     "  ✅ Title length 50–65: 55",
+    "  ✅ Social title ≤70: 69",
     "  ✅ Meta 130–165: 153",
     "  ✅ H1 ≤80: 69",
     "  ✅ Body words 1,700–2,300 (blocks only): 1840",
@@ -360,10 +374,11 @@
   },
   "mercedes-benz-laguna-niguel|service|final": {
    "files": {
+    "HANDOFF.md": "f89ecba96ff95e27",
     "honda-trade-in-value-miami-guide-preview.html": "b980a61bff6286b8",
     "package/honda-trade-in-value-miami-guide-embed-Wired.html": "add540be4172f7d2",
     "package/honda-trade-in-value-miami-guide-SEO.md": "ae2a3809da3da414",
-    "package/README.md": "b9a7c517f064fe23"
+    "package/README.md": "118e887716595b80"
    },
    "gates": [
     "  ✅ JSON-LD parses: 3 nodes",
@@ -393,6 +408,7 @@
     "  ✅ wpautop simulation: 35 <p> added by wpautop (stray ones are hidden by the hardening CSS; check the preview)",
     "  ⚠️ No \"01, 02\" numbering: possible \"01, 02\" style numbering",
     "  ✅ Title length 50–65: 55",
+    "  ✅ Social title ≤70: 69",
     "  ✅ Meta 130–165: 153",
     "  ✅ H1 ≤80: 69",
     "  ✅ Body words 1,700–2,300 (blocks only): 1840",
@@ -410,10 +426,11 @@
   },
   "mercedes-benz-midlothian|sales|draft": {
    "files": {
+    "HANDOFF.md": "6d0cffb79bcc6aa8",
     "honda-trade-in-value-miami-guide-preview.html": "1916da29a58792dc",
     "package/honda-trade-in-value-miami-guide-embed-Wired.html": "d30a06c157e56503",
     "package/honda-trade-in-value-miami-guide-SEO.md": "f5c48a645a45a7a5",
-    "package/README.md": "dbcbb628b619d458"
+    "package/README.md": "699729f49187a0ee"
    },
    "gates": [
     "  ✅ JSON-LD parses: 3 nodes",
@@ -442,6 +459,7 @@
     "  ✅ wpautop simulation: 35 <p> added by wpautop (stray ones are hidden by the hardening CSS; check the preview)",
     "  ⚠️ No \"01, 02\" numbering: possible \"01, 02\" style numbering",
     "  ✅ Title length 50–65: 55",
+    "  ✅ Social title ≤70: 69",
     "  ✅ Meta 130–165: 153",
     "  ✅ H1 ≤80: 69",
     "  ✅ Body words 1,700–2,300 (blocks only): 1840",
@@ -460,10 +478,11 @@
   },
   "mercedes-benz-midlothian|sales|final": {
    "files": {
+    "HANDOFF.md": "6f7e5c02b358f55a",
     "honda-trade-in-value-miami-guide-preview.html": "1916da29a58792dc",
     "package/honda-trade-in-value-miami-guide-embed-Wired.html": "d30a06c157e56503",
     "package/honda-trade-in-value-miami-guide-SEO.md": "f5c48a645a45a7a5",
-    "package/README.md": "dbcbb628b619d458"
+    "package/README.md": "3fa9c8defda53d0b"
    },
    "gates": [
     "  ✅ JSON-LD parses: 3 nodes",
@@ -493,6 +512,7 @@
     "  ✅ wpautop simulation: 35 <p> added by wpautop (stray ones are hidden by the hardening CSS; check the preview)",
     "  ⚠️ No \"01, 02\" numbering: possible \"01, 02\" style numbering",
     "  ✅ Title length 50–65: 55",
+    "  ✅ Social title ≤70: 69",
     "  ✅ Meta 130–165: 153",
     "  ✅ H1 ≤80: 69",
     "  ✅ Body words 1,700–2,300 (blocks only): 1840",
@@ -510,10 +530,11 @@
   },
   "mercedes-benz-midlothian|service|draft": {
    "files": {
+    "HANDOFF.md": "6d0cffb79bcc6aa8",
     "honda-trade-in-value-miami-guide-preview.html": "e82f07d2032148b5",
     "package/honda-trade-in-value-miami-guide-embed-Wired.html": "2fb371f4ca3bb058",
     "package/honda-trade-in-value-miami-guide-SEO.md": "f5c48a645a45a7a5",
-    "package/README.md": "dbcbb628b619d458"
+    "package/README.md": "699729f49187a0ee"
    },
    "gates": [
     "  ✅ JSON-LD parses: 3 nodes",
@@ -542,6 +563,7 @@
     "  ✅ wpautop simulation: 35 <p> added by wpautop (stray ones are hidden by the hardening CSS; check the preview)",
     "  ⚠️ No \"01, 02\" numbering: possible \"01, 02\" style numbering",
     "  ✅ Title length 50–65: 55",
+    "  ✅ Social title ≤70: 69",
     "  ✅ Meta 130–165: 153",
     "  ✅ H1 ≤80: 69",
     "  ✅ Body words 1,700–2,300 (blocks only): 1840",
@@ -560,10 +582,11 @@
   },
   "mercedes-benz-midlothian|service|final": {
    "files": {
+    "HANDOFF.md": "6f7e5c02b358f55a",
     "honda-trade-in-value-miami-guide-preview.html": "e82f07d2032148b5",
     "package/honda-trade-in-value-miami-guide-embed-Wired.html": "2fb371f4ca3bb058",
     "package/honda-trade-in-value-miami-guide-SEO.md": "f5c48a645a45a7a5",
-    "package/README.md": "dbcbb628b619d458"
+    "package/README.md": "3fa9c8defda53d0b"
    },
    "gates": [
     "  ✅ JSON-LD parses: 3 nodes",
@@ -593,6 +616,7 @@
     "  ✅ wpautop simulation: 35 <p> added by wpautop (stray ones are hidden by the hardening CSS; check the preview)",
     "  ⚠️ No \"01, 02\" numbering: possible \"01, 02\" style numbering",
     "  ✅ Title length 50–65: 55",
+    "  ✅ Social title ≤70: 69",
     "  ✅ Meta 130–165: 153",
     "  ✅ H1 ≤80: 69",
     "  ✅ Body words 1,700–2,300 (blocks only): 1840",
@@ -610,10 +634,11 @@
   },
   "mercedes-benz-richmond|sales|draft": {
    "files": {
+    "HANDOFF.md": "094cc58723a6db3f",
     "honda-trade-in-value-miami-guide-preview.html": "184e30354d2bb7b5",
     "package/honda-trade-in-value-miami-guide-embed-Wired.html": "89f108f5704fbf3d",
     "package/honda-trade-in-value-miami-guide-SEO.md": "4b4b7c6aee482b22",
-    "package/README.md": "ba03d1739ddf3a86"
+    "package/README.md": "5b0ec0e8f0a9d5f0"
    },
    "gates": [
     "  ✅ JSON-LD parses: 3 nodes",
@@ -642,6 +667,7 @@
     "  ✅ wpautop simulation: 35 <p> added by wpautop (stray ones are hidden by the hardening CSS; check the preview)",
     "  ⚠️ No \"01, 02\" numbering: possible \"01, 02\" style numbering",
     "  ✅ Title length 50–65: 55",
+    "  ✅ Social title ≤70: 69",
     "  ✅ Meta 130–165: 153",
     "  ✅ H1 ≤80: 69",
     "  ✅ Body words 1,700–2,300 (blocks only): 1840",
@@ -660,10 +686,11 @@
   },
   "mercedes-benz-richmond|sales|final": {
    "files": {
+    "HANDOFF.md": "7d62126e7c9dead1",
     "honda-trade-in-value-miami-guide-preview.html": "184e30354d2bb7b5",
     "package/honda-trade-in-value-miami-guide-embed-Wired.html": "89f108f5704fbf3d",
     "package/honda-trade-in-value-miami-guide-SEO.md": "4b4b7c6aee482b22",
-    "package/README.md": "ba03d1739ddf3a86"
+    "package/README.md": "9adb2d4db3a52ba7"
    },
    "gates": [
     "  ✅ JSON-LD parses: 3 nodes",
@@ -693,6 +720,7 @@
     "  ✅ wpautop simulation: 35 <p> added by wpautop (stray ones are hidden by the hardening CSS; check the preview)",
     "  ⚠️ No \"01, 02\" numbering: possible \"01, 02\" style numbering",
     "  ✅ Title length 50–65: 55",
+    "  ✅ Social title ≤70: 69",
     "  ✅ Meta 130–165: 153",
     "  ✅ H1 ≤80: 69",
     "  ✅ Body words 1,700–2,300 (blocks only): 1840",
@@ -710,10 +738,11 @@
   },
   "mercedes-benz-richmond|service|draft": {
    "files": {
+    "HANDOFF.md": "69ff3387da59dff8",
     "honda-trade-in-value-miami-guide-preview.html": "657bed1879706dde",
     "package/honda-trade-in-value-miami-guide-embed-Wired.html": "fb188f8c3d144535",
     "package/honda-trade-in-value-miami-guide-SEO.md": "4b4b7c6aee482b22",
-    "package/README.md": "ba03d1739ddf3a86"
+    "package/README.md": "bdcb8373cac98f9b"
    },
    "gates": [
     "  ✅ JSON-LD parses: 3 nodes",
@@ -742,6 +771,7 @@
     "  ✅ wpautop simulation: 35 <p> added by wpautop (stray ones are hidden by the hardening CSS; check the preview)",
     "  ⚠️ No \"01, 02\" numbering: possible \"01, 02\" style numbering",
     "  ✅ Title length 50–65: 55",
+    "  ✅ Social title ≤70: 69",
     "  ✅ Meta 130–165: 153",
     "  ✅ H1 ≤80: 69",
     "  ✅ Body words 1,700–2,300 (blocks only): 1840",
@@ -760,10 +790,11 @@
   },
   "mercedes-benz-richmond|service|final": {
    "files": {
+    "HANDOFF.md": "328a4106385850c9",
     "honda-trade-in-value-miami-guide-preview.html": "657bed1879706dde",
     "package/honda-trade-in-value-miami-guide-embed-Wired.html": "fb188f8c3d144535",
     "package/honda-trade-in-value-miami-guide-SEO.md": "4b4b7c6aee482b22",
-    "package/README.md": "ba03d1739ddf3a86"
+    "package/README.md": "516f1941271d16d6"
    },
    "gates": [
     "  ✅ JSON-LD parses: 3 nodes",
@@ -793,6 +824,7 @@
     "  ✅ wpautop simulation: 35 <p> added by wpautop (stray ones are hidden by the hardening CSS; check the preview)",
     "  ⚠️ No \"01, 02\" numbering: possible \"01, 02\" style numbering",
     "  ✅ Title length 50–65: 55",
+    "  ✅ Social title ≤70: 69",
     "  ✅ Meta 130–165: 153",
     "  ✅ H1 ≤80: 69",
     "  ✅ Body words 1,700–2,300 (blocks only): 1840",
@@ -810,10 +842,11 @@
   },
   "mercedes-benz-vans-laguna-niguel|sales|draft": {
    "files": {
+    "HANDOFF.md": "b58204d8f16b8f3f",
     "honda-trade-in-value-miami-guide-preview.html": "fe77969f77c39b5c",
     "package/honda-trade-in-value-miami-guide-embed-Wired.html": "56a0923add6e9718",
     "package/honda-trade-in-value-miami-guide-SEO.md": "66b8aea182d0d6e5",
-    "package/README.md": "ed8c8ab77954e965"
+    "package/README.md": "2e733c45dde48cd9"
    },
    "gates": [
     "  ✅ JSON-LD parses: 3 nodes",
@@ -842,6 +875,7 @@
     "  ✅ wpautop simulation: 35 <p> added by wpautop (stray ones are hidden by the hardening CSS; check the preview)",
     "  ⚠️ No \"01, 02\" numbering: possible \"01, 02\" style numbering",
     "  ✅ Title length 50–65: 55",
+    "  ✅ Social title ≤70: 69",
     "  ✅ Meta 130–165: 153",
     "  ✅ H1 ≤80: 69",
     "  ✅ Body words 1,700–2,300 (blocks only): 1840",
@@ -860,10 +894,11 @@
   },
   "mercedes-benz-vans-laguna-niguel|sales|final": {
    "files": {
+    "HANDOFF.md": "3eef2155a99c929f",
     "honda-trade-in-value-miami-guide-preview.html": "fe77969f77c39b5c",
     "package/honda-trade-in-value-miami-guide-embed-Wired.html": "56a0923add6e9718",
     "package/honda-trade-in-value-miami-guide-SEO.md": "66b8aea182d0d6e5",
-    "package/README.md": "ed8c8ab77954e965"
+    "package/README.md": "eac91d261a5615e3"
    },
    "gates": [
     "  ✅ JSON-LD parses: 3 nodes",
@@ -893,6 +928,7 @@
     "  ✅ wpautop simulation: 35 <p> added by wpautop (stray ones are hidden by the hardening CSS; check the preview)",
     "  ⚠️ No \"01, 02\" numbering: possible \"01, 02\" style numbering",
     "  ✅ Title length 50–65: 55",
+    "  ✅ Social title ≤70: 69",
     "  ✅ Meta 130–165: 153",
     "  ✅ H1 ≤80: 69",
     "  ✅ Body words 1,700–2,300 (blocks only): 1840",
@@ -910,10 +946,11 @@
   },
   "mercedes-benz-vans-laguna-niguel|service|draft": {
    "files": {
+    "HANDOFF.md": "7c59aa9c5504abf2",
     "honda-trade-in-value-miami-guide-preview.html": "b8bfe8009f88c7d9",
     "package/honda-trade-in-value-miami-guide-embed-Wired.html": "526f062e5c1c6a00",
     "package/honda-trade-in-value-miami-guide-SEO.md": "66b8aea182d0d6e5",
-    "package/README.md": "ed8c8ab77954e965"
+    "package/README.md": "3b8713aa347b2a81"
    },
    "gates": [
     "  ✅ JSON-LD parses: 3 nodes",
@@ -942,6 +979,7 @@
     "  ✅ wpautop simulation: 35 <p> added by wpautop (stray ones are hidden by the hardening CSS; check the preview)",
     "  ⚠️ No \"01, 02\" numbering: possible \"01, 02\" style numbering",
     "  ✅ Title length 50–65: 55",
+    "  ✅ Social title ≤70: 69",
     "  ✅ Meta 130–165: 153",
     "  ✅ H1 ≤80: 69",
     "  ✅ Body words 1,700–2,300 (blocks only): 1840",
@@ -960,10 +998,11 @@
   },
   "mercedes-benz-vans-laguna-niguel|service|final": {
    "files": {
+    "HANDOFF.md": "95a2596761ea94d4",
     "honda-trade-in-value-miami-guide-preview.html": "b8bfe8009f88c7d9",
     "package/honda-trade-in-value-miami-guide-embed-Wired.html": "526f062e5c1c6a00",
     "package/honda-trade-in-value-miami-guide-SEO.md": "66b8aea182d0d6e5",
-    "package/README.md": "ed8c8ab77954e965"
+    "package/README.md": "9d6d9f5fc059136f"
    },
    "gates": [
     "  ✅ JSON-LD parses: 3 nodes",
@@ -993,6 +1032,7 @@
     "  ✅ wpautop simulation: 35 <p> added by wpautop (stray ones are hidden by the hardening CSS; check the preview)",
     "  ⚠️ No \"01, 02\" numbering: possible \"01, 02\" style numbering",
     "  ✅ Title length 50–65: 55",
+    "  ✅ Social title ≤70: 69",
     "  ✅ Meta 130–165: 153",
     "  ✅ H1 ≤80: 69",
     "  ✅ Body words 1,700–2,300 (blocks only): 1840",

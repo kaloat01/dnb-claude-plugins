@@ -13,12 +13,13 @@
  "cases": {
   "bentley-edison|sales|draft": {
    "files": {
+    "HANDOFF.md": "81d122c539c358ab",
     "honda-trade-in-value-miami-guide-preview.html": "26dacdd5fdb013cb",
     "package/be-articles-sitewide-CSS.html": "bd400aee94798e8a",
     "package/honda-trade-in-value-miami-guide-HTML.html": "842018f77482c19c",
     "package/honda-trade-in-value-miami-guide-SEO.md": "bb76f025e3060f17",
     "package/honda-trade-in-value-miami-guide-Structured-Data.txt": "03535a11e1ce37b0",
-    "package/README.md": "2db85382abb9b3c6"
+    "package/README.md": "1c51bf8e7e685c35"
    },
    "gates": [
     "  ✅ JSON-LD parses: 6 nodes",
@@ -42,6 +43,7 @@
     "  ✅ Site-wide CSS paste-safe (ASCII, no backslash): 229 lines",
     "  ✅ No \"01, 02\" numbering",
     "  ✅ Title length 50–65: 55",
+    "  ✅ Social title ≤70: 69",
     "  ✅ Meta 130–165: 153",
     "  ✅ H1 ≤80: 69",
     "  ✅ Body words 1,700–2,300 (blocks only): 1840",
@@ -60,12 +62,13 @@
   },
   "bentley-edison|sales|final": {
    "files": {
+    "HANDOFF.md": "386de2c14ab581cc",
     "honda-trade-in-value-miami-guide-preview.html": "9155dd8044427746",
     "package/be-articles-sitewide-CSS.html": "bd400aee94798e8a",
     "package/honda-trade-in-value-miami-guide-HTML.html": "842018f77482c19c",
     "package/honda-trade-in-value-miami-guide-SEO.md": "bb76f025e3060f17",
     "package/honda-trade-in-value-miami-guide-Structured-Data.txt": "03535a11e1ce37b0",
-    "package/README.md": "4d67adff8bcbdd3a"
+    "package/README.md": "a05f76523c4fbb20"
    },
    "gates": [
     "  ✅ JSON-LD parses: 6 nodes",
@@ -90,6 +93,7 @@
     "  ✅ Final: every article image has an Apollo value: 5 slots",
     "  ✅ No \"01, 02\" numbering",
     "  ✅ Title length 50–65: 55",
+    "  ✅ Social title ≤70: 69",
     "  ✅ Meta 130–165: 153",
     "  ✅ H1 ≤80: 69",
     "  ✅ Body words 1,700–2,300 (blocks only): 1840",
@@ -107,12 +111,13 @@
   },
   "bentley-edison|service|draft": {
    "files": {
+    "HANDOFF.md": "81d122c539c358ab",
     "honda-trade-in-value-miami-guide-preview.html": "da599a6e6e052158",
     "package/be-articles-sitewide-CSS.html": "bd400aee94798e8a",
     "package/honda-trade-in-value-miami-guide-HTML.html": "e7f08859170264b7",
     "package/honda-trade-in-value-miami-guide-SEO.md": "bb76f025e3060f17",
     "package/honda-trade-in-value-miami-guide-Structured-Data.txt": "318b82d536bc08e2",
-    "package/README.md": "2db85382abb9b3c6"
+    "package/README.md": "1c51bf8e7e685c35"
    },
    "gates": [
     "  ✅ JSON-LD parses: 6 nodes",
@@ -136,6 +141,7 @@
     "  ✅ Site-wide CSS paste-safe (ASCII, no backslash): 229 lines",
     "  ✅ No \"01, 02\" numbering",
     "  ✅ Title length 50–65: 55",
+    "  ✅ Social title ≤70: 69",
     "  ✅ Meta 130–165: 153",
     "  ✅ H1 ≤80: 69",
     "  ✅ Body words 1,700–2,300 (blocks only): 1840",
@@ -154,12 +160,13 @@
   },
   "bentley-edison|service|final": {
    "files": {
+    "HANDOFF.md": "386de2c14ab581cc",
     "honda-trade-in-value-miami-guide-preview.html": "0313a5ed560cb0ec",
     "package/be-articles-sitewide-CSS.html": "bd400aee94798e8a",
     "package/honda-trade-in-value-miami-guide-HTML.html": "e7f08859170264b7",
     "package/honda-trade-in-value-miami-guide-SEO.md": "bb76f025e3060f17",
     "package/honda-trade-in-value-miami-guide-Structured-Data.txt": "318b82d536bc08e2",
-    "package/README.md": "4d67adff8bcbdd3a"
+    "package/README.md": "a05f76523c4fbb20"
    },
    "gates": [
     "  ✅ JSON-LD parses: 6 nodes",
@@ -184,6 +191,7 @@
     "  ✅ Final: every article image has an Apollo value: 5 slots",
     "  ✅ No \"01, 02\" numbering",
     "  ✅ Title length 50–65: 55",
+    "  ✅ Social title ≤70: 69",
     "  ✅ Meta 130–165: 153",
     "  ✅ H1 ≤80: 69",
     "  ✅ Body words 1,700–2,300 (blocks only): 1840",
@@ -201,12 +209,13 @@
   },
   "bentley-jacksonville|sales|draft": {
    "files": {
+    "HANDOFF.md": "a30283a6969c305d",
     "honda-trade-in-value-miami-guide-preview.html": "4a55e452a4c2f0f2",
     "package/bj-articles-sitewide-CSS.html": "a22f8b86d66f90a6",
     "package/honda-trade-in-value-miami-guide-HTML.html": "5c0966ed5f15445d",
     "package/honda-trade-in-value-miami-guide-SEO.md": "19523fc993c4bc50",
     "package/honda-trade-in-value-miami-guide-Structured-Data.txt": "224c151429250dc1",
-    "package/README.md": "ace6c1294b0cf1a7"
+    "package/README.md": "e456a3311f70c6b9"
    },
    "gates": [
     "  ✅ JSON-LD parses: 6 nodes",
@@ -230,6 +239,7 @@
     "  ✅ Site-wide CSS paste-safe (ASCII, no backslash): 229 lines",
     "  ✅ No \"01, 02\" numbering",
     "  ✅ Title length 50–65: 55",
+    "  ✅ Social title ≤70: 69",
     "  ✅ Meta 130–165: 153",
     "  ✅ H1 ≤80: 69",
     "  ✅ Body words 1,700–2,300 (blocks only): 1840",
@@ -248,12 +258,13 @@
   },
   "bentley-jacksonville|sales|final": {
    "files": {
+    "HANDOFF.md": "648014eae8b5a628",
     "honda-trade-in-value-miami-guide-preview.html": "1b408580d020f6ee",
     "package/bj-articles-sitewide-CSS.html": "a22f8b86d66f90a6",
     "package/honda-trade-in-value-miami-guide-HTML.html": "5c0966ed5f15445d",
     "package/honda-trade-in-value-miami-guide-SEO.md": "19523fc993c4bc50",
     "package/honda-trade-in-value-miami-guide-Structured-Data.txt": "224c151429250dc1",
-    "package/README.md": "36b9dc245a94a57b"
+    "package/README.md": "acb752b20243fc61"
    },
    "gates": [
     "  ✅ JSON-LD parses: 6 nodes",
@@ -278,6 +289,7 @@
     "  ✅ Final: every article image has an Apollo value: 5 slots",
     "  ✅ No \"01, 02\" numbering",
     "  ✅ Title length 50–65: 55",
+    "  ✅ Social title ≤70: 69",
     "  ✅ Meta 130–165: 153",
     "  ✅ H1 ≤80: 69",
     "  ✅ Body words 1,700–2,300 (blocks only): 1840",
@@ -295,12 +307,13 @@
   },
   "bentley-jacksonville|service|draft": {
    "files": {
+    "HANDOFF.md": "a30283a6969c305d",
     "honda-trade-in-value-miami-guide-preview.html": "04de2f8853827ccd",
     "package/bj-articles-sitewide-CSS.html": "a22f8b86d66f90a6",
     "package/honda-trade-in-value-miami-guide-HTML.html": "98b74919d500c640",
     "package/honda-trade-in-value-miami-guide-SEO.md": "19523fc993c4bc50",
     "package/honda-trade-in-value-miami-guide-Structured-Data.txt": "a380e55e57033416",
-    "package/README.md": "ace6c1294b0cf1a7"
+    "package/README.md": "e456a3311f70c6b9"
    },
    "gates": [
     "  ✅ JSON-LD parses: 6 nodes",
@@ -324,6 +337,7 @@
     "  ✅ Site-wide CSS paste-safe (ASCII, no backslash): 229 lines",
     "  ✅ No \"01, 02\" numbering",
     "  ✅ Title length 50–65: 55",
+    "  ✅ Social title ≤70: 69",
     "  ✅ Meta 130–165: 153",
     "  ✅ H1 ≤80: 69",
     "  ✅ Body words 1,700–2,300 (blocks only): 1840",
@@ -342,12 +356,13 @@
   },
   "bentley-jacksonville|service|final": {
    "files": {
+    "HANDOFF.md": "648014eae8b5a628",
     "honda-trade-in-value-miami-guide-preview.html": "379cf1a5168c05b2",
     "package/bj-articles-sitewide-CSS.html": "a22f8b86d66f90a6",
     "package/honda-trade-in-value-miami-guide-HTML.html": "98b74919d500c640",
     "package/honda-trade-in-value-miami-guide-SEO.md": "19523fc993c4bc50",
     "package/honda-trade-in-value-miami-guide-Structured-Data.txt": "a380e55e57033416",
-    "package/README.md": "36b9dc245a94a57b"
+    "package/README.md": "acb752b20243fc61"
    },
    "gates": [
     "  ✅ JSON-LD parses: 6 nodes",
@@ -372,6 +387,7 @@
     "  ✅ Final: every article image has an Apollo value: 5 slots",
     "  ✅ No \"01, 02\" numbering",
     "  ✅ Title length 50–65: 55",
+    "  ✅ Social title ≤70: 69",
     "  ✅ Meta 130–165: 153",
     "  ✅ H1 ≤80: 69",
     "  ✅ Body words 1,700–2,300 (blocks only): 1840",
@@ -389,12 +405,13 @@
   },
   "brickell-honda|sales|draft": {
    "files": {
+    "HANDOFF.md": "d0358ac26dc23186",
     "honda-trade-in-value-miami-guide-preview.html": "c4e9abf65518a93a",
     "package/bh-articles-sitewide-CSS.html": "51c871804eb9a6ad",
     "package/honda-trade-in-value-miami-guide-HTML.html": "18bee1e30eb16430",
     "package/honda-trade-in-value-miami-guide-SEO.md": "e0655f2a1597b1a9",
     "package/honda-trade-in-value-miami-guide-Structured-Data.txt": "a71302d8f0ebbd86",
-    "package/README.md": "1ab7de03c7033477"
+    "package/README.md": "0d31b120c6a9f284"
    },
    "gates": [
     "  ✅ JSON-LD parses: 6 nodes",
@@ -418,6 +435,7 @@
     "  ✅ Site-wide CSS paste-safe (ASCII, no backslash): 229 lines",
     "  ✅ No \"01, 02\" numbering",
     "  ✅ Title length 50–65: 55",
+    "  ✅ Social title ≤70: 69",
     "  ✅ Meta 130–165: 153",
     "  ✅ H1 ≤80: 69",
     "  ✅ Body words 1,700–2,300 (blocks only): 1840",
@@ -436,12 +454,13 @@
   },
   "brickell-honda|sales|final": {
    "files": {
+    "HANDOFF.md": "0b4c2d574dbe5d83",
     "honda-trade-in-value-miami-guide-preview.html": "536774d85063bfba",
     "package/bh-articles-sitewide-CSS.html": "51c871804eb9a6ad",
     "package/honda-trade-in-value-miami-guide-HTML.html": "18bee1e30eb16430",
     "package/honda-trade-in-value-miami-guide-SEO.md": "e0655f2a1597b1a9",
     "package/honda-trade-in-value-miami-guide-Structured-Data.txt": "a71302d8f0ebbd86",
-    "package/README.md": "084905d1a551bd39"
+    "package/README.md": "99d42ce1521affdf"
    },
    "gates": [
     "  ✅ JSON-LD parses: 6 nodes",
@@ -466,6 +485,7 @@
     "  ✅ Final: every article image has an Apollo value: 5 slots",
     "  ✅ No \"01, 02\" numbering",
     "  ✅ Title length 50–65: 55",
+    "  ✅ Social title ≤70: 69",
     "  ✅ Meta 130–165: 153",
     "  ✅ H1 ≤80: 69",
     "  ✅ Body words 1,700–2,300 (blocks only): 1840",
@@ -483,12 +503,13 @@
   },
   "brickell-honda|service|draft": {
    "files": {
+    "HANDOFF.md": "d0358ac26dc23186",
     "honda-trade-in-value-miami-guide-preview.html": "23b51db6d857f118",
     "package/bh-articles-sitewide-CSS.html": "51c871804eb9a6ad",
     "package/honda-trade-in-value-miami-guide-HTML.html": "febf99054c601975",
     "package/honda-trade-in-value-miami-guide-SEO.md": "e0655f2a1597b1a9",
     "package/honda-trade-in-value-miami-guide-Structured-Data.txt": "e8a45c16393526ae",
-    "package/README.md": "1ab7de03c7033477"
+    "package/README.md": "0d31b120c6a9f284"
    },
    "gates": [
     "  ✅ JSON-LD parses: 6 nodes",
@@ -512,6 +533,7 @@
     "  ✅ Site-wide CSS paste-safe (ASCII, no backslash): 229 lines",
     "  ✅ No \"01, 02\" numbering",
     "  ✅ Title length 50–65: 55",
+    "  ✅ Social title ≤70: 69",
     "  ✅ Meta 130–165: 153",
     "  ✅ H1 ≤80: 69",
     "  ✅ Body words 1,700–2,300 (blocks only): 1840",
@@ -530,12 +552,13 @@
   },
   "brickell-honda|service|final": {
    "files": {
+    "HANDOFF.md": "0b4c2d574dbe5d83",
     "honda-trade-in-value-miami-guide-preview.html": "7929107e48a398c3",
     "package/bh-articles-sitewide-CSS.html": "51c871804eb9a6ad",
     "package/honda-trade-in-value-miami-guide-HTML.html": "febf99054c601975",
     "package/honda-trade-in-value-miami-guide-SEO.md": "e0655f2a1597b1a9",
     "package/honda-trade-in-value-miami-guide-Structured-Data.txt": "e8a45c16393526ae",
-    "package/README.md": "084905d1a551bd39"
+    "package/README.md": "99d42ce1521affdf"
    },
    "gates": [
     "  ✅ JSON-LD parses: 6 nodes",
@@ -560,6 +583,7 @@
     "  ✅ Final: every article image has an Apollo value: 5 slots",
     "  ✅ No \"01, 02\" numbering",
     "  ✅ Title length 50–65: 55",
+    "  ✅ Social title ≤70: 69",
     "  ✅ Meta 130–165: 153",
     "  ✅ H1 ≤80: 69",
     "  ✅ Body words 1,700–2,300 (blocks only): 1840",
@@ -577,12 +601,13 @@
   },
   "brickell-mazda|sales|draft": {
    "files": {
+    "HANDOFF.md": "fd91ecd7a26a29a5",
     "honda-trade-in-value-miami-guide-preview.html": "e30f6db2e844a7b3",
     "package/honda-trade-in-value-miami-guide-HTML.html": "1dc0c86f22c3af53",
     "package/honda-trade-in-value-miami-guide-SEO.md": "e3a00641e90ab36d",
     "package/honda-trade-in-value-miami-guide-Structured-Data.txt": "cf0f206366d33f79",
     "package/mzd-articles-sitewide-CSS.html": "cf4a3d0c7bb0ff37",
-    "package/README.md": "c304369b84b8001a"
+    "package/README.md": "4635955f3bd824a4"
    },
    "gates": [
     "  ✅ JSON-LD parses: 6 nodes",
@@ -606,6 +631,7 @@
     "  ✅ Site-wide CSS paste-safe (ASCII, no backslash): 229 lines",
     "  ✅ No \"01, 02\" numbering",
     "  ✅ Title length 50–65: 55",
+    "  ✅ Social title ≤70: 69",
     "  ✅ Meta 130–165: 153",
     "  ✅ H1 ≤80: 69",
     "  ✅ Body words 1,700–2,300 (blocks only): 1840",
@@ -624,12 +650,13 @@
   },
   "brickell-mazda|sales|final": {
    "files": {
+    "HANDOFF.md": "990834bc56969a74",
     "honda-trade-in-value-miami-guide-preview.html": "91878578949728e7",
     "package/honda-trade-in-value-miami-guide-HTML.html": "1dc0c86f22c3af53",
     "package/honda-trade-in-value-miami-guide-SEO.md": "e3a00641e90ab36d",
     "package/honda-trade-in-value-miami-guide-Structured-Data.txt": "cf0f206366d33f79",
     "package/mzd-articles-sitewide-CSS.html": "cf4a3d0c7bb0ff37",
-    "package/README.md": "0c846e8e3ff407eb"
+    "package/README.md": "6629b18cb401e826"
    },
    "gates": [
     "  ✅ JSON-LD parses: 6 nodes",
@@ -654,6 +681,7 @@
     "  ✅ Final: every article image has an Apollo value: 5 slots",
     "  ✅ No \"01, 02\" numbering",
     "  ✅ Title length 50–65: 55",
+    "  ✅ Social title ≤70: 69",
     "  ✅ Meta 130–165: 153",
     "  ✅ H1 ≤80: 69",
     "  ✅ Body words 1,700–2,300 (blocks only): 1840",
@@ -671,12 +699,13 @@
   },
   "brickell-mazda|service|draft": {
    "files": {
+    "HANDOFF.md": "fd91ecd7a26a29a5",
     "honda-trade-in-value-miami-guide-preview.html": "33935abd569dea4c",
     "package/honda-trade-in-value-miami-guide-HTML.html": "bc9de83e4749f619",
     "package/honda-trade-in-value-miami-guide-SEO.md": "e3a00641e90ab36d",
     "package/honda-trade-in-value-miami-guide-Structured-Data.txt": "8d34df8ede401ada",
     "package/mzd-articles-sitewide-CSS.html": "cf4a3d0c7bb0ff37",
-    "package/README.md": "c304369b84b8001a"
+    "package/README.md": "4635955f3bd824a4"
    },
    "gates": [
     "  ✅ JSON-LD parses: 6 nodes",
@@ -700,6 +729,7 @@
     "  ✅ Site-wide CSS paste-safe (ASCII, no backslash): 229 lines",
     "  ✅ No \"01, 02\" numbering",
     "  ✅ Title length 50–65: 55",
+    "  ✅ Social title ≤70: 69",
     "  ✅ Meta 130–165: 153",
     "  ✅ H1 ≤80: 69",
     "  ✅ Body words 1,700–2,300 (blocks only): 1840",
@@ -718,12 +748,13 @@
   },
   "brickell-mazda|service|final": {
    "files": {
+    "HANDOFF.md": "990834bc56969a74",
     "honda-trade-in-value-miami-guide-preview.html": "9356c7604fce6d26",
     "package/honda-trade-in-value-miami-guide-HTML.html": "bc9de83e4749f619",
     "package/honda-trade-in-value-miami-guide-SEO.md": "e3a00641e90ab36d",
     "package/honda-trade-in-value-miami-guide-Structured-Data.txt": "8d34df8ede401ada",
     "package/mzd-articles-sitewide-CSS.html": "cf4a3d0c7bb0ff37",
-    "package/README.md": "0c846e8e3ff407eb"
+    "package/README.md": "6629b18cb401e826"
    },
    "gates": [
     "  ✅ JSON-LD parses: 6 nodes",
@@ -748,6 +779,7 @@
     "  ✅ Final: every article image has an Apollo value: 5 slots",
     "  ✅ No \"01, 02\" numbering",
     "  ✅ Title length 50–65: 55",
+    "  ✅ Social title ≤70: 69",
     "  ✅ Meta 130–165: 153",
     "  ✅ H1 ≤80: 69",
     "  ✅ Body words 1,700–2,300 (blocks only): 1840",
@@ -765,12 +797,13 @@
   },
   "honda-libertyville|sales|draft": {
    "files": {
+    "HANDOFF.md": "63718d1aeb41f08b",
     "honda-trade-in-value-miami-guide-preview.html": "536b1679a1530bcd",
     "package/hlv-articles-sitewide-CSS.html": "6b9516c63426edb4",
     "package/honda-trade-in-value-miami-guide-HTML.html": "34a80660f76b77c9",
     "package/honda-trade-in-value-miami-guide-SEO.md": "b7e228efa02c07a4",
     "package/honda-trade-in-value-miami-guide-Structured-Data.txt": "7a2ef516b13d3538",
-    "package/README.md": "1e225d4ffe4f69ba"
+    "package/README.md": "0c69e013570ae0c4"
    },
    "gates": [
     "  ✅ JSON-LD parses: 6 nodes",
@@ -794,6 +827,7 @@
     "  ✅ Site-wide CSS paste-safe (ASCII, no backslash): 229 lines",
     "  ✅ No \"01, 02\" numbering",
     "  ✅ Title length 50–65: 55",
+    "  ✅ Social title ≤70: 69",
     "  ✅ Meta 130–165: 153",
     "  ✅ H1 ≤80: 69",
     "  ✅ Body words 1,700–2,300 (blocks only): 1840",
@@ -812,12 +846,13 @@
   },
   "honda-libertyville|sales|final": {
    "files": {
+    "HANDOFF.md": "f49bb085251722ac",
     "honda-trade-in-value-miami-guide-preview.html": "557d42c71f398b11",
     "package/hlv-articles-sitewide-CSS.html": "6b9516c63426edb4",
     "package/honda-trade-in-value-miami-guide-HTML.html": "34a80660f76b77c9",
     "package/honda-trade-in-value-miami-guide-SEO.md": "b7e228efa02c07a4",
     "package/honda-trade-in-value-miami-guide-Structured-Data.txt": "7a2ef516b13d3538",
-    "package/README.md": "62b3862b4679af6d"
+    "package/README.md": "9e71f1dc69c6c182"
    },
    "gates": [
     "  ✅ JSON-LD parses: 6 nodes",
@@ -842,6 +877,7 @@
     "  ✅ Final: every article image has an Apollo value: 5 slots",
     "  ✅ No \"01, 02\" numbering",
     "  ✅ Title length 50–65: 55",
+    "  ✅ Social title ≤70: 69",
     "  ✅ Meta 130–165: 153",
     "  ✅ H1 ≤80: 69",
     "  ✅ Body words 1,700–2,300 (blocks only): 1840",
@@ -859,12 +895,13 @@
   },
   "honda-libertyville|service|draft": {
    "files": {
+    "HANDOFF.md": "63718d1aeb41f08b",
     "honda-trade-in-value-miami-guide-preview.html": "8f43b79d2e1182ae",
     "package/hlv-articles-sitewide-CSS.html": "6b9516c63426edb4",
     "package/honda-trade-in-value-miami-guide-HTML.html": "e598335f6546383c",
     "package/honda-trade-in-value-miami-guide-SEO.md": "b7e228efa02c07a4",
     "package/honda-trade-in-value-miami-guide-Structured-Data.txt": "8d5745ce46199816",
-    "package/README.md": "1e225d4ffe4f69ba"
+    "package/README.md": "0c69e013570ae0c4"
    },
    "gates": [
     "  ✅ JSON-LD parses: 6 nodes",
@@ -888,6 +925,7 @@
     "  ✅ Site-wide CSS paste-safe (ASCII, no backslash): 229 lines",
     "  ✅ No \"01, 02\" numbering",
     "  ✅ Title length 50–65: 55",
+    "  ✅ Social title ≤70: 69",
     "  ✅ Meta 130–165: 153",
     "  ✅ H1 ≤80: 69",
     "  ✅ Body words 1,700–2,300 (blocks only): 1840",
@@ -906,12 +944,13 @@
   },
   "honda-libertyville|service|final": {
    "files": {
+    "HANDOFF.md": "f49bb085251722ac",
     "honda-trade-in-value-miami-guide-preview.html": "97e0dbb16b361b31",
     "package/hlv-articles-sitewide-CSS.html": "6b9516c63426edb4",
     "package/honda-trade-in-value-miami-guide-HTML.html": "e598335f6546383c",
     "package/honda-trade-in-value-miami-guide-SEO.md": "b7e228efa02c07a4",
     "package/honda-trade-in-value-miami-guide-Structured-Data.txt": "8d5745ce46199816",
-    "package/README.md": "62b3862b4679af6d"
+    "package/README.md": "9e71f1dc69c6c182"
    },
    "gates": [
     "  ✅ JSON-LD parses: 6 nodes",
@@ -936,6 +975,7 @@
     "  ✅ Final: every article image has an Apollo value: 5 slots",
     "  ✅ No \"01, 02\" numbering",
     "  ✅ Title length 50–65: 55",
+    "  ✅ Social title ≤70: 69",
     "  ✅ Meta 130–165: 153",
     "  ✅ H1 ≤80: 69",
     "  ✅ Body words 1,700–2,300 (blocks only): 1840",
@@ -953,12 +993,13 @@
   },
   "murgado-ford-chicago|sales|draft": {
    "files": {
+    "HANDOFF.md": "1b38056871325be4",
     "honda-trade-in-value-miami-guide-preview.html": "710f371245048dd2",
     "package/honda-trade-in-value-miami-guide-HTML.html": "56d7965232218da0",
     "package/honda-trade-in-value-miami-guide-SEO.md": "c685690e462bc403",
     "package/honda-trade-in-value-miami-guide-Structured-Data.txt": "016ce918154aff5c",
     "package/mfc-articles-sitewide-CSS.html": "d07a64b9e9b6e013",
-    "package/README.md": "4bab8aacdedd2866"
+    "package/README.md": "4f8c26de74db49d5"
    },
    "gates": [
     "  ✅ JSON-LD parses: 6 nodes",
@@ -982,6 +1023,7 @@
     "  ✅ Site-wide CSS paste-safe (ASCII, no backslash): 229 lines",
     "  ✅ No \"01, 02\" numbering",
     "  ✅ Title length 50–65: 55",
+    "  ✅ Social title ≤70: 69",
     "  ✅ Meta 130–165: 153",
     "  ✅ H1 ≤80: 69",
     "  ✅ Body words 1,700–2,300 (blocks only): 1840",
@@ -1000,12 +1042,13 @@
   },
   "murgado-ford-chicago|sales|final": {
    "files": {
+    "HANDOFF.md": "320431451bf72dd4",
     "honda-trade-in-value-miami-guide-preview.html": "10c1cf99c74bf08f",
     "package/honda-trade-in-value-miami-guide-HTML.html": "56d7965232218da0",
     "package/honda-trade-in-value-miami-guide-SEO.md": "c685690e462bc403",
     "package/honda-trade-in-value-miami-guide-Structured-Data.txt": "016ce918154aff5c",
     "package/mfc-articles-sitewide-CSS.html": "d07a64b9e9b6e013",
-    "package/README.md": "ee34bf9b355298c6"
+    "package/README.md": "523e3d8b79d7005b"
    },
    "gates": [
     "  ✅ JSON-LD parses: 6 nodes",
@@ -1030,6 +1073,7 @@
     "  ✅ Final: every article image has an Apollo value: 5 slots",
     "  ✅ No \"01, 02\" numbering",
     "  ✅ Title length 50–65: 55",
+    "  ✅ Social title ≤70: 69",
     "  ✅ Meta 130–165: 153",
     "  ✅ H1 ≤80: 69",
     "  ✅ Body words 1,700–2,300 (blocks only): 1840",
@@ -1047,12 +1091,13 @@
   },
   "murgado-ford-chicago|service|draft": {
    "files": {
+    "HANDOFF.md": "1b38056871325be4",
     "honda-trade-in-value-miami-guide-preview.html": "d9dc895acf0e1572",
     "package/honda-trade-in-value-miami-guide-HTML.html": "a8bd76bf2eea0568",
     "package/honda-trade-in-value-miami-guide-SEO.md": "c685690e462bc403",
     "package/honda-trade-in-value-miami-guide-Structured-Data.txt": "b034f2df55019ed8",
     "package/mfc-articles-sitewide-CSS.html": "d07a64b9e9b6e013",
-    "package/README.md": "4bab8aacdedd2866"
+    "package/README.md": "4f8c26de74db49d5"
    },
    "gates": [
     "  ✅ JSON-LD parses: 6 nodes",
@@ -1076,6 +1121,7 @@
     "  ✅ Site-wide CSS paste-safe (ASCII, no backslash): 229 lines",
     "  ✅ No \"01, 02\" numbering",
     "  ✅ Title length 50–65: 55",
+    "  ✅ Social title ≤70: 69",
     "  ✅ Meta 130–165: 153",
     "  ✅ H1 ≤80: 69",
     "  ✅ Body words 1,700–2,300 (blocks only): 1840",
@@ -1094,12 +1140,13 @@
   },
   "murgado-ford-chicago|service|final": {
    "files": {
+    "HANDOFF.md": "320431451bf72dd4",
     "honda-trade-in-value-miami-guide-preview.html": "537cb993bf9a9ee1",
     "package/honda-trade-in-value-miami-guide-HTML.html": "a8bd76bf2eea0568",
     "package/honda-trade-in-value-miami-guide-SEO.md": "c685690e462bc403",
     "package/honda-trade-in-value-miami-guide-Structured-Data.txt": "b034f2df55019ed8",
     "package/mfc-articles-sitewide-CSS.html": "d07a64b9e9b6e013",
-    "package/README.md": "ee34bf9b355298c6"
+    "package/README.md": "523e3d8b79d7005b"
    },
    "gates": [
     "  ✅ JSON-LD parses: 6 nodes",
@@ -1124,6 +1171,7 @@
     "  ✅ Final: every article image has an Apollo value: 5 slots",
     "  ✅ No \"01, 02\" numbering",
     "  ✅ Title length 50–65: 55",
+    "  ✅ Social title ≤70: 69",
     "  ✅ Meta 130–165: 153",
     "  ✅ H1 ≤80: 69",
     "  ✅ Body words 1,700–2,300 (blocks only): 1840",
@@ -1141,12 +1189,13 @@
   },
   "murgado-lincoln-chicago|sales|draft": {
    "files": {
+    "HANDOFF.md": "7be1e31cc3f2e6a6",
     "honda-trade-in-value-miami-guide-preview.html": "2ff0744c6264ec1a",
     "package/honda-trade-in-value-miami-guide-HTML.html": "5601bafb73064382",
     "package/honda-trade-in-value-miami-guide-SEO.md": "40d3283d5c59bfcc",
     "package/honda-trade-in-value-miami-guide-Structured-Data.txt": "5984697f0010d868",
     "package/mlc-articles-sitewide-CSS.html": "29f1eb5056af3e73",
-    "package/README.md": "75c687b6431ee44f"
+    "package/README.md": "6f1e49e8418eb0f4"
    },
    "gates": [
     "  ✅ JSON-LD parses: 6 nodes",
@@ -1170,6 +1219,7 @@
     "  ✅ Site-wide CSS paste-safe (ASCII, no backslash): 229 lines",
     "  ✅ No \"01, 02\" numbering",
     "  ✅ Title length 50–65: 55",
+    "  ✅ Social title ≤70: 69",
     "  ✅ Meta 130–165: 153",
     "  ✅ H1 ≤80: 69",
     "  ✅ Body words 1,700–2,300 (blocks only): 1840",
@@ -1188,12 +1238,13 @@
   },
   "murgado-lincoln-chicago|sales|final": {
    "files": {
+    "HANDOFF.md": "c7069ce19c51f508",
     "honda-trade-in-value-miami-guide-preview.html": "a921510b2840f077",
     "package/honda-trade-in-value-miami-guide-HTML.html": "5601bafb73064382",
     "package/honda-trade-in-value-miami-guide-SEO.md": "40d3283d5c59bfcc",
     "package/honda-trade-in-value-miami-guide-Structured-Data.txt": "5984697f0010d868",
     "package/mlc-articles-sitewide-CSS.html": "29f1eb5056af3e73",
-    "package/README.md": "5655feb620bec344"
+    "package/README.md": "57eb76fa423251ba"
    },
    "gates": [
     "  ✅ JSON-LD parses: 6 nodes",
@@ -1218,6 +1269,7 @@
     "  ✅ Final: every article image has an Apollo value: 5 slots",
     "  ✅ No \"01, 02\" numbering",
     "  ✅ Title length 50–65: 55",
+    "  ✅ Social title ≤70: 69",
     "  ✅ Meta 130–165: 153",
     "  ✅ H1 ≤80: 69",
     "  ✅ Body words 1,700–2,300 (blocks only): 1840",
@@ -1235,12 +1287,13 @@
   },
   "murgado-lincoln-chicago|service|draft": {
    "files": {
+    "HANDOFF.md": "7be1e31cc3f2e6a6",
     "honda-trade-in-value-miami-guide-preview.html": "1807863747007f34",
     "package/honda-trade-in-value-miami-guide-HTML.html": "c2ea695f617cffaf",
     "package/honda-trade-in-value-miami-guide-SEO.md": "40d3283d5c59bfcc",
     "package/honda-trade-in-value-miami-guide-Structured-Data.txt": "b5b2bb41f1ba44ce",
     "package/mlc-articles-sitewide-CSS.html": "29f1eb5056af3e73",
-    "package/README.md": "75c687b6431ee44f"
+    "package/README.md": "6f1e49e8418eb0f4"
    },
    "gates": [
     "  ✅ JSON-LD parses: 6 nodes",
@@ -1264,6 +1317,7 @@
     "  ✅ Site-wide CSS paste-safe (ASCII, no backslash): 229 lines",
     "  ✅ No \"01, 02\" numbering",
     "  ✅ Title length 50–65: 55",
+    "  ✅ Social title ≤70: 69",
     "  ✅ Meta 130–165: 153",
     "  ✅ H1 ≤80: 69",
     "  ✅ Body words 1,700–2,300 (blocks only): 1840",
@@ -1282,12 +1336,13 @@
   },
   "murgado-lincoln-chicago|service|final": {
    "files": {
+    "HANDOFF.md": "c7069ce19c51f508",
     "honda-trade-in-value-miami-guide-preview.html": "e8691ef55acacfc7",
     "package/honda-trade-in-value-miami-guide-HTML.html": "c2ea695f617cffaf",
     "package/honda-trade-in-value-miami-guide-SEO.md": "40d3283d5c59bfcc",
     "package/honda-trade-in-value-miami-guide-Structured-Data.txt": "b5b2bb41f1ba44ce",
     "package/mlc-articles-sitewide-CSS.html": "29f1eb5056af3e73",
-    "package/README.md": "5655feb620bec344"
+    "package/README.md": "57eb76fa423251ba"
    },
    "gates": [
     "  ✅ JSON-LD parses: 6 nodes",
@@ -1312,6 +1367,7 @@
     "  ✅ Final: every article image has an Apollo value: 5 slots",
     "  ✅ No \"01, 02\" numbering",
     "  ✅ Title length 50–65: 55",
+    "  ✅ Social title ≤70: 69",
     "  ✅ Meta 130–165: 153",
     "  ✅ H1 ≤80: 69",
     "  ✅ Body words 1,700–2,300 (blocks only): 1840",
@@ -1329,11 +1385,12 @@
   },
   "toyota-downtown-chicago|sales|draft": {
    "files": {
+    "HANDOFF.md": "7e7595ce9cd68445",
     "honda-trade-in-value-miami-guide-preview.html": "258eccb0d4b63f44",
     "package/honda-trade-in-value-miami-guide-HTML.html": "67ff3850b440b61c",
     "package/honda-trade-in-value-miami-guide-SEO.md": "06a83ea2ff13b365",
     "package/honda-trade-in-value-miami-guide-Structured-Data.txt": "c9ec84c9bfa37a7c",
-    "package/README.md": "00b753f7c8da12a6",
+    "package/README.md": "cd3ceb94f81e1eeb",
     "package/toy-articles-sitewide-CSS.html": "f7ee3864d92eda63"
    },
    "gates": [
@@ -1358,6 +1415,7 @@
     "  ✅ Site-wide CSS paste-safe (ASCII, no backslash): 229 lines",
     "  ✅ No \"01, 02\" numbering",
     "  ✅ Title length 50–65: 55",
+    "  ✅ Social title ≤70: 69",
     "  ✅ Meta 130–165: 153",
     "  ✅ H1 ≤80: 69",
     "  ✅ Body words 1,700–2,300 (blocks only): 1840",
@@ -1376,11 +1434,12 @@
   },
   "toyota-downtown-chicago|sales|final": {
    "files": {
+    "HANDOFF.md": "598d2a3e44335cf6",
     "honda-trade-in-value-miami-guide-preview.html": "3cff7c1663f91137",
     "package/honda-trade-in-value-miami-guide-HTML.html": "67ff3850b440b61c",
     "package/honda-trade-in-value-miami-guide-SEO.md": "06a83ea2ff13b365",
     "package/honda-trade-in-value-miami-guide-Structured-Data.txt": "c9ec84c9bfa37a7c",
-    "package/README.md": "c077f7d9deabb129",
+    "package/README.md": "411ce02cd6a2e66e",
     "package/toy-articles-sitewide-CSS.html": "f7ee3864d92eda63"
    },
    "gates": [
@@ -1406,6 +1465,7 @@
     "  ✅ Final: every article image has an Apollo value: 5 slots",
     "  ✅ No \"01, 02\" numbering",
     "  ✅ Title length 50–65: 55",
+    "  ✅ Social title ≤70: 69",
     "  ✅ Meta 130–165: 153",
     "  ✅ H1 ≤80: 69",
     "  ✅ Body words 1,700–2,300 (blocks only): 1840",
@@ -1423,11 +1483,12 @@
   },
   "toyota-downtown-chicago|service|draft": {
    "files": {
+    "HANDOFF.md": "7e7595ce9cd68445",
     "honda-trade-in-value-miami-guide-preview.html": "91e665e2766a39f8",
     "package/honda-trade-in-value-miami-guide-HTML.html": "e19f796ab87ad7ef",
     "package/honda-trade-in-value-miami-guide-SEO.md": "06a83ea2ff13b365",
     "package/honda-trade-in-value-miami-guide-Structured-Data.txt": "8588aaa36c4b4507",
-    "package/README.md": "00b753f7c8da12a6",
+    "package/README.md": "cd3ceb94f81e1eeb",
     "package/toy-articles-sitewide-CSS.html": "f7ee3864d92eda63"
    },
    "gates": [
@@ -1452,6 +1513,7 @@
     "  ✅ Site-wide CSS paste-safe (ASCII, no backslash): 229 lines",
     "  ✅ No \"01, 02\" numbering",
     "  ✅ Title length 50–65: 55",
+    "  ✅ Social title ≤70: 69",
     "  ✅ Meta 130–165: 153",
     "  ✅ H1 ≤80: 69",
     "  ✅ Body words 1,700–2,300 (blocks only): 1840",
@@ -1470,11 +1532,12 @@
   },
   "toyota-downtown-chicago|service|final": {
    "files": {
+    "HANDOFF.md": "598d2a3e44335cf6",
     "honda-trade-in-value-miami-guide-preview.html": "9f648384cde83b5e",
     "package/honda-trade-in-value-miami-guide-HTML.html": "e19f796ab87ad7ef",
     "package/honda-trade-in-value-miami-guide-SEO.md": "06a83ea2ff13b365",
     "package/honda-trade-in-value-miami-guide-Structured-Data.txt": "8588aaa36c4b4507",
-    "package/README.md": "c077f7d9deabb129",
+    "package/README.md": "411ce02cd6a2e66e",
     "package/toy-articles-sitewide-CSS.html": "f7ee3864d92eda63"
    },
    "gates": [
@@ -1500,6 +1563,7 @@
     "  ✅ Final: every article image has an Apollo value: 5 slots",
     "  ✅ No \"01, 02\" numbering",
     "  ✅ Title length 50–65: 55",
+    "  ✅ Social title ≤70: 69",
     "  ✅ Meta 130–165: 153",
     "  ✅ H1 ≤80: 69",
     "  ✅ Body words 1,700–2,300 (blocks only): 1840",

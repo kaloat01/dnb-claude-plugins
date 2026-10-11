@@ -165,7 +165,8 @@ Other recurring patterns: absolute words on medium-confidence claims ("only", "e
 
 ## 4. The parallel golden-geo review
 
-Runs at the same time as compliance, also read-only. Brief it with the preview, module, ledger, the page-type caveat
+Runs at the same time as compliance, also read-only (in Chat, which has no reviewer agents, it is the second pass of the
+single-conversation review in the article skill). Brief it with the preview, module, ledger, the page-type caveat
 ("education/comparison article, not an offer page: price in the first 100 words and Offer schema do not apply"), the
 platform context (schema in the Custom Structured Data field, SEO fields in the Apollo form, H1 in the content), pending
 items ("images are placeholders: not a blocker"), and the NAP. In past runs it independently confirmed a misattribution,

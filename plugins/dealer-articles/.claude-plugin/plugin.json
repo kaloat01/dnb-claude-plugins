@@ -1,6 +1,6 @@
 {
   "name": "dealer-articles",
-  "description": "Draft Hrizn-level, compliance-reviewed long-form dealership articles (Editorial v2 design) and package them for Apollo (HTML fragment, site-wide CSS, Structured Data, SEO fields) or DealerInspire/WordPress (one-line embed, Yoast + social fields), with a local preview. Same workflow and checks on every platform. Start with /dealer-articles:article-setup, then /dealer-articles:article \"<dealer>\" \"<title>\".",
+  "description": "Draft Hrizn-level, compliance-reviewed long-form dealership articles (Editorial v2 design) and package them for Apollo (HTML fragment, site-wide CSS, Structured Data, SEO fields) or DealerInspire/WordPress (one-line embed, Yoast + social fields), with a local preview and a HANDOFF of every field to enter. Same workflow and checks on every platform. Works in the Claude Desktop app and claude.ai (Cowork recommended, Chat supported) and in Claude Code. Start with /dealer-articles:article \"<dealer>\" \"<title>\" (setup check: /dealer-articles:article-setup).",
   "author": {
     "name": "DNB Solutions / Referel Consulting"
   },

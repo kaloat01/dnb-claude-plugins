@@ -1,6 +1,6 @@
 ---
 name: golden-geo
-description: SEO/GEO/AEO rules for dealership pages. In this plugin, use ARTICLE MODE for long-form articles (comparisons, buying guides, service guides): title/meta/H1/keyphrase placement, answer-first H2s, FAQ and FAQPage parity, BlogPosting schema, internal links from the sitemap allow-list, entity/NAP consistency and AI-citability. Also covers service/offer pages (PAGE MODE) via the full Golden Rules playbook.
+description: "SEO/GEO/AEO rules for dealership pages. In this plugin, use ARTICLE MODE for long-form articles (comparisons, buying guides, service guides): title/meta/H1/keyphrase placement, answer-first H2s, FAQ and FAQPage parity, BlogPosting schema, internal links from the sitemap allow-list, entity/NAP consistency and AI-citability. Also covers service/offer pages (PAGE MODE) via the full Golden Rules playbook."
 ---
 
 # Golden GEO (SEO, GEO and AEO for dealership pages)

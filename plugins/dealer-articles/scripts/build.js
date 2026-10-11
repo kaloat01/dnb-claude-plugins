@@ -1,21 +1,31 @@
 #!/usr/bin/env node
 /* dealer-articles engine: "Editorial v2" long-form article builder for Apollo (Team Velocity) custom pages.
  * Dealers: resources/dealers/<key>.json (./dealers/<key>.json in the working folder overrides). Pure Node >= 18, no deps.
- * Spec: repository docs/CONTRACT.md (maintainers).  node build.js env | dealers | new --dealer "<name>" --title "<title>" [--out <dir>]
- *   | status <job> | build <job> [--final] | shot <job> [--widths 1280,375] [--height N] | images <job> | page <url> [--out file] */
+ * Spec: repository docs/CONTRACT.md (maintainers).  node build.js env [--net] | dealers | new --dealer "<name>" --title "<title>" [--out <dir>]
+ *   | status <job> | build <job> [--final] | review <job> --mode separate|single | deliver <job> --to <dir>
+ *   | resume <kit.zip> [--out <dir>] [--force] | shot <job> [--widths 1280,375] [--height N] | images <job> | page <url> [--out file] */
 'use strict';
 const fs = require('fs');
 const path = require('path');
 const crypto = require('crypto');
 const cp = require('child_process');
 const os = require('os');
+const zlib = require('zlib');
 const { pathToFileURL } = require('url');
 
+const VERSION = '0.11.0';
+const RELEASED = '2026-10-11';
+const VER_LINE = `dealer-articles v${VERSION} (${RELEASED})`;
+const REVIEW = { separate: 'separate reviewer agents', single: 'single conversation (Chat) – double-check before publishing' }; // job.json reviewMode
 const ROOT = path.resolve(__dirname, '..');
 const RES = path.join(ROOT, 'resources');
 // brand compliance terms ledger: banned OEM terms + the wording to use instead (e.g. Mercedes-Benz "coupon" → "offer",
 // Toyota "MSRP" → "TSRP"). Every OEM/compliance review finding becomes a row here; the build gate enforces it.
-function loadTermsLedger() { try { return JSON.parse(fs.readFileSync(path.join(RES, 'rules', 'brand-terms.json'), 'utf8')); } catch (e) { return { rules: [], priceTerms: {} }; } }
+// A missing or malformed ledger never passes silently: `error` makes build add a ❌ "Brand terms ledger unreadable" gate.
+function loadTermsLedger() {
+  try { const L = JSON.parse(fs.readFileSync(path.join(RES, 'rules', 'brand-terms.json'), 'utf8')); if (!Array.isArray(L.rules)) throw new Error('no "rules" array'); return L; }
+  catch (e) { return { rules: [], priceTerms: {}, error: e.code === 'ENOENT' ? 'resources/rules/brand-terms.json is missing' : `resources/rules/brand-terms.json is not valid (${String(e.message).replace(/\s+/g, ' ').slice(0, 160)})` }; }
+}
 function brandTermRules(D) { const L = loadTermsLedger(); const b = String(D.brand || '').toLowerCase(); return (L.rules || []).filter((r) => ((r.brands || []).some((x) => x.toLowerCase() === b) || (r.dealers || []).includes(D.key) || (r.brands || []).includes('*')) && (!r.states || r.states.includes(D.region))); } // optional state scope (legal rules)
 function priceTerm(D) { const L = loadTermsLedger(); return ((L.priceTerms || {})[D.brand]) || 'MSRP'; }
 const APOLLO_IMG = 'https://service.secureoffersites.com/images/GetLibraryImage?fileNameOrId=';
@@ -79,6 +89,7 @@ function loadDealer(k) {
     style: j.style || {}, apollo: j.apollo || {}, shared: j.images || {}, file: f,
     allowPhrases: j.allowPhrases || [], // official OEM program names that contain a banned word (e.g. 'Premier Prepaid Maintenance')
     di: j.di || null, // DealerInspire: { uploads, template: post|composer, postLayout, category, parentPath, shortcodes{dept:option}, hoursDepartments{dept:label} }
+    verify: Array.isArray(j.verify) ? j.verify : [], // dealer facts still to confirm (listed under HANDOFF open flags)
   };
 }
 function loadSitemap(key) {
@@ -777,10 +788,13 @@ function build(mod, D, job, opts = {}) {
   const frag = article('package');
   const isFinal = !!opts.final && !placeholders.length;
   const heroPkg = img(mod.hero, 'package');
+  const draftNote = isFinal ? '' : `> **DRAFT: do not paste.** Built without \`--final\`${placeholders.length ? ` and ${placeholders.length} image(s) are still placeholders (${placeholders.join(', ')})` : ''}. Rebuild with \`build <job> --final\` after approval.\n\n`;
+  const builtWith = `\nBuilt with ${VER_LINE}.\n`;
 
-  let diOut = null, paste = '', diSeo = {}, diInjectedP = 0;
+  // seoMd = the SEO sheet text, steps = the README paste steps (both reused verbatim in HANDOFF.md)
+  let diOut = null, paste = '', diSeo = {}, diInjectedP = 0, seoMd = '', steps = '';
   if (isDI) {
-    ({ diOut, paste, diSeo, diInjectedP } = writeDI());
+    ({ diOut, paste, diSeo, diInjectedP, seoMd, steps } = writeDI());
   } else {
   /* preview: dealer Apollo theme CSS + Gemini-like shell + site-wide CSS inline + schema inline */
   const ap = D.apollo || {};
@@ -825,22 +839,21 @@ ${shellClose}
   fs.writeFileSync(out.html, frag + '\n');
   fs.writeFileSync(out.sd, JSON.stringify(sd, null, 2) + '\n');
   const f = (k, v) => `* ${k}  →  ${v}\n`;
-  fs.writeFileSync(out.seo, `# ${mod.slug}: Apollo SEO settings (General SEO Settings)\n\n`
+  seoMd = `# ${mod.slug}: Apollo SEO settings (General SEO Settings)\n\n`
     + f('URL / slug', mod.path) + f('H1 Tag Text', 'leave blank (the H1 is in the page content)') + f('Page Title', mod.title) + f('Meta Description', mod.meta)
     + f('Canonical Url', url) + f('OG Site Name', '#DealerName') + f('OG Title', mod.ogTitle || mod.title) + f('OG Description', mod.meta) + f('OG Locale', 'en_US')
     + f('Meta Keywords', 'leave empty') + f('Robots', 'leave all unchecked') + f('Focus keyword', mod.focus) + f('Hero image URL (schema only; Apollo has no og:image field)', heroPkg || 'MISSING (no Apollo id yet)')
-    + f('Custom Structured Data', `paste ${path.basename(out.sd)} and CHECK "Replace Structured Data"`));
+    + f('Custom Structured Data', `paste ${path.basename(out.sd)} and CHECK "Replace Structured Data"`);
+  fs.writeFileSync(out.seo, seoMd);
   const imgList = Object.entries(images).filter(([k, v]) => v && used.has(k)).map(([k, v]) => `- ${k}: ${apolloUrl(v.apollo, v.w) || 'MISSING Apollo id (placeholder)'}${v.desc ? ` · ${v.desc}` : ''}`).join('\n');
-  fs.writeFileSync(out.readme, `# ${mod.slug}: Apollo upload map (${D.name})\n\n`
-    + (isFinal ? '' : `> **DRAFT: do not paste.** Built without \`--final\`${placeholders.length ? ` and ${placeholders.length} image(s) are still placeholders (${placeholders.join(', ')})` : ''}. Rebuild with \`build <job> --final\` after approval.\n\n`)
-    + `1. **Site-wide CSS (once per dealer, shared by all articles):** paste \`${path.basename(out.css)}\` into the site-wide style slot (applies to all pages). Version: \`--da-css-version:v${sw.hash}\` (search the live page source for it; \`dealer-articles css ${sw.hash}\`. Re-paste only if the live site shows a different hash (view source, search "dealer-articles css").\n`
+  steps = `1. **Site-wide CSS (once per dealer, shared by all articles):** paste \`${path.basename(out.css)}\` into the site-wide style slot (applies to all pages). Version: \`--da-css-version:v${sw.hash}\` (search the live page source for it; \`dealer-articles css ${sw.hash}\`. Re-paste only if the live site shows a different hash (view source, search "dealer-articles css").\n`
     + `2. **New custom page** at \`${mod.path}\` → paste \`${path.basename(out.html)}\` into the page HTML/content area (source view).\n`
     + `3. **Custom Structured Data** → paste \`${path.basename(out.sd)}\` and CHECK "Replace Structured Data".\n`
     + `   Phones: the page HTML uses Apollo merge tags #SalesNumber / #ServiceNumber (Apollo fills in the dealer's number). Structured Data keeps the real numbers; never put a tag there.\n`
     + `4. **SEO Settings** → enter each line of \`${path.basename(out.seo)}\` (leave H1 Tag Text blank).\n`
     + `5. **Publish.**\n`
-    + `6. **Checks:** exactly one H1; headings render in Georgia${ap.themeFont ? ` (not ${ap.themeFont})` : ''}; images load; buttons show white or ink text, not underlined; FAQ items open; Rich Results Test detects Article, FAQ and Breadcrumb; canonical is ${url}.\n\n`
-    + `Images:\n${imgList}\n`);
+    + `6. **Checks:** exactly one H1; headings render in Georgia${ap.themeFont ? ` (not ${ap.themeFont})` : ''}; images load; buttons show white or ink text, not underlined; FAQ items open; Rich Results Test detects Article, FAQ and Breadcrumb; canonical is ${url}.\n`;
+  fs.writeFileSync(out.readme, `# ${mod.slug}: Apollo upload map (${D.name})\n\n` + draftNote + steps + `\nImages:\n${imgList}\n` + builtWith);
   }
 
   /* DealerInspire package: ONE paste file (one line: inline <style> + article + helper script + trimmed JSON-LD), the
@@ -909,21 +922,21 @@ ${shell}
       'Twitter image': img4,
     };
     const fl = (k, v) => `* ${k}  →  ${v}\n`;
-    fs.writeFileSync(o.seo, `# ${mod.slug}: DealerInspire (WordPress + Yoast) fields, ${D.name}\n\n`
+    const seoMd = `# ${mod.slug}: DealerInspire (WordPress + Yoast) fields, ${D.name}\n\n`
       + Object.entries(seo).map(([k, v]) => fl(k, v)).join('')
       + fl('Canonical URL', `leave the Yoast field empty (reference: ${url})`)
-      + `\nDelete Yoast's snippet-variable pills (Title, Page, Separator, Site title) before typing the SEO title.\n`);
+      + `\nDelete Yoast's snippet-variable pills (Title, Page, Separator, Site title) before typing the SEO title.\n`;
+    fs.writeFileSync(o.seo, seoMd);
     const used2 = Object.entries(images).filter(([k, v]) => v && used.has(k)).map(([k, v]) => `- ${k}: ${v.apollo || 'MISSING WordPress Media Library URL (placeholder)'}${v.desc ? ` · ${v.desc}` : ''}`).join('\n');
-    fs.writeFileSync(o.readme, `# ${mod.slug}: DealerInspire paste steps (${D.name})\n\n`
-      + (isFinal ? '' : `> **DRAFT: do not paste.** Built without \`--final\`${placeholders.length ? ` and ${placeholders.length} image(s) are still placeholders (${placeholders.join(', ')})` : ''}. Rebuild with \`build <job> --final\` after approval.\n\n`)
-      + (isPost
+    const steps = (isPost
         ? `1. WordPress admin → **Posts → Add New**. Title: the Post title line in \`${path.basename(o.seo)}\`.\n2. Switch the editor to the **Text** tab (never Visual). Open \`${path.basename(o.wired)}\` in Notepad, Select All, Copy, and paste it as the whole post body. Never use a Raw HTML block (it stops the [di_*] shortcodes).\n3. Category: **${sc.category || 'News'}**. Featured image: the hero (Media Library).\n`
         : `1. WordPress admin → **Pages → Add New**. Title: the Page title line in \`${path.basename(o.seo)}\`. Parent: **${sc.parentPath || '(none)'}**, so the URL is ${url}.\n2. Page Composer: add a full-width row with a **"Use WordPress Content"** element, and paste \`${path.basename(o.wired)}\` (open it in Notepad, Select All, Copy) into the page's **Text** tab (never Visual, never a Raw HTML element: it stops the [di_*] shortcodes).\n3. Featured image: the hero (Media Library).\n`)
       + `4. **Yoast SEO** → enter every line of \`${path.basename(o.seo)}\` (SEO title, meta, focus keyphrase; Social tab: Facebook + Twitter title, description and image). Never leave a social image empty.\n`
       + `5. **Publish**, then DealerInspire **Reload Cache** (admin bar).\n`
-      + `6. **Checks** (open the URL with ?cb=<anything>): exactly one visible H1 (the theme title is hidden by the embed); phone numbers are links; hours show on one line; images load; buttons are not underlined; FAQ items open; Rich Results Test detects Article + FAQ; the Yoast title and social image are the new ones (not the theme default).\n\n`
-      + `Phones and hours: the embed uses DealerInspire shortcodes ([di_option] / [di_hours]); the JSON-LD keeps the real numbers.\n\nImages (WordPress Media Library URLs):\n${used2}\n`);
-    return { diOut: o, paste: pasteText, diSeo: seo, diInjectedP: injectedP };
+      + `6. **Checks** (open the URL with ?cb=<anything>): exactly one visible H1 (the theme title is hidden by the embed); phone numbers are links; hours show on one line; images load; buttons are not underlined; FAQ items open; Rich Results Test detects Article + FAQ; the Yoast title and social image are the new ones (not the theme default).\n`;
+    fs.writeFileSync(o.readme, `# ${mod.slug}: DealerInspire paste steps (${D.name})\n\n` + draftNote + steps
+      + `\nPhones and hours: the embed uses DealerInspire shortcodes ([di_option] / [di_hours]); the JSON-LD keeps the real numbers.\n\nImages (WordPress Media Library URLs):\n${used2}\n` + builtWith);
+    return { diOut: o, paste: pasteText, diSeo: seo, diInjectedP: injectedP, seoMd, steps };
   }
 
   /* ---------------- QA gates ---------------- */
@@ -979,7 +992,8 @@ ${shell}
   const PT = priceTerm(D);
   for (const m of allText.matchAll(/\$\s?\d[\d,.]*/g)) { const ctx = allText.slice(Math.max(0, m.index - 140), m.index + 140); if (!mod.allowMsrp || !new RegExp('\\b' + PT + '\\b').test(ctx)) dollars.push(m[0]); }
   gate(`$ figures only as ${PT} (allowMsrp)`, dollars.length ? [`${dollars.slice(0, 5).join(', ')} without allowMsrp + "${PT}" within 140 chars`] : []);
-  // brand compliance terms ledger (copy, titles, meta, alt text, slug/path)
+  // brand compliance terms ledger (copy, titles, meta, alt text, slug/path); an unreadable ledger is a hard fail
+  { const L = loadTermsLedger(); if (L.error) gate('Brand terms ledger unreadable', [L.error]); }
   { const scopeText = allText + ' ' + (mod.slug || '') + ' ' + (mod.path || '') + ' ' + Object.values(images).map((v) => (v && v.alt) || '').join(' ');
     const hitR = (r) => (r.if ? (new RegExp(r.if, r.flags || 'i').test(scopeText) && !new RegExp(r.require, r.flags || 'i').test(scopeText)) : new RegExp(r.match, r.flags || 'i').test(scopeText));
     const termHits = brandTermRules(D).filter((r) => r.severity !== 'warn' && hitR(r)).map((r) => r.if ? `${r.id}: missing required wording → ${r.use}` : `${r.id}: "${(scopeText.match(new RegExp(r.match, r.flags || 'i')) || [''])[0]}" → use ${r.use}`);
@@ -1047,6 +1061,8 @@ ${shell}
   const cleanForNum = frag.replace(/\d{2}\/\d{2}\/\d{4}/g, '');
   warnG('No "01, 02" numbering', /\b0[1-9]\b(?=[^<]*<\/(li|h2|h3|span|div)>)/.test(cleanForNum) ? ['possible "01, 02" style numbering'] : []);
   warnG('Title length 50–65', (mod.title.length > 65 || mod.title.length < 50) ? [`${mod.title.length} chars`] : [], `${mod.title.length}`);
+  const socialTitle = mod.ogTitle || mod.title; // the OG / Facebook / Twitter title actually used
+  warnG('Social title ≤70', socialTitle.length > 70 ? [`${socialTitle.length} chars (link previews may cut it)`] : [], `${socialTitle.length}`);
   warnG('Meta 130–165', mod.meta.length < 130 || mod.meta.length > 165 ? [`${mod.meta.length} chars`] : [], `${mod.meta.length}`);
   warnG('H1 ≤80', stripTags(mod.h1).length > 80 ? [`${stripTags(mod.h1).length} chars`] : [], `${stripTags(mod.h1).length}`);
   const blockText = (b) => b.html || b.text || (b.t === 'list' ? b.items.join(' ') : b.t === 'steps' ? b.items.map((i) => i.h + ' ' + i.html).join(' ') : b.t === 'table' ? [...b.head, ...b.rows.flat()].join(' ') : b.t === 'stats' ? b.items.map((s) => s.n + ' ' + s.l).join(' ') : '');
@@ -1069,13 +1085,42 @@ ${shell}
   warnG('Dealer images (optional)', [...(hasStore ? [] : ['no STORE photo → text-only dealership section']), ...(hasLogo ? [] : ['no LOGO → dealer name text band'])], logoSmall ? 'small LOGO emblem + name band' : 'STORE + LOGO');
   warnG('Department contact', [...(dept.phone ? [] : [`${dept.label} has no phone → no number shown anywhere`]), ...(cta && cta.href ? [] : ['no department CTA button']), ...(D.directions ? [] : ['no directions route → no Get Directions button'])]);
 
-  const fails = G.filter((g) => g[0] === '❌').length;
+  const failed = G.filter((g) => g[0] === '❌').map((g) => g[1]);
+  const fails = failed.length;
   const warns = G.filter((g) => g[0] === '⚠️').length;
+  // the package is written before the gates run: a failing build marks it so it is never pasted by mistake
+  if (fails) fs.writeFileSync(out.readme, `> **NOT READY: gates failed (${failed.join(', ')}). Do not paste.**\n\n` + fs.readFileSync(out.readme, 'utf8'));
+
+  /* HANDOFF.md (job root): the one page the user must see; printed verbatim after the gate table. No paths or times. */
+  let reviewMode = null;
+  try { reviewMode = readJson(path.join(job, 'job.json')).reviewMode; } catch (e) { /* no job.json (engine tests) */ }
+  const status = fails ? `NOT READY – gates failed: ${failed.join(', ')}` : isFinal ? 'FINAL – ready to paste'
+    : `DRAFT – do not paste (reason: ${[!opts.final && 'built without --final', placeholders.length && `${placeholders.length} image(s) are still placeholders (${placeholders.join(', ')})`].filter(Boolean).join('; ')})`;
+  const isPostDI = isDI && D.di && D.di.template === 'post';
+  const pasteFiles = isDI ? [[diOut.wired, `the whole ${isPostDI ? 'post' : 'page'} body (WordPress Text tab)`], [out.seo, 'Yoast + WordPress fields, typed by hand']]
+    : [[out.css, `site-wide CSS, once per dealer (css ${sw.hash}; skip if the live site already has it)`], [out.html, 'page HTML'], [out.sd, 'Custom Structured Data'], [out.seo, 'SEO settings, typed by hand']];
+  const flags = [
+    ...G.filter((g) => g[0] === '❌').map(([, n, m]) => `Gate failed: ${n}${m ? ': ' + m : ''}`),
+    placeholders.length && `Unverified images (gray placeholders, not real photos): ${placeholders.join(', ')}. Upload them, send the ${isDI ? 'WordPress Media Library URLs' : 'Apollo Image IDs'}, then rebuild with --final.`,
+    ...[...D.verify, ...(Array.isArray(mod.verify) ? mod.verify : [])].map((v) => `Confirm with the dealer: ${v}`),
+    mod.allowMsrp && /\$\s?\d/.test(allText) && `${PT} price comparison in the article: get dealer-counsel sign-off before publishing${/^(VA|CA)$/.test(D.region) ? ` (required for ${D.region} stores)` : ' where the state requires it'}.`,
+    ...G.filter((g) => g[0] === '⚠️' && g[1] !== 'Images sourced').map(([, n, m]) => `Warning: ${n}${m ? ': ' + m : ''}`),
+  ].filter(Boolean);
+  const handoff = `# HANDOFF: ${mod.slug} (${D.name})\n\n**Status: ${status}**\n\n`
+    + `- Version: ${VER_LINE}\n- Dealer: ${D.name} (${D.key})\n- Platform: ${isDI ? `DealerInspire (${isPostDI ? 'WordPress post' : 'Page Composer page'})` : 'Apollo custom page'}\n- URL: ${url}\n- Review: ${REVIEW[reviewMode] || 'not recorded'}\n\n`
+    + `## SEO fields (${path.basename(out.seo)})\n\n${seoMd.replace(/^# [^\n]*\n\n/, '')}\n`
+    + `## Files to paste (package folder)\n\n${pasteFiles.map(([p, r]) => `- ${path.basename(p)}: ${r}`).join('\n')}\n\n`
+    + `## Paste steps\n\n${steps}\n`
+    + `## Open flags\n\n${flags.length ? flags.map((x) => `- ${x}`).join('\n') : '- none'}\n`;
+  const hFile = path.join(job, 'HANDOFF.md');
+  fs.writeFileSync(hFile, handoff);
+
   console.log(`\n=== ${D.name} · ${mod.slug} ${opts.final ? '(FINAL)' : '(draft)'} ===  words≈${words} (body ${bodyWords})  read=${readMin}min  h2=${h2s.length}  faq=${mod.faq.length}  links=${uniq.length}  css=${sw.hash}`);
   G.forEach(([s, n, m]) => console.log(`  ${s} ${n}${m ? ': ' + m : ''}`));
   console.log(`RESULT: ${fails ? `❌ FAIL (${fails} gate${fails > 1 ? 's' : ''})` : '✅ PASS'}${warns ? `, ${warns} warning${warns > 1 ? 's' : ''}` : ''}`);
-  console.log(`Outputs:\n  ${out.preview}\n  ${out.pkg}${path.sep}  (${(isDI ? [diOut.wired, out.seo, out.readme] : [out.html, out.css, out.sd, out.seo, out.readme]).map((p) => path.basename(p)).join(', ')})`);
-  return { fails, warns, words, hash: sw.hash, isFinal };
+  console.log(`Outputs:\n  ${hFile}\n  ${out.preview}\n  ${out.pkg}${path.sep}  (${(isDI ? [diOut.wired, out.seo, out.readme] : [out.html, out.css, out.sd, out.seo, out.readme]).map((p) => path.basename(p)).join(', ')})`);
+  console.log(`\n=== HANDOFF (show this to the user verbatim) ===\n${handoff.trimEnd()}\n=== END HANDOFF ===`);
+  return { fails, warns, words, hash: sw.hash, isFinal, status };
 }
 
 /* ------------------------------------------------------------------ commands */
@@ -1091,10 +1136,22 @@ function findBrowser() {
   } else {
     const dirs = (process.env.PATH || '').split(path.delimiter).filter(Boolean);
     ['google-chrome', 'google-chrome-stable', 'chromium', 'chromium-browser', 'microsoft-edge', 'microsoft-edge-stable'].forEach((n) => dirs.forEach((d) => c.push(path.join(d, n))));
+    // Playwright's bundled Chromium (cloud sandboxes often have only this), newest build first, then distro paths
+    const ver = (d) => parseInt(d.split('-').pop(), 10) || 0;
+    for (const base of [process.env.PLAYWRIGHT_BROWSERS_PATH, path.join(os.homedir(), '.cache', 'ms-playwright')].filter((p) => p && p !== '0')) {
+      let ds = []; try { ds = fs.readdirSync(base).sort((x, y) => ver(y) - ver(x)); } catch (e) { continue; }
+      ds.filter((d) => /^chromium-\d/.test(d)).forEach((d) => c.push(path.join(base, d, 'chrome-linux', 'chrome'), path.join(base, d, 'chrome-linux64', 'chrome')));
+      ds.filter((d) => /^chromium_headless_shell-\d/.test(d)).forEach((d) => c.push(path.join(base, d, 'chrome-linux', 'headless_shell'), path.join(base, d, 'chrome-headless-shell-linux64', 'chrome-headless-shell')));
+    }
+    c.push('/usr/bin/chromium-browser', '/usr/bin/chromium', '/snap/bin/chromium');
   }
   return c.find((p) => { try { return fs.statSync(p).isFile(); } catch (e) { return false; } }) || null;
 }
-function cmdEnv() {
+const UA = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36';
+// folders a chat sandbox (claude.ai Cowork/Chat) offers for downloads: report only, `deliver --to <dir>` writes there
+const DOWNLOAD_DIRS = () => ['/mnt/user-data/outputs', '/mnt/outputs', path.resolve('outputs')];
+async function cmdEnv(a = {}) {
+  console.log(VER_LINE);
   const major = Number(process.versions.node.split('.')[0]);
   const dealers = listDealers();
   const local = path.join(process.cwd(), 'dealers');
@@ -1103,9 +1160,44 @@ function cmdEnv() {
   const br = findBrowser();
   console.log(`${br ? '✅' : '⚠️'} Screenshot browser: ${br || 'none (shot will be skipped)'}`);
   console.log(`${fs.existsSync(path.join(RES, 'templates', 'module.template.js')) ? '✅' : '❌'} Module template`);
+  const L = loadTermsLedger();
+  console.log(L.error ? `❌ Brand terms ledger: ${L.error} (every build fails)` : `✅ Brand terms ledger (${L.rules.length} rules)`);
   console.log(`${dealers.length ? '✅' : '❌'} Dealers (${dealers.length}): ${dealers.map((d) => d.key + (loadSitemap(d.key) ? '' : ' [no sitemap]')).join(', ')}`);
   if (fs.existsSync(local)) console.log(`ℹ️ Local overrides from ${local}`);
+  const outs = DOWNLOAD_DIRS().filter((d) => { try { fs.accessSync(d, fs.constants.W_OK); return fs.statSync(d).isDirectory(); } catch (e) { return false; } });
+  console.log(outs.length ? outs.map((d) => `✅ Download folder: ${d}`).join('\n') : `ℹ️ No download folder (${DOWNLOAD_DIRS().join(', ')}); deliver --to any folder the user can open`);
+  if (a.net) await netCheck(dealers);
   process.exit(major >= 18 ? 0 : 1);
+}
+// env --net: can this machine reach the dealer image hosts, Google Fonts and a dealer site? (HEAD, fallback GET, 6 s each)
+// reachable = 2xx/3xx · refused = the host answered 4xx/5xx (often bot protection; the network path is open) ·
+// blocked = no connection, timeout, or a sandbox egress proxy refusal
+async function netCheck(dealers) {
+  const byHost = new Map();
+  for (const d of dealers) for (const im of Object.values(d.images || {})) {
+    const v = im && ((d.platform || 'apollo') === 'dealerinspire' ? im.di : im.apollo);
+    if (!v) continue;
+    const u = (d.platform || 'apollo') === 'dealerinspire' ? v : fetchUrl(v);
+    try { const h = new URL(u).host; if (!byHost.has(h)) byHost.set(h, u); } catch (e) { /* not a URL */ }
+  }
+  const dom = (dealers.find((d) => d.domain) || {}).domain;
+  const urls = [...(byHost.size ? byHost.values() : ['https://service.secureoffersites.com/', 'https://di-uploads-pod5.dealerinspire.com/']), GOOGLE_FONT, dom && dom.replace(/\/+$/, '') + '/'].filter(Boolean);
+  const probe = async (u) => {
+    let last = ['❌ blocked', 'no answer'];
+    for (const method of ['HEAD', 'GET']) {
+      try {
+        const r = await fetch(u, { method, redirect: 'follow', signal: AbortSignal.timeout(6000), headers: { 'User-Agent': UA } });
+        if (r.status < 400) { try { if (r.body) await r.body.cancel(); } catch (e) { /* ignore */ } return ['✅ reachable', `HTTP ${r.status}`]; }
+        const txt = method === 'GET' ? (await r.text().catch(() => '')).slice(0, 4000) : '';
+        const proxy = r.headers.get('x-deny-reason') || (/allowlist|not in the allow|egress|blocked by (the )?proxy/i.test(txt) && 'egress proxy');
+        last = proxy ? ['❌ blocked', `HTTP ${r.status}: ${proxy}`] : ['⚠️ refused', `HTTP ${r.status}: the host answered but refused a script request (bot protection?)`];
+      } catch (e) { last = ['❌ blocked', (e.cause && (e.cause.code || e.cause.message)) || e.name || e.message]; }
+    }
+    return last;
+  };
+  const res = await Promise.all(urls.map(probe));
+  console.log('Network (HEAD, fallback GET, 6 s timeout):');
+  urls.forEach((u, i) => console.log(`${res[i][0]}  ${new URL(u).host} (${res[i][1]})`));
 }
 function cmdDealers() {
   const ds = listDealers();
@@ -1113,6 +1205,7 @@ function cmdDealers() {
   ds.forEach((d) => console.log(`${String(d.key).padEnd(26)} ${String(d.prefix || '?').padEnd(5)} ${String(d.name).padEnd(30)} ${d.platform || ''}  aliases: ${(d.aliases || []).join(', ')}${d.lastVerified ? `  (verified ${d.lastVerified})` : ''}${d.file && d.file.startsWith(process.cwd() + path.sep + 'dealers') ? '  [local override]' : ''}`));
 }
 function cmdNew(a) {
+  console.log(VER_LINE);
   if (!a.dealer || !a.title) die('Usage: build.js new --dealer "<name or key>" --title "<title>" [--slug <short-slug>] [--out <dir>]');
   const m = matchDealer(a.dealer);
   if (!m.hit) {
@@ -1142,7 +1235,7 @@ function cmdNew(a) {
   }
   fs.mkdirSync(dir, { recursive: true });
   fs.writeFileSync(path.join(dir, 'module.js'), src);
-  fs.writeFileSync(path.join(dir, 'job.json'), JSON.stringify({ dealer: D.key, title: a.title, slug, phase: 'intake', created: new Date().toISOString() }, null, 2) + '\n');
+  fs.writeFileSync(path.join(dir, 'job.json'), JSON.stringify({ dealer: D.key, title: a.title, slug, phase: 'intake', created: new Date().toISOString(), version: VERSION }, null, 2) + '\n');
   console.log(`✅ ${D.name} (${D.key}) · slug: ${slug}\nJOB: ${dir}`);
 }
 function cmdStatus(arg) {
@@ -1160,12 +1253,14 @@ function cmdStatus(arg) {
   (platform === 'dealerinspire'
     ? [['module.js', modFile], ['preview', o.preview], ['paste file', path.join(o.pkg, `${slug}-embed-Wired.html`)], ['Yoast sheet', o.seo], ['README', o.readme]]
     : [['module.js', modFile], ['preview', o.preview], ['package HTML', o.html], ['site-wide CSS', o.css], ['Structured Data', o.sd], ['SEO sheet', o.seo], ['README', o.readme]])
+    .concat([['HANDOFF', path.join(job, 'HANDOFF.md')]])
     .forEach(([n, p]) => console.log(`${fs.existsSync(p) ? '✅' : '—'} ${n.padEnd(16)} ${p}`));
   console.log(`${fs.existsSync(qa) ? '✅' : '—'} screenshots      ${fs.existsSync(qa) ? fs.readdirSync(qa).filter((x) => /\.png$/.test(x)).join(', ') : qa}`);
   console.log(`${fs.existsSync(imgs) ? '✅' : '—'} images           ${fs.existsSync(imgs) ? fs.readdirSync(imgs).join(', ') : imgs}`);
-  if (fs.existsSync(o.readme)) console.log(/DRAFT: do not paste/.test(fs.readFileSync(o.readme, 'utf8')) ? 'Package: DRAFT' : 'Package: FINAL');
+  if (fs.existsSync(o.readme)) { const t = fs.readFileSync(o.readme, 'utf8'); console.log(/NOT READY: gates failed/.test(t) ? 'Package: NOT READY (gates failed)' : /DRAFT: do not paste/.test(t) ? 'Package: DRAFT' : 'Package: FINAL'); }
 }
 function cmdBuild(arg, opts) {
+  console.log(VER_LINE);
   const { job, modFile } = resolveJob(arg);
   const mod = loadModule(modFile);
   const D = loadDealer(mod.dealer);
@@ -1173,6 +1268,7 @@ function cmdBuild(arg, opts) {
   const jf = path.join(job, 'job.json');
   try {
     const j = fs.existsSync(jf) ? readJson(jf) : { dealer: D.key, title: mod.title, slug: mod.slug, phase: 'intake', created: new Date().toISOString() };
+    j.version = VERSION;
     j.lastBuild = { at: new Date().toISOString(), final: !!opts.final, pass: !r.fails, warnings: r.warns, words: r.words, css: r.hash };
     fs.writeFileSync(jf, JSON.stringify(j, null, 2) + '\n');
   } catch (e) { console.log('⚠️ could not update job.json: ' + e.message); }
@@ -1255,7 +1351,7 @@ async function cmdImages(arg) {
     if (D.platform === 'dealerinspire' && !DI_UPLOADS.test(val)) { bad++; rows.push([k, r, '❌', 'not a DealerInspire uploads URL (https://di-uploads-podN.dealerinspire.com/<site>/uploads/YYYY/MM/<file>)', '', '', val]); continue; }
     const u = D.platform === 'dealerinspire' ? val : fetchUrl(val);
     try {
-      const res = await fetch(u, { redirect: 'follow', signal: AbortSignal.timeout(30000), headers: { 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36', Accept: 'image/avif,image/webp,image/*,*/*;q=0.8', 'Accept-Language': 'en-US,en;q=0.9', Referer: D.domain + '/' } });
+      const res = await fetch(u, { redirect: 'follow', signal: AbortSignal.timeout(30000), headers: { 'User-Agent': UA, Accept: 'image/avif,image/webp,image/*,*/*;q=0.8', 'Accept-Language': 'en-US,en;q=0.9', Referer: D.domain + '/' } });
       const ct = (res.headers.get('content-type') || '').split(';')[0].trim().toLowerCase();
       if (res.status !== 200 || !ct.startsWith('image/')) { bad++; rows.push([k, r, '❌', `HTTP ${res.status} ${ct || 'no content-type'}`, '', '', u]); continue; }
       const buf = Buffer.from(await res.arrayBuffer());
@@ -1275,13 +1371,114 @@ async function cmdImages(arg) {
   console.log(`\nSaved to ${dir}\nPlacement: hero ≥1900 wide = full-bleed, else heroContained; fig ≥1100; prose fig 880; pairs suit images ≤1000.`);
   process.exit(bad ? 1 : 0);
 }
+function cmdReview(arg, a) {
+  if (!REVIEW[a.mode]) die('Usage: build.js review <job> --mode separate|single  (separate = separate reviewer agents; single = one Chat conversation)');
+  const { job } = resolveJob(arg);
+  const jf = path.join(job, 'job.json');
+  const j = fs.existsSync(jf) ? readJson(jf) : {};
+  j.reviewMode = a.mode;
+  fs.writeFileSync(jf, JSON.stringify(j, null, 2) + '\n');
+  console.log(`✅ Review: ${REVIEW[a.mode]} (job.json reviewMode). Rebuild to refresh HANDOFF.md.`);
+}
+
+/* ------------------------------------------------------------------ deliver / resume (zip, STORE + CRC-32, no deps) */
+const CRC_T = (() => { const t = new Int32Array(256); for (let n = 0; n < 256; n++) { let c = n; for (let k = 0; k < 8; k++) c = c & 1 ? 0xedb88320 ^ (c >>> 1) : c >>> 1; t[n] = c; } return t; })();
+function crc32(b) { let c = -1; for (let i = 0; i < b.length; i++) c = CRC_T[(c ^ b[i]) & 255] ^ (c >>> 8); return (c ^ -1) >>> 0; }
+function zipStore(entries) { // [{ name, data }] → zip Buffer (STORE, UTF-8 names, no directory entries)
+  const now = new Date();
+  const tm = (now.getHours() << 11) | (now.getMinutes() << 5) | (now.getSeconds() >> 1), dt = ((now.getFullYear() - 1980) << 9) | ((now.getMonth() + 1) << 5) | now.getDate();
+  const loc = [], cen = [];
+  let off = 0;
+  for (const e of entries) {
+    const name = Buffer.from(e.name, 'utf8'), crc = crc32(e.data), n = e.data.length;
+    const h = Buffer.alloc(30);
+    h.writeUInt32LE(0x04034b50, 0); h.writeUInt16LE(20, 4); h.writeUInt16LE(0x0800, 6); h.writeUInt16LE(0, 8); h.writeUInt16LE(tm, 10); h.writeUInt16LE(dt, 12);
+    h.writeUInt32LE(crc, 14); h.writeUInt32LE(n, 18); h.writeUInt32LE(n, 22); h.writeUInt16LE(name.length, 26); h.writeUInt16LE(0, 28);
+    const c = Buffer.alloc(46); // extra/comment lengths, disk number and attributes stay 0
+    c.writeUInt32LE(0x02014b50, 0); c.writeUInt16LE(20, 4); c.writeUInt16LE(20, 6); c.writeUInt16LE(0x0800, 8); c.writeUInt16LE(0, 10); c.writeUInt16LE(tm, 12); c.writeUInt16LE(dt, 14);
+    c.writeUInt32LE(crc, 16); c.writeUInt32LE(n, 20); c.writeUInt32LE(n, 24); c.writeUInt16LE(name.length, 28); c.writeUInt32LE(off, 42);
+    loc.push(h, name, e.data); cen.push(c, name);
+    off += 30 + name.length + n;
+  }
+  const cd = Buffer.concat(cen), end = Buffer.alloc(22);
+  end.writeUInt32LE(0x06054b50, 0); end.writeUInt16LE(entries.length, 8); end.writeUInt16LE(entries.length, 10); end.writeUInt32LE(cd.length, 12); end.writeUInt32LE(off, 16);
+  return Buffer.concat([...loc, cd, end]);
+}
+function unzip(buf) { // → [{ name, data }]; STORE and DEFLATE, sizes from the central directory, CRC checked
+  let eo = -1;
+  for (let i = buf.length - 22; i >= Math.max(0, buf.length - 65557); i--) if (buf.readUInt32LE(i) === 0x06054b50) { eo = i; break; }
+  if (eo < 0) die('❌ Not a zip file (no end-of-central-directory record)');
+  const out = [];
+  let p = buf.readUInt32LE(eo + 16);
+  for (let k = buf.readUInt16LE(eo + 10); k > 0; k--) {
+    if (p + 46 > buf.length || buf.readUInt32LE(p) !== 0x02014b50) die('❌ Damaged zip (central directory)');
+    const method = buf.readUInt16LE(p + 10), crc = buf.readUInt32LE(p + 16), size = buf.readUInt32LE(p + 20), nl = buf.readUInt16LE(p + 28), lo = buf.readUInt32LE(p + 42);
+    const name = buf.toString('utf8', p + 46, p + 46 + nl);
+    p += 46 + nl + buf.readUInt16LE(p + 30) + buf.readUInt16LE(p + 32);
+    if (name.endsWith('/')) continue; // directory entry
+    if (lo + 30 > buf.length || buf.readUInt32LE(lo) !== 0x04034b50) die(`❌ Damaged zip (local header of ${name})`);
+    const start = lo + 30 + buf.readUInt16LE(lo + 26) + buf.readUInt16LE(lo + 28);
+    const raw = buf.subarray(start, start + size);
+    const data = method === 0 ? Buffer.from(raw) : method === 8 ? zlib.inflateRawSync(raw) : die(`❌ ${name}: unsupported zip method ${method} (STORE or DEFLATE only)`);
+    if (crc32(data) !== crc) die(`❌ ${name}: CRC mismatch (damaged download?)`);
+    out.push({ name, data });
+  }
+  return out;
+}
+const KIT_FILES = (f) => ['module.js', 'job.json', 'HANDOFF.md', 'IMAGES-TO-SOURCE.md'].includes(f) || /-source-ledger\.md$/.test(f);
+function cmdDeliver(arg, a) {
+  if (!a.to || a.to === true) die('Usage: build.js deliver <job> --to <dir>   (in a chat sandbox: --to /mnt/user-data/outputs; see env)');
+  const { job, modFile } = resolveJob(arg);
+  const mod = loadModule(modFile);
+  const D = loadDealer(mod.dealer);
+  const hf = path.join(job, 'HANDOFF.md');
+  if (!fs.existsSync(hf)) die(`No HANDOFF.md in ${job}. Run build first.`);
+  if (fs.statSync(modFile).mtimeMs > fs.statSync(hf).mtimeMs) console.log('⚠️ module.js changed after the last build: rebuild before delivering.');
+  const pk = path.join(job, 'package');
+  const pkgFiles = fs.existsSync(pk) ? fs.readdirSync(pk).filter((f) => fs.statSync(path.join(pk, f)).isFile()).sort() : [];
+  const to = path.resolve(a.to);
+  fs.mkdirSync(to, { recursive: true });
+  // download folders are flat and shared by every article: give the two generic names the slug like every other package file
+  const dest = (f) => (f === 'README.md' || f === 'HANDOFF.md' ? `${mod.slug}-${f}` : f);
+  fs.copyFileSync(hf, path.join(to, dest('HANDOFF.md')));
+  pkgFiles.forEach((f) => fs.copyFileSync(path.join(pk, f), path.join(to, dest(f))));
+  const kit = fs.readdirSync(job).filter((f) => KIT_FILES(f) && fs.statSync(path.join(job, f)).isFile()).sort();
+  const zipName = `${mod.slug}-resume-kit.zip`;
+  fs.writeFileSync(path.join(to, zipName), zipStore(kit.map((f) => ({ name: `${D.key}/${mod.slug}/${f}`, data: fs.readFileSync(path.join(job, f)) }))));
+  const st = (fs.readFileSync(hf, 'utf8').match(/^\*\*Status: (.+)\*\*$/m) || [])[1];
+  console.log(`✅ Delivered to ${to}${st ? `\nStatus: ${st}` : ''}\n${['HANDOFF.md', ...pkgFiles].map(dest).concat(zipName).map((f) => '  ' + f).join('\n')}`);
+  console.log(`Resume kit (${D.key}/${mod.slug}/): ${kit.join(', ')}. In a new conversation: build.js resume ${zipName}`);
+}
+function cmdResume(zipArg, a) {
+  if (!zipArg || !fs.existsSync(zipArg) || !fs.statSync(zipArg).isFile()) die('Usage: build.js resume <kit.zip> [--out <dir>] [--force]');
+  const ents = unzip(fs.readFileSync(zipArg));
+  const bad = ents.filter((e) => /^([\\/]|[A-Za-z]:)/.test(e.name) || e.name.split(/[\\/]/).includes('..'));
+  if (bad.length) die(`❌ Unsafe path(s) in the zip (absolute or ".."), nothing unpacked: ${bad.map((e) => e.name).join(', ')}`);
+  const mj = ents.find((e) => /(^|\/)module\.js$/.test(e.name));
+  if (!mj) die('❌ Not a resume kit: no module.js inside');
+  const pre = mj.name.slice(0, -'module.js'.length);
+  const jj = ents.find((e) => e.name === pre + 'job.json');
+  let meta = {};
+  try { meta = jj ? JSON.parse(jj.data.toString('utf8').replace(/^﻿/, '')) : {}; } catch (e) { die('❌ job.json in the kit is not valid JSON'); }
+  const segs = pre.split('/').filter(Boolean);
+  const dealer = meta.dealer || segs[segs.length - 2], slug = meta.slug || segs[segs.length - 1];
+  const safe = (s) => typeof s === 'string' && /^[A-Za-z0-9][A-Za-z0-9._-]*$/.test(s);
+  if (!safe(dealer) || !safe(slug)) die('❌ Cannot tell the dealer and slug from the kit (job.json dealer/slug or a <dealer>/<slug>/ folder)');
+  const dir = path.resolve(a.out && a.out !== true ? a.out : 'articles', dealer, slug);
+  if (fs.existsSync(path.join(dir, 'module.js')) && !a.force) die(`Job already exists (not overwritten): ${dir}\nAdd --force to replace its files with the kit's.`);
+  const files = ents.filter((e) => e.name.startsWith(pre)).map((e) => ({ rel: e.name.slice(pre.length).replace(/\\/g, '/'), data: e.data }));
+  for (const f of files) { const r = path.relative(dir, path.resolve(dir, f.rel)); if (!r || r.startsWith('..') || path.isAbsolute(r)) die(`❌ Unsafe path in the zip: ${f.rel}`); }
+  for (const f of files) { const dest = path.resolve(dir, f.rel); fs.mkdirSync(path.dirname(dest), { recursive: true }); fs.writeFileSync(dest, f.data); }
+  console.log(`✅ Resumed ${files.length} file(s): ${files.map((f) => f.rel).join(', ')}\nJOB: ${dir}\nPhase: ${meta.phase || '(not recorded)'}${meta.version ? `\nLast built with dealer-articles v${meta.version}` : ''}`);
+  if (!dealerFile(dealer)) console.log(`⚠️ Dealer "${dealer}" is not in this plugin's dealer files: update the plugin or add ./dealers/${dealer}.json`);
+}
 
 /* ------------------------------------------------------------------ main */
 function parseArgs(argv) {
   const a = { _: [] };
   for (let i = 0; i < argv.length; i++) {
     const s = argv[i];
-    if (s.startsWith('--')) { const k = s.slice(2); const nx = argv[i + 1]; if (k !== 'final' && nx !== undefined && !nx.startsWith('--')) { a[k] = nx; i++; } else a[k] = true; } else a._.push(s);
+    if (s.startsWith('--')) { const k = s.slice(2); const nx = argv[i + 1]; if (!['final', 'force', 'net'].includes(k) && nx !== undefined && !nx.startsWith('--')) { a[k] = nx; i++; } else a[k] = true; } else a._.push(s);
   }
   return a;
 }
@@ -1290,10 +1487,11 @@ if (require.main === module) {
   const cmd = a._[0];
   const job = a._[1];
   const run = {
-    env: () => cmdEnv(), dealers: () => cmdDealers(), new: () => cmdNew(a), status: () => cmdStatus(job),
-    build: () => cmdBuild(job, { final: !!a.final }), shot: () => cmdShot(job, a), images: () => cmdImages(job), page: () => cmdPage(job, a),
+    env: () => cmdEnv(a), dealers: () => cmdDealers(), new: () => cmdNew(a), status: () => cmdStatus(job),
+    build: () => cmdBuild(job, { final: !!a.final }), review: () => cmdReview(job, a), deliver: () => cmdDeliver(job, a), resume: () => cmdResume(job, a),
+    shot: () => cmdShot(job, a), images: () => cmdImages(job), page: () => cmdPage(job, a),
   }[cmd];
-  if (!run) die('Usage: node build.js <env|dealers|new|status|build|shot|images|page> ...\n  new --dealer "<name>" --title "<title>" [--out <dir>]\n  build <job> [--final] · shot <job> [--widths 1280,375] · images <job> · status <job>');
+  if (!run) die(`${VER_LINE}\nUsage: node build.js <env|dealers|new|status|build|review|deliver|resume|shot|images|page> ...\n  env [--net] · dealers · new --dealer "<name>" --title "<title>" [--slug <slug>] [--out <dir>]\n  build <job> [--final] · status <job> · review <job> --mode separate|single\n  deliver <job> --to <dir> (HANDOFF.md + package + <slug>-resume-kit.zip) · resume <kit.zip> [--out <dir>] [--force]\n  shot <job> [--widths 1280,375] · images <job> · page <url> [--out <file>]`);
   Promise.resolve().then(run).catch((e) => die('❌ ' + (e && e.stack ? e.stack : e)));
 }
-module.exports = { build, loadDealer, listDealers, matchDealer, slugify, fullCss, sitewideCss, cssScopeIssues, imageSize, apolloUrl, wpautop, diHoursUl, cssDI, diScript };
+module.exports = { VERSION, build, loadDealer, listDealers, matchDealer, slugify, fullCss, sitewideCss, cssScopeIssues, imageSize, apolloUrl, wpautop, diHoursUl, cssDI, diScript, zipStore, unzip, crc32 };

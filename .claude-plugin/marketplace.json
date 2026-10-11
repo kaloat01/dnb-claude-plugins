@@ -3,12 +3,12 @@
   "owner": {
     "name": "DNB Solutions / Referel Consulting"
   },
-  "description": "Claude Code plugins for dealership SEO/GEO/AEO content production.",
+  "description": "Claude plugins for dealership SEO/GEO/AEO content production, for the Claude Desktop app, claude.ai (Cowork, Chat) and Claude Code.",
   "plugins": [
     {
       "name": "dealer-articles",
       "source": "./plugins/dealer-articles",
-      "description": "Long-form dealership articles with primary-source rigor, compliance review (brand + legal ledger) and paste-ready packaging for Apollo and DealerInspire dealer sites (/dealer-articles:article)."
+      "description": "Long-form dealership articles with primary-source rigor, compliance review (brand + legal ledger) and paste-ready packaging for Apollo and DealerInspire dealer sites. Works in the Claude Desktop app and claude.ai (Cowork, Chat) and in Claude Code (/dealer-articles:article)."
     }
   ]
 }

@@ -1,6 +1,6 @@
 ---
 name: article-dealerinspire
-description: Draft a long-form, compliance-reviewed dealership article (Editorial v2 design) for a DealerInspire (WordPress) dealer website, such as the Mercedes-Benz stores, and package it for pasting (one-line embed, Yoast and social fields sheet, local preview). Same rigor as /dealer-articles:article-apollo. Use when the user asks for a dealer article, blog post, comparison article, buying guide or service guide for a DealerInspire dealership, or types /dealer-articles:article-dealerinspire "<dealer>" "<title>".
+description: Draft a long-form, compliance-reviewed dealership article (Editorial v2 design) for a DealerInspire (WordPress) dealer website, such as the Mercedes-Benz stores, and package it for pasting (one-line embed, Yoast and social fields sheet, local preview). Same rigor as /dealer-articles:article-apollo. Works in the Claude Desktop app or claude.ai (Cowork or Chat) and in Claude Code. Use when the user asks for a dealer article, blog post, comparison article, buying guide or service guide for a DealerInspire dealership, or types /dealer-articles:article-dealerinspire "<dealer>" "<title>".
 argument-hint: "\"<dealer name>\" \"<article title>\""
 allowed-tools:
   - Bash(node:*)
@@ -18,13 +18,13 @@ allowed-tools:
 
 # /dealer-articles:article-dealerinspire: dealership article, DealerInspire package
 
-**Same workflow and same rigor as /dealer-articles:article-apollo.** First Read `${CLAUDE_PLUGIN_ROOT}/skills/article-apollo/SKILL.md`. Then follow ALL of its non-negotiable rules and Phases 0–7 exactly:
-- premise test and primary-source ledger (researcher agent)
+**Same workflow and same rigor as /dealer-articles:article-apollo.** First Read `${CLAUDE_PLUGIN_ROOT}/skills/article-apollo/SKILL.md`. Then follow ALL of its non-negotiable rules, its Surface rules (Cowork, Chat, Claude Code) and Phases 0–7 exactly:
+- premise test and primary-source ledger (researcher agent, or the researcher file followed in Chat)
 - draft from the ledger, with the depth gates as ❌
 - `dealer-articles:golden-geo` in ARTICLE MODE
-- `frontend-design:frontend-design` craft pass on the screenshots
-- separate `dealer-articles:article-compliance-reviewer` and `dealer-articles:golden-geo-reviewer` agents
-- fix every P0/P1, then deliver
+- `frontend-design:frontend-design` craft pass on the screenshots (no browser: the written design checklist)
+- separate `dealer-articles:article-compliance-reviewer` and `dealer-articles:golden-geo-reviewer` agents (Chat: the single-conversation review protocol), then `DA review`
+- fix every P0/P1, then deliver: `DA deliver` outside Claude Code, and the build's HANDOFF block verbatim as the last thing in your reply
 
 Only the points below differ. Where they conflict with the Apollo skill, this file wins.
 `$ARGUMENTS`, the **DA** command and the plugin root are the same as in that skill.
@@ -32,7 +32,7 @@ Only the points below differ. Where they conflict with the Apollo skill, this fi
 ## DealerInspire differences
 1. **Dealer and platform.**
    - DealerInspire dealer files have `"platform": "dealerinspire"`. Today these are the Mercedes-Benz stores: `mercedes-benz-laguna-niguel`, `mercedes-benz-foothill-ranch`, `mercedes-benz-vans-laguna-niguel`, `mercedes-benz-midlothian`, `mercedes-benz-richmond`.
-   - If `DA new` matches an **Apollo** dealer, stop and use `/dealer-articles:article-apollo` instead (and the reverse).
+   - If `DA new` matches an **Apollo** dealer, stop following this file and follow `${CLAUDE_PLUGIN_ROOT}/skills/article-apollo/SKILL.md` alone (the Apollo workflow does the reverse for DealerInspire dealers).
    - "Mercedes Laguna" is ambiguous: it matches two stores, the cars store and the Vans store. Ask which.
 2. **Platform rules.** Read `${CLAUDE_PLUGIN_ROOT}/resources/rules/design-and-dealerinspire.md` at the start of Phase 2. Never hand-edit the paste file.
 3. **Phase 1 image list:** use the same 5 slots and the same request format (`image-brief.md` §6). The upload steps differ:
@@ -60,7 +60,7 @@ Only the points below differ. Where they conflict with the Apollo skill, this fi
 8. **Existing page check (Phase 2).** Search the dealer sitemap for the same intent. A WordPress page can be **refreshed in place at the same URL** (re-paste), which is better for SEO than a new page plus a 301. Recommend refreshing in place when the intent matches.
 9. **Phase 7: deliver.** The package (`<job>/package/`) contains:
    - **`<slug>-embed-Wired.html`:** the ONLY paste file. It is **one line on purpose**, with inline CSS, the article, a helper script and trimmed JSON-LD. Paste it into the WordPress page's **Text** tab (Page Composer: a "Use WordPress Content" row). **Never the Visual tab, never a Raw HTML block:** that stops the `[di_*]` shortcodes. Copy it from Notepad (Select All), never from chat.
-   - **`<slug>-SEO.md`:** the Yoast + WordPress fields: title, slug, parent page, featured image, SEO title, meta description, focus keyphrase, and the **Facebook + Twitter title, description and image (= hero)**. **Print these lines verbatim in chat.** Social fields are never left empty: they fall back to the theme's 200×200 default.
+   - **`<slug>-SEO.md`:** the Yoast + WordPress fields: title, slug, parent page, featured image, SEO title, meta description, focus keyphrase, and the **Facebook + Twitter title, description and image (= hero)**. The build's HANDOFF block carries these lines; **end your reply with that block verbatim** (Apollo Phase 7), so the user always sees them. Social fields are never left empty: they fall back to the theme's 200×200 default.
    - **`README.md`:** paste steps.
 
    There is no site-wide CSS file and no separate Structured Data file: both are inside the embed. Delivery also covers:
@@ -69,4 +69,4 @@ Only the points below differ. Where they conflict with the Apollo skill, this fi
 10. **Images later.** `/dealer-articles:article-images` works the same, but with WordPress Media Library File URLs (`DA images` verifies them; `--final` requires this store's uploads host).
 
 ## Resume
-`DA status "<job>"` shows the phase and outputs. Re-running `/dealer-articles:article-dealerinspire` with the same dealer + title resumes.
+`DA status "<job>"` shows the phase and outputs. Re-running `/dealer-articles:article-dealerinspire` with the same dealer + title in the same folder resumes (Claude Code, or the same Cowork task). In a new Cowork task or chat: attach the job's `<slug>-resume-kit.zip` and run `DA resume "<zip path>"` first.

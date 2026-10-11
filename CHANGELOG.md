@@ -75,3 +75,38 @@
   - New router command `/dealer-articles:article "<dealer>" "<title>"`. It picks the Apollo or DealerInspire workflow from the dealer.
   - All docs and skills now use the full plugin command names (`/dealer-articles:…`). Plugin skills are always namespaced, which is why `/article-apollo` alone was "not found" for some colleagues.
   - README/QUICKSTART: where it works (Desktop **Code** tab with a **Local** session, terminal, IDE; not Chat/Cowork/cloud), Desktop install steps (+ → Plugins → Add plugin), auto-update is off until each user turns it on, `/reload-plugins`, and a fallback prompt for sessions without the plugin.
+
+## 2026-10-11 — v0.11: Claude Desktop app and claude.ai (Cowork and Chat)
+- **Works where the team works.** The plugin is installed on the claude.ai account (Customize → Plugins → Add marketplace
+  `kaloat01/dnb-claude-plugins`, private repository) and syncs to the Desktop app (Mac, PC), the browser and Claude Code.
+  - **Cowork (recommended):** full workflow with separate researcher and reviewer agents.
+  - **Chat:** same steps and checks; Chat ignores plugin agents, so the lead follows the researcher file itself and runs the
+    two reviews as a strict "single-conversation review" (two separate passes, findings written before any fix). The
+    router asks once whether to continue in Chat or switch to Cowork.
+  - Surface rules in `/dealer-articles:article-apollo` (also followed by DealerInspire): AskUserQuestion or plain-text
+    questions, `shot` only when a browser exists (otherwise the written design checklist, `design-and-apollo.md` §4 "no
+    browser"), images "unverified" path when the app blocks the image hosts, downloads via `deliver`.
+  - Requires Settings → Capabilities → Code execution and file creation (and network access, ideally all domains).
+    `/dealer-articles:article-setup` now checks the Desktop app / claude.ai setup and keeps the Claude Code checks.
+  - Mobile apps are not supported for building articles.
+- **HANDOFF:** every build writes `<job>/HANDOFF.md` and prints it between `=== HANDOFF ===` markers: status (FINAL, DRAFT,
+  NOT READY), version, dealer, platform, URL, review mode, every SEO/Yoast/social line, files to paste, paste steps and
+  open flags. Every run now ends with this block, verbatim, so the SEO/Yoast fields always reach the user.
+- **Version stamp:** `env` prints `dealer-articles v0.11.0 (2026-10-11)` first; the skills show it in the first message
+  and `job.json` records the version of the last build.
+- **New commands:** `env --net` (reachable/blocked image hosts, fonts and a dealer site; download folders), `review <job>
+  --mode separate|single` (recorded in the handoff), `deliver <job> --to <dir>` (paste files + `<slug>-HANDOFF.md` +
+  `<slug>-resume-kit.zip` as downloads, slug-named so articles never overwrite each other), `resume <kit.zip>` (continue an article in a new task or chat).
+- **Routing fix:** `/dealer-articles:article-apollo` now hands DealerInspire dealers to the DealerInspire workflow (the
+  reverse already existed), and the router runs `env`, decides the surface and handles resume kits.
+- **Gate failures are marked:** a failing build is NOT READY in the handoff and its package README starts with "NOT READY:
+  gates failed … Do not paste."
+- **Ledger hard-fail:** a missing or malformed `brand-terms.json` fails every build (and shows ❌ in `env`); it can never
+  pass silently.
+- **Social title warning:** ⚠️ when the OG / Facebook / Twitter title is over 70 characters.
+- **Removed the "clone the repository" fallback prompt** from the README, Quick start and skills. It could run without the
+  engine (an old copy lacked a dealer, and no Yoast sheet came out). The repository becomes private; use the installed
+  plugin only.
+- Docs: README and QUICKSTART lead with the Desktop app / claude.ai (install on the account, Capabilities, Cowork vs Chat,
+  images, downloads, finishing later with the resume kit) and keep a short Claude Code section; CONTRACT documents the new
+  commands, the HANDOFF contract and the surface matrix; ROADMAP: Dealer.com moves to v0.12.

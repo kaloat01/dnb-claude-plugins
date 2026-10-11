@@ -26,7 +26,8 @@ dealer competitors and AI summaries are finding aids only: anything that only th
 
 **When a page will not load:** OEM and dealer sites often block plain fetches or return an empty JavaScript shell. Try, in
 order: (1) the system-browser page dump `node "<plugin root>/scripts/build.js" page "<url>" --out "<job>/sources/<name>.txt"`
-(renders JavaScript and gets past most blocks; it worked on toyota.com where WebFetch got 403); (2) Firecrawl, if available
+(renders JavaScript and gets past most blocks; it worked on toyota.com where WebFetch got 403; it needs a system browser,
+so skip it when `build.js env` found none, as is usual in Chat and Cowork); (2) Firecrawl, if available
 in this session; (3) the OEM newsroom/press release for the same model year, the spec or owner's-manual PDF,
 fueleconomy.gov / nhtsa.gov for the same fact; (4) list the documents you could not reach (e.g. the Warranty & Maintenance
 Guide PDF) in your return so the lead can ask the user to save them into `<job>/sources/`, then read them from there.
