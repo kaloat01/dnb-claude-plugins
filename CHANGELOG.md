@@ -83,6 +83,8 @@
   - Jobs go to `/mnt/user-data/working/articles` in the cloud workspace (`env` prints the jobs folder); never inside the plugin folder.
   - Delivered files are shared with the app's share-files tool so they show as downloads.
   - Screenshot browser: the cloud workspace's Chromium (`/opt/pw-browsers`, `/opt/google/chrome`) and `--no-sandbox` when running as root; if `shot` fails, the written design checklist is used.
+  - Network through the sandbox proxy: with the domain allowlist on **All domains**, the cloud workspace reaches the web only via `HTTPS_PROXY`, which Node ignores. `images` and `env --net` now tunnel through it (CONNECT), and Chrome gets `--proxy-server`. Tested with a local allow/deny proxy: DealerInspire images verified through it; denied hosts show as blocked.
+  - Apollo image server: since 10/2026 it answers HTTP 403 to every script request (also v0.10, also curl from a PC). The workflow treats that as the "unverified" image path.
   - Docs: one "new chat/task" path instead of Cowork vs Chat; domain allowlist = All domains (image-size checks), research works either way.
 - **Works where the team works.** The plugin is installed on the claude.ai account (Customize → Plugins → Add marketplace
   `kaloat01/dnb-claude-plugins`, private repository) and syncs to the Desktop app (Mac, PC), the browser and Claude Code.

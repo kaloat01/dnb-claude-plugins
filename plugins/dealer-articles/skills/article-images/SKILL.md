@@ -33,7 +33,8 @@ If this run did not start with `DA env --net`, run it first and show its version
    `<slug>-embed-Wired.html` + `<slug>-SEO.md`; deliver as in `/dealer-articles:article-dealerinspire` step 9.
 3. **Verify.** Run `DA images "<job>"`: every image must return 200 + `image/*`; it saves copies to `<job>/images/` and prints
    real width × height. A failure → tell the user which slot and why (wrong ID, not public, 406) and stop for that slot.
-   **Image hosts blocked here** (`DA env --net` lists them as blocked, or every image fails the same network way): the IDs
+   **Image hosts blocked here** (`DA env --net` lists them as blocked or refused, or every image fails the same way, e.g.
+   all `HTTP 403`: since 10/2026 Apollo's image server refuses script requests even from a normal PC): the IDs
    or URLs cannot be checked from this app, so use the **unverified path**:
    - Keep the values the user sent (still Apollo IDs or this store's Media Library URLs only).
    - Ask the user to attach the same photos to the conversation so you can view them (step 4), and for each photo's width ×

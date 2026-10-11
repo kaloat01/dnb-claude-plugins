@@ -1124,8 +1124,10 @@ ${shell}
 }
 
 /* ------------------------------------------------------------------ commands */
-// Chrome refuses to start as root without --no-sandbox (the claude.ai / Desktop app cloud workspace runs as root)
-const ROOT_FLAGS = () => (process.platform === 'linux' && process.getuid && process.getuid() === 0 ? ['--no-sandbox'] : []);
+// Chrome refuses to start as root without --no-sandbox (the claude.ai / Desktop app cloud workspace runs as root), and it
+// must be told about the sandbox's egress proxy (it does not read HTTPS_PROXY)
+const ROOT_FLAGS = () => (process.platform === 'linux' && process.getuid && process.getuid() === 0 ? ['--no-sandbox'] : [])
+  .concat(PROXY ? [`--proxy-server=${PROXY.protocol}//${PROXY.host}`] : []);
 const JOBS_DIR = () => (fs.existsSync('/mnt/user-data/working') ? '/mnt/user-data/working/articles' : 'articles');
 function findBrowser() {
   const c = [];
@@ -1151,6 +1153,51 @@ function findBrowser() {
   return c.find((p) => { try { return fs.statSync(p).isFile(); } catch (e) { return false; } }) || null;
 }
 const UA = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36';
+// Cloud sandboxes reach the web only through an HTTP proxy (HTTPS_PROXY), which Node's fetch ignores: tunnel through it
+// with CONNECT. Without a proxy (Claude Code on a PC) this is plain fetch, unchanged.
+const PROXY = (() => {
+  const p = process.env.HTTPS_PROXY || process.env.https_proxy || process.env.HTTP_PROXY || process.env.http_proxy || process.env.ALL_PROXY || process.env.all_proxy;
+  try { const u = p && new URL(p); return u && u.protocol === 'http:' ? u : null; } catch (e) { return null; }
+})();
+const noProxy = (host) => (process.env.NO_PROXY || process.env.no_proxy || '').split(',').map((x) => x.trim().replace(/^\*?\./, '')).filter(Boolean)
+  .some((n) => n === '*' || host === n || host.endsWith('.' + n));
+function viaProxy(url, o, hops = 0) {
+  const http = require('http'), https = require('https'), tls = require('tls');
+  return new Promise((resolve, reject) => {
+    const u = new URL(url), secure = u.protocol === 'https:', port = Number(u.port) || (secure ? 443 : 80);
+    const auth = PROXY.username ? { 'Proxy-Authorization': 'Basic ' + Buffer.from(decodeURIComponent(PROXY.username) + ':' + decodeURIComponent(PROXY.password)).toString('base64') } : {};
+    let done = false, req = null;
+    const fail = (e) => { if (!done) { done = true; clearTimeout(timer); reject(e); } };
+    const timer = setTimeout(() => { fail(Object.assign(new Error('timeout'), { code: 'ETIMEDOUT' })); if (req) req.destroy(); }, o.timeout);
+    req = http.request({ host: PROXY.hostname, port: Number(PROXY.port) || 80, method: 'CONNECT', path: `${u.hostname}:${port}`, headers: auth });
+    req.on('connect', (res, socket) => {
+      if (res.statusCode !== 200) { socket.destroy(); return fail(Object.assign(new Error(`proxy refused (CONNECT ${res.statusCode})`), { code: 'EPROXY' })); }
+      const r2 = (secure ? https : http).request({ host: u.hostname, port, method: o.method, path: u.pathname + u.search, agent: false,
+        headers: Object.assign({ Host: u.host }, o.headers), createConnection: () => (secure ? tls.connect({ socket, servername: u.hostname }) : socket) }, (resp) => {
+        const loc = resp.headers.location;
+        if (loc && resp.statusCode >= 300 && resp.statusCode < 400 && hops < 5) { resp.resume(); done = true; clearTimeout(timer); return resolve(viaProxy(new URL(loc, url).href, o, hops + 1)); }
+        const chunks = [];
+        resp.on('data', (c) => chunks.push(c));
+        resp.on('end', () => {
+          if (done) return; done = true; clearTimeout(timer);
+          const buf = Buffer.concat(chunks);
+          resolve({ status: resp.statusCode, body: null, arrayBuffer: async () => buf, text: async () => buf.toString('utf8'),
+            headers: { get: (n) => { const v = resp.headers[n.toLowerCase()]; return Array.isArray(v) ? v.join(', ') : v || null; } } });
+        });
+        resp.on('error', fail);
+      });
+      r2.on('error', fail);
+      r2.end();
+    });
+    req.on('error', fail);
+    req.end();
+  });
+}
+function netFetch(url, o = {}) {
+  const opt = { method: o.method || 'GET', headers: o.headers || {}, timeout: o.timeout || 30000 };
+  if (PROXY && !noProxy(new URL(url).hostname)) return viaProxy(url, opt);
+  return fetch(url, { method: opt.method, redirect: 'follow', signal: AbortSignal.timeout(opt.timeout), headers: opt.headers });
+}
 // folders a chat sandbox (claude.ai Cowork/Chat) offers for downloads: report only, `deliver --to <dir>` writes there
 const DOWNLOAD_DIRS = () => ['/mnt/user-data/outputs', '/mnt/outputs', path.resolve('outputs')];
 async function cmdEnv(a = {}) {
@@ -1190,17 +1237,17 @@ async function netCheck(dealers) {
     let last = ['❌ blocked', 'no answer'];
     for (const method of ['HEAD', 'GET']) {
       try {
-        const r = await fetch(u, { method, redirect: 'follow', signal: AbortSignal.timeout(6000), headers: { 'User-Agent': UA } });
+        const r = await netFetch(u, { method, timeout: 6000, headers: { 'User-Agent': UA } });
         if (r.status < 400) { try { if (r.body) await r.body.cancel(); } catch (e) { /* ignore */ } return ['✅ reachable', `HTTP ${r.status}`]; }
         const txt = method === 'GET' ? (await r.text().catch(() => '')).slice(0, 4000) : '';
         const proxy = r.headers.get('x-deny-reason') || (/allowlist|not in the allow|egress|blocked by (the )?proxy/i.test(txt) && 'egress proxy');
         last = proxy ? ['❌ blocked', `HTTP ${r.status}: ${proxy}`] : ['⚠️ refused', `HTTP ${r.status}: the host answered but refused a script request (bot protection?)`];
-      } catch (e) { last = ['❌ blocked', (e.cause && (e.cause.code || e.cause.message)) || e.name || e.message]; }
+      } catch (e) { last = ['❌ blocked', (e.cause && (e.cause.code || e.cause.message)) || (e.code === 'EPROXY' ? e.message : e.code) || e.name || e.message]; }
     }
     return last;
   };
   const res = await Promise.all(urls.map(probe));
-  console.log('Network (HEAD, fallback GET, 6 s timeout):');
+  console.log(`Network (HEAD, fallback GET, 6 s timeout${PROXY ? ', through the sandbox proxy' : ''}):`);
   urls.forEach((u, i) => console.log(`${res[i][0]}  ${new URL(u).host} (${res[i][1]})`));
 }
 function cmdDealers() {
@@ -1355,7 +1402,7 @@ async function cmdImages(arg) {
     if (D.platform === 'dealerinspire' && !DI_UPLOADS.test(val)) { bad++; rows.push([k, r, '❌', 'not a DealerInspire uploads URL (https://di-uploads-podN.dealerinspire.com/<site>/uploads/YYYY/MM/<file>)', '', '', val]); continue; }
     const u = D.platform === 'dealerinspire' ? val : fetchUrl(val);
     try {
-      const res = await fetch(u, { redirect: 'follow', signal: AbortSignal.timeout(30000), headers: { 'User-Agent': UA, Accept: 'image/avif,image/webp,image/*,*/*;q=0.8', 'Accept-Language': 'en-US,en;q=0.9', Referer: D.domain + '/' } });
+      const res = await netFetch(u, { timeout: 30000, headers: { 'User-Agent': UA, Accept: 'image/avif,image/webp,image/*,*/*;q=0.8', 'Accept-Language': 'en-US,en;q=0.9', Referer: D.domain + '/' } });
       const ct = (res.headers.get('content-type') || '').split(';')[0].trim().toLowerCase();
       if (res.status !== 200 || !ct.startsWith('image/')) { bad++; rows.push([k, r, '❌', `HTTP ${res.status} ${ct || 'no content-type'}`, '', '', u]); continue; }
       const buf = Buffer.from(await res.arrayBuffer());

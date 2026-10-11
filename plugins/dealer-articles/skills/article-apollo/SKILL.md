@@ -57,7 +57,7 @@ The router (`${CLAUDE_PLUGIN_ROOT}/skills/article/SKILL.md`) decides the surface
 - **Design check (Phase 5):** run `DA shot` only if `DA env` found a browser. Otherwise apply the design QA checklist
   (`design-and-apollo.md` §4, "no browser") and tell the user so in one line.
 - **Reviews (Phase 6):** with a subagent tool, spawn the two reviewer agents. Without one (Chat), run the single-conversation review below.
-- **Images:** if `DA env --net` shows the image hosts blocked, follow the "unverified" path in `${CLAUDE_PLUGIN_ROOT}/skills/article-images/SKILL.md`.
+- **Images:** if `DA env --net` shows the image hosts blocked or refused (or every `DA images` row fails the same way), follow the "unverified" path in `${CLAUDE_PLUGIN_ROOT}/skills/article-images/SKILL.md`.
 - **Files:** outside Claude Code the user gets the files only through `DA deliver` (Phase 7).
 
 **Single-conversation review (Chat only).** You wrote the draft, so you must not review it from memory.
