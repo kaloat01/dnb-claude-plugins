@@ -19,20 +19,24 @@ allowed-tools:
 # /dealer-articles:article: one entry point for every platform and every Claude app
 
 **DA** = `node "${CLAUDE_PLUGIN_ROOT}/scripts/build.js"` (always quoted, one plain command per call).
-If `${CLAUDE_PLUGIN_ROOT}` above was not replaced by a real path, the plugin root is the folder two levels above this
-skill's folder (`${CLAUDE_SKILL_DIR}/../..`): use that absolute path wherever these files say `${CLAUDE_PLUGIN_ROOT}`,
-including subagent briefs. If `scripts/build.js` is not there either, stop and tell the user: "The article engine is not
-available here. Please start a Cowork task and run the same request." **Never write an article without the engine:** it
-builds the package, the SEO/Yoast sheet and the checks.
+**Find the plugin folder first.** If `${CLAUDE_PLUGIN_ROOT}` above still shows literally (the Desktop app and claude.ai
+do not fill it in; tested 10/11/2026), run this once:
+`find / -path "*/dealer-articles/scripts/build.js" -not -path "/proc/*" 2>/dev/null`
+(installed plugins usually sit under `/root/.claude/plugins/synced/<id>/dealer-articles/`). If several paths come back,
+run `node "<path>" env` for each and keep the newest version. The plugin root is the folder two levels above
+`scripts/build.js`; `DA env` prints it as "Plugin root". From then on read every `${CLAUDE_PLUGIN_ROOT}` in these files
+as that absolute path, including in subagent briefs. If no `build.js` is found, stop and tell the user: "The article
+engine (dealer-articles plugin) is not installed on this account: add it under Customize → Plugins." **Never write an
+article without the engine:** it builds the package, the SEO/Yoast sheet and the checks.
 
 ## Start
 1. **Surface** (decide once, from the tools you have):
    - You can start subagents (an Agent/Task tool) → **separate reviews** (Cowork or Claude Code). Continue.
-   - You cannot → **Chat**. Tell the user once: "Cowork gives separate reviewer checks; Chat works but the reviews happen in
-     this conversation. Switch to Cowork (recommended: open a Cowork task and send the same request) or continue here?"
-     If they want to continue here, go on; every rule still applies.
+   - You cannot → tell the user once, then continue: "Helper agents aren't available in this session, so the two reviews
+     run in this conversation; the handoff will say 'single conversation'. (A new task in the current Claude app usually
+     has them.)" Every rule still applies.
    - You cannot run commands at all → stop. Tell the user: "Please turn on **Settings → Capabilities → Code execution and
-     file creation** (and allow network access if it is offered), then start a new chat, or use a Cowork task."
+     file creation** (domain allowlist: All domains), then start a new chat."
 2. Run `DA env --net`. Show its version line to the user in one line (e.g. "dealer-articles v0.11.0 (2026-10-11)").
    Keep its results for later: browser found or not (screenshots), download folder, blocked hosts.
    Node missing or older than 18: in Claude Code, stop and point to `/dealer-articles:article-setup`; in Chat or Cowork,

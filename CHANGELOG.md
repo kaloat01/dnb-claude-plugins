@@ -77,6 +77,13 @@
   - README/QUICKSTART: where it works (Desktop **Code** tab with a **Local** session, terminal, IDE; not Chat/Cowork/cloud), Desktop install steps (+ → Plugins → Add plugin), auto-update is off until each user turns it on, `/reload-plugins`, and a fallback prompt for sessions without the plugin.
 
 ## 2026-10-11 — v0.11: Claude Desktop app and claude.ai (Cowork and Chat)
+- **Fixes from the 10/11 probe in the Desktop app** (Chat and Cowork are one cloud experience on Pro/Max since 09/2026;
+  Node 22, plugin agents load, downloads appear as download cards):
+  - `${CLAUDE_PLUGIN_ROOT}` is not filled in there: the router finds the plugin with `find` and `env` prints the plugin root.
+  - Jobs go to `/mnt/user-data/working/articles` in the cloud workspace (`env` prints the jobs folder); never inside the plugin folder.
+  - Delivered files are shared with the app's share-files tool so they show as downloads.
+  - Screenshot browser: the cloud workspace's Chromium (`/opt/pw-browsers`, `/opt/google/chrome`) and `--no-sandbox` when running as root; if `shot` fails, the written design checklist is used.
+  - Docs: one "new chat/task" path instead of Cowork vs Chat; domain allowlist = All domains (image-size checks), research works either way.
 - **Works where the team works.** The plugin is installed on the claude.ai account (Customize → Plugins → Add marketplace
   `kaloat01/dnb-claude-plugins`, private repository) and syncs to the Desktop app (Mac, PC), the browser and Claude Code.
   - **Cowork (recommended):** full workflow with separate researcher and reviewer agents.

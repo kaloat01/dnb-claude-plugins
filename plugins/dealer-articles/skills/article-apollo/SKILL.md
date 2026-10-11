@@ -25,9 +25,10 @@ path, see the top of `skills/article/SKILL.md`; never write an article without t
 Knowledge: `${CLAUDE_PLUGIN_ROOT}/resources/rules/` → `rigor-and-content.md`, `compliance.md`, `design-and-apollo.md`, `image-brief.md`;
 quality bar: `${CLAUDE_PLUGIN_ROOT}/resources/examples/example-module.js`; dealer data: `${CLAUDE_PLUGIN_ROOT}/resources/dealers/<key>.json`,
 `<key>.sitemap.txt` (internal-link allow-list) and `<key>.images.json` (images already in the dealer's Apollo library, if present).
-A `./dealers/<key>.json` in the working folder overrides the shipped dealer file. Jobs are created in `./articles/<dealer>/<slug>/`
-under the working folder (Claude Code: the folder it was started in; Cowork and Chat: the task's folder or sandbox, so the
-user gets the files through `DA deliver` in Phase 7).
+A `./dealers/<key>.json` in the working folder overrides the shipped dealer file. Jobs are created in the
+**jobs folder** that `DA env` prints (Claude Code: `./articles/` in the folder it was started in; Desktop app and claude.ai:
+`/mnt/user-data/working/articles/`, never inside the plugin folder), as `<jobs folder>/<dealer>/<slug>/`. Outside Claude
+Code the user gets the files through `DA deliver` in Phase 7.
 
 ## Non-negotiable rules (keep these in mind for the whole run)
 1. **Evidence before prose.** Every fact comes from the job's source ledger (primary sources: OEM, owner's manuals, government, statute). No ledger row → don't write it.
@@ -138,7 +139,9 @@ Phase → `seo`.
    hierarchy, alignment, crops, mobile) — it must NOT change fonts, colors, layout or add brand styling. If it is not
    installed, use the design QA checklist in `design-and-apollo.md` §4 and tell the user it can be added (Claude Code:
    `/dealer-articles:article-setup`; Cowork/Chat: Customize → Plugins → Discover, if listed). Rebuild.
-   **No browser** (usual in Chat, sometimes in Cowork): apply the `design-and-apollo.md` §4 checklist ("no browser") to the
+   If `DA shot` fails, or the screenshots are blank, treat it as "no browser". In the cloud workspace the preview's fonts and
+   remote images are often blocked: judge layout, spacing and hierarchy only (fallback fonts and gray image boxes are expected).
+   **No browser**: apply the `design-and-apollo.md` §4 checklist ("no browser") to the
    preview HTML and `module.js`, tell the user in one line, and list the items that need eyes in your Phase 7 summary. Rebuild.
 Phase → `review`.
 
@@ -163,7 +166,9 @@ now (it builds the final package and hands off) instead of the steps below.
    NOT READY build without telling the user why. Set `job.json` phase → `images` (placeholders left) or `done`, so a
    resume kit made next resumes at the right step.
 2. **Downloads:** outside Claude Code, if `DA env` listed a download folder (or the app's documented outputs folder), run
-   `DA deliver "<job>" --to "<that folder>"`: the paste files, `<slug>-HANDOFF.md` and `<slug>-resume-kit.zip` appear as downloads.
+   `DA deliver "<job>" --to "<that folder>"` (Desktop app / claude.ai: `/mnt/user-data/outputs`): the paste files,
+   `<slug>-HANDOFF.md` and `<slug>-resume-kit.zip`. If you have a tool that shares files with the user (for example
+   SendUserFile), use it on each delivered file so they show up as downloads.
    In Claude Code skip this: the files are already in `./articles/`.
 3. **Reply.** At most 5 short lines first: the review verdicts (what was fixed), visual items to check in the preview (no
    browser), anything the user must decide. Apollo reminder in one line: the site-wide CSS is pasted once per dealer, from

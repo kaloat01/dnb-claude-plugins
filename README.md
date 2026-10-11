@@ -23,29 +23,31 @@ same workflow and the same checks. Only the image upload, the platform rules and
 
 **First article? Follow [docs/QUICKSTART.md](docs/QUICKSTART.md).**
 
-### Use it in the Claude Desktop app or claude.ai (Cowork or Chat)
-This is the normal way to use it. It works on Windows and Mac, in the Desktop app and in the browser.
+### Use it in the Claude Desktop app or claude.ai
+This is the normal way to use it. It works on Windows and Mac, in the Desktop app and in the browser. Since 09/2026 Chat and
+Cowork are one experience ("Cowork is now Claude"); on Pro/Max, tasks run in Anthropic's cloud (tested 10/11/2026: Node 22,
+plugin agents load, downloads work).
 
 | Where | Works? |
 |---|---|
-| **Cowork** (Desktop app or claude.ai) | ✅ Full workflow, with separate research and reviewer agents. **Recommended** |
-| **Chat** (Desktop app or claude.ai) | ✅ Same steps and checks, but the reviews run inside the same conversation (Chat does not load plugin agents) |
+| **Desktop app / claude.ai** (new chat or task) | ✅ Full workflow, with separate research and reviewer agents. **Recommended** |
+| Older Chat sessions without helper agents | ✅ Same steps and checks; the reviews run inside the conversation and the handoff says so |
 | Claude Code (terminal, IDE extension, Desktop **Code** tab) | ✅ Full workflow (see "Claude Code" below) |
 | Mobile apps | ❌ Not supported for building articles |
 
 **One-time install on the Claude account** (already done on the team account; it syncs to every device signed in to it):
-1. **Customize → Plugins → Add → Add marketplace** → `kaloat01/dnb-claude-plugins`. The repository is private: when the
-   dialog asks, connect GitHub and give the Claude GitHub App access to it (needs a GitHub account with access).
+1. **Customize → Plugins → Add → Add marketplace** → `kaloat01/dnb-claude-plugins`. If the repository is private, the
+   dialog asks you to connect GitHub and give the Claude GitHub App access to it (needs a GitHub account with access).
 2. Install **dealer-articles**, then turn on **Sync automatically** for the marketplace (or use **Check for updates**).
-3. **Settings → Capabilities:** turn on **Code execution and file creation**. If it offers network access, choose
-   **All domains** (research reads many manufacturer and government sites; image checks reach Apollo and DealerInspire).
-4. Optional check: in a Cowork task, type `/dealer-articles:article-setup`.
+3. **Settings → Capabilities:** turn on **Code execution and file creation** and set the **domain allowlist** to **All
+   domains**. Research works either way (it uses Claude's own web tool, server-side); All domains lets the plugin check
+   image sizes on Apollo and DealerInspire. If image hosts still can't be reached, sizes are marked "unverified" (check
+   the live page after publishing).
+4. Optional check: in a new task, type `/dealer-articles:article-setup`.
 
 **Start an article:**
-- **Cowork:** type `/dealer-articles:article "<dealer name>" "<article title>"`, or just write
-  *"Write an article for Brickell Mazda about the CX-50 vs CX-5 for downtown Miami garages"*.
-- **Chat:** type `/` and pick **dealer-articles:article**, or just ask in plain words. Claude asks once whether you want to
-  continue in Chat or switch to Cowork.
+- In a new chat/task, type `/dealer-articles:article "<dealer name>" "<article title>"` (or type `/` and pick it), or just
+  write *"Write an article for Brickell Mazda about the CX-50 vs CX-5 for downtown Miami garages"*.
 
 **Images:** the first message is a list of 5 photos to source. Upload them while Claude researches and drafts:
 - **Apollo:** upload to the dealer's **Apollo Image Manager** and send the Image IDs (or the image URLs).
@@ -55,7 +57,8 @@ This is the normal way to use it. It works on Windows and Mac, in the Desktop ap
 **What you get:** the paste files, `<slug>-HANDOFF.md` and a `<slug>-resume-kit.zip` appear as downloads. The **last message**
 always contains the full handoff, including every SEO/Yoast field: copy from there or from `HANDOFF.md`.
 
-**Finish later** (for example after uploading the images): start a new Cowork task, attach the `<slug>-resume-kit.zip`,
+**Finish later** (for example after uploading the images): working files are not kept after a task ends, so keep the
+downloads. Start a new task, attach the `<slug>-resume-kit.zip`,
 and send the Image IDs or File URLs (or say "continue this article"). Claude picks up where the article stopped.
 
 ### What happens (the same on both platforms)

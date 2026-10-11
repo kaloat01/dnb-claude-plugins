@@ -1124,6 +1124,9 @@ ${shell}
 }
 
 /* ------------------------------------------------------------------ commands */
+// Chrome refuses to start as root without --no-sandbox (the claude.ai / Desktop app cloud workspace runs as root)
+const ROOT_FLAGS = () => (process.platform === 'linux' && process.getuid && process.getuid() === 0 ? ['--no-sandbox'] : []);
+const JOBS_DIR = () => (fs.existsSync('/mnt/user-data/working') ? '/mnt/user-data/working/articles' : 'articles');
 function findBrowser() {
   const c = [];
   if (process.env.DA_BROWSER) c.push(process.env.DA_BROWSER);
@@ -1138,12 +1141,12 @@ function findBrowser() {
     ['google-chrome', 'google-chrome-stable', 'chromium', 'chromium-browser', 'microsoft-edge', 'microsoft-edge-stable'].forEach((n) => dirs.forEach((d) => c.push(path.join(d, n))));
     // Playwright's bundled Chromium (cloud sandboxes often have only this), newest build first, then distro paths
     const ver = (d) => parseInt(d.split('-').pop(), 10) || 0;
-    for (const base of [process.env.PLAYWRIGHT_BROWSERS_PATH, path.join(os.homedir(), '.cache', 'ms-playwright')].filter((p) => p && p !== '0')) {
+    for (const base of [process.env.PLAYWRIGHT_BROWSERS_PATH, '/opt/pw-browsers', path.join(os.homedir(), '.cache', 'ms-playwright')].filter((p) => p && p !== '0')) {
       let ds = []; try { ds = fs.readdirSync(base).sort((x, y) => ver(y) - ver(x)); } catch (e) { continue; }
       ds.filter((d) => /^chromium-\d/.test(d)).forEach((d) => c.push(path.join(base, d, 'chrome-linux', 'chrome'), path.join(base, d, 'chrome-linux64', 'chrome')));
       ds.filter((d) => /^chromium_headless_shell-\d/.test(d)).forEach((d) => c.push(path.join(base, d, 'chrome-linux', 'headless_shell'), path.join(base, d, 'chrome-headless-shell-linux64', 'chrome-headless-shell')));
     }
-    c.push('/usr/bin/chromium-browser', '/usr/bin/chromium', '/snap/bin/chromium');
+    c.push('/opt/google/chrome/chrome', '/usr/bin/chromium-browser', '/usr/bin/chromium', '/snap/bin/chromium');
   }
   return c.find((p) => { try { return fs.statSync(p).isFile(); } catch (e) { return false; } }) || null;
 }
@@ -1157,6 +1160,7 @@ async function cmdEnv(a = {}) {
   const local = path.join(process.cwd(), 'dealers');
   console.log(`${major >= 18 ? '✅' : '❌'} Node ${process.version} (need ≥18)`);
   console.log(`✅ Plugin root: ${ROOT}`);
+  console.log(`✅ Jobs folder: ${path.resolve(JOBS_DIR())}`);
   const br = findBrowser();
   console.log(`${br ? '✅' : '⚠️'} Screenshot browser: ${br || 'none (shot will be skipped)'}`);
   console.log(`${fs.existsSync(path.join(RES, 'templates', 'module.template.js')) ? '✅' : '❌'} Module template`);
@@ -1216,7 +1220,7 @@ function cmdNew(a) {
   const D = loadDealer(m.hit.key);
   const slug = slugify(a.slug || a.title);
   if (!slug) die('Title produces an empty slug');
-  const dir = path.resolve(a.out || 'articles', D.key, slug);
+  const dir = path.resolve(a.out || JOBS_DIR(), D.key, slug);
   if (fs.existsSync(path.join(dir, 'module.js'))) die(`Job already exists (not overwritten): ${dir}`);
   const tplFile = path.join(RES, 'templates', 'module.template.js');
   if (!fs.existsSync(tplFile)) die('Missing template ' + tplFile);
@@ -1298,7 +1302,7 @@ function cmdShot(arg, a) {
     const png = path.join(qa, `preview-${w}.png`);
     const shotFile = longPath ? path.join(work, `shot-${w}.png`) : png;
     try { fs.unlinkSync(png); } catch (e) { /* none */ }
-    const r = cp.spawnSync(br, ['--headless=new', '--disable-gpu', '--hide-scrollbars', '--no-first-run', '--no-default-browser-check', `--user-data-dir=${prof}`, '--virtual-time-budget=8000', `--screenshot=${shotFile}`, `--window-size=${Math.max(w, 500)},${h}`, target], { timeout: 120000, stdio: 'pipe' });
+    const r = cp.spawnSync(br, [...ROOT_FLAGS(), '--headless=new', '--disable-gpu', '--hide-scrollbars', '--no-first-run', '--no-default-browser-check', `--user-data-dir=${prof}`, '--virtual-time-budget=8000', `--screenshot=${shotFile}`, `--window-size=${Math.max(w, 500)},${h}`, target], { timeout: 120000, stdio: 'pipe' });
     if (longPath && fs.existsSync(shotFile)) fs.copyFileSync(shotFile, png);
     if (fs.existsSync(png) && fs.statSync(png).size > 1000) console.log(`✅ ${w}×${h} → ${png}`);
     else { bad++; console.log(`⚠️ ${w}px screenshot failed (${r.error ? r.error.message : 'exit ' + r.status}) ${String(r.stderr || '').split('\n').slice(-3).join(' ').trim()}`); }
@@ -1320,7 +1324,7 @@ function cmdPage(url, a) {
   const br = findBrowser();
   if (!br) die('No Edge/Chrome/Chromium found; ask the user to save the page or PDF into <job>/sources/ instead.');
   const prof = fs.mkdtempSync(path.join(os.tmpdir(), 'da-page-'));
-  const r = cp.spawnSync(br, ['--headless=new', '--disable-gpu', '--no-first-run', '--no-default-browser-check', `--user-data-dir=${prof}`, '--virtual-time-budget=10000', '--dump-dom', url], { timeout: 90000, maxBuffer: 64 * 1024 * 1024, encoding: 'utf8' });
+  const r = cp.spawnSync(br, [...ROOT_FLAGS(), '--headless=new', '--disable-gpu', '--no-first-run', '--no-default-browser-check', `--user-data-dir=${prof}`, '--virtual-time-budget=10000', '--dump-dom', url], { timeout: 90000, maxBuffer: 64 * 1024 * 1024, encoding: 'utf8' });
   try { fs.rmSync(prof, { recursive: true, force: true }); } catch (e) { /* ignore */ }
   const dom = String(r.stdout || '');
   if (dom.length < 500) die(`Page dump failed or empty (${r.error ? r.error.message : 'exit ' + r.status}). Ask the user to save the page/PDF into <job>/sources/.`);
@@ -1464,7 +1468,7 @@ function cmdResume(zipArg, a) {
   const dealer = meta.dealer || segs[segs.length - 2], slug = meta.slug || segs[segs.length - 1];
   const safe = (s) => typeof s === 'string' && /^[A-Za-z0-9][A-Za-z0-9._-]*$/.test(s);
   if (!safe(dealer) || !safe(slug)) die('❌ Cannot tell the dealer and slug from the kit (job.json dealer/slug or a <dealer>/<slug>/ folder)');
-  const dir = path.resolve(a.out && a.out !== true ? a.out : 'articles', dealer, slug);
+  const dir = path.resolve(a.out && a.out !== true ? a.out : JOBS_DIR(), dealer, slug);
   if (fs.existsSync(path.join(dir, 'module.js')) && !a.force) die(`Job already exists (not overwritten): ${dir}\nAdd --force to replace its files with the kit's.`);
   const files = ents.filter((e) => e.name.startsWith(pre)).map((e) => ({ rel: e.name.slice(pre.length).replace(/\\/g, '/'), data: e.data }));
   for (const f of files) { const r = path.relative(dir, path.resolve(dir, f.rel)); if (!r || r.startsWith('..') || path.isAbsolute(r)) die(`❌ Unsafe path in the zip: ${f.rel}`); }

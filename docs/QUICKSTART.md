@@ -3,20 +3,21 @@
 > **Note for colleagues**
 > - Stop using the old "clone the repo" prompt. It is gone: it could run without the article engine, so no Yoast/SEO sheet came out.
 > - The plugin is now installed on our team's Claude account. There is nothing to install on your computer.
-> - Use a **Cowork** task (Desktop app or claude.ai). Chat works too, but its reviews happen in the same conversation.
+> - Just start a new chat/task in the Desktop app or claude.ai (Chat and Cowork are one app now). Tasks run in Anthropic's cloud, with separate reviewer agents.
 > - The **last message** of every run is the handoff: it always contains the Yoast/SEO fields and the paste steps.
 > - Don't see **dealer-articles** under Customize → Plugins or in the `/` menu? Ask Nasko.
 
 ## 1. One-time setup (Desktop app or claude.ai)
-1. **Settings → Capabilities:** turn on **Code execution and file creation**. If it offers network access, choose
-   **All domains**.
+1. **Settings → Capabilities:** turn on **Code execution and file creation** and set the **domain allowlist** to **All
+   domains**. Research works either way (it uses Claude's own web tool); All domains lets the plugin check image sizes.
+   If image hosts still can't be reached, image sizes are marked "unverified" (check the live page after publishing).
 2. **Customize → Plugins:** check that **dealer-articles** is listed and turned on. (First install on an account:
    **Add → Add marketplace** → `kaloat01/dnb-claude-plugins`, connect GitHub when asked, install **dealer-articles**,
    turn on **Sync automatically**.)
-3. Optional check: open a **Cowork** task and type `/dealer-articles:article-setup`. It explains anything marked ❌.
+3. Optional check: start a new task and type `/dealer-articles:article-setup`. It explains anything marked ❌.
 
 ## 2. Start the article
-Open a **Cowork** task (recommended) and type:
+Start a new chat/task in the Desktop app or claude.ai and type:
 ```
 /dealer-articles:article "<dealer name>" "<article title>"
 ```
@@ -24,9 +25,9 @@ Example: `/dealer-articles:article "Toyota of Downtown Chicago" "Toyota Hybrid B
 Plain words work too: *"Write an article for Toyota of Downtown Chicago about hybrid battery care in winter."*
 It picks the platform (Apollo or DealerInspire) from the dealer.
 
-The first line shows the plugin version (e.g. `dealer-articles v0.11.0`). In **Chat** (type `/` and pick
-**dealer-articles:article**, or just ask), Claude asks once whether to continue there or switch to Cowork: the steps and
-checks are the same, but Chat runs the two reviews inside the conversation instead of as separate reviewers.
+The first line shows the plugin version (e.g. `dealer-articles v0.11.0`). You can also type `/` and pick
+**dealer-articles:article**. If a session can't start helper agents (older app versions), Claude says so once and runs the
+two reviews inside the conversation; the handoff then says "single conversation".
 
 Dealers:
 - **Apollo:** Brickell Honda, Brickell Mazda, Honda Libertyville, Toyota of Downtown Chicago, Bentley Jacksonville,
@@ -56,7 +57,7 @@ The run ends with the **handoff** (the last message, also saved as `HANDOFF.md`)
 version, page URL, every SEO/Yoast/social field, the files to paste and the paste steps. The paste files, `HANDOFF.md`
 and `<slug>-resume-kit.zip` appear as **downloads**.
 - **DRAFT** = images are still placeholders. Send the Image IDs or File URLs in the same task to get the final package.
-- **Finishing later** (new day, new task): open a new Cowork task, attach `<slug>-resume-kit.zip`, and send the Image IDs
+- **Finishing later** (new day, new task): working files are not kept after a task ends, so keep the downloads. Start a new task, attach `<slug>-resume-kit.zip`, and send the Image IDs
   or File URLs (or say "continue this article").
 - **NOT READY** = a check failed. Claude fixes it before handing off; if it can't, the handoff says why.
 

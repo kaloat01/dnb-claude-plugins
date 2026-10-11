@@ -233,6 +233,10 @@ in today's market, closer than most, outguns, fast-paced, comprehensive solution
 ## 6. Surfaces (where the skills run)
 Plugins are installed on the claude.ai account (Customize → Plugins) and sync to the Desktop app, the browser and, as a
 synced plugin, Claude Code. Same skills, same gates and same rigor everywhere; only the mechanics differ.
+Since 09/2026 Chat and Cowork are one experience; on Pro/Max, tasks run in a cloud sandbox (tested 10/11/2026: Node 22,
+plugin agents load, `/mnt/user-data/{uploads,outputs,working}`, Chromium under `/opt/pw-browsers`, egress limited to
+package registries/GitHub, `${CLAUDE_PLUGIN_ROOT}` NOT substituted → the router finds the plugin with `find`). The table
+keeps the docs' Chat column for sessions without helper agents.
 
 | | Cowork (Desktop app, claude.ai) | Chat (Desktop app, claude.ai) | Claude Code |
 |---|---|---|---|

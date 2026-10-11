@@ -18,9 +18,9 @@ If this run did not start with `DA env --net`, run it first and show its version
 
 1. **Find the job.**
    - **Resume kit:** if the user attached a `*-resume-kit.zip` (Chat and Cowork attachments are usually under
-     `/mnt/user-data/uploads/`) and the job is not in `./articles/` yet, run `DA resume "<zip path>"`. It unpacks the job
-     into `./articles/<dealer>/<slug>/`.
-   - Otherwise, from `$ARGUMENTS`, locate `./articles/<dealer-key>/<slug>/` (Glob `./articles/*/*/job.json` and match the
+     `/mnt/user-data/uploads/`) and the job is not in the jobs folder yet, run `DA resume "<zip path>"`. It unpacks the job
+     into `<jobs folder>/<dealer>/<slug>/` (the jobs folder is printed by `DA env`).
+   - Otherwise, from `$ARGUMENTS`, locate `<jobs folder>/<dealer-key>/<slug>/` (Glob `<jobs folder>/*/*/job.json` and match the
      dealer + title/slug). If none matches, list the jobs found and ask (in a new Cowork task or chat, ask for the resume kit).
    - Run `DA status "<job>"`.
 2. **Map images to slots.** Slots: IMG_HERO, IMG_FIG1, IMG_FIG2, IMG_PAIR1, IMG_PAIR2 (see each slot's `desc` in `module.js`).

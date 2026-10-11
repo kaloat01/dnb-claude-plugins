@@ -33,8 +33,8 @@ First decide where you are running: **Claude Code** (terminal, IDE extension, or
      handed over; recheck item 1.
    - network: blocked dealer site → research falls back to other primary sources; blocked image hosts → image IDs/URLs
      cannot be checked here (they are marked "unverified" and the user checks the live page); blocked fonts → preview only.
-4. **Reviews.** Cowork runs the research and reviewer agents separately (recommended). Chat ignores plugin agents, so the
-   same reviews run inside the conversation. Say which one this is.
+4. **Reviews.** If this session can start helper agents (the current Desktop app and claude.ai can; tested 10/11/2026), the
+   research and reviewer agents run separately. If not, the same reviews run inside the conversation. Say which one this is.
 5. **frontend-design (optional).** If the skill `frontend-design:frontend-design` is not available, the user can add it
    from Customize → Plugins → Discover (if listed). Without it the written design checklist is used.
 6. **How to start.** Show the dealer list from `DA dealers`. In Cowork, type
