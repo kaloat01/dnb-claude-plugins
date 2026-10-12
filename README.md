@@ -49,10 +49,12 @@ plugin agents load, downloads work).
 - In a new chat/task, type `/dealer-articles:article "<dealer name>" "<article title>"` (or type `/` and pick it), or just
   write *"Write an article for Brickell Mazda about the CX-50 vs CX-5 for downtown Miami garages"*.
 
-**Images:** the first message is a list of 5 photos to source. Upload them while Claude researches and drafts:
+**Images:** the first message is a short list of the photos to source (current, easy to find: e.g. "any 2025–2027
+Mercedes-Benz on the road") and the ones already in the library. Upload them while Claude researches and drafts:
 - **Apollo:** upload to the dealer's **Apollo Image Manager** and send the Image IDs (or the image URLs).
 - **DealerInspire:** upload to the store's **WordPress Media Library** and send each **File URL** from the attachment
-  details (the original file, not a resized copy).
+  details (the original file, not a resized copy). DealerInspire takes at most 1,900px wide and 1MB: resize bigger
+  photos first.
 
 **What you get:** the paste files, `<slug>-HANDOFF.md` and a `<slug>-resume-kit.zip` appear as downloads. The **last message**
 always contains the full handoff, including every SEO/Yoast field: copy from there or from `HANDOFF.md`.
@@ -62,7 +64,8 @@ downloads. Start a new task, attach the `<slug>-resume-kit.zip`,
 and send the Image IDs or File URLs (or say "continue this article"). Claude picks up where the article stopped.
 
 ### What happens (the same on both platforms)
-1. It asks for **5 images** first: hero, 2 full-width figures and 1 pair, each with a plain description and a minimum size.
+1. It asks for **5 images** first (hero, 2 full-width figures and 1 pair; some may already be in the library), each a
+   current, general shot that is easy to find (brand press-photo site or the store's own photos), with a minimum size.
 2. While you source the images, it researches the topic, tests the title's premise (it asks you if the title needs
    correcting), drafts the article, builds it and runs the reviews.
 3. It hands you a **draft package** with a preview that uses placeholders. When the images are uploaded, send the IDs

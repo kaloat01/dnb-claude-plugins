@@ -35,10 +35,11 @@ Only the points below differ. Where they conflict with the Apollo skill, this fi
    - If `DA new` matches an **Apollo** dealer, stop following this file and follow `${CLAUDE_PLUGIN_ROOT}/skills/article-apollo/SKILL.md` alone (the Apollo workflow does the reverse for DealerInspire dealers).
    - "Mercedes Laguna" is ambiguous: it matches two stores, the cars store and the Vans store. Ask which.
 2. **Platform rules.** Read `${CLAUDE_PLUGIN_ROOT}/resources/rules/design-and-dealerinspire.md` at the start of Phase 2. Never hand-edit the paste file.
-3. **Phase 1 image list:** use the same 5 slots and the same request format (`image-brief.md` §6). The upload steps differ:
+3. **Phase 1 image list:** the same 5 slots, request rules and message shape (`image-brief.md` §2 and §6). The upload steps differ:
    - The user uploads each photo to the store's **WordPress Media Library** (Media → Add New). They send back the **File URL** from the attachment details, in the form `https://di-uploads-podN.dealerinspire.com/<site>/uploads/YYYY/MM/<file>`. It must be the original, not a `-1024x683` resized copy.
    - Reuse the store's catalog first (`<key>.images.json`; the field is `di`).
    - In `module.js`, write `di:` values, never `apollo:`.
+   - **Size limit:** DealerInspire takes at most 1,900px wide and 1MB per file. Sourced photos may be bigger: the image list's upload line tells the user to resize them to 1,900px wide (JPEG under 1MB) first. A 1,900px hero is full-bleed.
 4. **Mercedes-Benz wording** (on top of `brand-terms.json`, which the build enforces):
    - "offer/offers", never "coupon" (MB-001).
    - "Mercedes-Benz" in full.

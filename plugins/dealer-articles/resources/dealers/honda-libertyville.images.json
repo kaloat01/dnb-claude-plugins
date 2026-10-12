@@ -1,7 +1,7 @@
 {
   "dealer": "honda-libertyville",
   "generated": "2026-10-07",
-  "note": "Images already in this dealer's Apollo library. Reuse before asking for new uploads. View before use; match the article's model year.",
+  "note": "Images already in this dealer's Apollo library. Reuse before asking for new uploads. View before use; match the article's model year. Never reuse an image marked \"outdated\": true (older vehicle design; reason in outdatedWhy). Checked 2026-10-12.",
   "images": [
     {
       "id": "181233",
@@ -63,7 +63,9 @@
       "tags": [
         "people",
         "service-bay"
-      ]
+      ],
+      "outdated": true,
+      "outdatedWhy": "2017-20 pre-facelift Ridgeline (ended MY2020); new front-end styling since MY2021"
     },
     {
       "id": "771569",
@@ -159,7 +161,9 @@
       "tags": [
         "technician",
         "vehicle-exterior"
-      ]
+      ],
+      "outdated": true,
+      "outdatedWhy": "10th-gen Civic (last MY2021); 11th gen sold since MY2022"
     },
     {
       "id": "771577",
@@ -305,7 +309,9 @@
       "tags": [
         "vehicle-exterior",
         "road"
-      ]
+      ],
+      "outdated": true,
+      "outdatedWhy": "5th-gen CR-V (last MY2022); 6th gen sold since MY2023"
     },
     {
       "id": "826264",

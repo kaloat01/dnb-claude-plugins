@@ -1,7 +1,7 @@
 {
   "dealer": "murgado-ford-chicago",
   "generated": "2026-10-08",
-  "note": "Images already in this dealer's Apollo library. Reuse before asking for new uploads. View before use; match the article's model year.",
+  "note": "Images already in this dealer's Apollo library. Reuse before asking for new uploads. View before use; match the article's model year. Never reuse an image marked \"outdated\": true (older vehicle design; reason in outdatedWhy). Checked 2026-10-12.",
   "images": [
     {
       "id": "787482",
@@ -127,7 +127,9 @@
         "technician",
         "tires",
         "service-bay"
-      ]
+      ],
+      "outdated": true,
+      "outdatedWhy": "Red SUV is a 2017-19 Escape, not 2020+ Explorer; pre-2020 design"
     },
     {
       "id": "899945",
@@ -269,7 +271,9 @@
         "winter",
         "city"
       ],
-      "avoid": "Pre-2024 F-150 front; do not caption as a 2026 model"
+      "avoid": "Pre-2024 F-150 front; do not caption as a 2026 model",
+      "outdated": true,
+      "outdatedWhy": "Pre-refresh 2021-23 F-150 front; 2024 refresh changed grille/headlamps"
     },
     {
       "id": "787471",
@@ -304,7 +308,9 @@
         "pickup-delivery",
         "vehicle-exterior",
         "people"
-      ]
+      ],
+      "outdated": true,
+      "outdatedWhy": "Pre-refresh 2020-24 Explorer front; MY2025 refresh changed grille/lamps"
     },
     {
       "id": "787474",
@@ -323,7 +329,9 @@
         "showroom",
         "pickup-delivery"
       ],
-      "avoid": "Older Explorer; do not caption as a current model"
+      "avoid": "Older Explorer; do not caption as a current model",
+      "outdated": true,
+      "outdatedWhy": "2016-19 5th-gen Explorer; replaced by 6th gen in MY2020"
     },
     {
       "id": "787466",
@@ -341,7 +349,9 @@
         "people",
         "vehicle-exterior"
       ],
-      "avoid": "Phone screen shows app UI text and a mileage figure"
+      "avoid": "Phone screen shows app UI text and a mileage figure",
+      "outdated": true,
+      "outdatedWhy": "Pre-refresh 2020-24 Explorer front fills frame behind phone; refreshed MY2025"
     },
     {
       "id": "787468",
@@ -359,7 +369,9 @@
         "technician",
         "wipers"
       ],
-      "avoid": "Motorcraft packaging text; the Focus is discontinued in the US, avoid for current-model articles"
+      "avoid": "Motorcraft packaging text; the Focus is discontinued in the US, avoid for current-model articles",
+      "outdated": true,
+      "outdatedWhy": "2015-18 Focus prominent behind tech; Focus not sold in US after MY2018"
     },
     {
       "id": "787467",
@@ -392,7 +404,9 @@
       "tags": [
         "technician",
         "service-bay"
-      ]
+      ],
+      "outdated": true,
+      "outdatedWhy": "Bay shows 2016-19 Explorers and 2015-17 Mustang (S650 since MY2024)"
     },
     {
       "id": "809672",

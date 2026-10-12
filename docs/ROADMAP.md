@@ -1,4 +1,4 @@
-# dealer-articles roadmap (status 2026-10-11)
+# dealer-articles roadmap (status 2026-10-12)
 
 ## Shipped
 - **v0.1:** `/dealer-articles:article-apollo`, `/dealer-articles:article-images` and `/dealer-articles:article-setup`.
@@ -30,6 +30,11 @@
     social-title warning.
   - Removed the "clone the repository" fallback prompt; the repository becomes private.
 
+## Shipped 10/12
+- **v0.11.1:** image requests are current ("any 2025–2027 <brand or model>": last year to next year), general (no camera positions, hands,
+  screens, parts or trims) and easy to find online (5 press-gallery shot types); older-design library photos are marked
+  `outdated` and never reused; DealerInspire 1,900px / 1MB upload note; action-first, short chat style.
+
 ## Next
 1. **v0.12: Dealer.com adapter** for Brickell CDJR, Ocean Cadillac and Brickell Buick GMC. Same shared workflow and checks as Apollo and DealerInspire. Platform points: a block with no H1 where the page name is the H1, px units with a 16px wrapper, `!important` CTA fills, and no Google Fonts where the dealer forbids them.
 2. A first full end-to-end article in a **Cowork** task and in **Chat** on the team account (Desktop app on Mac and PC, and the browser), on a topic the dealer site does not already cover. Confirm the engine, downloads, resume kit and handoff on each, and fix whatever it finds.
@@ -40,5 +45,8 @@
 5. Platform adapters:
    - Dealer.com: see item 1 (v0.12).
    - ~~DealerInspire: WordPress posts via the Text tab, shortcodes, Yoast fields~~: done in v0.10.
-6. A live post-publish QA command: compare the live page with the build, and check the head tags against the SEO fields.
-7. Semver releases from v1.0.
+6. **Photo finder (investigate, future release; requested 10/12):** the agent searches for suitable photos online within set
+   parameters and predefined settings (brand press galleries, rights, size, current model year) and suggests them, instead
+   of the user searching.
+7. A live post-publish QA command: compare the live page with the build, and check the head tags against the SEO fields.
+8. Semver releases from v1.0.

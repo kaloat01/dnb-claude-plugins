@@ -119,3 +119,23 @@
 - Docs: README and QUICKSTART lead with the Desktop app / claude.ai (install on the account, Capabilities, Cowork vs Chat,
   images, downloads, finishing later with the resume kit) and keep a short Claude Code section; CONTRACT documents the new
   commands, the HANDOFF contract and the surface matrix; ROADMAP: Dealer.com moves to v0.12.
+
+## 2026-10-12 — v0.11.1: current, easy-to-find photos and a shorter chat
+- **Image requests** (`image-brief.md` §2, rewritten after a Richmond MBUX run asked for a driver's-seat view through the
+  steering wheel and a hand on the wheel controls):
+  - **Current:** vehicles are "any <last year>–<next year> <brand or model>" (October 2026: 2025–2027) of a model still
+    sold new, never a previous generation of the article's model.
+  - **General:** one subject; never camera positions, hands, specific screens or a head-up display, parts, warning
+    lights, trims or colours, or "ideal if" extras.
+  - **Easy to find online:** only 5 shot types every brand press gallery has (outside, driving, dashboard, seats,
+    place/people).
+- **Library:** vehicle photos whose design was last sold new before MY2025, or whose model is no longer sold, are marked
+  `"outdated": true` (+ `outdatedWhy`) in the store catalogs and are never reused; a photo the user sends that is older
+  than last year's model year is rejected with a request for a current one.
+- **DealerInspire:** the image list tells the user to resize photos to 1,900px wide and under 1MB (the upload limit).
+- **Chat style** (all article commands): action first ("Your turn:" + numbered steps and the exact reply), at most ~8
+  lines except the image list and the HANDOFF, one question at a time, no internal terms. The image list follows a fixed
+  short shape (§6); the version goes in its header line. Chat's single-conversation review writes its reports to
+  `<job>/qa/` instead of the chat.
+- Engine: version stamp only (0.11.1); package output unchanged.
+

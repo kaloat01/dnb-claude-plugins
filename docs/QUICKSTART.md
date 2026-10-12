@@ -25,7 +25,7 @@ Example: `/dealer-articles:article "Toyota of Downtown Chicago" "Toyota Hybrid B
 Plain words work too: *"Write an article for Toyota of Downtown Chicago about hybrid battery care in winter."*
 It picks the platform (Apollo or DealerInspire) from the dealer.
 
-The first line shows the plugin version (e.g. `dealer-articles v0.11.0`). You can also type `/` and pick
+The first message shows the plugin version (e.g. `dealer-articles v0.11.1`). You can also type `/` and pick
 **dealer-articles:article**. If a session can't start helper agents (older app versions), Claude says so once and runs the
 two reviews inside the conversation; the handoff then says "single conversation".
 
@@ -37,14 +37,18 @@ Dealers:
   Claude asks which one.
 
 ## 3. Source the images (the first thing Claude gives you)
-The first message is an **image list** (up to 5 photos; some may already be in the dealer's library). While Claude
-researches and drafts, upload the photos and reply with where they live:
+The first message is an **image list**: the photos to source under **Your turn**, the ones already in the dealer's library,
+and exactly what to reply. The requests are current and easy to find (e.g. "any 2025–2027 Mercedes-Benz interior,
+whole dashboard visible"), usually on the brand's press-photo site or in the store's own photos. While Claude researches
+and drafts, upload the photos and reply with where they live:
 - **Apollo:** upload to the dealer's **Apollo Image Manager** and reply with the Image IDs (e.g. `IMG_HERO = 123456`).
 - **DealerInspire:** upload to the store's **WordPress Media Library** (Media → Add New), open the attachment details and
   reply with each **File URL** (`https://di-uploads-podN.dealerinspire.com/<site>/uploads/YYYY/MM/<file>`): the original,
-  not a resized `-1024x683` copy, and only from that store's own library.
+  not a resized `-1024x683` copy, and only from that store's own library. DealerInspire takes at most 1,900px wide and 1MB
+  per file: resize bigger photos to 1,900px wide (JPEG under 1MB) before uploading.
 
-Real photos you have rights to (dealer library, OEM media/press site), matching the model year, no text or logos.
+Real photos you have rights to (dealer library, the brand's press-photo site, your own photos), model year from last year to
+next year, no text or logos.
 If Claude says the images could not be checked from the app ("unverified"), it may ask you to attach the photos so it can
 see them; check the images on the live page after publishing.
 

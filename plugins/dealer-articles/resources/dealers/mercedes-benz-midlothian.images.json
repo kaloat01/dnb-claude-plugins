@@ -1,7 +1,7 @@
 {
   "dealer": "mercedes-benz-midlothian",
   "generated": "2026-10-09",
-  "note": "Images already in this dealer's DealerInspire uploads library (full URLs, each verified 200 + image/* on 2026-10-09). Reuse before asking for new uploads. View before use; match the article's model year.",
+  "note": "Images already in this dealer's DealerInspire uploads library (full URLs, each verified 200 + image/* on 2026-10-09). Reuse before asking for new uploads. View before use; match the article's model year. Never reuse an image marked \"outdated\": true (older vehicle design; reason in outdatedWhy). Checked 2026-10-12.",
   "images": [
     {
       "di": "https://di-uploads-pod5.dealerinspire.com/mercedesbenzofmidlothian/uploads/2026/09/MidlothianDealershipImage.jpg",
@@ -43,7 +43,9 @@
       ],
       "tags": [
         "service-bay"
-      ]
+      ],
+      "outdated": true,
+      "outdatedWhy": "W213 E-Class (last US MY2023); W214 sold since MY2024"
     },
     {
       "di": "https://di-uploads-pod5.dealerinspire.com/mercedesbenzofmidlothian/uploads/2026/09/2027-Mercedes-GLE.jpg",

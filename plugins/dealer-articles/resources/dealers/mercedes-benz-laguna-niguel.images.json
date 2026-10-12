@@ -1,7 +1,7 @@
 {
   "dealer": "mercedes-benz-laguna-niguel",
   "generated": "2026-10-09",
-  "note": "Images already in this dealer's DealerInspire uploads library (full URLs, each verified 200 + image/* on 2026-10-09). Reuse before asking for new uploads. View before use; match the article's model year.",
+  "note": "Images already in this dealer's DealerInspire uploads library (full URLs, each verified 200 + image/* on 2026-10-09). Reuse before asking for new uploads. View before use; match the article's model year. Never reuse an image marked \"outdated\": true (older vehicle design; reason in outdatedWhy). Checked 2026-10-12.",
   "images": [
     {
       "di": "https://di-uploads-pod4.dealerinspire.com/mercedesbenzoflagunaniguelredesign/uploads/2026/09/MercedesLaguna-Front-Dealership-Main_1900.jpg",
@@ -126,7 +126,9 @@
       "tags": [
         "people",
         "service-bay"
-      ]
+      ],
+      "outdated": true,
+      "outdatedWhy": "GLB pre-facelift look (2020 Express Service shoot); facelift since MY2024"
     },
     {
       "di": "https://di-uploads-pod4.dealerinspire.com/mercedesbenzoflagunaniguelredesign/uploads/2026/09/mercedes-service-filter.jpg",

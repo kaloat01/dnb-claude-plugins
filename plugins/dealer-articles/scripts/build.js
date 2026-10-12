@@ -13,8 +13,8 @@ const os = require('os');
 const zlib = require('zlib');
 const { pathToFileURL } = require('url');
 
-const VERSION = '0.11.0';
-const RELEASED = '2026-10-11';
+const VERSION = '0.11.1';
+const RELEASED = '2026-10-12';
 const VER_LINE = `dealer-articles v${VERSION} (${RELEASED})`;
 const REVIEW = { separate: 'separate reviewer agents', single: 'single conversation (Chat) – double-check before publishing' }; // job.json reviewMode
 const ROOT = path.resolve(__dirname, '..');

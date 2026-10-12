@@ -1,7 +1,7 @@
 {
   "dealer": "bentley-edison",
   "generated": "2026-10-08",
-  "note": "Images already in this dealer's Apollo library (shared Bentley library). Reuse before asking for new uploads. View before use; match the article's model year. Excluded: Bentley Jacksonville store and logo images, home-page offer banners with baked-in text, 40662 (same photo as 903422) and 564268 (same logo as 903423, on white).",
+  "note": "Images already in this dealer's Apollo library (shared Bentley library). Reuse before asking for new uploads. View before use; match the article's model year. Excluded: Bentley Jacksonville store and logo images, home-page offer banners with baked-in text, 40662 (same photo as 903422) and 564268 (same logo as 903423, on white). Never reuse an image marked \"outdated\": true (older vehicle design; reason in outdatedWhy). Checked 2026-10-12.",
   "images": [
     {
       "id": "903422",
@@ -47,7 +47,9 @@
       ],
       "tags": [
         "service-bay"
-      ]
+      ],
+      "outdated": true,
+      "outdatedWhy": "Dated shop shot: lifted silver 2nd-gen Continental GT (to MY2018) + older Bentleys"
     },
     {
       "id": "903407",
@@ -103,7 +105,9 @@
         "technician",
         "tires",
         "service-bay"
-      ]
+      ],
+      "outdated": true,
+      "outdatedWhy": "Twin round headlamps = 3rd-gen GT (last US MY2024); 4th gen has single lamps"
     },
     {
       "id": "903408",
@@ -138,7 +142,9 @@
       ],
       "tags": [
         "service-bay"
-      ]
+      ],
+      "outdated": true,
+      "outdatedWhy": "Same blue 3rd-gen GT as 903420 (last US MY2024); 4th gen since MY2025"
     },
     {
       "id": "903452",
@@ -156,7 +162,9 @@
       "tags": [
         "vehicle-exterior",
         "road"
-      ]
+      ],
+      "outdated": true,
+      "outdatedWhy": "Twin-lamp W12 3rd-gen GTC (last US MY2024); single-lamp 4th gen since MY2025"
     },
     {
       "id": "903397",

@@ -15,6 +15,7 @@ allowed-tools:
 **DA** = `node "${CLAUDE_PLUGIN_ROOT}/scripts/build.js"` · rules: `${CLAUDE_PLUGIN_ROOT}/resources/rules/image-brief.md`
 (If `${CLAUDE_PLUGIN_ROOT}` was not replaced by a real path, see the top of `skills/article/SKILL.md`.)
 If this run did not start with `DA env --net`, run it first and show its version line in one line.
+**Chat style:** as in `skills/article-apollo/SKILL.md` (action first, short, plain words).
 
 1. **Find the job.**
    - **Resume kit:** if the user attached a `*-resume-kit.zip` (Chat and Cowork attachments are usually under
@@ -44,7 +45,8 @@ If this run did not start with `DA env --net`, run it first and show its version
    - Tell the user in your summary that the images were not fetched here and to eyeball the live page after publishing.
 4. **View every photo** (Read each file in `<job>/images/`, or the photos the user attached). Check: subject matches the slot request, **model year/generation
    matches the article**, no baked-in text/watermarks, own brand only in comparisons. Filenames lie: describe what you SEE.
-   Rewrite each `alt` (what the photo shows, ≤125 chars) and set the real `w`/`h`. A photo you could not view at all: alt
+   A vehicle older than last year's model year (or a previous generation of the article's model) → reject: tell the user which slot and ask for a current one
+   (`image-brief.md` §2). Rewrite each `alt` (what the photo shows, ≤125 chars) and set the real `w`/`h`. A photo you could not view at all: alt
    text from the slot request, flagged "alt text not checked against the photo" in your summary.
 5. **Place by resolution:** hero ≥1900w full-bleed, otherwise `heroContained: true`; full-width figure ≥1100w, else narrow
    (`prose: true`) or move it into the pair; pair images ≥800w; never upscale; no repeats. Swap slots if that fits better.
@@ -53,7 +55,7 @@ If this run did not start with `DA env --net`, run it first and show its version
    ratio), no broken images, mobile layout. No browser: apply the `design-and-apollo.md` §4 checklist ("no browser") and list
    the visual checks for the user.
 7. **Deliver** (same as /dealer-articles:article-apollo Phase 7): update `job.json` phase → `done`; then, outside Claude Code,
-   `DA deliver "<job>" --to "<download folder>"` when `DA env` listed one. Reply with at most 5 short lines first: what changed,
+   `DA deliver "<job>" --to "<download folder>"` when `DA env` listed one. Reply in the Chat style: **Your turn:** and at most 5 short numbered lines first: what changed,
    unverified items, the site-wide CSS note for Apollo (paste once per dealer, re-paste only if `--da-css-version` in the
    live page source differs from the file), and the live check after publishing (1 visible H1, images, buttons not
    underlined, FAQ toggles, Google's Rich Results Test on the URL). Then **the HANDOFF block from the final build,

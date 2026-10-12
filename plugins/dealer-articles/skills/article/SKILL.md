@@ -37,7 +37,8 @@ article without the engine:** it builds the package, the SEO/Yoast sheet and the
      has them.)" Every rule still applies.
    - You cannot run commands at all → stop. Tell the user: "Please turn on **Settings → Capabilities → Code execution and
      file creation** (domain allowlist: All domains), then start a new chat."
-2. Run `DA env --net`. Show its version line to the user in one line (e.g. "dealer-articles v0.11.0 (2026-10-11)").
+2. Run `DA env --net`. Don't send its version as a separate message: it goes in the header line of your first message
+   (the image list), e.g. "dealer-articles v0.11.1".
    Keep its results for later: browser found or not (screenshots), download folder, blocked hosts.
    Node missing or older than 18: in Claude Code, stop and point to `/dealer-articles:article-setup`; in Chat or Cowork,
    stop and ask the user to turn on Code execution and file creation (step 1).
@@ -56,7 +57,8 @@ article without the engine:** it builds the package, the SEO/Yoast sheet and the
    You already ran `DA env --net` and know the surface: the workflow's Phase 0 step 1 is done.
 
 ## Every rule applies unchanged, on every surface
-- image list first
+- the chat style: action first, short, plain words (`skills/article-apollo/SKILL.md` → Chat style)
+- image list first (current, general, easy-to-find photos: `resources/rules/image-brief.md`)
 - premise test + primary-source ledger
 - golden-geo ARTICLE MODE
 - the design pass (frontend-design craft pass, or the written design checklist when there is no browser)

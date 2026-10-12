@@ -1,7 +1,7 @@
 {
   "dealer": "bentley-jacksonville",
   "generated": "2026-10-07",
-  "note": "Images already in this dealer's Apollo library. Reuse before asking for new uploads. View before use; match the article's model year.",
+  "note": "Images already in this dealer's Apollo library. Reuse before asking for new uploads. View before use; match the article's model year. Never reuse an image marked \"outdated\": true (older vehicle design; reason in outdatedWhy). Checked 2026-10-12.",
   "images": [
     {
       "id": "903400",
@@ -268,7 +268,9 @@
         "technician",
         "tires",
         "service-bay"
-      ]
+      ],
+      "outdated": true,
+      "outdatedWhy": "Twin round headlamps = 3rd-gen GT (last US MY2024); 4th gen has single lamps"
     },
     {
       "id": "903452",
@@ -286,7 +288,9 @@
       "tags": [
         "vehicle-exterior",
         "road"
-      ]
+      ],
+      "outdated": true,
+      "outdatedWhy": "Twin-lamp W12 3rd-gen GTC (last US MY2024); single-lamp 4th gen since MY2025"
     },
     {
       "id": "903440",
@@ -352,7 +356,9 @@
       ],
       "tags": [
         "service-bay"
-      ]
+      ],
+      "outdated": true,
+      "outdatedWhy": "Same blue 3rd-gen GT as 903420 (last US MY2024); 4th gen since MY2025"
     },
     {
       "id": "903394",
@@ -405,7 +411,9 @@
       "tags": [
         "technician",
         "service-bay"
-      ]
+      ],
+      "outdated": true,
+      "outdatedWhy": "Same twin-lamp 3rd-gen GT on alignment rack (last US MY2024)"
     },
     {
       "id": "903393",
