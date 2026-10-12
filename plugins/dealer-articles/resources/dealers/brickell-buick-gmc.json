@@ -1,0 +1,245 @@
+{
+  "key": "brickell-buick-gmc",
+  "prefix": "bbg",
+  "platform": "dealercom",
+  "name": "Brickell Buick GMC",
+  "aliases": [
+    "brickell buick gmc",
+    "brickell buick & gmc",
+    "brickell buick and gmc",
+    "brickell gmc",
+    "brickell buick",
+    "buick gmc brickell",
+    "brickellbuickgmc",
+    "bbg"
+  ],
+  "brand": "Buick GMC",
+  "brandShort": "Buick or GMC",
+  "group": null,
+  "domain": "https://www.brickellbuickgmc.com",
+  "address": {
+    "street": "665 SW 8th St",
+    "city": "Miami",
+    "region": "FL",
+    "zip": "33130",
+    "country": "US"
+  },
+  "geo": [
+    25.7662,
+    -80.2054
+  ],
+  "departments": {
+    "service": {
+      "label": "Service",
+      "phone": "786-245-4932",
+      "cta": {
+        "label": "Schedule Service",
+        "href": "/service/scheduler.htm"
+      },
+      "hours": [
+        [
+          [
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday"
+          ],
+          "07:00",
+          "18:00"
+        ],
+        [
+          [
+            "Saturday"
+          ],
+          "08:00",
+          "16:00"
+        ]
+      ]
+    },
+    "sales": {
+      "label": "Sales",
+      "phone": "305-680-0249",
+      "cta": {
+        "label": "Value Your Trade",
+        "href": "/trade-in-form.htm"
+      },
+      "hours": [
+        [
+          [
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday"
+          ],
+          "09:00",
+          "21:00"
+        ],
+        [
+          [
+            "Friday",
+            "Saturday"
+          ],
+          "09:00",
+          "20:00"
+        ],
+        [
+          [
+            "Sunday"
+          ],
+          "11:00",
+          "19:00"
+        ]
+      ]
+    },
+    "parts": {
+      "label": "Parts",
+      "phone": null,
+      "cta": {
+        "label": "Request Parts",
+        "href": "/PartsOrderForm.htm"
+      },
+      "hours": [
+        [
+          [
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday"
+          ],
+          "07:00",
+          "18:00"
+        ],
+        [
+          [
+            "Saturday"
+          ],
+          "08:00",
+          "16:00"
+        ]
+      ]
+    }
+  },
+  "routes": {
+    "directions": "/dealership/directions.htm",
+    "contact": "/contact.htm",
+    "about": "/dealership/about.htm",
+    "serviceHub": "/service.htm",
+    "specials": "/promotions/service/index.htm",
+    "scheduleService": "/service/scheduler.htm",
+    "parts": "/PartsOrderForm.htm",
+    "newInventory": "/new-inventory/index.htm",
+    "usedInventory": "/used-inventory/index.htm",
+    "vehicleSpecials": "/promotions/new/index.htm",
+    "financing": "/credit-application.htm",
+    "valueYourTrade": "/trade-in-form.htm"
+  },
+  "areas": [
+    "Miami",
+    "Brickell",
+    "Downtown Miami",
+    "Little Havana",
+    "The Roads",
+    "Coral Gables",
+    "Coconut Grove",
+    "Key Biscayne",
+    "Wynwood",
+    "Edgewater",
+    "Shenandoah",
+    "Miami Beach",
+    "Doral"
+  ],
+  "excluded": [],
+  "climate": "Hot, humid South Florida: strong sun, heat, heavy rain, hurricane season and flood risk. No snow, road salt or winter driving.",
+  "bans": [
+    "best price",
+    "lowest price",
+    "top dollar",
+    "guaranteed",
+    "certified technician",
+    "factory-trained",
+    "snow",
+    "road salt",
+    "winter",
+    "price match",
+    "guarantee",
+    "mobile service",
+    "best in Miami"
+  ],
+  "brandNaming": [
+    "Write the store name as \"Brickell Buick GMC\" (the site's structured data and DDC title suffix); some site page names say \"Brickell Buick & GMC\", but use one form per article",
+    "Name the brands \"Buick\" and \"GMC\" (GMC in capitals); GM (General Motors) is the parent company",
+    "Use the model and trim casing the dealer site uses: Envista, Encore GX, Envision, Enclave; Terrain, Acadia, Yukon, Yukon XL, Canyon, Sierra 1500, Sierra HD, Sierra EV, HUMMER EV; trims Preferred, Sport Touring and Avenir (Buick), Elevation, AT4, AT4X and Denali (GMC)",
+    "Dealer service is \"Certified Service\" (GM's dealer-service name, approved for this store 08/10/2026); articles do not call technicians factory-trained, \"certified technicians\" or master technicians",
+    "Do not name a parts brand for this store: no \"GM Genuine Parts\" and no \"ACDelco\" (no parts brand is approved; both live articles had it removed)",
+    "GM's oil-change reminder is the \"Engine Oil Life System\" and the oil specification is \"dexos1 Gen 3\" (lowercase dexos); never say other oils void the warranty",
+    "\"Super Cruise\" is GM's hands-free driver-assistance name: say availability varies by model and trim, and give no package pricing"
+  ],
+  "style": {
+    "linkColor": "#1E1A34",
+    "linkHover": "#1E1A34",
+    "linkUnderline": false,
+    "importantWaiver": true,
+    "exceptions": [
+      {
+        "rule": "!important on CTA button fills and text (background, color, border-color, text-decoration) and on centering (text-align, margin:0 auto, justify-content) inside the article block",
+        "source": "DEALERCOM_CUSTOM_HTML_QA_NOTES.md sections 10b-10c (live DDC tests, 08/26/2026): the DDC theme strips custom button fills and left-aligns content, and the QA notes override design.json \"never !important on colour\". The live BBG theme (indigo_white.css) also underlines every link in raw content (.content-raw a:not(.btn){text-decoration:underline}), which reaches the article's button links"
+      }
+    ],
+    "fonts": {
+      "head": "\"DDC Heading Font Face\",Georgia,\"Times New Roman\",serif",
+      "body": "\"DDC Body Font Face\",\"Helvetica Neue\",Helvetica,Arial,sans-serif",
+      "import": false
+    },
+    "radius": 0
+  },
+  "ddc": {
+    "media": "https://pictures.dealer.com/b/brickellbuickgmcgm/",
+    "orgId": null,
+    "titleSuffix": null,
+    "aboutPath": "/dealership/about.htm",
+    "contentPath": "/wbp-<slug>.htm",
+    "socialTags": "DDC writes og:title (= the page <title>), og:type \"website\" and og:url (echoes the requested URL, query string included) on every content page; og:description appears only when a MetaData Description is saved (one combined name=\"description\" property=\"og:description\" tag). No og:image and no twitter: tags. All come from the DDC platform head, never from the content block."
+  },
+  "images": {
+    "STORE": {
+      "ddc": "https://pictures.dealer.com/b/brickellbuickgmcgm/1234/a73d92fd7dfe4135abfd45ee0c413723.jpg",
+      "alt": "Brickell Buick GMC dealership on SW 8th Street in Miami, with the Buick, GMC and Brickell pylon sign and palm trees along the showroom",
+      "w": 2500,
+      "h": 1970,
+      "desc": "Brickell Buick GMC storefront at 665 SW 8th St: Buick, GMC and Brickell pylon, glass showroom, royal palms, downtown towers behind"
+    }
+  },
+  "verify": [
+    "Sales phone: the site's structured data on every page, its Sales department entry and the dealer's own social posts use (305) 680-0249, but the header, About Us and Contact pages show only the toll-free (877) 844-1641, and older Contact and Directions copy shows (786) 245-4889. Confirm (305) 680-0249 before it is printed.",
+    "First Dealer.com article with the v0.12 block: if Dealer.com gives the page a different URL than the URL line, send the real URL back before publishing (the structured data uses it); confirm the block, its styles and the JSON-LD survive publishing."
+  ],
+  "lastVerified": "2026-10-12",
+  "sourcesNote": "Internal provenance for maintainers; colleagues do not need these files. Live checks use the About Us and Contact pages (US location, Firecrawl CLI), 2026-10-12.",
+  "sources": [
+    "https://www.brickellbuickgmc.com/dealership/about.htm About Us, US geo, 2026-10-12: address 665 SW 8TH ST, Miami, FL 33130; the only phone shown is Contact (877) 844-1641 (toll-free); showroom (sales) hours Mon-Thu 9:00 AM-9:00 PM, Fri-Sat 9:00 AM-8:00 PM, Sun 11:00 AM-7:00 PM; no local numbers, no service or parts hours",
+    "https://www.brickellbuickgmc.com/contact.htm Contact, US geo, 2026-10-12: Sales (877) 844-1641; department hours listed separately: Service and Parts Mon-Fri 7:00 AM-6:00 PM, Sat 8:00 AM-4:00 PM, Sun closed; page copy (also on /dealership/directions.htm) says \"Call us at (786) 245-4889\", which third-party listings tie to the old Brickell Motors name",
+    "Site header on every captured page, 2026-10-12: Contact (877) 844-1641, Service (786) 245-4932, Parts (855) 662-8985 (header numbers may be call tracking)",
+    "Site JSON-LD, 2026-10-12: content pages carry a DDC AutoDealer node with no @id (name Brickell Buick GMC; telephone and Customer Service contactPoint +13056800249; 665 SW 8TH ST, Miami, FL 33130; geo 25.7662, -80.2054; sales openingHours; areaServed [\"Miami FL\"]; sameAs facebook.com/BrickellBuickGMC; logo = the legacy Brickell Motors logo). The homepage carries an AutomotiveBusiness node with departments Sales +13056800249, Service +17862454932 and Parts +18556628985 (Service and Parts Mon-Fri 07:00-18:00, Sat 08:00-16:00)",
+    "Web search, 2026-10-12: the dealer's Facebook and Instagram posts and its Google Maps listing use (305) 680-0249 as the store phone",
+    "Theme CSS https://www.brickellbuickgmc.com/static/dist/v9/variations/oem-gmc/0001/v1/css/indigo_white.css and the page-head :root variables, 2026-10-12: a{color:var(--link-color)}, --link-color = --btn-link-color = --color-primary-500 #1E1A34, hover the same color plus underline, raw-content links underlined; --color-accent-500 #633231 (section headings); button radius 0; html{font-size:10px}; body \"DDC Body Font Face\" and headings \"DDC Heading Font Face\", whose @font-face rules in the page head load Segoe UI regular and bold (/static/v9/media/fonts/segoe-ui-*/v1/webfont.woff2)",
+    "https://www.brickellbuickgmc.com/sitemap.xml, 2026-10-12: 645 URLs; sitemap snapshot (VDP/SRP excluded); every route in this file returned 200 at its own URL (no redirect to home); /schedule-test-drive.htm and /test-drive.htm return 404",
+    "Live content pages, 2026-10-12: /wbp-2026-buick-encore-gx-trims-compared-miami.htm and /wbp-common-buick-and-gmc-problems-and-repair-costs-miami.htm are live blog-roll posts built in the raw HTML (content-raw) component; their JSON-LD survived and their <title> is the page name + \" | Brickell Buick GMC\"; on /promotions/service/*.htm the block's <style> survives but DDC moves it into <head> and reformats it",
+    "Project files: BrickellBuickGMC/design.json (08/10/2026 approvals: Certified Service and factory-trained claims only, no parts brand, mobile service on hold, group VERIFY_HOLD, local areas), 00_SESSION_HANDOFF.md, *-seo-handoff.md, Blog/2026-08-blog-seo-handoff.md, SALES_ARTICLES/2026.10.09-DEALERCOM-ADAPTER-PLAN.md, DEALERCOM_CUSTOM_HTML_QA_NOTES.md"
+  ],
+  "brandNames": [
+    "Buick",
+    "GMC"
+  ],
+  "maintainerNotes": [
+    "Parts: the site shows only a toll-free parts number, (855) 662-8985, so no parts phone is printed. Ask the dealer for a local parts line.",
+    "Mobile service: the site menu links Mobile Service+ (/mobile-service-plus.htm), but the dealer's service sheet says there is none. Do not mention mobile service until the dealer confirms.",
+    "Group: the site has a \"Murgado Auto Group Used Inventory\" page, but the project rule is not to name the group until the dealer confirms it, so the group is left empty.",
+    "The certified pre-owned page (/certified-inventory/index.htm) showed 0 vehicles on 10/12/2026 and is not in the site menu; check it has stock before linking it.",
+    "Page title: DDC adds \" | Brickell Buick GMC\" to child-page titles taken from the page name. On the first article, check whether a Title typed in the MetaData Editor also gets it (enter the Title without the dealer name).",
+    "Logo not used: the only logo is a square transparent PNG with wide empty margins (https://pictures.dealer.com/b/brickellbuickgmcgm/1234/0e0557ba86ae4045b5a20c55ce77826a.png); upload a tightly cropped one to show it.",
+    "Decided 10/12: article URL follows the live pattern /wbp-<slug>.htm (blog roll); link color = live theme #1E1A34; fonts = theme faces (Segoe UI) per the \"theme fonts\" default; mainPhone dropped (same digits as Sales); the CPO route dropped (0 vehicles).",
+    "Dealer.com shows the MetaData Title unchanged; only an empty field falls back to the page name + the dealer name (checked live on Brickell CDJR pages, 2026-10-12)."
+  ]
+}

@@ -108,10 +108,10 @@ Dealer.com dealer files have the same fields, with no `apollo` or `di` block and
   "ddc": {
     "media": "https://pictures.dealer.com/<letter>/<account>/",   // this store's Media Library base (images + --final check it)
     "orgId": null,                         // DDC's site-wide AutoDealer has no @id, so the block defines <domain>/#organization
-    "titleSuffix": " | <site name>",       // what DDC appends to page titles, or null if unknown (the build warns when the
-                                           // MetaData Title also contains the dealer name)
+    "titleSuffix": null,                   // what DDC appends to a FILLED MetaData Title; null = shown unchanged (live 10/12:
+                                           // only an empty Title falls back to page name + dealer name)
     "aboutPath": "/dealership/about.htm",  // About Us page: the source of the phones and hours
-    "contentPath": "/<slug>.htm",          // article content page URL pattern (`new` replaces <slug>); default "/<slug>.htm"
+    "contentPath": "/wbp-<slug>.htm",      // article content page URL pattern (`new` replaces <slug>); default "/<slug>.htm"
     "socialTags": "…",                     // what the DDC shell prints for og:/twitter: tags (reference only)
     "socialImage": false                   // true only if the page settings have a social image field (adds a sheet line)
   },
@@ -229,7 +229,7 @@ No site-wide CSS file and no separate Structured Data file on DealerInspire: bot
                                    with dealer-file facts, BlogPosting, FAQPage; no other script). It may be multi-line and
                                    ends on </div>, with nothing after it
 <job>/package/<slug>-SEO.md        Dealer.com hand-entry sheet, ONE line per field "* Field  →  value": Page name (= the H1),
-                                   URL, MetaData Title (without the dealer name: DDC appends the site name), MetaData
+                                   URL, MetaData Title (typed as given; never empty), MetaData
                                    Description, Focus keyphrase (reference only), a Social image line only when
                                    `ddc.socialImage` is true, and one line saying the MetaData Editor has no canonical, OG
                                    or Twitter fields

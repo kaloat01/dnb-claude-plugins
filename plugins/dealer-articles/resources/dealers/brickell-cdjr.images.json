@@ -1,0 +1,258 @@
+{
+  "dealer": "brickell-cdjr",
+  "generated": "2026-10-12",
+  "note": "Images already in this dealer's Dealer.com Media Library. Reuse before asking for new uploads. View before use; match the article's model year. Never reuse an image marked \"outdated\": true (older vehicle design; reason in outdatedWhy). Checked 2026-10-12.",
+  "images": [
+    {
+      "ddc": "https://pictures.dealer.com/b/brickellchryslerjeepdodgeramcllc/1234/bff4e6161d814214ac943be39cf895a9.jpg",
+      "w": 2048,
+      "h": 1365,
+      "shows": "Brickell CDJR building on the SW 8th St / SW 7th Ave corner: white multi-story facade with orange and black panels, Jeep sign, palms, blue sky; street signs and parked cars in front",
+      "vehicle": null,
+      "text": false,
+      "slots": [
+        "hero",
+        "fig",
+        "pair",
+        "store"
+      ],
+      "tags": [
+        "storefront",
+        "city"
+      ]
+    },
+    {
+      "ddc": "https://pictures.dealer.com/b/brickellchryslerjeepdodgeramcllc/1234/eccfd33b3067475caf6de0d78a117e79.png",
+      "w": 360,
+      "h": 105,
+      "shows": "Site header logo: white BRICKELL wordmark over Chrysler, Dodge, Jeep and Ram logos on a dark carbon-texture plate (transparent PNG corners)",
+      "vehicle": null,
+      "text": true,
+      "slots": [
+        "logo"
+      ],
+      "tags": []
+    },
+    {
+      "ddc": "https://pictures.dealer.com/b/brickellchryslerjeepdodgeramcllc/1234/250a810bc3304c128cc7f39004fb6db0.jpg",
+      "w": 2500,
+      "h": 1667,
+      "shows": "Mopar-shirted advisor showing a tablet to a smiling customer beside a silver Jeep Grand Cherokee L in a bright white-tiled service area with Jeep posters",
+      "vehicle": "Jeep Grand Cherokee L (WL generation, 2021+)",
+      "text": false,
+      "slots": [
+        "hero",
+        "fig",
+        "pair"
+      ],
+      "tags": [
+        "people",
+        "service-bay"
+      ]
+    },
+    {
+      "ddc": "https://pictures.dealer.com/b/brickellchryslerjeepdodgeramcllc/1234/adf911c643b14578b64172a70c85150b.jpg",
+      "w": 2500,
+      "h": 1667,
+      "shows": "Service write-up desk: Mopar advisor in a white shirt reviewing a tablet with a customer in a leather jacket, second advisor at the counter, Mopar fluids on the shelf, tire rack",
+      "vehicle": "2015-2023 Dodge Charger SRT (LD) and 2017-2021 Jeep Grand Cherokee (WK2)",
+      "text": false,
+      "slots": [
+        "hero",
+        "fig",
+        "pair"
+      ],
+      "tags": [
+        "people",
+        "service-bay"
+      ],
+      "outdated": true,
+      "outdatedWhy": "The white Charger SRT in the foreground is the previous LD generation (last sold new as MY2023); the WK2 Grand Cherokee behind it ended MY2021"
+    },
+    {
+      "ddc": "https://pictures.dealer.com/b/brickellchryslerjeepdodgeramcllc/1234/3a6fe5d9bf7747098bac0d66f15bbcbb.jpg",
+      "w": 1500,
+      "h": 1000,
+      "shows": "Technician in a blue Mopar service shirt under a lifted vehicle with a used-oil drain pan, busy service bays behind",
+      "vehicle": null,
+      "text": false,
+      "slots": [
+        "fig",
+        "pair"
+      ],
+      "tags": [
+        "technician",
+        "service-bay",
+        "oil"
+      ],
+      "avoid": "Older background vehicles (2011-14 Chrysler 300, Dodge Journey, JK Wrangler): use only for generic oil-service copy, never next to a model-year claim"
+    },
+    {
+      "ddc": "https://pictures.dealer.com/b/brickellchryslerjeepdodgeramcllc/1234/ac7198db48ed45f0a1137ec5b479b628.jpg",
+      "w": 2000,
+      "h": 1000,
+      "shows": "Mopar technician in Mopar gloves using an impact wrench at a front brake rotor and caliper on a lifted silver vehicle",
+      "vehicle": null,
+      "text": false,
+      "slots": [
+        "hero",
+        "fig",
+        "pair"
+      ],
+      "tags": [
+        "technician",
+        "brakes",
+        "service-bay"
+      ]
+    },
+    {
+      "ddc": "https://pictures.dealer.com/b/brickellchryslerjeepdodgeramcllc/1234/883f179dd708472784713e176ad45ce9.jpg",
+      "w": 2000,
+      "h": 1000,
+      "shows": "Mopar technician reading a battery and charging-system tester clamped to a Ram pickup's battery, hood open, RAM grille lettering in the foreground",
+      "vehicle": null,
+      "text": false,
+      "slots": [
+        "hero",
+        "fig",
+        "pair"
+      ],
+      "tags": [
+        "technician",
+        "battery"
+      ],
+      "avoid": "Ram generation is not identifiable with the hood open; do not caption a model year"
+    },
+    {
+      "ddc": "https://pictures.dealer.com/b/brickellchryslerjeepdodgeramcllc/1234/06e02e659823481f901c9b709de3ec21.jpg",
+      "w": 1225,
+      "h": 816,
+      "shows": "Mopar technician checking tread depth on a BFGoodrich all-terrain tire of a blue Jeep Wrangler in a service bay",
+      "vehicle": "Jeep Wrangler 4-door (JL generation, 2018+)",
+      "text": false,
+      "slots": [
+        "fig",
+        "pair"
+      ],
+      "tags": [
+        "technician",
+        "tires",
+        "service-bay"
+      ]
+    },
+    {
+      "ddc": "https://pictures.dealer.com/b/brickellchryslerjeepdodgeramcllc/1234/040a6b0eb00c4267847b9093be8d8537.jpg",
+      "w": 2048,
+      "h": 1536,
+      "shows": "Mopar Parts & Accessories store: big wall sign, tire stacks, Mopar display cases, wind deflectors on a rack, apparel and the parts counter",
+      "vehicle": null,
+      "text": true,
+      "slots": [
+        "hero",
+        "fig",
+        "pair"
+      ],
+      "tags": [
+        "parts"
+      ],
+      "avoid": "A \"2018 FCA Parts Training\" banner is visible and the store opened in 2024, so this may be another store: never caption it as Brickell's own parts department"
+    },
+    {
+      "ddc": "https://pictures.dealer.com/b/brickellchryslerjeepdodgeramcllc/1234/405f97b5ba744299b2e5c5e3575254f5.jpg",
+      "w": 2500,
+      "h": 1875,
+      "shows": "White Jeep Wrangler 4-door, front three-quarter view, composited onto a palm-lined beach park background",
+      "vehicle": "2024+ Jeep Wrangler 4-door (refreshed JL; the site alt calls it a 2026 Wrangler Sahara)",
+      "text": false,
+      "slots": [
+        "hero",
+        "fig",
+        "pair"
+      ],
+      "tags": [
+        "vehicle-exterior"
+      ],
+      "avoid": "Window sticker visible in the windshield; composite background: do not caption it as a real Miami location"
+    },
+    {
+      "ddc": "https://pictures.dealer.com/b/brickellchryslerjeepdodgeramcllc/1234/6e2ab5595c434f7a8d33fe4d9f1625df.jpg",
+      "w": 2048,
+      "h": 1152,
+      "shows": "Silver Jeep Grand Cherokee L with black roof on a wet beach at sunset below sandstone cliffs, front three-quarter view",
+      "vehicle": "Jeep Grand Cherokee L (WL generation, 2021+), Summit-level trim",
+      "text": false,
+      "slots": [
+        "hero",
+        "fig",
+        "pair"
+      ],
+      "tags": [
+        "vehicle-exterior"
+      ]
+    },
+    {
+      "ddc": "https://pictures.dealer.com/b/brickellchryslerjeepdodgeramcllc/1234/ea27cf1a248740cbaa5d6619d1018772.jpg",
+      "w": 2500,
+      "h": 1667,
+      "shows": "Family loading a red Ram 1500 Rebel crew cab in a driveway, wake boat on a trailer hitched behind, white farmhouse buildings",
+      "vehicle": "Ram 1500 Rebel (DT generation, 2019+; model year not identifiable from this angle)",
+      "text": false,
+      "slots": [
+        "hero",
+        "fig",
+        "pair"
+      ],
+      "tags": [
+        "vehicle-exterior",
+        "people",
+        "towing"
+      ]
+    },
+    {
+      "ddc": "https://pictures.dealer.com/b/brickellchryslerjeepdodgeramcllc/1234/b52142a9c66440c49eca34a247395e5f.jpg",
+      "w": 2222,
+      "h": 1667,
+      "shows": "Family unloading moving boxes from a dark Chrysler Pacifica with the liftgate open at a modern home with palms and a succulent garden",
+      "vehicle": "Chrysler Pacifica (2021+ refreshed design); a front-fender charge-port door suggests the Plug-in Hybrid",
+      "text": false,
+      "slots": [
+        "hero",
+        "fig",
+        "pair"
+      ],
+      "tags": [
+        "vehicle-exterior",
+        "people"
+      ],
+      "avoid": "Do not use it for a Plug-in Hybrid claim without confirming the hybrid is still offered for the article's model year"
+    },
+    {
+      "ddc": "https://pictures.dealer.com/b/brickellchryslerjeepdodgeramcllc/1234/1d7956127678452785e566541c2a26dd.jpg",
+      "w": 1000,
+      "h": 550,
+      "shows": "Green two-door Dodge Charger with a full-width light bar, parked in a sunlit derelict warehouse, reflected in a puddle",
+      "vehicle": "2024+ Dodge Charger (new STLA generation; site alt: 2026 Charger)",
+      "text": false,
+      "slots": [
+        "pair"
+      ],
+      "tags": [
+        "vehicle-exterior"
+      ]
+    },
+    {
+      "ddc": "https://pictures.dealer.com/b/brickellchryslerjeepdodgeramcllc/1234/67433f06665940db889dea081ac84e2b.jpg",
+      "w": 1000,
+      "h": 550,
+      "shows": "Blue Jeep Cherokee parked on a paver driveway in front of a house and garage at dusk",
+      "vehicle": "2026 Jeep Cherokee (new generation; site alt: 2026 Cherokee Hybrid)",
+      "text": false,
+      "slots": [
+        "pair"
+      ],
+      "tags": [
+        "vehicle-exterior"
+      ]
+    }
+  ]
+}

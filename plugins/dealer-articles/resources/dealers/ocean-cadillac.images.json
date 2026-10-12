@@ -1,0 +1,264 @@
+{
+  "dealer": "ocean-cadillac",
+  "generated": "2026-10-12",
+  "note": "Images already in this dealer's Dealer.com Media Library. Reuse before asking for new uploads. View before use; match the article's model year. Never reuse an image marked \"outdated\": true (older vehicle design; reason in outdatedWhy). Checked 2026-10-12.",
+  "images": [
+    {
+      "ddc": "https://pictures.dealer.com/o/oceancadillacgm/1234/1bad06f40a324687914681f6eecda4bd.jpg",
+      "w": 1920,
+      "h": 1280,
+      "shows": "Elevated view of the Ocean Cadillac showroom at 17800 Ipco Rd: white building with the color Cadillac crest and script \"Cadillac\" sign, glass corner showroom, cars parked out front, palms and a highway overpass behind",
+      "vehicle": null,
+      "text": false,
+      "slots": [
+        "hero",
+        "fig",
+        "pair",
+        "store"
+      ],
+      "tags": [
+        "storefront"
+      ],
+      "avoid": "Cars parked out front include discontinued XT4s; do not caption the cars."
+    },
+    {
+      "ddc": "https://pictures.dealer.com/o/oceancadillacgm/1234/efda80af46e74ce7a17515ff013ec4ed.jpeg",
+      "w": 935,
+      "h": 935,
+      "shows": "Aerial of the Ocean Cadillac glass-tower entrance with two Cadillac crest and script signs, a \"MURGADO AUTOMOTIVE GROUP\" wall sign, three black Escalades parked by young palms",
+      "vehicle": null,
+      "text": true,
+      "slots": [
+        "pair",
+        "store"
+      ],
+      "tags": [
+        "storefront"
+      ],
+      "avoid": "Shows the Murgado Automotive Group sign; use only once naming the group is approved."
+    },
+    {
+      "ddc": "https://pictures.dealer.com/o/oceancadillacgm/1234/c12c2d89dfe944669b853b8ad43b717f.jpg",
+      "w": 622,
+      "h": 102,
+      "shows": "Logo lockup: monochrome Cadillac crest, thin divider, \"OCEAN CADILLAC\" wordmark (black artwork on white, JPEG)",
+      "vehicle": null,
+      "text": true,
+      "slots": [
+        "logo"
+      ],
+      "tags": []
+    },
+    {
+      "ddc": "https://pictures.dealer.com/o/oceancadillacgm/1234/c247afa0cdb44eff8d98ab9a028de4ed.jpeg",
+      "w": 2000,
+      "h": 1000,
+      "shows": "Technician in safety glasses using an impact wrench on the large wheel of a dark blue Cadillac SUV on a lift; sleeve patches read \"Certified Master Technician\", \"World Class Technician\", \"Hybrid/Electric Vehicles\"",
+      "vehicle": null,
+      "text": true,
+      "slots": [
+        "hero",
+        "fig",
+        "pair"
+      ],
+      "tags": [
+        "technician",
+        "tires",
+        "service-bay"
+      ],
+      "avoid": "Patch text claims certifications: never caption it as a certified or master technician (banned). Stock-style photo; do not present the person as Ocean Cadillac staff."
+    },
+    {
+      "ddc": "https://pictures.dealer.com/o/oceancadillacgm/1234/ad9d33c73a9d48cb9f507d4d85c025eb.jpg",
+      "w": 1600,
+      "h": 600,
+      "shows": "Technician measuring a front brake rotor with a gauge beside the caliper of a lifted vehicle; black shirt with the color crest and \"Certified Service\" embroidery",
+      "vehicle": null,
+      "text": true,
+      "slots": [
+        "fig",
+        "pair"
+      ],
+      "tags": [
+        "technician",
+        "brakes",
+        "service-bay"
+      ],
+      "avoid": "\"Certified Service\" shirt logo: do not echo \"Cadillac Certified Service\" in copy (banned)."
+    },
+    {
+      "ddc": "https://pictures.dealer.com/o/oceancadillacgm/1234/5fdcbbb9e6ab42139a1745b8124e1d2a.jpg",
+      "w": 1600,
+      "h": 600,
+      "shows": "Female technician in safety glasses checking an engine oil dipstick with a blue shop towel; black and blue uniform with the Cadillac crest, bright shop window behind",
+      "vehicle": null,
+      "text": false,
+      "slots": [
+        "fig",
+        "pair"
+      ],
+      "tags": [
+        "technician",
+        "oil",
+        "service-bay"
+      ]
+    },
+    {
+      "ddc": "https://pictures.dealer.com/o/oceancadillacgm/1234/68e0544c917a40a99d253ac2e0990b7b.jpg",
+      "w": 1200,
+      "h": 900,
+      "shows": "Service advisor in a white \"Certified Service\" shirt writing on a clipboard with a female customer beside a silver Cadillac SRX in a bright service drive",
+      "vehicle": "Cadillac SRX (2nd generation, 2010-2016)",
+      "text": true,
+      "slots": [
+        "fig",
+        "pair"
+      ],
+      "tags": [
+        "people",
+        "service-drive"
+      ],
+      "avoid": "Already used on the live service hub, oil-package and Oil Life System pages; replace it there too.",
+      "outdated": true,
+      "outdatedWhy": "The SRX was last sold new as a 2016 model (replaced by the XT5); the vehicle is prominent in the frame"
+    },
+    {
+      "ddc": "https://pictures.dealer.com/o/oceancadillacgm/1234/2cc798f609994907a1b9420c4b0d418b.jpg",
+      "w": 2000,
+      "h": 1500,
+      "shows": "Woman in a purple blazer plugging a charging connector into the front-fender charge port of a red Cadillac EV; green charge-status ring, crest on the open port door, dark backdrop",
+      "vehicle": "Red Cadillac EV (model not identifiable)",
+      "text": false,
+      "slots": [
+        "hero",
+        "fig",
+        "pair"
+      ],
+      "tags": [
+        "ev",
+        "charging",
+        "people"
+      ]
+    },
+    {
+      "ddc": "https://pictures.dealer.com/o/oceancadillacgm/1234/6de16750c5f2463a87fc055edc12e394.jpg",
+      "w": 2000,
+      "h": 1125,
+      "shows": "Dark red Cadillac ESCALADE IQ, front three-quarter view, on a glossy reflective floor under a pastel sky",
+      "vehicle": "Cadillac ESCALADE IQ (model year 2025 and later design; shown under \"Cadillac Escalade IQ\" on the dealer's new-inventory page)",
+      "text": false,
+      "slots": [
+        "hero",
+        "fig",
+        "pair"
+      ],
+      "tags": [
+        "vehicle-exterior",
+        "ev"
+      ]
+    },
+    {
+      "ddc": "https://pictures.dealer.com/o/oceancadillacgm/1234/7298931c814d4285aae4e02190cb3c1d.jpg",
+      "w": 1920,
+      "h": 960,
+      "shows": "ESCALADE IQ cabin from the passenger side: pillar-to-pillar curved display reading \"ESCALADE IQ\", center touchscreen, tan leather and dark trim",
+      "vehicle": "Cadillac ESCALADE IQ (model year 2025 and later)",
+      "text": true,
+      "slots": [
+        "hero",
+        "fig",
+        "pair"
+      ],
+      "tags": [
+        "vehicle-interior",
+        "ev"
+      ],
+      "avoid": "On-screen text reads \"ESCALADE IQ\": use only in Escalade IQ / IQL articles."
+    },
+    {
+      "ddc": "https://pictures.dealer.com/o/oceancadillacgm/1234/88ffc2c0cc2240d295571b409dac9fef.jpg",
+      "w": 2000,
+      "h": 1334,
+      "shows": "Blue Cadillac VISTIQ, front three-quarter view, on a dirt lot by a desert lake with mountains and a sailboat behind",
+      "vehicle": "Cadillac VISTIQ (model year 2026 and later; shown under \"Cadillac VISTIQ\" on the dealer's new-inventory page)",
+      "text": false,
+      "slots": [
+        "hero",
+        "fig",
+        "pair"
+      ],
+      "tags": [
+        "vehicle-exterior",
+        "ev"
+      ]
+    },
+    {
+      "ddc": "https://pictures.dealer.com/o/oceancadillacgm/1234/3ee6e667d3e54b8096f97a8d24b91206.jpg",
+      "w": 2000,
+      "h": 1125,
+      "shows": "Silver-gray Cadillac LYRIQ, front three-quarter view, on a reflective floor under a pastel sunset sky",
+      "vehicle": "Cadillac LYRIQ (current design, sold new as 2026 and 2027 models; shown under \"Cadillac LYRIQ\" on the dealer's new-inventory page)",
+      "text": false,
+      "slots": [
+        "hero",
+        "fig",
+        "pair"
+      ],
+      "tags": [
+        "vehicle-exterior",
+        "ev"
+      ]
+    },
+    {
+      "ddc": "https://pictures.dealer.com/o/oceancadillacgm/1234/26fe7a9a72ff4bb7823cae51d533d787.jpg",
+      "w": 2000,
+      "h": 1047,
+      "shows": "Red Cadillac OPTIQ with a black roof, front three-quarter view, in a stone courtyard with dark walls and bamboo",
+      "vehicle": "Cadillac OPTIQ (model year 2025 and later; shown under \"Cadillac OPTIQ\" on the dealer's new-inventory page)",
+      "text": false,
+      "slots": [
+        "hero",
+        "fig",
+        "pair"
+      ],
+      "tags": [
+        "vehicle-exterior",
+        "ev"
+      ]
+    },
+    {
+      "ddc": "https://pictures.dealer.com/o/oceancadillacgm/1234/1b2b14c21c9047e393bfb036f50f8b16.jpg",
+      "w": 2000,
+      "h": 613,
+      "shows": "Pearl-white Cadillac XT5, front three-quarter view, on a salt flat at sunset with mountains on the horizon",
+      "vehicle": "Cadillac XT5 (current design, sold new as a 2026 model; shown under \"Cadillac XT5\" on the dealer's new-inventory page)",
+      "text": false,
+      "slots": [
+        "hero",
+        "fig",
+        "pair"
+      ],
+      "tags": [
+        "vehicle-exterior"
+      ],
+      "avoid": "Very wide crop (about 3.3:1)."
+    },
+    {
+      "ddc": "https://pictures.dealer.com/o/oceancadillacgm/1234/0a554ed18ebe4067a25ae9a121419f0b.jpg",
+      "w": 2000,
+      "h": 2084,
+      "shows": "Green Cadillac CT5-V sedan with the refreshed front end, driving on a racetrack with desert mountains behind; large blue sky above",
+      "vehicle": "Cadillac CT5-V (model year 2025 and later refreshed design; shown under \"Cadillac CT5-V\" on the dealer's new-inventory page)",
+      "text": false,
+      "slots": [
+        "hero",
+        "fig",
+        "pair"
+      ],
+      "tags": [
+        "vehicle-exterior"
+      ],
+      "avoid": "Near-square frame; the car sits in the lower half, so crop from the top."
+    }
+  ]
+}

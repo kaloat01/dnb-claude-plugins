@@ -101,12 +101,14 @@ and `<slug>-resume-kit.zip` appear as **downloads**.
 2. Add a **Custom HTML component** and paste `<slug>-DDC-Custom-HTML.html` (open it in Notepad, Ctrl+A, Copy). Never a
    line range, never from a chat. If Dealer.com says `Tag must be paired, missing: [ </div> ]`, the copy was cut off:
    copy the whole file again.
-3. **MetaData Editor:** enter the Title and Description lines from the handoff (or `<slug>-SEO.md`). Type the Title as
-   given, without the dealer name: Dealer.com adds the site name. There are no canonical, OG or Twitter fields.
+3. **MetaData Editor:** enter the Title and Description lines from the handoff (or `<slug>-SEO.md`). Type both exactly as
+   given and never leave them empty: Dealer.com shows the Title unchanged (an empty Title falls back to the page name +
+   the dealer name, an empty Description leaves no meta description). There are no canonical, OG or Twitter fields.
 4. **Publish.**
 5. **Check** the page with `?cb=<anything>` added to the URL: one headline (the page name), buttons keep their fill and
    their labels fit, centered sections are centered, phone numbers are links, images load, FAQ opens, Google's Rich
-   Results Test shows Article + FAQ, and the browser tab title shows the dealer name once.
+   Results Test shows Article + FAQ, the browser tab shows the MetaData Title, and the page source has the new meta description. If
+   Dealer.com gave the page a different URL than the URL line, send the real URL back (the structured data uses it).
 
 ## Claude Code users
 Same commands in Claude Code (terminal, IDE, Desktop **Code** tab). Run `/dealer-articles:article-setup` once (Node.js 18+,

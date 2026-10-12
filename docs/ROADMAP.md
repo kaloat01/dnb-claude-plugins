@@ -37,16 +37,21 @@
 - **v0.11.2:** fixes from the first Richmond test run: DealerInspire sales articles build again (hours fallback without
   `<br>`), sales articles no longer link service specials or repeat the sales number as "Main line", the resume kit carries
   local dealer overrides, and older jobs get the short photo list again.
+- **v0.12:** Dealer.com adapter, `/dealer-articles:article-dealercom`, for Brickell Chrysler Dodge Jeep Ram, Ocean Cadillac
+  and Brickell Buick GMC: one Custom HTML paste block (no H1: the page name is the H1), page-name + MetaData sheet,
+  Dealer.com hardening and gates, real phone numbers, its own store files and photo catalogs. All 16 stores are covered.
 
 ## Next
-1. **v0.12: Dealer.com adapter** for Brickell CDJR, Ocean Cadillac and Brickell Buick GMC. Same shared workflow and checks as Apollo and DealerInspire. Platform points: a block with no H1 where the page name is the H1, px units with a 16px wrapper, `!important` CTA fills, and no Google Fonts where the dealer forbids them.
+1. **First Dealer.com article, live:** paste it on a hidden page first, then check with a cache-busted capture: the block
+   survives, JSON-LD parses, one H1 (the page name), CTA fills and fonts render, the MetaData Title/Description show in the
+   head, the compliance check on the live HTML has 0 FAIL. Fix whatever it finds.
 2. A first full end-to-end article in a **Cowork** task and in **Chat** on the team account (Desktop app on Mac and PC, and the browser), on a topic the dealer site does not already cover. Confirm the engine, downloads, resume kit and handoff on each, and fix whatever it finds.
 3. Minor cleanups:
    - Make `shot` detect the full page height automatically (defaults are taller since v0.4).
    - Test Claude Code on macOS.
 4. ~~Add the remaining Apollo dealers~~: done in v0.5 (all 8 Apollo dealers).
 5. Platform adapters:
-   - Dealer.com: see item 1 (v0.12).
+   - ~~Dealer.com~~: done in v0.12.
    - ~~DealerInspire: WordPress posts via the Text tab, shortcodes, Yoast fields~~: done in v0.10.
 6. **Photo finder (investigate, future release; requested 10/12):** the agent searches for suitable photos online within set
    parameters and predefined settings (brand press galleries, rights, size, current model year) and suggests them, instead

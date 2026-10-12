@@ -158,3 +158,35 @@
   for; any current §2 shot that suits the article is accepted, and a caption that no longer fits its photo is rewritten.
 - **Tests:** `test/snapshot.js` refuses any draft case that fails a gate (the `<br>` FAIL had been recorded in the
   DealerInspire baseline since v0.10). Baselines re-recorded; every change was reviewed case by case.
+
+## 2026-10-12 — v0.12: Dealer.com (Brickell CDJR, Ocean Cadillac, Brickell Buick GMC)
+- **New command `/dealer-articles:article-dealercom`** (and the router sends `platform: "dealercom"` dealers there). Same
+  workflow, research, reviews, ledger gates and chat style as Apollo and DealerInspire; only packaging differs.
+- **Engine (`platform: "dealercom"`):**
+  - One paste file, `<slug>-DDC-Custom-HTML.html`, for the page's Custom HTML component: the scoped `<style>`, then the
+    wrapper div with the article and the JSON-LD as its last node; it ends on `</div>`.
+  - No `<h1>` in the block: the Dealer.com shell prints the page name as the H1, so the sheet's "Page name" is the
+    article H1.
+  - `<slug>-SEO.md` lists the Dealer.com fields: Page name, URL, MetaData Title (typed without the dealer name),
+    MetaData Description, focus keyphrase (reference). The MetaData Editor has no canonical/OG/Twitter fields.
+  - Real dealer-file phone numbers as `tel:` links and hours as text (Dealer.com has no phone or hours token); the
+    JSON-LD defines `<domain>/#organization` (DDC's own AutoDealer has no `@id`) + BlogPosting + FAQPage, with the article
+    department's hours.
+  - Hardening from the live-tested Dealer.com pages: px only, explicit centering and CTA fills with `!important`,
+    ellipsis for wide theme fonts, no comments, no `@import`, no inline `style=`.
+  - Gates: 0 H1, block shape, every tag paired, no comments/`@import`/inline style/`transition: all`, CTA fill
+    hardened, no bare generic class names, CSS scoped, phone numbers equal the dealer file, page fields complete,
+    `--final` images on this store's Media Library base; ⚠️ dealer name in the MetaData Title, description over 155.
+  - Local preview inside a Dealer.com-like page shell (page-name H1, a theme rule that strips link fills).
+  - `new` builds the URL from `ddc.contentPath` (default `/<slug>.htm`) and writes `ddc: null` image slots; `images`
+    rejects URLs outside the store's Media Library base; `status`, `env --net` know the platform.
+  - Dealer-file fields `brandShort` (copy), `brandNames` (brand mentions; one schema Brand node each), `style.radius`,
+    `ddc { media, orgId, titleSuffix, aboutPath, contentPath, socialTags, socialImage }`. Apollo and DealerInspire
+    output is byte-identical (snapshots).
+- **Three store files + photo catalogs** (`brickell-cdjr`, `ocean-cadillac`, `brickell-buick-gmc`): phones and hours from
+  each About Us page (US location), routes checked live, theme fonts and link colors from the live theme, sitemap
+  snapshots, and the Media Library photos already on each site (viewed; older designs marked `outdated`).
+- **Docs:** `design-and-dealercom.md` (platform rules), CONTRACT, README, QUICKSTART, reviewers' platform notes,
+  `image-brief.md` Dealer.com upload line, `/article-images` and `/article-setup` know Dealer.com.
+- **Tests:** `node test/snapshot.js compare --platform dealercom` (new baseline); seeded-violation test (plugin gate and
+  the project checker both fail "Save $500 off", "$0 down", MSRP without the disclaimer; the clean article passes both).

@@ -10,11 +10,11 @@
  "cases": {
   "mercedes-benz-foothill-ranch|sales|draft": {
    "files": {
-    "HANDOFF.md": "2883fc3a99998496",
+    "HANDOFF.md": "f0920bf4082844f1",
     "honda-trade-in-value-miami-guide-preview.html": "f10be26c9d3cdb54",
     "package/honda-trade-in-value-miami-guide-embed-Wired.html": "a0c39cd7b1317332",
     "package/honda-trade-in-value-miami-guide-SEO.md": "1ccac11059151474",
-    "package/README.md": "cf965a7c67675996"
+    "package/README.md": "4524fe02a1afc145"
    },
    "gates": [
     "  ✅ JSON-LD parses: 3 nodes",
@@ -62,11 +62,11 @@
   },
   "mercedes-benz-foothill-ranch|sales|final": {
    "files": {
-    "HANDOFF.md": "358e713c696f704b",
+    "HANDOFF.md": "706abbca74b93bcc",
     "honda-trade-in-value-miami-guide-preview.html": "f10be26c9d3cdb54",
     "package/honda-trade-in-value-miami-guide-embed-Wired.html": "a0c39cd7b1317332",
     "package/honda-trade-in-value-miami-guide-SEO.md": "1ccac11059151474",
-    "package/README.md": "a4b6263a49ecf115"
+    "package/README.md": "262861a904cab70e"
    },
    "gates": [
     "  ✅ JSON-LD parses: 3 nodes",
@@ -114,11 +114,11 @@
   },
   "mercedes-benz-foothill-ranch|service|draft": {
    "files": {
-    "HANDOFF.md": "2883fc3a99998496",
+    "HANDOFF.md": "f0920bf4082844f1",
     "honda-trade-in-value-miami-guide-preview.html": "944805153f0fc7fd",
     "package/honda-trade-in-value-miami-guide-embed-Wired.html": "2ee68f30e2e95210",
     "package/honda-trade-in-value-miami-guide-SEO.md": "1ccac11059151474",
-    "package/README.md": "cf965a7c67675996"
+    "package/README.md": "4524fe02a1afc145"
    },
    "gates": [
     "  ✅ JSON-LD parses: 3 nodes",
@@ -166,11 +166,11 @@
   },
   "mercedes-benz-foothill-ranch|service|final": {
    "files": {
-    "HANDOFF.md": "358e713c696f704b",
+    "HANDOFF.md": "706abbca74b93bcc",
     "honda-trade-in-value-miami-guide-preview.html": "944805153f0fc7fd",
     "package/honda-trade-in-value-miami-guide-embed-Wired.html": "2ee68f30e2e95210",
     "package/honda-trade-in-value-miami-guide-SEO.md": "1ccac11059151474",
-    "package/README.md": "a4b6263a49ecf115"
+    "package/README.md": "262861a904cab70e"
    },
    "gates": [
     "  ✅ JSON-LD parses: 3 nodes",
@@ -218,11 +218,11 @@
   },
   "mercedes-benz-laguna-niguel|sales|draft": {
    "files": {
-    "HANDOFF.md": "1f3fa3a3eda93fa0",
+    "HANDOFF.md": "4c09373fb3ae94e3",
     "honda-trade-in-value-miami-guide-preview.html": "71267d0c41ce6312",
     "package/honda-trade-in-value-miami-guide-embed-Wired.html": "000d18af9c5da41b",
     "package/honda-trade-in-value-miami-guide-SEO.md": "ae2a3809da3da414",
-    "package/README.md": "33749547ed8302e0"
+    "package/README.md": "4102ddd5db1b954c"
    },
    "gates": [
     "  ✅ JSON-LD parses: 3 nodes",
@@ -270,11 +270,11 @@
   },
   "mercedes-benz-laguna-niguel|sales|final": {
    "files": {
-    "HANDOFF.md": "c3afc476df6bef14",
+    "HANDOFF.md": "2f17376db66610df",
     "honda-trade-in-value-miami-guide-preview.html": "71267d0c41ce6312",
     "package/honda-trade-in-value-miami-guide-embed-Wired.html": "000d18af9c5da41b",
     "package/honda-trade-in-value-miami-guide-SEO.md": "ae2a3809da3da414",
-    "package/README.md": "02b387acdf7eb873"
+    "package/README.md": "beb4eb4adfc53d70"
    },
    "gates": [
     "  ✅ JSON-LD parses: 3 nodes",
@@ -322,11 +322,11 @@
   },
   "mercedes-benz-laguna-niguel|service|draft": {
    "files": {
-    "HANDOFF.md": "1f3fa3a3eda93fa0",
+    "HANDOFF.md": "4c09373fb3ae94e3",
     "honda-trade-in-value-miami-guide-preview.html": "b980a61bff6286b8",
     "package/honda-trade-in-value-miami-guide-embed-Wired.html": "add540be4172f7d2",
     "package/honda-trade-in-value-miami-guide-SEO.md": "ae2a3809da3da414",
-    "package/README.md": "33749547ed8302e0"
+    "package/README.md": "4102ddd5db1b954c"
    },
    "gates": [
     "  ✅ JSON-LD parses: 3 nodes",
@@ -374,11 +374,11 @@
   },
   "mercedes-benz-laguna-niguel|service|final": {
    "files": {
-    "HANDOFF.md": "c3afc476df6bef14",
+    "HANDOFF.md": "2f17376db66610df",
     "honda-trade-in-value-miami-guide-preview.html": "b980a61bff6286b8",
     "package/honda-trade-in-value-miami-guide-embed-Wired.html": "add540be4172f7d2",
     "package/honda-trade-in-value-miami-guide-SEO.md": "ae2a3809da3da414",
-    "package/README.md": "02b387acdf7eb873"
+    "package/README.md": "beb4eb4adfc53d70"
    },
    "gates": [
     "  ✅ JSON-LD parses: 3 nodes",
@@ -426,11 +426,11 @@
   },
   "mercedes-benz-midlothian|sales|draft": {
    "files": {
-    "HANDOFF.md": "8fb7d1c0e605811b",
+    "HANDOFF.md": "0c31af399cf8db9c",
     "honda-trade-in-value-miami-guide-preview.html": "e02b7da7b26b5f52",
     "package/honda-trade-in-value-miami-guide-embed-Wired.html": "5107ee5333f0fc4f",
     "package/honda-trade-in-value-miami-guide-SEO.md": "f5c48a645a45a7a5",
-    "package/README.md": "695dbe5b9720ac6d"
+    "package/README.md": "4edd9072862bcfec"
    },
    "gates": [
     "  ✅ JSON-LD parses: 3 nodes",
@@ -478,11 +478,11 @@
   },
   "mercedes-benz-midlothian|sales|final": {
    "files": {
-    "HANDOFF.md": "959a518296885237",
+    "HANDOFF.md": "8506daf721825f45",
     "honda-trade-in-value-miami-guide-preview.html": "e02b7da7b26b5f52",
     "package/honda-trade-in-value-miami-guide-embed-Wired.html": "5107ee5333f0fc4f",
     "package/honda-trade-in-value-miami-guide-SEO.md": "f5c48a645a45a7a5",
-    "package/README.md": "5a119f5960623c32"
+    "package/README.md": "70ebec29e8f0ca90"
    },
    "gates": [
     "  ✅ JSON-LD parses: 3 nodes",
@@ -530,11 +530,11 @@
   },
   "mercedes-benz-midlothian|service|draft": {
    "files": {
-    "HANDOFF.md": "8fb7d1c0e605811b",
+    "HANDOFF.md": "0c31af399cf8db9c",
     "honda-trade-in-value-miami-guide-preview.html": "e82f07d2032148b5",
     "package/honda-trade-in-value-miami-guide-embed-Wired.html": "2fb371f4ca3bb058",
     "package/honda-trade-in-value-miami-guide-SEO.md": "f5c48a645a45a7a5",
-    "package/README.md": "695dbe5b9720ac6d"
+    "package/README.md": "4edd9072862bcfec"
    },
    "gates": [
     "  ✅ JSON-LD parses: 3 nodes",
@@ -582,11 +582,11 @@
   },
   "mercedes-benz-midlothian|service|final": {
    "files": {
-    "HANDOFF.md": "959a518296885237",
+    "HANDOFF.md": "8506daf721825f45",
     "honda-trade-in-value-miami-guide-preview.html": "e82f07d2032148b5",
     "package/honda-trade-in-value-miami-guide-embed-Wired.html": "2fb371f4ca3bb058",
     "package/honda-trade-in-value-miami-guide-SEO.md": "f5c48a645a45a7a5",
-    "package/README.md": "5a119f5960623c32"
+    "package/README.md": "70ebec29e8f0ca90"
    },
    "gates": [
     "  ✅ JSON-LD parses: 3 nodes",
@@ -634,11 +634,11 @@
   },
   "mercedes-benz-richmond|sales|draft": {
    "files": {
-    "HANDOFF.md": "b41777b3895d27bb",
+    "HANDOFF.md": "2707246e449decf5",
     "honda-trade-in-value-miami-guide-preview.html": "a47f9abccc68c1a1",
     "package/honda-trade-in-value-miami-guide-embed-Wired.html": "a4869f0804e5fc8a",
     "package/honda-trade-in-value-miami-guide-SEO.md": "4b4b7c6aee482b22",
-    "package/README.md": "30e5510f08962477"
+    "package/README.md": "feb3dbf03381b7e8"
    },
    "gates": [
     "  ✅ JSON-LD parses: 3 nodes",
@@ -686,11 +686,11 @@
   },
   "mercedes-benz-richmond|sales|final": {
    "files": {
-    "HANDOFF.md": "51788228951168b6",
+    "HANDOFF.md": "743660e133ddec63",
     "honda-trade-in-value-miami-guide-preview.html": "a47f9abccc68c1a1",
     "package/honda-trade-in-value-miami-guide-embed-Wired.html": "a4869f0804e5fc8a",
     "package/honda-trade-in-value-miami-guide-SEO.md": "4b4b7c6aee482b22",
-    "package/README.md": "36b3955713baddfb"
+    "package/README.md": "34fad20151a02f56"
    },
    "gates": [
     "  ✅ JSON-LD parses: 3 nodes",
@@ -738,11 +738,11 @@
   },
   "mercedes-benz-richmond|service|draft": {
    "files": {
-    "HANDOFF.md": "b41777b3895d27bb",
+    "HANDOFF.md": "2707246e449decf5",
     "honda-trade-in-value-miami-guide-preview.html": "657bed1879706dde",
     "package/honda-trade-in-value-miami-guide-embed-Wired.html": "fb188f8c3d144535",
     "package/honda-trade-in-value-miami-guide-SEO.md": "4b4b7c6aee482b22",
-    "package/README.md": "30e5510f08962477"
+    "package/README.md": "feb3dbf03381b7e8"
    },
    "gates": [
     "  ✅ JSON-LD parses: 3 nodes",
@@ -790,11 +790,11 @@
   },
   "mercedes-benz-richmond|service|final": {
    "files": {
-    "HANDOFF.md": "51788228951168b6",
+    "HANDOFF.md": "743660e133ddec63",
     "honda-trade-in-value-miami-guide-preview.html": "657bed1879706dde",
     "package/honda-trade-in-value-miami-guide-embed-Wired.html": "fb188f8c3d144535",
     "package/honda-trade-in-value-miami-guide-SEO.md": "4b4b7c6aee482b22",
-    "package/README.md": "36b3955713baddfb"
+    "package/README.md": "34fad20151a02f56"
    },
    "gates": [
     "  ✅ JSON-LD parses: 3 nodes",
@@ -842,11 +842,11 @@
   },
   "mercedes-benz-vans-laguna-niguel|sales|draft": {
    "files": {
-    "HANDOFF.md": "eda8d3b3d710d8f0",
+    "HANDOFF.md": "b78df55ad3e53d2c",
     "honda-trade-in-value-miami-guide-preview.html": "388ae3df567d61b7",
     "package/honda-trade-in-value-miami-guide-embed-Wired.html": "a10194eae94c5697",
     "package/honda-trade-in-value-miami-guide-SEO.md": "66b8aea182d0d6e5",
-    "package/README.md": "2711c3a310881a41"
+    "package/README.md": "b541da6b4cdf6f7f"
    },
    "gates": [
     "  ✅ JSON-LD parses: 3 nodes",
@@ -894,11 +894,11 @@
   },
   "mercedes-benz-vans-laguna-niguel|sales|final": {
    "files": {
-    "HANDOFF.md": "369dbf30a1f64a4d",
+    "HANDOFF.md": "d53575e90c4f9f6c",
     "honda-trade-in-value-miami-guide-preview.html": "388ae3df567d61b7",
     "package/honda-trade-in-value-miami-guide-embed-Wired.html": "a10194eae94c5697",
     "package/honda-trade-in-value-miami-guide-SEO.md": "66b8aea182d0d6e5",
-    "package/README.md": "4ef8619fb6350716"
+    "package/README.md": "831405a2ce44e5ef"
    },
    "gates": [
     "  ✅ JSON-LD parses: 3 nodes",
@@ -946,11 +946,11 @@
   },
   "mercedes-benz-vans-laguna-niguel|service|draft": {
    "files": {
-    "HANDOFF.md": "eda8d3b3d710d8f0",
+    "HANDOFF.md": "b78df55ad3e53d2c",
     "honda-trade-in-value-miami-guide-preview.html": "b8bfe8009f88c7d9",
     "package/honda-trade-in-value-miami-guide-embed-Wired.html": "526f062e5c1c6a00",
     "package/honda-trade-in-value-miami-guide-SEO.md": "66b8aea182d0d6e5",
-    "package/README.md": "2711c3a310881a41"
+    "package/README.md": "b541da6b4cdf6f7f"
    },
    "gates": [
     "  ✅ JSON-LD parses: 3 nodes",
@@ -998,11 +998,11 @@
   },
   "mercedes-benz-vans-laguna-niguel|service|final": {
    "files": {
-    "HANDOFF.md": "369dbf30a1f64a4d",
+    "HANDOFF.md": "d53575e90c4f9f6c",
     "honda-trade-in-value-miami-guide-preview.html": "b8bfe8009f88c7d9",
     "package/honda-trade-in-value-miami-guide-embed-Wired.html": "526f062e5c1c6a00",
     "package/honda-trade-in-value-miami-guide-SEO.md": "66b8aea182d0d6e5",
-    "package/README.md": "4ef8619fb6350716"
+    "package/README.md": "831405a2ce44e5ef"
    },
    "gates": [
     "  ✅ JSON-LD parses: 3 nodes",

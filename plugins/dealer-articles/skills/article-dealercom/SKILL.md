@@ -61,11 +61,12 @@ Only the points below differ. Where they conflict with the Apollo skill, this fi
    - The site header may show call-tracking numbers, and the site's own schema may list another number: the dealer file wins.
    - The JSON-LD uses the same numbers. The build fails when a phone number in the block differs from the dealer file.
 8. **URL and existing page check (Phase 2).**
-   - Articles are **content pages with a Custom HTML component**, never blog posts (`/blog/…` or `wbp-` blog-roll posts). `DA new` sets the URL from the dealer file (`ddc.contentPath`). Keep slugs short (3–8 words, keyword + city).
+   - Articles are **content pages with a Custom HTML component** at the stores' live article pattern `/wbp-<slug>.htm` (listed on the store's blog roll), never native `/blog/…` posts. `DA new` sets the URL from the dealer file (`ddc.contentPath`). Keep slugs short (3–8 words, keyword + city).
+   - If the team reports that Dealer.com gave the page another URL, set `path` in `module.js` to the real one and rebuild before they publish: the JSON-LD `url` and `@id`s must match the live URL.
    - Search the dealer sitemap for the same intent. A content page with a Custom HTML component can be **refreshed in place at the same URL** (re-paste); a redirect needs a Dealer.com support ticket. Recommend refreshing in place when the intent matches.
    - If the matching page is a blog post, ⛔ ask: a new content page (recommended; ask Dealer.com support for a 301 from the old URL) · a new angle (state it) · stop.
 9. **MetaData fields.** The Dealer.com **MetaData Editor** has only **Title** and **Description**.
-   - `title` = the MetaData Title (50–65 characters), written **without the dealer name**: Dealer.com appends the site name to page titles. The title is checked on the live page.
+   - `title` = the MetaData Title (50–65 characters), written without the dealer name. Dealer.com shows a filled Title unchanged; an empty one falls back to the page name + the dealer name, so the team must always enter it. The title is checked on the live page.
    - `meta` = the MetaData Description (130–165).
    - There are no canonical, robots, OG or Twitter fields. Never add head tags to the block; the hero lives in the schema.
 10. **Phase 7: deliver.** `DA build "<job>" --final` when every article image has this store's Media Library URL. The package (`<job>/package/`) contains:

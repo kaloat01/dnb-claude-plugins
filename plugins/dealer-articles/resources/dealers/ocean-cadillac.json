@@ -1,0 +1,255 @@
+{
+  "key": "ocean-cadillac",
+  "prefix": "ocad",
+  "platform": "dealercom",
+  "name": "Ocean Cadillac",
+  "aliases": [
+    "ocean cadillac",
+    "ocean cadillac miami",
+    "oceancadillac",
+    "cadillac ocean",
+    "ocad"
+  ],
+  "brand": "Cadillac",
+  "brandShort": "Cadillac",
+  "group": "Murgado Automotive Group",
+  "domain": "https://www.oceancadillac.com",
+  "address": {
+    "street": "17800 Ipco Rd",
+    "city": "Miami",
+    "region": "FL",
+    "zip": "33162",
+    "country": "US"
+  },
+  "geo": [
+    25.9387,
+    -80.1955
+  ],
+  "departments": {
+    "service": {
+      "label": "Service",
+      "phone": "786-708-8318",
+      "cta": {
+        "label": "Schedule Service",
+        "href": "/schedule_service.htm"
+      },
+      "hours": [
+        [
+          [
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday"
+          ],
+          "07:30",
+          "19:00"
+        ],
+        [
+          [
+            "Saturday"
+          ],
+          "08:00",
+          "16:00"
+        ]
+      ]
+    },
+    "sales": {
+      "label": "Sales",
+      "phone": "786-708-8302",
+      "cta": {
+        "label": "Value Your Trade",
+        "href": "/tools/accu-trade/value-trade.htm"
+      },
+      "hours": [
+        [
+          [
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday"
+          ],
+          "09:00",
+          "19:30"
+        ],
+        [
+          [
+            "Friday"
+          ],
+          "09:00",
+          "19:00"
+        ],
+        [
+          [
+            "Saturday"
+          ],
+          "09:00",
+          "18:00"
+        ],
+        [
+          [
+            "Sunday"
+          ],
+          "11:00",
+          "17:00"
+        ]
+      ]
+    },
+    "parts": {
+      "label": "Parts",
+      "phone": "786-321-3090",
+      "cta": {
+        "label": "Request a Part",
+        "href": "/parts/index.htm"
+      },
+      "hours": [
+        [
+          [
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday"
+          ],
+          "07:30",
+          "19:00"
+        ],
+        [
+          [
+            "Saturday"
+          ],
+          "08:00",
+          "16:00"
+        ]
+      ]
+    }
+  },
+  "routes": {
+    "directions": "/dealership/directions.htm",
+    "contact": "/contact.htm",
+    "about": "/dealership/about.htm",
+    "serviceHub": "/service/service-center.htm",
+    "specials": "/promotions/service/index.htm",
+    "scheduleService": "/schedule_service.htm",
+    "parts": "/parts/index.htm",
+    "newInventory": "/new-inventory/index.htm",
+    "usedInventory": "/used-inventory/index.htm",
+    "cpoInventory": "/certified-inventory/index.htm",
+    "vehicleSpecials": "/new-vehicle-specials.htm",
+    "financing": "/financing/center.htm",
+    "valueYourTrade": "/tools/accu-trade/value-trade.htm"
+  },
+  "areas": [
+    "Miami",
+    "North Miami Beach",
+    "Aventura",
+    "Sunny Isles Beach",
+    "Miami Gardens",
+    "Golden Glades",
+    "Hialeah"
+  ],
+  "excluded": [],
+  "climate": "Hot, humid South Florida: strong sun, heat, heavy rain, hurricane season and flood risk. No snow, road salt or winter driving.",
+  "bans": [
+    "best price",
+    "lowest price",
+    "top dollar",
+    "guaranteed",
+    "certified technician",
+    "factory-trained",
+    "snow",
+    "road salt",
+    "winter",
+    "price match",
+    "guarantee",
+    "Cadillac Certified Service",
+    "Cadillac Certified Technician",
+    "Cadillac Certified Advisor",
+    "GM Genuine Parts",
+    "Cadillac Premium Care",
+    "Mopar",
+    "bproauto"
+  ],
+  "brandNaming": [
+    "Write the electric model names in capitals, as cadillac.com does: LYRIQ, LYRIQ-V, OPTIQ, OPTIQ-V, VISTIQ, CELESTIQ (never \"Lyriq\" or \"Optiq\")",
+    "Escalade IQ and Escalade IQL: always capitalize \"IQ\" / \"IQL\" (cadillac.com: \"2026 Escalade IQ\", \"ESCALADE IQL\")",
+    "V-Series models take a hyphen: CT4-V, CT5-V, Escalade-V, LYRIQ-V, OPTIQ-V; \"Blackwing\" only for the CT4-V and CT5-V Blackwing",
+    "XT4 (last model year 2025, inventory search only on cadillac.com) and XT6 (not listed on cadillac.com) are no longer sold new: never present them as current new models",
+    "Name ACDelco products (ACDelco, ACDelco Gold, ACDelco GM OE dexos 1) only where the dealer offer source states them; never write \"GM Genuine Parts\", \"Cadillac Certified Service\" or \"Cadillac Premium Care\" (dealer rule)",
+    "Call the pickup service \"Premium Pickup & Delivery\", as the live site does",
+    "Service is closed on Sunday: never say service is open 7 days a week",
+    "Do not mention Mobile Service+ or loaner/courtesy vehicles until the dealer confirms them (on hold in the project files, although live pages exist)"
+  ],
+  "style": {
+    "linkColor": "#111111",
+    "linkHover": "#000000",
+    "linkUnderline": true,
+    "importantWaiver": true,
+    "exceptions": [
+      {
+        "rule": "!important on CTA background, color and border-color (and on centering: text-align:center, margin:0 auto, justify-content:center)",
+        "source": "DEALERCOM_CUSTOM_HTML_QA_NOTES.md §10b-§10c (Ocean Cadillac hub, live 08/26/2026): the DDC oem-cadillac a/button theme strips custom fills and left-aligns blocks, so fills and centering need !important. The QA notes win over design.json \"never !important on color\" (adapter plan §2)."
+      }
+    ],
+    "fonts": {
+      "head": "\"DDC Heading Font Face\",Georgia,\"Times New Roman\",serif",
+      "body": "\"DDC Body Font Face\",\"Helvetica Neue\",Helvetica,Arial,sans-serif",
+      "import": false
+    },
+    "radius": 0
+  },
+  "ddc": {
+    "media": "https://pictures.dealer.com/o/oceancadillacgm/",
+    "orgId": null,
+    "titleSuffix": null,
+    "aboutPath": "/dealership/about.htm",
+    "contentPath": "/wbp-<slug>.htm",
+    "socialTags": "DDC writes og:title (= the full <title>), og:type \"website\" and og:url (the requested URL) on every page, plus a canonical link. Content pages built with the Custom HTML component (/wbp-*.htm, /promotions/service/*.htm) carry no og:image, no og:description and no meta description live. Pages whose MetaData Description is filled emit one combined <meta name=\"description\" property=\"og:description\">; the native blog post also gets og:image from its featured image. No twitter: tags on any page."
+  },
+  "images": {
+    "STORE": {
+      "ddc": "https://pictures.dealer.com/o/oceancadillacgm/1234/1bad06f40a324687914681f6eecda4bd.jpg",
+      "alt": "Ocean Cadillac dealership at 17800 Ipco Road in Miami: white showroom with the Cadillac crest and script sign, a glass corner and palm trees",
+      "w": 1920,
+      "h": 1280,
+      "desc": "Ocean Cadillac storefront, elevated view: white showroom, color Cadillac crest and script sign, glass corner, palms, highway behind"
+    },
+    "LOGO": {
+      "ddc": "https://pictures.dealer.com/o/oceancadillacgm/1234/c12c2d89dfe944669b853b8ad43b717f.jpg",
+      "alt": "Ocean Cadillac logo with the Cadillac crest",
+      "w": 622,
+      "h": 102,
+      "desc": "Monochrome Cadillac crest + \"OCEAN CADILLAC\" wordmark lockup, black artwork on a white JPEG background (no transparency)"
+    }
+  },
+  "verify": [
+    "First Dealer.com article with the v0.12 block: if Dealer.com gives the page a different URL than the URL line, send the real URL back before publishing (the structured data uses it); confirm the block, its styles and the JSON-LD survive publishing."
+  ],
+  "lastVerified": "2026-10-12",
+  "sourcesNote": "Internal provenance for maintainers; colleagues do not need these files. Live checks via the Firecrawl CLI (US location, cache-busted) on 2026-10-12.",
+  "sources": [
+    "https://www.oceancadillac.com/dealership/about.htm (US geo, 2026-10-12): 17800 Ipco Rd, Miami, FL 33162; header Contact (786) 708-8302, Service (786) 708-8318, Parts (786) 321-3090; contact widget \"Sales: (786) 708-8302\"; showroom hours Mon-Thu 9:00 AM-7:30 PM, Fri 9:00 AM-7:00 PM, Sat 9:00 AM-6:00 PM, Sun 11:00 AM-5:00 PM; \"member of the Murgado Automotive Group since 2014\"",
+    "https://www.oceancadillac.com/dealership/directions.htm (US geo, 2026-10-12): department hours: Service and Parts Mon-Fri 7:30 AM-7:00 PM, Sat 8:00 AM-4:00 PM, Sun closed; Dealership (sales) hours as above; body copy number (786) 220-2297",
+    "Same three header numbers on all 33 captured pages (2026-10-12), no rotation seen; site-wide AutoDealer JSON-LD: no @id, telephone +1-786-321-3090, geo 25.9387/-80.1955, sales openingHours, areaServed Miami/Hialeah/Kendall/Coral Gables (not copied); homepage variant is an AutomotiveBusiness node with Parts/Service/Sales departments and no areaServed",
+    "Routes checked live 2026-10-12 (all 200, final URL unchanged unless noted): /dealership/directions.htm, /contact.htm, /dealership/about.htm, /service/service-center.htm, /promotions/service/index.htm, /schedule_service.htm, /parts/index.htm, /new-inventory/index.htm, /used-inventory/index.htm, /certified-inventory/index.htm, /new-vehicle-specials.htm (live lease/APR offers; /dealer-specials.htm redirects here), /financing/center.htm, /tools/accu-trade/value-trade.htm; /service/index.htm and /service/scheduler.htm redirect to /schedule_service.htm",
+    "Theme (2026-10-12): first <head> style block declares @font-face \"DDC Body Font Face\" (cadillac-gothic-narrow-regular), \"DDC Heading Font Face\" (cadillac-gothic-regular) and CadillacGothic-WideRegular; /static/dist/v9/variations/oem-cadillac/0002/v1/css/dark-gray_white.css sets body {font-family:\"DDC Body Font Face\",Arial,...} and h1-h6 {font-family:\"DDC Heading Font Face\",Arial,...; font-weight:400}; --link-color = --btn-link-color = #000, underline on hover only; --btn-border-radius-* 0",
+    "Article-like pages (2026-10-12): /wbp-2026-cadillac-escalade-iq-vs-escalade-miami.htm and /wbp-cadillac-oil-life-system-maintenance-miami.htm (shell H1 = page name; title = page name + \" | Ocean Cadillac\"); native blog post /blog/2026/february/27/seven-features-that-make-your-ride-unforgettable-in-the-2026-xt5.htm",
+    "https://www.oceancadillac.com/sitemap.xml (2026-10-12, 331 URLs): sitemap snapshot",
+    "https://www.cadillac.com/ (US, 2026-10-12): lineup and name casing (LYRIQ, OPTIQ, VISTIQ, ESCALADE IQ/IQL, -V models); XT4 shown as 2025 with inventory search only; no XT6; CT4 and CT5 sold as 2026",
+    "OceanCadillac/design.json (fonts, monochrome + ink #111, 0px radius, gold #B49A6A PROPOSED, service brand rules, local areas), SALES_ARTICLES/2026.10.09-DEALERCOM-ADAPTER-PLAN.md §2/§9, DEALERCOM_CUSTOM_HTML_QA_NOTES.md §10, OceanCadillac/Blog/CHANGELOG-2026.08-blog-rewrite.md"
+  ],
+  "maintainerNotes": [
+    "Phones: About Us (US location) shows Contact/Sales (786) 708-8302, Service (786) 708-8318 and Parts (786) 321-3090. The site-wide JSON-LD lists (786) 321-3090 (the Parts number) as the main telephone, the Contact and Hours & Directions body copy says to call (786) 220-2297, and the Google listing number (786) 699-8626 was not seen on the site. No mainPhone is set; confirm the main line before showing one.",
+    "No general test-drive page exists; only /ev-test-drive-cadillac.htm (EVs only: ESCALADE IQ, VISTIQ, LYRIQ, OPTIQ). It is not set as a route; use it only in EV articles.",
+    "Service hub: /service/index.htm (linked as \"Service Center\" on About Us) redirects to /schedule_service.htm, so routes.serviceHub uses /service/service-center.htm. Confirm the page the dealer wants as the service hub.",
+    "Article URL: the two live Ocean articles are content pages at /wbp-<slug>.htm; the native DDC blog uses /blog/YYYY/month/D/<slug>.htm; the 08/18 decision prefers root /<slug>.htm without \"wbp-\". Confirm before the first new article.",
+    "Meta descriptions are missing live on all four pasted pages checked (/promotions/service/index.htm, /promotions/service/oil-filter-change-package.htm and both /wbp- articles). Confirm the MetaData Editor Description actually saves.",
+    "Title: DDC appends \" | Ocean Cadillac\" to child-page titles. The oil-package page name itself ends in \"| Ocean Cadillac\", so its H1 shows the dealer name and its title shows it twice. Enter the page name and Title without the dealer name.",
+    "Mobile Service+ and loaners are on hold in the project files, but the live site has /cadillac-mobile-service-plus.htm and /courtesy-transportation-vehicle.htm, and the Premium Pickup & Delivery page offers courtesy vehicles. Confirm before mentioning either.",
+    "Group: About Us says Ocean Cadillac has been a member of the Murgado Automotive Group since 2014, and the building carries the group sign; the 08/2026 articles still hold the group name pending sign-off. Confirm it may be named in article copy.",
+    "The Media Library has no confirmed current-design (model year 2025 or later) gas Escalade or Escalade ESV photo; request one for gas Escalade articles.",
+    "The logo is a JPEG on white (no transparent or white version found); place it on a white area only.",
+    "Decided 10/12: article URL follows the live pattern /wbp-<slug>.htm; links ink #111 with underline (project decision), square corners; fonts = theme faces (Cadillac Gothic / Gothic Narrow) per the \"theme fonts\" default; the group is named (About Us states membership since 2014).",
+    "Dealer.com shows the MetaData Title unchanged; only an empty field falls back to the page name + the dealer name (checked live on Brickell CDJR pages, 2026-10-12)."
+  ]
+}

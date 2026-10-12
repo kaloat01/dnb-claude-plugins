@@ -455,6 +455,8 @@ ${sel('a.~-btn-outline', 'a.~-btn-outline:hover', 'a.~-btn-outline:focus')}{back
 ${sel('a.~-btn-white', 'a.~-btn-white:hover', 'a.~-btn-white:focus')}{background:#ffffff!important;border-color:#ffffff!important;color:#111111!important;-webkit-text-fill-color:#111111!important}
 ${sel('a.~-btn-ghost', 'a.~-btn-ghost:hover', 'a.~-btn-ghost:focus')}{background:transparent!important;border-color:rgba(255,255,255,0.55)!important;color:#ffffff!important;-webkit-text-fill-color:#ffffff!important}
 ${sel('.~-closer-phone a', '.~-closer-phone a:hover')}{color:#ffffff!important;-webkit-text-fill-color:#ffffff!important}
+${sel('h2', 'h3')}{text-transform:none!important}
+${sel('a.~-more-link', 'a.~-more-link:hover', '.~-toc a', '.~-toc a:hover')}{text-decoration:none!important}
 `;
 }
 /* phone + hours helper for DealerInspire shortcode output (no tracking): [di_option] prints a plain number → tel: link;
@@ -1032,14 +1034,15 @@ ${inner}
     const seoMd = `# ${mod.slug}: Dealer.com page fields, ${D.name}\n\n`
       + Object.entries(seo).map(([k, v]) => fl(k, v)).join('')
       + fl('Canonical, Open Graph, Twitter', 'no fields in the MetaData Editor: leave them (the hero is in the article schema)')
-      + `\nType the MetaData Title exactly as written${ddc.titleSuffix ? `: Dealer.com adds "${ddc.titleSuffix.trim()}" itself` : ', without the dealer name: Dealer.com may add the site name (check the browser tab after publishing)'}.\n`;
+      + (ddc.titleSuffix ? `\nType the MetaData Title exactly as written: Dealer.com adds "${ddc.titleSuffix.trim()}" itself.\n`
+        : `\nType the MetaData Title and Description exactly as written and never leave them empty: Dealer.com shows the Title unchanged, and an empty Title falls back to the page name + the dealer name (an empty Description leaves the page with no meta description).\n`);
     fs.writeFileSync(o.seo, seoMd);
     const used2 = Object.entries(images).filter(([k, v]) => v && used.has(k)).map(([k, v]) => `- ${k}: ${v.apollo || 'MISSING Dealer.com Media Library URL (placeholder)'}${v.desc ? ` · ${v.desc}` : ''}`).join('\n');
-    const steps = `1. Dealer.com → create a new **content page**. Page name: the "Page name" line in \`${path.basename(o.seo)}\` (Dealer.com shows it as the page H1). URL: ${url}. Leave it out of the site navigation unless the dealer asks.\n`
+    const steps = `1. Dealer.com → create a new **content page**. Page name: the "Page name" line in \`${path.basename(o.seo)}\` (Dealer.com shows it as the page H1). URL: ${url}. Leave it out of the site navigation unless the dealer asks. If Dealer.com gives the page a different URL, send that URL back before publishing: the article's structured data must use the real one.\n`
       + `2. Add one full-width **Custom HTML** component. Open \`${path.basename(o.paste)}\` in Notepad, press **Ctrl+A**, copy, paste it into the component and save. "Tag must be paired, missing: [ </div> ]" means the copy was cut short: copy again with Ctrl+A.\n`
       + `3. **MetaData Editor** → Title and Description from \`${path.basename(o.seo)}\`, typed exactly.\n`
       + `4. **Publish.**\n`
-      + `5. **Checks** (open the URL with ?cb=<anything>): exactly one H1 (the page name); images load; the black buttons are filled (not outlines) and their labels fit; the dark closing band is centered; phone numbers are links; FAQ items open; the browser tab shows the dealer name once; Google's Rich Results Test detects Article + FAQ.\n`;
+      + `5. **Checks** (open the URL with ?cb=<anything>): exactly one H1 (the page name); images load; the black buttons are filled (not outlines) and their labels fit; the dark closing band is centered; phone numbers are links; FAQ items open; the browser tab shows the MetaData Title and the page source has the new meta description; Google's Rich Results Test detects Article + FAQ.\n`;
     fs.writeFileSync(o.readme, `# ${mod.slug}: Dealer.com paste steps (${D.name})\n\n` + draftNote + steps
       + `\nPhones and hours: real numbers and hours from the dealer file (Dealer.com has no phone or hours token); the JSON-LD uses the same numbers.\n\nImages (Dealer.com Media Library URLs):\n${used2}\n` + builtWith);
     return { ddcOut: o, paste: pasteText, diSeo: seo, seoMd, steps };

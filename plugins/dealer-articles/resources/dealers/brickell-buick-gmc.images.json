@@ -1,0 +1,260 @@
+{
+  "dealer": "brickell-buick-gmc",
+  "generated": "2026-10-12",
+  "note": "Images already in this dealer's Dealer.com Media Library (pictures.dealer.com URLs, each verified 200 + image/* on 2026-10-12). Reuse before asking for new uploads. View before use; match the article's model year. Never reuse an image marked \"outdated\": true (older vehicle design; reason in outdatedWhy). Checked 2026-10-12.",
+  "images": [
+    {
+      "ddc": "https://pictures.dealer.com/b/brickellbuickgmcgm/1234/a73d92fd7dfe4135abfd45ee0c413723.jpg",
+      "w": 2500,
+      "h": 1970,
+      "shows": "Brickell Buick GMC storefront on SW 8th St at dusk: tall Buick, GMC and Brickell pylon, white building with a glass showroom, a row of royal palms, downtown towers behind; customer cars parked along the curb",
+      "vehicle": null,
+      "text": false,
+      "slots": [
+        "store",
+        "hero",
+        "fig",
+        "pair"
+      ],
+      "tags": [
+        "storefront",
+        "city"
+      ]
+    },
+    {
+      "ddc": "https://pictures.dealer.com/b/brickellbuickgmcgm/1234/0e0557ba86ae4045b5a20c55ce77826a.png",
+      "w": 1080,
+      "h": 1080,
+      "shows": "Brickell Buick & GMC logo: red and blue swoosh oval around \"BRICKELL\" and \"Buick & GMC\" in blue lettering; transparent PNG, color artwork, square canvas with wide empty margins",
+      "vehicle": null,
+      "text": true,
+      "slots": [
+        "logo"
+      ],
+      "tags": []
+    },
+    {
+      "ddc": "https://pictures.dealer.com/b/brickellbuickgmcgm/1234/cdaa4c77593c4333bce9e25b21c92ef1.png",
+      "w": 1806,
+      "h": 1227,
+      "shows": "The dealership's own service entrance on SW 8th St: white building with a \"Certified Service\" sign over the open drive-through service lane, palms and blue sky; a passer-by and two curbside cars at the edges",
+      "vehicle": null,
+      "text": false,
+      "slots": [
+        "fig",
+        "pair"
+      ],
+      "tags": [
+        "storefront",
+        "service-bay",
+        "city"
+      ],
+      "avoid": "File name ends in .png but the file is a JPEG (served as image/jpeg)"
+    },
+    {
+      "ddc": "https://pictures.dealer.com/b/brickellbuickgmcgm/1234/4c34dd894e7644c1912c8c46e32a3ff2.jpg",
+      "w": 2000,
+      "h": 1000,
+      "shows": "Back view of a technician in safety glasses, jacket lettered \"Certified Service\", working on a Buick alloy wheel and tire; blue Buick body at left",
+      "vehicle": null,
+      "text": false,
+      "slots": [
+        "hero",
+        "fig",
+        "pair"
+      ],
+      "tags": [
+        "technician",
+        "service-bay",
+        "tires"
+      ]
+    },
+    {
+      "ddc": "https://pictures.dealer.com/b/brickellbuickgmcgm/1234/4752d8f82ccb4cae94c0e069798951d1.jpg",
+      "w": 2000,
+      "h": 1000,
+      "shows": "Technician in safety glasses and gloves inspecting the underbody of a lifted SUV with a flashlight, a tire at each edge, bright shop windows behind",
+      "vehicle": null,
+      "text": false,
+      "slots": [
+        "hero",
+        "fig",
+        "pair"
+      ],
+      "tags": [
+        "technician",
+        "service-bay"
+      ]
+    },
+    {
+      "ddc": "https://pictures.dealer.com/b/brickellbuickgmcgm/1234/5fb84939fc374cca8c2448b3520c1cf2.jpg",
+      "w": 1200,
+      "h": 750,
+      "shows": "Technician kneeling at a Buick multi-spoke alloy wheel on a gray SUV in a dim service bay; sleeve patches read \"GM Certified Master Technician\" and \"World Class Technician\"",
+      "vehicle": null,
+      "text": true,
+      "slots": [
+        "fig",
+        "pair"
+      ],
+      "tags": [
+        "technician",
+        "tires",
+        "service-bay"
+      ],
+      "avoid": "The credential patches are not an approved claim for this store: never caption or describe the technician as a master or certified technician"
+    },
+    {
+      "ddc": "https://pictures.dealer.com/b/brickellbuickgmcgm/1234/5eb56e86775b4e2685986f3a5ffb1c98.jpg",
+      "w": 1024,
+      "h": 683,
+      "shows": "Technician in a gray uniform and safety glasses pulling the oil dipstick from a V8 engine under an open maroon hood; a dark GMC pickup on a lift behind",
+      "vehicle": null,
+      "text": false,
+      "slots": [
+        "pair"
+      ],
+      "tags": [
+        "technician",
+        "oil",
+        "service-bay"
+      ]
+    },
+    {
+      "ddc": "https://pictures.dealer.com/b/brickellbuickgmcgm/1234/424b9d9eba35448c84168752792b2af6.jpg",
+      "w": 2000,
+      "h": 1000,
+      "shows": "Technician in a gray \"Certified Service\" shirt mounting a wheel on a lifted blue Buick Encore GX in a bright service bay; a silver Buick behind",
+      "vehicle": "2020-2023 Buick Encore GX (pre-facelift)",
+      "text": false,
+      "slots": [
+        "hero",
+        "fig",
+        "pair"
+      ],
+      "tags": [
+        "technician",
+        "service-bay",
+        "tires",
+        "vehicle-exterior"
+      ],
+      "outdated": true,
+      "outdatedWhy": "Pre-facelift Encore GX front end and ringed Buick badge (MY2020-2023); new front design and badge since MY2024"
+    },
+    {
+      "ddc": "https://pictures.dealer.com/b/brickellbuickgmcgm/1234/e795643a26544b34a181973fd77c33fa.jpg",
+      "w": 1200,
+      "h": 900,
+      "shows": "Service advisor in a white GMC shirt showing a tablet to a female customer beside the rear of a dark gray GMC Terrain in a service drive",
+      "vehicle": "2018-2024 GMC Terrain (2nd gen)",
+      "text": false,
+      "slots": [
+        "fig",
+        "pair"
+      ],
+      "tags": [
+        "people",
+        "service-bay",
+        "vehicle-exterior"
+      ],
+      "avoid": "GM stock photo: the advisor is not a Brickell Buick GMC employee and the license plate is readable",
+      "outdated": true,
+      "outdatedWhy": "Second-generation Terrain (last MY2024); all-new third generation since MY2025"
+    },
+    {
+      "ddc": "https://pictures.dealer.com/b/brickellbuickgmcgm/1234/84b4cdbbf1c040bca081868f2483b9ea.jpg",
+      "w": 2500,
+      "h": 1667,
+      "shows": "White Buick Envista Avenir in side profile (\"Avenir\" script on the front door) beside a gray modern building; a woman in a light-blue suit walks past",
+      "vehicle": "2024+ Buick Envista Avenir",
+      "text": false,
+      "slots": [
+        "hero",
+        "fig",
+        "pair"
+      ],
+      "tags": [
+        "vehicle-exterior",
+        "people"
+      ]
+    },
+    {
+      "ddc": "https://pictures.dealer.com/b/brickellbuickgmcgm/1234/c4e98501e3c74952bb04a8cc40908159.jpg",
+      "w": 2500,
+      "h": 1876,
+      "shows": "Man in a suit driving a Buick under an open sunroof: curved dual-screen dash display, new-style Buick badge on the steering wheel, brown and black trim, trees outside",
+      "vehicle": "Current-design Buick, likely the 2024+ Envista (same GM photo set as the Envista Avenir exterior; model not badged in frame)",
+      "text": false,
+      "slots": [
+        "hero",
+        "fig",
+        "pair"
+      ],
+      "tags": [
+        "interior",
+        "people"
+      ]
+    },
+    {
+      "ddc": "https://pictures.dealer.com/b/brickellbuickgmcgm/1234/77745a4425424b65aa00bce26b4423d2.jpg",
+      "w": 2000,
+      "h": 1125,
+      "shows": "Front three-quarter close-up of a dark gray Buick Encore GX on a coastal road at dusk: slim LED light signature, new Buick badge on the hood, chrome-framed mesh grille",
+      "vehicle": "2024+ Buick Encore GX (facelift; the live page alt calls it Avenir)",
+      "text": false,
+      "slots": [
+        "hero",
+        "fig",
+        "pair"
+      ],
+      "tags": [
+        "vehicle-exterior",
+        "road"
+      ]
+    },
+    {
+      "ddc": "https://pictures.dealer.com/b/brickellbuickgmcgm/1234/d119a4ae2cbc42e0834ccc75c5a07b20.jpg",
+      "w": 1000,
+      "h": 550,
+      "shows": "Gray GMC Terrain, front three-quarter, on a grassy hillside with forested mountains behind",
+      "vehicle": "2025+ GMC Terrain (3rd gen)",
+      "text": false,
+      "slots": [
+        "pair"
+      ],
+      "tags": [
+        "vehicle-exterior"
+      ]
+    },
+    {
+      "ddc": "https://pictures.dealer.com/b/brickellbuickgmcgm/1234/c1e2e8222b1a4de597afa8d90e1ef79e.jpg",
+      "w": 1000,
+      "h": 550,
+      "shows": "Rear of a dark blue GMC Yukon with the liftgate open in a desert canyon: second and third rows folded flat, rear-seat screens and a large center touchscreen visible",
+      "vehicle": "2025+ GMC Yukon (refreshed design; the live page alt says 2026)",
+      "text": false,
+      "slots": [
+        "pair"
+      ],
+      "tags": [
+        "vehicle-exterior",
+        "interior"
+      ]
+    },
+    {
+      "ddc": "https://pictures.dealer.com/b/brickellbuickgmcgm/1234/874e018bd4d54aa68161e346afafc126.jpg",
+      "w": 1000,
+      "h": 550,
+      "shows": "Close crop of a red GMC Canyon AT4X front corner fording a rocky stream: \"AT4X\" door badge, front bull bar and skid plate, off-road tires",
+      "vehicle": "2023+ GMC Canyon AT4X (3rd gen; the bull bar suggests the AEV Edition)",
+      "text": false,
+      "slots": [
+        "pair"
+      ],
+      "tags": [
+        "vehicle-exterior",
+        "road"
+      ]
+    }
+  ]
+}

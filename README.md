@@ -115,8 +115,8 @@ window.
 There is no site-wide CSS file and no separate Structured Data file: both are inside the paste file. Articles are
 **content pages** with a Custom HTML component, never blog posts. Name the page **exactly** as the page name line:
 Dealer.com prints the page name as the page's headline, so the paste file has none of its own. In the **MetaData
-Editor**, type the Title without the dealer name (Dealer.com adds the site name); there are no canonical, OG or Twitter
-fields. Copy the paste file from Notepad with Ctrl+A, never a line range and never from a chat window. After publishing,
+Editor**, type the Title and Description exactly as given and never leave them empty (an empty Title falls back to the
+page name + the dealer name); there are no canonical, OG or Twitter fields. Copy the paste file from Notepad with Ctrl+A, never a line range and never from a chat window. After publishing,
 check the page with `?cb=<anything>` added to the URL.
 
 ### Dealers (16)

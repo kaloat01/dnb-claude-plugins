@@ -1,0 +1,242 @@
+{
+  "key": "brickell-cdjr",
+  "prefix": "bcdjr",
+  "platform": "dealercom",
+  "name": "Brickell Chrysler Dodge Jeep Ram",
+  "aliases": [
+    "brickell chrysler dodge jeep ram",
+    "brickell cdjr",
+    "cdjr brickell",
+    "brickellcdjr",
+    "brickell chrysler dodge jeep ram miami",
+    "brickell jeep",
+    "brickell dodge",
+    "brickell ram",
+    "brickell chrysler",
+    "brickellchryslerdodgejeepram",
+    "bcdjr"
+  ],
+  "brand": "Chrysler Dodge Jeep Ram",
+  "brandShort": "Chrysler, Dodge, Jeep or Ram",
+  "group": "Murgado Automotive Group",
+  "domain": "https://www.brickellchryslerdodgejeepram.com",
+  "address": {
+    "street": "701 SW 8th St",
+    "city": "Miami",
+    "region": "FL",
+    "zip": "33130-3310",
+    "country": "US"
+  },
+  "geo": [
+    25.7657,
+    -80.2036
+  ],
+  "departments": {
+    "service": {
+      "label": "Service",
+      "phone": "305-419-5871",
+      "cta": {
+        "label": "Schedule Service",
+        "href": "/service/index.htm"
+      },
+      "hours": [
+        [
+          [
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday"
+          ],
+          "07:00",
+          "19:00"
+        ],
+        [
+          [
+            "Saturday"
+          ],
+          "08:00",
+          "18:00"
+        ],
+        [
+          [
+            "Sunday"
+          ],
+          "08:00",
+          "15:00"
+        ]
+      ]
+    },
+    "sales": {
+      "label": "Sales",
+      "phone": "305-845-4757",
+      "cta": {
+        "label": "Value Your Trade",
+        "href": "/trade-in-form.htm"
+      },
+      "hours": [
+        [
+          [
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday"
+          ],
+          "09:00",
+          "21:00"
+        ],
+        [
+          [
+            "Friday",
+            "Saturday"
+          ],
+          "09:00",
+          "20:00"
+        ],
+        [
+          [
+            "Sunday"
+          ],
+          "11:00",
+          "19:00"
+        ]
+      ]
+    }
+  },
+  "routes": {
+    "directions": "/dealership/directions.htm",
+    "contact": "/contact.htm",
+    "about": "/dealership/about.htm",
+    "serviceHub": "/service.htm",
+    "specials": "/promotions/service/index.htm",
+    "scheduleService": "/service/index.htm",
+    "parts": "/parts/index.htm",
+    "newInventory": "/new-inventory/index.htm",
+    "usedInventory": "/used-inventory/index.htm",
+    "cpoInventory": "/certified-inventory/index.htm",
+    "vehicleSpecials": "/new-vehicle-specials.htm",
+    "financing": "/financing/index.htm",
+    "valueYourTrade": "/trade-in-form.htm"
+  },
+  "areas": [
+    "Miami",
+    "Brickell",
+    "Downtown Miami",
+    "Little Havana",
+    "The Roads",
+    "Shenandoah",
+    "Coral Gables",
+    "Coconut Grove",
+    "Key Biscayne",
+    "Wynwood",
+    "Edgewater",
+    "Miami Beach",
+    "Doral",
+    "Hialeah",
+    "Kendall"
+  ],
+  "excluded": [],
+  "climate": "Hot, humid South Florida: strong sun, heat, heavy rain, hurricane season and flood risk. No snow, road salt or winter driving.",
+  "bans": [
+    "best price",
+    "lowest price",
+    "top dollar",
+    "guaranteed",
+    "certified technician",
+    "factory-trained",
+    "snow",
+    "road salt",
+    "winter",
+    "price match",
+    "guarantee",
+    "mobile service",
+    "largest service facility",
+    "120,000-mile"
+  ],
+  "brandNaming": [
+    "Chrysler, Dodge, Jeep and Ram prices are \"MSRP\" (or \"starting MSRP\"), never \"TSRP\" (a Toyota-only term); any MSRP must be labeled as the manufacturer's suggested price, not Brickell Chrysler Dodge Jeep Ram's selling price",
+    "Write the value-parts line as lowercase \"bproauto\"; use \"Mopar\" or \"bproauto\" only where the dealer's offer source names them (no Mopar or bproauto wording on oil change, alignment, car wash or Spend & Save)",
+    "Never present one model's service interval, oil-change indicator reset steps, oil grade or capacity as universal across Chrysler, Dodge, Jeep and Ram: name the exact model, model year and engine, and point readers to the owner's manual for their VIN",
+    "Mopar vehicle protection plans (FlexCare) and Jeep Wave benefits: eligibility varies by vehicle and plan; never promise free service, coverage, term or eligibility without current official terms",
+    "Keep the OEM qualifiers on capability figures: \"up to\", \"available\", \"depending on configuration\" and \"when properly equipped\" for towing",
+    "Do not present mobile service as available; the dealer offers service pick-up and delivery (/pick-up-and-delivery.htm)"
+  ],
+  "style": {
+    "linkColor": "#0d65bf",
+    "linkHover": "#0b55a6",
+    "linkUnderline": false,
+    "importantWaiver": true,
+    "exceptions": [
+      {
+        "rule": "!important on article CTA button fills (background, color, border-color, -webkit-text-fill-color), on centering (text-align:center, margin:0 auto, justify-content:center) and on layout-protection properties (display, grid-template-columns, width, float, margin, padding)",
+        "source": "DEALERCOM_CUSTOM_HTML_QA_NOTES.md §10b-§10c (live-tested 08/26/2026): the Dealer.com theme's a/button rules strip custom button fills and its content wrapper can override centering; dealercom-custom-html-instructions.md allows !important for layout protection. The QA notes win over BrickellCDJR/design.json \"never !important on color\" (DEALERCOM-ADAPTER-PLAN §2). Live theme: a{color:var(--link-color)} in blue_white.css (v9-oem-cllc-0003-v1)"
+      }
+    ],
+    "fonts": {
+      "head": "\"DDC Heading Font Face\",Georgia,\"Times New Roman\",serif",
+      "body": "\"DDC Heading Font Face\",\"Helvetica Neue\",Helvetica,Arial,sans-serif",
+      "import": false
+    }
+  },
+  "ddc": {
+    "media": "https://pictures.dealer.com/b/brickellchryslerjeepdodgeramcllc/",
+    "orgId": null,
+    "titleSuffix": null,
+    "aboutPath": "/dealership/about.htm",
+    "contentPath": "/wbp-<slug>.htm",
+    "socialTags": "The Dealer.com head of content pages emits og:title (= the <title>), og:type \"website\" and og:url (the requested URL, query string included), plus og:description only as the combined <meta name=\"description\" property=\"og:description\"> when a MetaData Description is entered. No og:image and no twitter:* tags on any captured content page (2026-10-12). All are platform-generated from the MetaData Editor Title/Description; the Custom HTML block cannot add them."
+  },
+  "images": {
+    "STORE": {
+      "ddc": "https://pictures.dealer.com/b/brickellchryslerjeepdodgeramcllc/1234/bff4e6161d814214ac943be39cf895a9.jpg",
+      "alt": "Brickell Chrysler Dodge Jeep Ram dealership building at SW 8th Street and SW 7th Avenue in Miami, with its Jeep sign and palm trees",
+      "w": 2048,
+      "h": 1365,
+      "desc": "Brickell CDJR storefront: multi-story white building with orange and black panels and a Jeep sign on the SW 8th St / SW 7th Ave corner, palms and blue sky"
+    },
+    "LOGO": {
+      "ddc": "https://pictures.dealer.com/b/brickellchryslerjeepdodgeramcllc/1234/eccfd33b3067475caf6de0d78a117e79.png",
+      "alt": "Brickell Chrysler Dodge Jeep Ram logo",
+      "w": 360,
+      "h": 105,
+      "desc": "Site header logo: white BRICKELL wordmark with Chrysler, Dodge, Jeep and Ram logos on a dark carbon-texture plate (transparent PNG corners; reads on light or dark)"
+    }
+  },
+  "verify": [
+    "First Dealer.com article with the v0.12 block: if Dealer.com gives the page a different URL than the URL line, send the real URL back before publishing (the structured data uses it); confirm the block, its styles and the JSON-LD survive publishing."
+  ],
+  "lastVerified": "2026-10-12",
+  "sourcesNote": "Internal provenance for maintainers; colleagues do not need these files. Live checks via the Firecrawl CLI from a US location on 2026-10-12; the About Us page wins for phones and hours. Dealer.com runs a call-tracking session script (data-phone-ref spans), so header numbers can change per visit; the captured values are the local numbers below.",
+  "sources": [
+    "https://www.brickellchryslerdodgejeepram.com/dealership/about.htm (US geo, 2026-10-12): 701 SW 8th St, Miami, FL 33130-3310; header CALL US (305) 845-4757 and SERVICE & PARTS (305) 419-5871; vcard Sales (305) 845-4757; ws-hours widget DEALERSHIP Mon-Thu 9:00 AM-9:00 PM, Fri-Sat 9:00 AM-8:00 PM, Sun 11:00 AM-7:00 PM and SERVICE Mon-Fri 7:00 AM-7:00 PM, Sat 8:00 AM-6:00 PM, Sun 8:00 AM-3:00 PM; department data Service (305) 419-5871, Parts (813) 680-5743; map pin 25.7657,-80.2036; the founder story names Mario Murgado",
+    "https://www.brickellchryslerdodgejeepram.com/contact.htm (2026-10-12): Call 305-845-4757; Sales Hours and Service Hours lists match About Us",
+    "https://www.brickellchryslerdodgejeepram.com/ (homepage, 2026-10-12): JSON-LD AutomotiveBusiness (telephone +13058454757, geo 25.7657,-80.2036, departments Service +13054195871, Parts +18136805743, Sales) and AutoDealer without @id (telephone +1-813-680-2983, geo 25.8639282,-80.3418344, areaServed Miami/Hialeah/Miami Beach/Kendall); logo eccfd33b...png; theme tokens --link-color = --color-primary-500 #0d65bf, hover --color-primary-600 #0b55a6, --link-text-decoration none; @font-face \"DDC Heading Font Face\" = /static/v9/media/fonts/roboto-* files",
+    "https://www.brickellchryslerdodgejeepram.com/static/dist/v9/variations/oem-cllc/0003/v1/css/blue_white.css (2026-10-12): body{font-family:\"DDC Heading Font Face\",Univers,\"Helvetica Neue\",Helvetica,Arial,sans-serif}; a{color:var(--link-color)}; button radius .25em; overrides/type.css sets html{font-size:16px}",
+    "https://www.brickellchryslerdodgejeepram.com/wbp-2026-jeep-grand-cherokee-l-vs-ford-explorer-brickell-cdjr.htm (2026-10-12): the shell prints the page name as <h1 class=\"ddc-page-title\" aria-level=\"2\">; the Custom HTML <style> is moved into the <head> and re-serialized (@charset added); the block sits in the content-raw widget; body JSON-LD preserved; title = page name + \" | Brickell Chrysler Dodge Jeep Ram\"",
+    "https://www.brickellchryslerdodgejeepram.com/wbp-2026-ram-1500-vs-2026-ford-f-150-which-pickup-comes-out-on-top.htm, /wbp-exploring-the-2026-jeep-gladiator-convoy-editions.htm, /promotions/service/index.htm (2026-10-12): MetaData Title shown without a suffix; og:description only with a MetaData Description; no og:image or twitter tags",
+    "https://www.brickellchryslerdodgejeepram.com/sitemap.xml, /sitemap.htm and /blog-roll.htm (2026-10-12): sitemap snapshot; articles at /wbp-<slug>.htm; native /blog/2026/... posts return 404",
+    "Route checks (Firecrawl, US, 2026-10-12): 200 for /dealership/directions.htm, /contact.htm, /service.htm, /service/index.htm, /promotions/service/index.htm, /parts/index.htm, /new-inventory/index.htm, /used-inventory/index.htm, /certified-inventory/index.htm, /new-vehicle-specials.htm, /financing/index.htm, /trade-in-form.htm (Trade-In Appraisal form); /financing/application.htm redirects to /route-one.htm; /kbb.htm shows a \"Bad Profile\" error; /value-your-trade.htm, /test-drive.htm, /schedule-test-drive.htm are 404",
+    "BrickellCDJR/design.json (service hours, localAreas, amenities: no mobile service, bproauto normalization, schedule URL /service/index.htm confirmed), DEALERCOM_CUSTOM_HTML_QA_NOTES.md, BrickellCDJR/2026-08-18-Dealercom-Article-Refresh (README-UPLOAD.md, sales-page-settings.md, SOURCE_AND_COMPLIANCE_LEDGER.md: MSRP not TSRP, model-specific intervals, FlexCare/Jeep Wave holds)"
+  ],
+  "brandNames": [
+    "Chrysler",
+    "Dodge",
+    "Jeep",
+    "Ram"
+  ],
+  "maintainerNotes": [
+    "Parts phone: Dealer.com department settings list Parts as (813) 680-5743 (a Tampa area code) and some page headers show it (Directions, KBB, Mopar service and parts pages), while the About Us and Home headers say \"Service & Parts (305) 419-5871\". No separate parts department is set here; ask the dealer to correct the Dealer.com Parts number.",
+    "The site-wide AutoDealer JSON-LD (Dealer.com SEO widget, no @id) carries a Tampa phone +1-813-680-2983, a map pin at 25.8639,-80.3418 (Hialeah/Miami Lakes area, not 701 SW 8th St) and areaServed Miami, Hialeah, Miami Beach, Kendall. Our #organization node uses the About Us facts; ask the dealer or Dealer.com to fix that node.",
+    "Article URL pattern: every live article (including our 2026 Grand Cherokee L vs. Explorer) sits at /wbp-<slug>.htm and is listed on /blog-roll.htm; the 08/18/2026 package had chosen a root /<slug>.htm without wbp-. contentPath follows the live pattern; decided 10/12 to follow the live pattern (below).",
+    "Title suffix: Dealer.com adds \" | Brickell Chrysler Dodge Jeep Ram\" only when the MetaData Title is empty (the page-name default). Pages with a MetaData Title show it unchanged (Ram 1500 vs F-150, About Us, service specials hub), so titleSuffix is null. Enter a complete MetaData Title on every article and check the browser tab after publishing.",
+    "Link color: the live theme link color is #0d65bf (hover #0b55a6), not the project's VERIFY_HOLD #0E4C92 / #0A3A70. Confirm which one articles should use.",
+    "Fonts: this theme has one face, \"DDC Heading Font Face\" (Roboto files), used for both headings and body; there is no \"DDC Body Font Face\". Live headings render in Roboto; the Georgia fallback shows only in local previews. Confirm theme face vs the Editorial v2 Georgia headings.",
+    "The live 2026 Grand Cherokee L vs. Ford Explorer article needs a fix on its next refresh: its JSON-LD url/@id point to /2026-jeep-grand-cherokee-l-vs-ford-explorer-miami.htm while the page lives at /wbp-2026-jeep-grand-cherokee-l-vs-ford-explorer-brickell-cdjr.htm; no MetaData Title or Description was entered (the dealer name shows twice in the title); its org @id is #dealer (service pages use #organization); the block still has 22 rem.",
+    "Do not link: /kbb.htm (\"Bad Profile\" error), /service-specials.htm (dead embedded page), /service-center.htm (unfinished template text, but linked from the homepage), the native /blog/2026/... posts (404 but still in sitemap.xml). /value-your-trade.htm, /test-drive.htm and /schedule-test-drive.htm are 404; no test-drive page exists.",
+    "Dealer service pages make claims articles must not repeat without written substantiation and terms: \"Largest service facility in the country\" and \"10-Year / 120,000-Mile Warranty, double the factory coverage\" (/service.htm), \"Price Match Guarantee\" and \"Certified Technicians\" (/service/mopar.htm, /parts/mopar.htm), DealerRater review ratings.",
+    "/service/mopar.htm and /parts/mopar.htm carry template copy (\"At Chrysler Corporate\"); the parts route uses /parts/index.htm (Parts Center request form) instead.",
+    "No Stellantis (Chrysler, Dodge, Jeep, Ram) co-op or brand-standards PDF is on file; only the LAW-* rules and the naming rules above apply. Ask the client for current FCA/Stellantis dealer advertising standards.",
+    "Decided 10/12: article URL follows the live pattern /wbp-<slug>.htm (listed on /blog-roll.htm); link color = live theme #0d65bf (hover #0b55a6); fonts = the theme face (\"DDC Heading Font Face\", Roboto) per the \"theme fonts\" default.",
+    "Dealer.com shows the MetaData Title unchanged; only an empty field falls back to the page name + the dealer name (checked live on Brickell CDJR pages, 2026-10-12)."
+  ]
+}

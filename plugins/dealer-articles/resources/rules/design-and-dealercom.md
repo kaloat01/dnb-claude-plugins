@@ -55,8 +55,8 @@ Read this at Phase 2 of `/dealer-articles:article-dealercom`. The design is the 
 - URL
 
 **MetaData Editor** (it has only these two fields):
-- Title (50–65 characters), typed **without the dealer name**. Since 10/03/2026 Dealer.com appends the site name to page titles (seen live: the dealer name twice). Check the live title on the first article of each store.
-- Description (130–165)
+- Title (50–65 characters), typed exactly as given, without the dealer name. Dealer.com shows a filled Title unchanged; an empty Title falls back to the page name + " | <dealer name>" (seen live 10/12/2026: pages with no Title showed the dealer name twice). Never leave it empty.
+- Description (130–165; never empty: pasted pages without one had no meta description live)
 
 **Reference only:** focus keyphrase (there is no field for it).
 
@@ -76,7 +76,8 @@ Open the URL with `?cb=<anything>` in a normal browser and check:
 - images load
 - FAQ items open
 - the Rich Results Test detects Article + FAQ, with no errors
-- in the page source: `<title>` shows the dealer name once, and `<meta name="description">` is the new MetaData Description
+- in the page source: `<title>` is the MetaData Title, and `<meta name="description">` is the new MetaData Description
+- the page URL is the URL line of the sheet; if Dealer.com assigned another one, rebuild with the real URL (the JSON-LD `url` and `@id`s use it)
 
 Some dealer sites block automated fetches. Check in a normal browser.
 
