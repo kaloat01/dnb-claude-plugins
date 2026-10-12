@@ -38,7 +38,7 @@ article without the engine:** it builds the package, the SEO/Yoast sheet and the
    - You cannot run commands at all → stop. Tell the user: "Please turn on **Settings → Capabilities → Code execution and
      file creation** (domain allowlist: All domains), then start a new chat."
 2. Run `DA env --net`. Don't send its version as a separate message: it goes in the header line of your first message
-   (the image list), e.g. "dealer-articles v0.11.1".
+   (the image list), e.g. "dealer-articles v0.12.0".
    Keep its results for later: browser found or not (screenshots), download folder, blocked hosts.
    Node missing or older than 18: in Claude Code, stop and point to `/dealer-articles:article-setup`; in Chat or Cowork,
    stop and ask the user to turn on Code execution and file creation (step 1).

@@ -19,7 +19,7 @@ Read this at Phase 2 of `/dealer-articles:article-dealercom`. The design is the 
   - no `@import` at all;
   - no icon fonts; icons are inline SVG.
 - **Theme.**
-  - The theme sets a root font size below 16px, so the CSS is **px only** and the wrapper sets `font-size:16px` (a `rem` value would render small).
+  - The theme sets a root font size below 16px, so the CSS is **px only** and the wrapper sets its own px font size (a `rem` value would render small).
   - The content area can left-align: centered blocks set `text-align:center`, `margin:0 auto` and `justify-content:center` with `!important`.
   - The theme's link and button rules strip fills: CTA `background`, `color` and `border` carry `!important`.
   - Generic class names (`row`, `grid`, `card`, `btn`, `container`, `section`, `hero`, `media`, `copy`, `wrapper`) collide with the theme. Every class carries the dealer prefix (`<p>-art…`).

@@ -28,7 +28,7 @@ First decide where you are running: **Claude Code** (terminal, IDE extension, or
    marketplace (`kaloat01/dnb-claude-plugins`) → **Sync automatically** on (or **Check for updates** before a new article).
    Installs live on the Claude account and appear on every device signed in to it.
 3. **Engine.** Run `DA env --net` and explain the result in plain words:
-   - version line (e.g. "dealer-articles v0.11.1 (2026-10-12)"): the plugin version in use.
+   - version line (e.g. "dealer-articles v0.12.0 (2026-10-12)"): the plugin version in use.
    - Node: needed; missing → ❌ item 1.
    - browser: "none" is normal here. Screenshots are skipped and the written design checklist is used instead.
    - download folder: where finished paste files, HANDOFF.md and the resume kit appear. None listed → ❌ files cannot be

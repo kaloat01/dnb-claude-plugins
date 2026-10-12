@@ -25,7 +25,7 @@ Example: `/dealer-articles:article "Toyota of Downtown Chicago" "Toyota Hybrid B
 Plain words work too: *"Write an article for Toyota of Downtown Chicago about hybrid battery care in winter."*
 It picks the platform (Apollo, DealerInspire or Dealer.com) from the dealer.
 
-The first message shows the plugin version (e.g. `dealer-articles v0.11.1`). You can also type `/` and pick
+The first message shows the plugin version (e.g. `dealer-articles v0.12.0`). You can also type `/` and pick
 **dealer-articles:article**. If a session can't start helper agents (older app versions), Claude says so once and runs the
 two reviews inside the conversation; the handoff then says "single conversation".
 

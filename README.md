@@ -189,7 +189,8 @@ The same plugin works in Claude Code (terminal, VS Code / JetBrains extension, t
 - Plugin source: `plugins/dealer-articles/`. The internal contract is in `docs/CONTRACT.md`.
 - Every push to `main` is an update for everyone who syncs. Add a line to `CHANGELOG.md` with each push and bump the
   engine version stamp (`build.js env` prints it; users see it in the first message).
-- Before every push, run `node test/snapshot.js compare` and `node test/snapshot.js compare --platform dealerinspire`.
+- Before every push, run `node test/snapshot.js compare`, `node test/snapshot.js compare --platform dealerinspire` and
+  `node test/snapshot.js compare --platform dealercom`.
   Both must print `identical` (baselines: `test/baseline-apollo.json`, `test/baseline-dealerinspire.json`). If an
   output change is intended, re-record with `node test/snapshot.js record [--platform dealerinspire]` and say so in
   `CHANGELOG.md`. Also run `claude plugin validate .` from the repository root.

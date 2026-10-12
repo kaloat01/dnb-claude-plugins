@@ -99,18 +99,21 @@ Dealer.com dealer files have the same fields, with no `apollo` or `di` block and
 {
   "platform": "dealercom",
   "brand": "Chrysler Dodge Jeep Ram",      // the full brand string the compliance checks use ("Cadillac", "Buick GMC")
-  "brandShort": "…",                       // copy-friendly brand phrase the build puts in its own lines
+  "brandShort": "Chrysler, Dodge, Jeep or Ram", // copy-friendly brand phrase the build puts in its own lines
+  "brandNames": ["Chrysler", "Dodge", "Jeep", "Ram"], // any of these counts as a brand mention; one schema Brand node each
   "style": {
-    "fonts": { "head": "…", "body": "…" }, // the site's theme font faces or a system stack; no @import, no Google Fonts
-    "radius": "…"                          // optional corner radius (a recorded brand exception, e.g. square corners)
+    "fonts": { "head": "…", "body": "…", "import": false }, // the site's theme font faces or a system stack; no @import
+    "radius": 0                            // optional button corner radius in px (a recorded brand exception, e.g. square)
   },
   "ddc": {
-    "media": "https://pictures.dealer.com/<letter>/<account>/",   // this store's Media Library base (--final checks it)
+    "media": "https://pictures.dealer.com/<letter>/<account>/",   // this store's Media Library base (images + --final check it)
     "orgId": null,                         // DDC's site-wide AutoDealer has no @id, so the block defines <domain>/#organization
-    "titleSuffix": "…",                    // the site name DDC appends to page titles (the MetaData Title is typed without it)
+    "titleSuffix": " | <site name>",       // what DDC appends to page titles, or null if unknown (the build warns when the
+                                           // MetaData Title also contains the dealer name)
     "aboutPath": "/dealership/about.htm",  // About Us page: the source of the phones and hours
-    "contentPath": "…",                    // where article content pages live (`new` builds the page URL from it)
-    "socialTags": "…"                      // what the DDC shell prints for og:/twitter: tags (reference only; no field exists)
+    "contentPath": "/<slug>.htm",          // article content page URL pattern (`new` replaces <slug>); default "/<slug>.htm"
+    "socialTags": "…",                     // what the DDC shell prints for og:/twitter: tags (reference only)
+    "socialImage": false                   // true only if the page settings have a social image field (adds a sheet line)
   },
   "images": {                              // value field is `ddc` (Media Library image URL), never `apollo` or `di`
     "STORE": { "ddc": "https://pictures.dealer.com/<letter>/<account>/…", "alt": "…", "w": 1600, "h": 900 },
@@ -118,7 +121,8 @@ Dealer.com dealer files have the same fields, with no `apollo` or `di` block and
   }
 }
 ```
-`brandShort` and `style.radius` are optional and absent for Apollo and DealerInspire dealers, so their output is unchanged.
+`brandShort`, `brandNames` and `style.radius` are optional and absent for Apollo and DealerInspire dealers, so their output is
+unchanged.
 Phones and hours on Dealer.com are verified on each site's About Us page (`ddc.aboutPath`) from a US location. Dealer.com
 has no phone or hours token: the block shows the dealer-file numbers as real `tel:` links and the dealer-file hours as text.
 
@@ -217,16 +221,18 @@ No site-wide CSS file and no separate Structured Data file on DealerInspire: bot
                                    page's only H1 above the block, with the font fallbacks; placeholder SVGs for images
                                    without a ddc URL; top bar "LOCAL PREVIEW · DRAFT (placeholders)" or "FINAL"
 <job>/package/<slug>-DDC-Custom-HTML.html   the ONLY paste file (the page's Custom HTML component): one <style> (Editorial v2
-                                   + Dealer.com hardening: px only with a 16px wrapper, no @import, CTA fills !important,
-                                   every rule scoped to .<p>-art) + one wrapper <div class="<p>-art <p>-art-<slug>"> holding
+                                   + Dealer.com hardening: px only, explicit centering and CTA fills with !important,
+                                   ellipsis on button labels for wide theme fonts, no @import, no comments, every rule
+                                   scoped to .<p>-art) + one wrapper <div class="<p>-art <p>-art-<slug>"> holding
                                    the article (no <h1>: the header starts with the eyebrow and dek; phones are real tel:
                                    links, hours are text) and, as the last node, the JSON-LD (AutoDealer <domain>/#organization
                                    with dealer-file facts, BlogPosting, FAQPage; no other script). It may be multi-line and
                                    ends on </div>, with nothing after it
 <job>/package/<slug>-SEO.md        Dealer.com hand-entry sheet, ONE line per field "* Field  →  value": Page name (= the H1),
                                    URL, MetaData Title (without the dealer name: DDC appends the site name), MetaData
-                                   Description, Focus keyphrase (reference only). No canonical, robots, OG or Twitter lines:
-                                   the MetaData Editor has no such fields
+                                   Description, Focus keyphrase (reference only), a Social image line only when
+                                   `ddc.socialImage` is true, and one line saying the MetaData Editor has no canonical, OG
+                                   or Twitter fields
 <job>/package/README.md            paste steps (new content page named exactly as the H1 → Custom HTML component → paste
                                    from Notepad with Ctrl+A → MetaData Editor Title + Description → Publish → checks with
                                    ?cb=); DRAFT banner when not --final
@@ -280,11 +286,16 @@ All shared gates apply unchanged on DealerInspire, including MB-001 ("offer", ne
 LAW-CA-01 for the California stores.
 
 **Dealer.com only**
-❌ 0 `<h1>` in the block (the DDC shell prints the page name as the H1) · exactly one `<style>` · JSON-LD is the last
-node · the block ends with `</div>` · 0 `rem` · no `@import` · no `<` inside CSS or HTML comments (DDC's tag-pair
-validator counts them) · no doctype/html/head/body/title/meta/link · no inline `style=` · no `transition: all` · CTA
-fill `!important` present · phone numbers in the block equal the dealer file · `--final`: every image is on this store's
-`ddc.media` base (pictures.dealer.com) and no placeholder is left.
+❌ 0 `<h1>` in the block (the DDC shell prints the page name as the H1) · block shape (starts with the one `<style>`, the
+wrapper div follows it, the JSON-LD is the last node and the only script, the file ends on `</div>`, no
+doctype/html/head/body/title/meta/link) · every tag paired (div, style, script, section, figure, details, table, lists:
+DDC's tag-pair check) · no comments at all, no `@import`, no `url()` with a slash before a digit, no inline `style=`, no
+`transition: all` · CTA fill `!important` present · no bare generic class names (row, grid, card, btn, container,
+section, hero, media, copy, wrapper) · inline CSS fully scoped · phone numbers in the block (links, text, JSON-LD) equal
+the dealer file · no Apollo tags, `[di_` shortcodes or `{{DDC_MEDIA}}` tokens · page fields sheet complete · `--final`:
+every image is on this store's `ddc.media` base (pictures.dealer.com) and no placeholder is left.
+⚠️ MetaData Title contains the dealer name while `ddc.titleSuffix` is known (the name would show twice) · MetaData
+Description over 155. `images` also rejects a URL that is not on this store's `ddc.media` base.
 
 All shared gates apply unchanged on Dealer.com (except the H1 count above), including the LAW-* ledger rows for the
 Florida stores.

@@ -122,7 +122,7 @@ Reply: IMG_HERO = <ID> · IMG_FIG1 = <ID> · …
 
 Example (DealerInspire, lineup topic, October 2026; the library fills 3 slots):
 ```
-Mercedes-Benz of Richmond · "MBUX Explained: Voice Control, Navigation and the Screens in a New Mercedes-Benz" · dealer-articles v0.11.1
+Mercedes-Benz of Richmond · "MBUX Explained: Voice Control, Navigation and the Screens in a New Mercedes-Benz" · dealer-articles v0.12.0
 
 Your turn: source 2 photos (I'm researching meanwhile)
 1. IMG_HERO: any 2025–2027 Mercedes-Benz interior, whole dashboard visible. Landscape, ≥1,900px wide.
