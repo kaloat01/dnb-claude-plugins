@@ -89,6 +89,9 @@ function loadDealer(k) {
     style: j.style || {}, apollo: j.apollo || {}, shared: j.images || {}, file: f,
     allowPhrases: j.allowPhrases || [], // official OEM program names that contain a banned word (e.g. 'Premier Prepaid Maintenance')
     di: j.di || null, // DealerInspire: { uploads, template: post|composer, postLayout, category, parentPath, shortcodes{dept:option}, hoursDepartments{dept:label} }
+    ddc: j.ddc || null, // Dealer.com: { media (this store's pictures.dealer.com base), orgId, titleSuffix, aboutPath, contentPath, socialTags, socialImage }
+    brandShort: j.brandShort || null, // copy-friendly brand phrase ("Buick or GMC"); `brand` stays the compliance-ledger string
+    brandNames: Array.isArray(j.brandNames) && j.brandNames.length ? j.brandNames : [j.brand], // names that count as a brand mention
     verify: Array.isArray(j.verify) ? j.verify : [], // dealer facts still to confirm (listed under HANDOFF open flags)
   };
 }
@@ -126,7 +129,7 @@ function tokens(D) {
   const link = st.linkColor || BASE.ink;
   const u = !!st.linkUnderline;
   const f = st.fonts || {}; // optional brand font stacks (e.g. Mercedes-Benz Corporate A/S, matching the live Mercedes articles); fallbacks stay Georgia/Roboto
-  return Object.assign({}, BASE, f.head ? { head: f.head } : {}, f.body ? { body: f.body } : {}, {
+  return Object.assign({}, BASE, f.head ? { head: f.head } : {}, f.body ? { body: f.body } : {}, Number.isFinite(st.radius) ? { radius: st.radius } : {}, {
     link: u ? BASE.ink : link,
     linkSoft: u ? BASE.ink : hexRgba(link, 0.35),
     linkHover: st.linkHover || link,
@@ -431,6 +434,29 @@ ${R} .${P}-closer-hours{margin:0 0 18px}
 @media (min-width:1100px){${C} h1.${P}-title,${R} h1.${P}-title{font-size:${B.h1}px}${C} .${P}-body h2{font-size:${B.h2}px}}
 `;
 }
+/* Dealer.com (DDC) hardening, from the live-tested DDC service pages (DEALERCOM_CUSTOM_HTML_QA_NOTES 07/05–09/03/2026): the
+ * block goes into a page's Custom HTML component inside the DDC theme. px only (the theme shrinks the root font size);
+ * centering and CTA fills are explicit and !important (the theme can left-align content and strip button fills); wide OEM
+ * fonts must not spill out of buttons. The paste file carries no comments, no @import and no inline style=. */
+function cssDDC(D, B) {
+  const P = D.P;
+  const R = `.${P}-art`;
+  const V = `--${P}a`;
+  const sel = (...a) => a.map((s) => `${R} ${s.replace(/~/g, P)}`).join(',');
+  return `
+${R}{text-align:left!important}
+${sel('.~-wrap', '.~-head', '.~-hero', '.~-fig', '.~-pair', '.~-dealer', '.~-more', '.~-fine', '.~-closer-in')}{margin-left:auto!important;margin-right:auto!important}
+${sel('.~-closer', '.~-closer-in')}{text-align:center!important}
+${sel('.~-closer .~-eyebrow', '.~-closer .~-ctas')}{justify-content:center!important}
+${sel('a.~-btn')}{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:100%;letter-spacing:0.04em;text-decoration:none!important}
+${sel('a.~-btn-ink', 'a.~-btn-ink:hover', 'a.~-btn-ink:focus')}{background:var(${V}-ink)!important;border-color:var(${V}-ink)!important;color:#ffffff!important;-webkit-text-fill-color:#ffffff!important}
+${sel('a.~-btn-ink:hover')}{background:#000000!important}
+${sel('a.~-btn-outline', 'a.~-btn-outline:hover', 'a.~-btn-outline:focus')}{background:transparent!important;border-color:var(${V}-ink)!important;color:var(${V}-ink)!important;-webkit-text-fill-color:var(${V}-ink)!important}
+${sel('a.~-btn-white', 'a.~-btn-white:hover', 'a.~-btn-white:focus')}{background:#ffffff!important;border-color:#ffffff!important;color:#111111!important;-webkit-text-fill-color:#111111!important}
+${sel('a.~-btn-ghost', 'a.~-btn-ghost:hover', 'a.~-btn-ghost:focus')}{background:transparent!important;border-color:rgba(255,255,255,0.55)!important;color:#ffffff!important;-webkit-text-fill-color:#ffffff!important}
+${sel('.~-closer-phone a', '.~-closer-phone a:hover')}{color:#ffffff!important;-webkit-text-fill-color:#ffffff!important}
+`;
+}
 /* phone + hours helper for DealerInspire shortcode output (no tracking): [di_option] prints a plain number → tel: link;
  * [di_hours] prints <ul class="hours"><li>Mon<span class="right"> 7:00 AM - 7:00 PM</span></li>… → one condensed line */
 function diScript(P) {
@@ -459,7 +485,8 @@ function diHoursUl(rows) {
   return `<ul class="hours">${Object.keys(DAY).map((d) => `<li>${DAY[d]}<span class="right"> ${open[d] || 'Closed'}</span></li>`).join('')}</ul>`;
 }
 const DI_UPLOADS = /^https:\/\/di-uploads-pod\d+\.dealerinspire\.com\/[^/]+\/uploads\/\d{4}\/\d{2}\//i;
-const fullCss = (D) => { const B = tokens(D); return css(D.P, B) + (D.platform === 'apollo' ? cssApollo(D.P, B) : D.platform === 'dealerinspire' ? cssDI(D, B) : ''); };
+const fullCss = (D) => { const B = tokens(D); return css(D.P, B) + (D.platform === 'apollo' ? cssApollo(D.P, B) : D.platform === 'dealerinspire' ? cssDI(D, B) : D.platform === 'dealercom' ? cssDDC(D, B) : ''); };
+const DDC_MEDIA = /^https:\/\/pictures\.dealer\.com\/[a-z0-9]\/[^/]+\//i;
 function sitewideCss(D) {
   const min = minCss(fullCss(D));
   const hash = crypto.createHash('sha1').update(min).digest('hex').slice(0, 8);
@@ -566,6 +593,9 @@ function build(mod, D, job, opts = {}) {
   // DealerInspire: images are WordPress Media Library URLs in `di`; internally `apollo` carries the platform image value
   // (an Apollo id/URL, or the DealerInspire uploads URL), so the shared Editorial v2 code path stays one code path.
   if (isDI) for (const k of Object.keys(images)) if (images[k]) images[k] = Object.assign({}, images[k], { apollo: images[k].di || null });
+  // Dealer.com: the same mapping from `ddc` (the store's Media Library URL on pictures.dealer.com)
+  const isDDC = D.platform === 'dealercom';
+  if (isDDC) for (const k of Object.keys(images)) if (images[k]) images[k] = Object.assign({}, images[k], { apollo: images[k].ddc || null });
   // dealer images are optional: STORE without Apollo id = text-only dealership section; LOGO without = name band
   const hasLogo = !!(images.LOGO && images.LOGO.apollo);
   // oversized library logos (e.g. 7520px / 541 KB) are requested at 700px wide (Apollo resizes; ~10-80 KB, transparency kept)
@@ -589,7 +619,7 @@ function build(mod, D, job, opts = {}) {
   }
   function imgTag(key, mode, extra) {
     const im = images[key];
-    const src = img(key, mode) || `${isDI ? 'MISSING-DI-IMAGE-' : 'MISSING-APOLLO-ID-'}${key}`;
+    const src = img(key, mode) || `${isDI ? 'MISSING-DI-IMAGE-' : isDDC ? 'MISSING-DDC-IMAGE-' : 'MISSING-APOLLO-ID-'}${key}`;
     return `<img src="${esc(src)}" alt="${esc(im.alt || '')}"${im.w ? ` width="${im.w}" height="${im.h}"` : ''}${extra === 'eager' ? ' fetchpriority="high"' : ' loading="lazy"'} decoding="async"${extra && extra !== 'eager' ? ` class="${extra}"` : ''}>`;
   }
   // a department phone may be null (e.g. only a toll-free number exists): never print or link one, never fall back
@@ -599,7 +629,8 @@ function build(mod, D, job, opts = {}) {
   // DealerInspire: phones are [di_option] shortcodes (verified per site in di.shortcodes; diScript links them), hours are
   // [di_hours]; the 'dipreview' mode renders exactly the paste markup with placeholder images (shortcodes substituted later).
   let phoneMode = 'preview';
-  const TAGS = isDI ? Object.assign({}, (D.di && D.di.shortcodes) || {}) : { sales: '#SalesNumber', service: '#ServiceNumber', parts: '#PartsNumber' };
+  // Dealer.com has no phone token: real numbers from the dealer file as tel: links everywhere
+  const TAGS = isDI ? Object.assign({}, (D.di && D.di.shortcodes) || {}) : isDDC ? {} : { sales: '#SalesNumber', service: '#ServiceNumber', parts: '#PartsNumber' };
   const pkgMode = () => phoneMode === 'package' || phoneMode === 'dipreview';
   const tagFor = (d) => { const k = Object.keys(D.depts || {}).find((x) => D.depts[x] === d); return k && TAGS[k]; };
   const phoneLink = (d) => {
@@ -669,7 +700,7 @@ function build(mod, D, job, opts = {}) {
     const mainIsDept = !!(dept.phone && D.mainPhone && digits10(dept.phone) === digits10(D.mainPhone)); // never list the same number twice
     const other = ds.other ? [ds.otherLabel || 'Main line', phoneLink(ds.other)]
       // package: a main line that is not a department number has no Apollo tag, so show the other department (tagged) instead
-      : D.mainPhone && !mainIsDept && !(pkgMode() && !Object.values(D.depts || {}).some((d) => d && d.phone && digits10(d.phone) === digits10(D.mainPhone))) ? [ds.otherLabel || 'Main line', mainLink()]
+      : D.mainPhone && !mainIsDept && !(pkgMode() && !isDDC && !Object.values(D.depts || {}).some((d) => d && d.phone && digits10(d.phone) === digits10(D.mainPhone))) ? [ds.otherLabel || 'Main line', mainLink()]
         : otherDept ? [otherDept[1].label, phoneLink(otherDept[1])] : null;
     // logo: wide lockup alone; small emblem (<300 px) + name band; no Apollo logo = name band only;
     // LOGO.onDark (white artwork) = logo on the Editorial v2 black brand band (as the Mercedes white star)
@@ -699,10 +730,11 @@ function build(mod, D, job, opts = {}) {
     const dealer = `<section class="${P}-dealer" aria-labelledby="${P}-dealer-h"><div class="${P}-dealer-in${hasStore ? '' : ` ${P}-dealer-solo`}">${media}<div class="${P}-dealer-body">${logo}<div class="${P}-eyebrow">${ds.eyebrow || `Visit us in ${D.city}`}</div><h2 id="${P}-dealer-h">${ds.h}</h2><p>${fill(ds.p)}</p>${values ? `<ul class="${P}-dealer-values">${values}</ul>` : ''}<div class="${P}-dealer-facts">${facts}</div>${btns(ctaBtn('ink'), D.directions ? `<a class="${P}-btn ${P}-btn-outline" href="${D.directions}">Get Directions</a>` : '')}</div></div></section>`;
     return `<div class="${P}-art ${P}-art-${mod.slug}">`
       + `<figure class="${P}-hero${mod.heroContained ? ` ${P}-hero-contained` : ''}">${imgTag(mod.hero, mode, 'eager')}</figure>`
-      + `<header class="${P}-head"><div class="${P}-eyebrow">${mod.eyebrow}</div><h1 class="${P}-title">${mod.h1}</h1><p class="${P}-dek">${fill(mod.dek)}</p><div class="${P}-meta"><span>${D.name}</span><span>Updated ${mod.updatedLabel}</span><span>${readMin} min read</span></div>`
+      // Dealer.com: the page shell prints the page name (= mod.h1) as the page's only H1, so the block has none
+      + `<header class="${P}-head"><div class="${P}-eyebrow">${mod.eyebrow}</div>${isDDC ? '' : `<h1 class="${P}-title">${mod.h1}</h1>`}<p class="${P}-dek">${fill(mod.dek)}</p><div class="${P}-meta"><span>${D.name}</span><span>Updated ${mod.updatedLabel}</span><span>${readMin} min read</span></div>`
       + `<div class="${P}-glance"><div class="${P}-label">At a glance</div><ul>${mod.glance.map((g) => `<li>${fill(g)}</li>`).join('')}</ul></div>${toc}</header>`
       + blocksHtml(mode)
-      + `<section class="${P}-faq-sec"><div class="${P}-wrap ${P}-body ${P}-faq-grid"><div class="${P}-faq-intro"><h2 id="${P}-faq">${mod.faqTitle || 'Frequently asked questions'}</h2><p>${mod.faqIntro || 'Quick, straight answers to the questions drivers ask most.'}</p><p class="${P}-faq-call">${fill(mod.faqCall || (dept.phone ? `Questions about your ${D.brand}? Call our ${dept.label.toLowerCase()} team at {{PHONE}}.` : `Questions about your ${D.brand}? ${D.routes.contact ? `<a href="${D.routes.contact}">Contact our ${dept.label.toLowerCase()} team</a>.` : `Ask our ${dept.label.toLowerCase()} team.`}`))}</p></div><div class="${P}-faq">${faq}</div></div></section>`
+      + `<section class="${P}-faq-sec"><div class="${P}-wrap ${P}-body ${P}-faq-grid"><div class="${P}-faq-intro"><h2 id="${P}-faq">${mod.faqTitle || 'Frequently asked questions'}</h2><p>${mod.faqIntro || 'Quick, straight answers to the questions drivers ask most.'}</p><p class="${P}-faq-call">${fill(mod.faqCall || (dept.phone ? `Questions about your ${D.brandShort || D.brand}? Call our ${dept.label.toLowerCase()} team at {{PHONE}}.` : `Questions about your ${D.brandShort || D.brand}? ${D.routes.contact ? `<a href="${D.routes.contact}">Contact our ${dept.label.toLowerCase()} team</a>.` : `Ask our ${dept.label.toLowerCase()} team.`}`))}</p></div><div class="${P}-faq">${faq}</div></div></section>`
       + dealer
       + `<section class="${P}-closer"><div class="${P}-closer-in"><div class="${P}-eyebrow">${D.name}</div><h2>${mod.closer.h}</h2><p>${fill(mod.closer.p)}</p>${dept.phone ? `<p class="${P}-closer-phone"><strong>${dept.label}:</strong> ${phoneLink(dept)}</p>` : ''}${diHrs() ? `<div class="${P}-closer-hours ${P}-hours-inline"><strong>${dept.label} Hours:</strong> [di_hours department="${diHrs()}"]</div>` : hrs(dept) ? `<p class="${P}-closer-hours"><strong>${dept.label} Hours:</strong> ${hrs(dept)}</p>` : ''}${btns(ctaBtn('white'), mod.closer.secondary ? `<a class="${P}-btn ${P}-btn-ghost" href="${mod.closer.secondary.href}">${mod.closer.secondary.label}</a>` : '')}</div></section>`
       + `<section class="${P}-more"><div class="${P}-label">Keep reading</div><div class="${P}-more-grid">${more}</div></section>`
@@ -728,7 +760,7 @@ function build(mod, D, job, opts = {}) {
           address: addr,
           geo: D.geo ? { '@type': 'GeoCoordinates', latitude: D.geo[0], longitude: D.geo[1] } : undefined,
           areaServed: D.areas.length ? D.areas.map((a) => ({ '@type': 'Place', name: a })) : undefined,
-          brand: { '@type': 'Brand', name: D.brand },
+          brand: D.brandNames.length > 1 ? D.brandNames.map((n) => ({ '@type': 'Brand', name: n })) : { '@type': 'Brand', name: D.brand },
           image: hasStore ? APOLLO_IMG + images.STORE.apollo : undefined,
           logo: hasLogo ? APOLLO_IMG + images.LOGO.apollo : undefined,
           contactPoint: Object.values(D.depts).filter(Boolean).map((d) => ({ '@type': 'ContactPoint', contactType: d.label.toLowerCase(), telephone: tel(d.phone), hoursAvailable: hoursSpec(d.hours) })),
@@ -753,9 +785,11 @@ function build(mod, D, job, opts = {}) {
   // DealerInspire: Yoast already emits WebPage/WebSite/Organization/Breadcrumb, so the embed carries only the dealer node
   // (#autodealer, never Yoast's #organization), BlogPosting and FAQPage. Hours come live from [di_hours], so no fixed hours
   // here (they would drift); telephones are real numbers (shortcodes do not run reliably inside JSON-LD).
-  function schemaDI() {
-    const id = D.domain + '/#autodealer';
+  // Dealer.com uses the same trimmed graph: DDC's own site-wide AutoDealer has no @id to reference, so the dealer node is our
+  // <domain>/#organization (facts from the dealer file, never DDC's areaServed) plus the article department with its hours.
+  function schemaDI(id = D.domain + '/#autodealer', withDept = false) {
     const storeUrl = hasStore ? images.STORE.apollo : null;
+    const hoursSpec = (rows) => (rows && rows.length ? rows.map(([d, o, c]) => ({ '@type': 'OpeningHoursSpecification', dayOfWeek: d, opens: o, closes: c })) : undefined);
     const heroUrl = img(mod.hero, 'package') || storeUrl || undefined;
     const tel = (p) => (p ? e164(p) : undefined);
     return {
@@ -767,10 +801,11 @@ function build(mod, D, job, opts = {}) {
           address: { '@type': 'PostalAddress', streetAddress: D.street, addressLocality: D.city, addressRegion: D.region, postalCode: D.zip, addressCountry: D.country },
           geo: D.geo ? { '@type': 'GeoCoordinates', latitude: D.geo[0], longitude: D.geo[1] } : undefined,
           areaServed: D.areas.length ? D.areas.map((a) => ({ '@type': 'City', name: a })) : undefined,
-          brand: { '@type': 'Brand', name: D.brand },
+          brand: D.brandNames.length > 1 ? D.brandNames.map((n) => ({ '@type': 'Brand', name: n })) : { '@type': 'Brand', name: D.brand },
           image: storeUrl || undefined,
           logo: hasLogo ? images.LOGO.apollo : undefined,
           contactPoint: Object.values(D.depts).filter((d) => d && d.phone).map((d) => ({ '@type': 'ContactPoint', contactType: d.label.toLowerCase(), telephone: tel(d.phone), areaServed: 'US', availableLanguage: 'English' })),
+          department: withDept ? { '@type': mod.dept === 'service' ? 'AutoRepair' : 'AutoDealer', '@id': D.domain + '/#' + mod.dept, name: D.name + ' ' + dept.label, telephone: tel(dept.phone), openingHoursSpecification: hoursSpec(dept.hours) } : undefined,
         },
         {
           '@type': 'BlogPosting', '@id': url + '#article', mainEntityOfPage: url, url,
@@ -789,7 +824,7 @@ function build(mod, D, job, opts = {}) {
   fs.mkdirSync(out.pkg, { recursive: true });
   const cssText = fullCss(D);
   const sw = sitewideCss(D);
-  const sd = isDI ? schemaDI() : schema();
+  const sd = isDI ? schemaDI() : isDDC ? schemaDI((D.ddc && D.ddc.orgId) || D.domain + '/#organization', true) : schema();
   const sdJson = JSON.stringify(sd);
   const frag = article('package');
   const isFinal = !!opts.final && !placeholders.length;
@@ -798,9 +833,11 @@ function build(mod, D, job, opts = {}) {
   const builtWith = `\nBuilt with ${VER_LINE}.\n`;
 
   // seoMd = the SEO sheet text, steps = the README paste steps (both reused verbatim in HANDOFF.md)
-  let diOut = null, paste = '', diSeo = {}, diInjectedP = 0, seoMd = '', steps = '';
+  let diOut = null, paste = '', diSeo = {}, diInjectedP = 0, seoMd = '', steps = '', ddcOut = null;
   if (isDI) {
     ({ diOut, paste, diSeo, diInjectedP, seoMd, steps } = writeDI());
+  } else if (isDDC) {
+    ({ ddcOut, paste, diSeo, seoMd, steps } = writeDDC());
   } else {
   /* preview: dealer Apollo theme CSS + Gemini-like shell + site-wide CSS inline + schema inline */
   const ap = D.apollo || {};
@@ -945,6 +982,69 @@ ${shell}
     return { diOut: o, paste: pasteText, diSeo: seo, diInjectedP: injectedP, seoMd, steps };
   }
 
+  /* Dealer.com package: ONE paste file for the page's Custom HTML component (the scoped <style>, then the wrapper div with the
+   * article and the JSON-LD as its last node; it ends on </div>), the hand-entry sheet (Page name = the H1 the DDC shell
+   * prints, MetaData Title + Description) and the README; plus a local preview inside a DDC-like page shell. */
+  function writeDDC() {
+    const o = { preview: out.preview, pkg: out.pkg, paste: path.join(out.pkg, `${mod.slug}-DDC-Custom-HTML.html`), seo: out.seo, readme: out.readme };
+    for (const stale of [out.html, out.css, out.sd]) { try { fs.unlinkSync(stale); } catch (e) { /* not there */ } }
+    const ld = JSON.stringify(sd).replace(/</g, '\\u003c');
+    // a line break before each top-level section keeps the file readable in the DDC editor (no wpautop on Dealer.com)
+    const brk = new RegExp(`(<(?:section|header|figure|nav) class="${P}-|<div class="${P}-(?:wrap|pair)\\b|<p class="${P}-fine)`, 'g');
+    const block = (art) => `<style>${minCss(cssText)}</style>\n` + art.slice(0, -'</div>'.length).replace(brk, '\n$1') + `\n<script type="application/ld+json">${ld}</script>\n</div>`;
+    const pasteText = block(frag);
+    fs.writeFileSync(o.paste, pasteText); // ends on </div> with no trailing newline: even a slightly short copy keeps the last tag
+    const h1Text = esc(stripTags(mod.h1).trim());
+    const heroUrl = img(mod.hero, 'package');
+    const ddc = D.ddc || {};
+    const inner = block(article('preview')).replace(/href="\/(?!\/)/g, `href="${D.domain}/`);
+    const preview = `<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>${esc(mod.title)}${ddc.titleSuffix ? esc(ddc.titleSuffix) : ''}</title>
+<meta name="description" content="${esc(mod.meta)}">
+<style>
+/* PREVIEW GROUND ONLY (not in the paste file): Dealer.com theme behaviour that matters for the article */
+html{font-size:10px}body{margin:0;background:#fff;color:#222;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;font-size:1.4rem}
+#ddc-page{max-width:1170px;margin:0 auto;padding:0 15px;text-align:left}
+#ddc-page h1.ddc-page-title{font-family:${B.head};font-size:34px;font-weight:400;line-height:1.15;color:#111;margin:28px 0 20px}
+#ddc-page a{background:none;background-color:transparent}
+.pv-bar{position:sticky;top:0;z-index:50;background:${isFinal ? '#e9f7ee' : '#fffbe6'};border-bottom:1px solid ${isFinal ? '#2e8b57' : '#e0c200'};font:12px/1.5 Arial,sans-serif;color:#333;padding:8px 16px}
+.pv-bar b{color:#000}.pv-hdr{height:88px;background:#111;color:#fff;display:flex;align-items:center;padding:0 28px;font:14px Arial;letter-spacing:.2em;text-transform:uppercase}
+.pv-ftr{height:120px;background:#1a1a1a;margin-top:0}
+</style></head><body>
+<div class="pv-bar"><b>${isFinal ? 'LOCAL PREVIEW · FINAL' : 'LOCAL PREVIEW · DRAFT (placeholders) · not for pasting'}</b> · Dealer.com content page: the shell prints the Page name as the H1 · MetaData Title (${mod.title.length}): <b>${esc(mod.title)}</b> · Description (${mod.meta.length}) · Focus: <b>${esc(mod.focus)}</b> · ${url}${(D.style && D.style.fonts) ? ' · Theme fonts load on the live site; this preview shows their fallbacks.' : ''}</div>
+<div class="pv-hdr">${esc(D.name)} · site header (Dealer.com theme)</div>
+<div id="ddc-page"><h1 class="ddc-page-title">${h1Text}</h1>
+${inner}
+</div>
+<div class="pv-ftr"></div>
+</body></html>
+`;
+    fs.writeFileSync(o.preview, preview);
+    const seo = {
+      'Page name (Dealer.com prints it as the page H1)': stripTags(mod.h1).trim(),
+      URL: url,
+      'MetaData Title': mod.title,
+      'MetaData Description': mod.meta,
+      'Focus keyphrase (reference only: Dealer.com has no field)': mod.focus,
+      ...(ddc.socialImage ? { 'Social image (page settings)': heroUrl || 'MISSING: upload the hero image, then run /article-images' } : {}),
+    };
+    const fl = (k, v) => `* ${k}  →  ${v}\n`;
+    const seoMd = `# ${mod.slug}: Dealer.com page fields, ${D.name}\n\n`
+      + Object.entries(seo).map(([k, v]) => fl(k, v)).join('')
+      + fl('Canonical, Open Graph, Twitter', 'no fields in the MetaData Editor: leave them (the hero is in the article schema)')
+      + `\nType the MetaData Title exactly as written${ddc.titleSuffix ? `: Dealer.com adds "${ddc.titleSuffix.trim()}" itself` : ', without the dealer name: Dealer.com may add the site name (check the browser tab after publishing)'}.\n`;
+    fs.writeFileSync(o.seo, seoMd);
+    const used2 = Object.entries(images).filter(([k, v]) => v && used.has(k)).map(([k, v]) => `- ${k}: ${v.apollo || 'MISSING Dealer.com Media Library URL (placeholder)'}${v.desc ? ` · ${v.desc}` : ''}`).join('\n');
+    const steps = `1. Dealer.com → create a new **content page**. Page name: the "Page name" line in \`${path.basename(o.seo)}\` (Dealer.com shows it as the page H1). URL: ${url}. Leave it out of the site navigation unless the dealer asks.\n`
+      + `2. Add one full-width **Custom HTML** component. Open \`${path.basename(o.paste)}\` in Notepad, press **Ctrl+A**, copy, paste it into the component and save. "Tag must be paired, missing: [ </div> ]" means the copy was cut short: copy again with Ctrl+A.\n`
+      + `3. **MetaData Editor** → Title and Description from \`${path.basename(o.seo)}\`, typed exactly.\n`
+      + `4. **Publish.**\n`
+      + `5. **Checks** (open the URL with ?cb=<anything>): exactly one H1 (the page name); images load; the black buttons are filled (not outlines) and their labels fit; the dark closing band is centered; phone numbers are links; FAQ items open; the browser tab shows the dealer name once; Google's Rich Results Test detects Article + FAQ.\n`;
+    fs.writeFileSync(o.readme, `# ${mod.slug}: Dealer.com paste steps (${D.name})\n\n` + draftNote + steps
+      + `\nPhones and hours: real numbers and hours from the dealer file (Dealer.com has no phone or hours token); the JSON-LD uses the same numbers.\n\nImages (Dealer.com Media Library URLs):\n${used2}\n` + builtWith);
+    return { ddcOut: o, paste: pasteText, diSeo: seo, seoMd, steps };
+  }
+
   /* ---------------- QA gates ---------------- */
   const G = [];
   const gate = (name, fails, ok) => G.push(fails.length ? ['❌', name, fails.join('; ')] : ['✅', name, ok || '']);
@@ -956,7 +1056,8 @@ ${shell}
   try { JSON.parse(sdJson); } catch (e) { ok = false; gate('JSON-LD parses', [e.message]); }
   if (ok) gate('JSON-LD parses', [], `${sd['@graph'].length} nodes`);
   const h1n = (frag.match(/<h1\b/g) || []).length;
-  gate('Exactly one <h1>', h1n === 1 ? [] : [`found ${h1n}`]);
+  if (isDDC) gate('No <h1> in the block (Dealer.com prints the page name as the H1)', h1n === 0 ? [] : [`found ${h1n}`]);
+  else gate('Exactly one <h1>', h1n === 1 ? [] : [`found ${h1n}`]);
   const dOpen = (frag.match(/<div\b/g) || []).length, dClose = (frag.match(/<\/div>/g) || []).length;
   gate('Balanced <div>', dOpen === dClose ? [] : [`${dOpen} open / ${dClose} close`], `${dOpen}`);
   gate('No rem units', /[0-9]rem\b/.test(cssText + frag) ? ['rem found in CSS or fragment'] : []);
@@ -977,7 +1078,12 @@ ${shell}
   const tollFree = (visible.match(/(?<![\d,$])\(?8(77|88|00|66|55|44|33)\)?[-. ]?\d{3}[-. ]\d{4}/g) || []).filter((n) => !fileDigits.has(n.replace(/\D/g, '').slice(-10)));
   // department numbers written out in visible HTML (phone-shaped matches only; JSON-LD excluded) → must be tags/shortcodes
   const hardPhones = (html) => { const shown = new Set((html.replace(/<script[\s\S]*?<\/script>/gi, ' ').match(/(?<!\d)\(?\d{3}\)?[-. ]?\d{3}[-. ]?\d{4}(?!\d)/g) || []).map(digits10)); return Object.entries(D.depts || {}).filter(([k, d]) => d && d.phone && TAGS[k] && shown.has(digits10(d.phone))).map(([k]) => k); };
-  if (!isDI) {
+  if (isDDC) {
+    // no phone token on Dealer.com: every number in the block (links, text, JSON-LD) must be a dealer-file number
+    const shownNums = [...new Set([...(paste.match(/tel:\+?[\d-]{10,}/g) || []), ...(paste.match(/(?<![\d#])\(?\d{3}\)?[-. ]\d{3}[-. ]\d{4}(?!\d)/g) || []), ...(paste.match(/"telephone":"[^"]+"/g) || [])].map(digits10))];
+    gate('Phone numbers equal the dealer file', shownNums.filter((n) => !fileDigits.has(n)).map((n) => `not in the dealer file: ${n}`), `${shownNums.length} number(s)`);
+    gate('No Apollo tags, shortcodes or {{DDC_MEDIA}} tokens', [/#(Sales|Service|Parts|BodyShop)Number|#DealerName/.test(paste) && 'Apollo merge tag', /\[di_/.test(paste) && '[di_ shortcode', /\{\{DDC_MEDIA/.test(paste) && '{{DDC_MEDIA token'].filter(Boolean));
+  } else if (!isDI) {
   gate('No Apollo tags in Structured Data', /#(Sales|Service|Parts|BodyShop)Number|#DealerName/.test(JSON.stringify(sd)) ? ['merge tag found in JSON-LD (tags are not replaced there)'] : []);
   { const html = fs.readFileSync(out.html, 'utf8'); const hard = hardPhones(html);
     const telHard = (html.match(/tel:\+?\d[\d-]{9,}/g) || []);
@@ -1028,7 +1134,33 @@ ${shell}
   gate('No stand-alone bold paragraph', bare ? [`${bare} found (bold answers must run inline into the next paragraph)`] : []);
   const tok = [...new Set([...(frag + ' ' + seoText + ' ' + (mod.focus || '')).matchAll(/\{\{[^}]*\}?\}?|__[A-Z][A-Z0-9_]*__/g)].map((m) => m[0]))];
   gate('No unresolved {{tokens}} / __MARKERS__', tok.map((t) => phoneMiss.get(t) || t.slice(0, 30)));
-  if (!isDI) {
+  if (isDDC) {
+    // the live-tested Dealer.com block rules (DEALERCOM_CUSTOM_HTML_QA_NOTES §7–§10)
+    const shape = [];
+    if (!paste.startsWith('<style>')) shape.push('must start with the scoped <style>');
+    if ((paste.match(/<style\b/g) || []).length !== 1 || (paste.match(/<\/style>/g) || []).length !== 1) shape.push('exactly one style block expected');
+    if (!paste.includes(`</style>\n<div class="${P}-art ${P}-art-${mod.slug}">`)) shape.push('the wrapper div must follow the style block');
+    if (!/<script type="application\/ld\+json">[^<]*<\/script>\n<\/div>$/.test(paste)) shape.push('the JSON-LD must be the last node and the file must end on </div>');
+    if ((paste.match(/<script\b/g) || []).length !== 1) shape.push('no script other than the JSON-LD');
+    if (/<(link|meta|title|html|head|body)\b|<!doctype/i.test(paste)) shape.push('contains link/meta/title/doctype/html/head/body');
+    gate('Paste block shape (style, wrapper div, JSON-LD last, ends on </div>)', shape, `${Math.round(paste.length / 1024)} KB`);
+    const pairs = ['div', 'style', 'script', 'section', 'figure', 'details', 'table', 'ul', 'ol'].filter((t) => (paste.match(new RegExp(`<${t}\\b`, 'g')) || []).length !== (paste.match(new RegExp(`</${t}>`, 'g')) || []).length);
+    gate('Every tag paired (the Dealer.com tag-pair check)', pairs.map((t) => `<${t}> open/close counts differ`));
+    const css = minCss(cssText);
+    gate('No comments, @import, inline style= or transition: all', [/<!--|\/\*/.test(paste) && 'comment found (the DDC tag-pair check reads tags inside comments)', /@import/i.test(css) && '@import (the DDC CSS reformatter breaks URLs)', /url\([^)]*\/\d/.test(css) && 'url() with a slash before a digit', /\sstyle="/.test(paste) && 'inline style=', /transition:\s*all/i.test(css) && 'transition: all'].filter(Boolean));
+    gate('CTA fills hardened (!important)', /a\.[a-z0-9]+-btn-ink[^{]*\{[^}]*background:[^;}]*!important/.test(css) ? [] : ['primary button fill without !important']);
+    const bare = [...new Set([...paste.matchAll(/class="([^"]*)"/g)].flatMap((m) => m[1].split(/\s+/)).filter((c) => /^(row|grid|card|btn|container|section|hero|media|copy|wrapper)$/.test(c)))];
+    gate('No bare generic class names', bare.map((c) => `class "${c}"`));
+    gate('Inline CSS fully scoped', cssScopeIssues(css, P).slice(0, 5).map((s) => 'unscoped: ' + s), `${Math.round(css.length / 1024)} KB`);
+    gate('Page fields sheet complete', Object.entries(diSeo).filter(([k, v]) => !String(v || '').trim() || (opts.final && /^MISSING/.test(v))).map(([k]) => k + ' empty or missing'), `${Object.keys(diSeo).length} fields`);
+    if (opts.final) {
+      const base = D.ddc && D.ddc.media;
+      const off = [...slots].filter((k) => images[k] && images[k].apollo && !(DDC_MEDIA.test(images[k].apollo) && (!base || images[k].apollo.startsWith(base))));
+      gate('Final: every article image is in this store\'s Dealer.com Media Library', [...placeholders.map((k) => k + ' has no Dealer.com Media Library URL'), ...off.map((k) => `${k} is not on ${base || 'pictures.dealer.com'}`)], `${slots.size} slots`);
+    }
+    if (D.ddc && D.ddc.titleSuffix && mod.title.toLowerCase().includes(D.name.toLowerCase())) warnG('MetaData Title without the dealer name', [`Dealer.com adds "${D.ddc.titleSuffix.trim()}": the dealer name would show twice`]);
+    warnG('MetaData Description ≤155', mod.meta.length > 155 ? [`${mod.meta.length} chars (search results may cut it)`] : [], `${mod.meta.length}`);
+  } else if (!isDI) {
   const fragBad = [];
   if (/<(style|script|link|meta|html|head|body)\b|<!doctype/i.test(frag)) fragBad.push('contains style/script/link/meta/doctype/html/head/body');
   if (!frag.startsWith(`<div class="${P}-art ${P}-art-${mod.slug}">`) || !frag.endsWith('</div>')) fragBad.push('must start with the .' + P + '-art wrapper div and end with </div>');
@@ -1075,7 +1207,7 @@ ${shell}
   const bodyWords = countWords(decode(stripTags(mod.blocks.map(blockText).join(' '))));
   gate('Body words 1,700–2,300 (blocks only)', bodyWords < 1700 || bodyWords > 2300 ? [`${bodyWords} words`] : [], `${bodyWords}`);
   const modText = decode(stripTags([mod.title, mod.h1, mod.dek, ...mod.blocks.map(blockText)].join(' ')));
-  warnG('Dealer fit (brand + city in article copy)', [!modText.includes(D.brand) && `brand "${D.brand}" never mentioned`, !modText.includes(D.city) && `city "${D.city}" never mentioned`].filter(Boolean));
+  warnG('Dealer fit (brand + city in article copy)', [!D.brandNames.some((b) => modText.includes(b)) && `brand "${D.brand}" never mentioned`, !modText.includes(D.city) && `city "${D.city}" never mentioned`].filter(Boolean));
   gate('Question H2s 8–9', h2s.length < 8 || h2s.length > 9 ? [`${h2s.length} H2s`] : [], `${h2s.length}`);
   const faqW = mod.faq.map((q) => countWords(q.a));
   const faqMsg = [];
@@ -1103,17 +1235,18 @@ ${shell}
   const status = fails ? `NOT READY – gates failed: ${failed.join(', ')}` : isFinal ? 'FINAL – ready to paste'
     : `DRAFT – do not paste (reason: ${[!opts.final && 'built without --final', placeholders.length && `${placeholders.length} image(s) are still placeholders (${placeholders.join(', ')})`].filter(Boolean).join('; ')})`;
   const isPostDI = isDI && D.di && D.di.template === 'post';
-  const pasteFiles = isDI ? [[diOut.wired, `the whole ${isPostDI ? 'post' : 'page'} body (WordPress Text tab)`], [out.seo, 'Yoast + WordPress fields, typed by hand']]
+  const pasteFiles = isDDC ? [[ddcOut.paste, 'the whole block: one Custom HTML component (copy with Ctrl+A)'], [out.seo, 'Dealer.com page name + MetaData Title and Description, typed by hand']]
+    : isDI ? [[diOut.wired, `the whole ${isPostDI ? 'post' : 'page'} body (WordPress Text tab)`], [out.seo, 'Yoast + WordPress fields, typed by hand']]
     : [[out.css, `site-wide CSS, once per dealer (css ${sw.hash}; skip if the live site already has it)`], [out.html, 'page HTML'], [out.sd, 'Custom Structured Data'], [out.seo, 'SEO settings, typed by hand']];
   const flags = [
     ...G.filter((g) => g[0] === '❌').map(([, n, m]) => `Gate failed: ${n}${m ? ': ' + m : ''}`),
-    placeholders.length && `Unverified images (gray placeholders, not real photos): ${placeholders.join(', ')}. Upload them, send the ${isDI ? 'WordPress Media Library URLs' : 'Apollo Image IDs'}, then rebuild with --final.`,
+    placeholders.length && `Unverified images (gray placeholders, not real photos): ${placeholders.join(', ')}. Upload them, send the ${isDI ? 'WordPress Media Library URLs' : isDDC ? 'Dealer.com Media Library image URLs' : 'Apollo Image IDs'}, then rebuild with --final.`,
     ...[...D.verify, ...(Array.isArray(mod.verify) ? mod.verify : [])].map((v) => `Confirm with the dealer: ${v}`),
     mod.allowMsrp && /\$\s?\d/.test(allText) && `${PT} price comparison in the article: get dealer-counsel sign-off before publishing${/^(VA|CA)$/.test(D.region) ? ` (required for ${D.region} stores)` : ' where the state requires it'}.`,
     ...G.filter((g) => g[0] === '⚠️' && g[1] !== 'Images sourced').map(([, n, m]) => `Warning: ${n}${m ? ': ' + m : ''}`),
   ].filter(Boolean);
   const handoff = `# HANDOFF: ${mod.slug} (${D.name})\n\n**Status: ${status}**\n\n`
-    + `- Version: ${VER_LINE}\n- Dealer: ${D.name} (${D.key})\n- Platform: ${isDI ? `DealerInspire (${isPostDI ? 'WordPress post' : 'Page Composer page'})` : 'Apollo custom page'}\n- URL: ${url}\n- Review: ${REVIEW[reviewMode] || 'not recorded'}\n\n`
+    + `- Version: ${VER_LINE}\n- Dealer: ${D.name} (${D.key})\n- Platform: ${isDI ? `DealerInspire (${isPostDI ? 'WordPress post' : 'Page Composer page'})` : isDDC ? 'Dealer.com (content page, Custom HTML component)' : 'Apollo custom page'}\n- URL: ${url}\n- Review: ${REVIEW[reviewMode] || 'not recorded'}\n\n`
     + `## SEO fields (${path.basename(out.seo)})\n\n${seoMd.replace(/^# [^\n]*\n\n/, '')}\n`
     + `## Files to paste (package folder)\n\n${pasteFiles.map(([p, r]) => `- ${path.basename(p)}: ${r}`).join('\n')}\n\n`
     + `## Paste steps\n\n${steps}\n`
@@ -1124,7 +1257,7 @@ ${shell}
   console.log(`\n=== ${D.name} · ${mod.slug} ${opts.final ? '(FINAL)' : '(draft)'} ===  words≈${words} (body ${bodyWords})  read=${readMin}min  h2=${h2s.length}  faq=${mod.faq.length}  links=${uniq.length}  css=${sw.hash}`);
   G.forEach(([s, n, m]) => console.log(`  ${s} ${n}${m ? ': ' + m : ''}`));
   console.log(`RESULT: ${fails ? `❌ FAIL (${fails} gate${fails > 1 ? 's' : ''})` : '✅ PASS'}${warns ? `, ${warns} warning${warns > 1 ? 's' : ''}` : ''}`);
-  console.log(`Outputs:\n  ${hFile}\n  ${out.preview}\n  ${out.pkg}${path.sep}  (${(isDI ? [diOut.wired, out.seo, out.readme] : [out.html, out.css, out.sd, out.seo, out.readme]).map((p) => path.basename(p)).join(', ')})`);
+  console.log(`Outputs:\n  ${hFile}\n  ${out.preview}\n  ${out.pkg}${path.sep}  (${(isDDC ? [ddcOut.paste, out.seo, out.readme] : isDI ? [diOut.wired, out.seo, out.readme] : [out.html, out.css, out.sd, out.seo, out.readme]).map((p) => path.basename(p)).join(', ')})`);
   console.log(`\n=== HANDOFF (show this to the user verbatim) ===\n${handoff.trimEnd()}\n=== END HANDOFF ===`);
   return { fails, warns, words, hash: sw.hash, isFinal, status };
 }
@@ -1232,9 +1365,9 @@ async function cmdEnv(a = {}) {
 async function netCheck(dealers) {
   const byHost = new Map();
   for (const d of dealers) for (const im of Object.values(d.images || {})) {
-    const v = im && ((d.platform || 'apollo') === 'dealerinspire' ? im.di : im.apollo);
+    const v = im && ((d.platform || 'apollo') === 'dealerinspire' ? im.di : d.platform === 'dealercom' ? im.ddc : im.apollo);
     if (!v) continue;
-    const u = (d.platform || 'apollo') === 'dealerinspire' ? v : fetchUrl(v);
+    const u = /^https?:/i.test(v) ? v : fetchUrl(v);
     try { const h = new URL(u).host; if (!byHost.has(h)) byHost.set(h, u); } catch (e) { /* not a URL */ }
   }
   const dom = (dealers.find((d) => d.domain) || {}).domain;
@@ -1282,13 +1415,19 @@ function cmdNew(a) {
   // permalinks: Apollo custom pages are extensionless with no trailing slash; DealerInspire posts are /<slug>/ and Page
   // Composer pages sit under the dealer's article parent page (di.parentPath, e.g. /service/service-and-parts-tips/)
   const di = D.platform === 'dealerinspire' ? (D.di || {}) : null;
-  const pagePath = di ? (di.template === 'composer' && di.parentPath ? di.parentPath.replace(/\/?$/, '/') + slug + '/' : '/' + slug + '/') : '/' + slug;
+  const ddc = D.platform === 'dealercom' ? (D.ddc || {}) : null; // Dealer.com content pages: ddc.contentPath, e.g. "/<slug>.htm"
+  const pagePath = di ? (di.template === 'composer' && di.parentPath ? di.parentPath.replace(/\/?$/, '/') + slug + '/' : '/' + slug + '/')
+    : ddc ? (ddc.contentPath || '/<slug>.htm').replace('<slug>', slug) : '/' + slug;
   const map = { DEALER_NAME: D.name, DEALER: D.key, BRAND: D.brand, CITY: D.city, TITLE: a.title, SLUG: slug, PATH: pagePath, DATE_LABEL: t.label, DATE: t.iso };
   let src = fs.readFileSync(tplFile, 'utf8');
   for (const [k, v] of Object.entries(map)) src = src.split(`__${k}__`).join(js(v));
   if (di) { // DealerInspire jobs: image values are WordPress Media Library URLs (`di`), not Apollo ids
     src = src.replace(/\bapollo: null/g, 'di: null')
       .replace(/\/\* Images: apollo = [\s\S]*?\*\//, "/* Images: di = the WordPress Media Library file URL (https://di-uploads-podN.dealerinspire.com/<site>/uploads/YYYY/MM/<file>).\n   * Leave di: null until the image is uploaded; the preview shows a gray placeholder with `desc`, and the package\n   * stays DRAFT (build --final fails). w/h = real pixel size (run: build.js images <job> to read them). */");
+  }
+  if (ddc) { // Dealer.com jobs: image values are Media Library URLs on pictures.dealer.com (`ddc`)
+    src = src.replace(/\bapollo: null/g, 'ddc: null')
+      .replace(/\/\* Images: apollo = [\s\S]*?\*\//, "/* Images: ddc = the Dealer.com Media Library image URL (https://pictures.dealer.com/<letter>/<account>/...).\n   * Leave ddc: null until the image is uploaded; the preview shows a gray placeholder with `desc`, and the package\n   * stays DRAFT (build --final fails). w/h = real pixel size (run: build.js images <job> to read them). */");
   }
   fs.mkdirSync(dir, { recursive: true });
   fs.writeFileSync(path.join(dir, 'module.js'), src);
@@ -1307,7 +1446,9 @@ function cmdStatus(arg) {
   const o = outPaths(job, { slug }, P);
   const qa = path.join(job, 'qa');
   const imgs = path.join(job, 'images');
-  (platform === 'dealerinspire'
+  (platform === 'dealercom'
+    ? [['module.js', modFile], ['preview', o.preview], ['paste file', path.join(o.pkg, `${slug}-DDC-Custom-HTML.html`)], ['page fields', o.seo], ['README', o.readme]]
+    : platform === 'dealerinspire'
     ? [['module.js', modFile], ['preview', o.preview], ['paste file', path.join(o.pkg, `${slug}-embed-Wired.html`)], ['Yoast sheet', o.seo], ['README', o.readme]]
     : [['module.js', modFile], ['preview', o.preview], ['package HTML', o.html], ['site-wide CSS', o.css], ['Structured Data', o.sd], ['SEO sheet', o.seo], ['README', o.readme]])
     .concat([['HANDOFF', path.join(job, 'HANDOFF.md')]])
@@ -1402,11 +1543,14 @@ async function cmdImages(arg) {
   for (const [k, im] of Object.entries(images)) {
     const r = role[k] || 'unplaced';
     if (!im) { rows.push([k, r, '—', 'not set (optional dealer image)', '', '', '']); continue; }
-    const val = D.platform === 'dealerinspire' ? im.di : im.apollo; // DealerInspire: WordPress Media Library URL
-    const what = D.platform === 'dealerinspire' ? 'WordPress Media Library URL' : 'Apollo value';
+    const isDDC = D.platform === 'dealercom';
+    const val = D.platform === 'dealerinspire' ? im.di : isDDC ? im.ddc : im.apollo; // DealerInspire / Dealer.com: Media Library URL
+    const what = D.platform === 'dealerinspire' ? 'WordPress Media Library URL' : isDDC ? 'Dealer.com Media Library URL' : 'Apollo value';
     if (!val) { rows.push([k, r, '—', r === 'dealer' ? `no ${what} (optional: text fallback)` : `no ${what} (placeholder)`, '', '', im.desc || '']); continue; }
     if (D.platform === 'dealerinspire' && !DI_UPLOADS.test(val)) { bad++; rows.push([k, r, '❌', 'not a DealerInspire uploads URL (https://di-uploads-podN.dealerinspire.com/<site>/uploads/YYYY/MM/<file>)', '', '', val]); continue; }
-    const u = D.platform === 'dealerinspire' ? val : fetchUrl(val);
+    const media = isDDC && D.ddc && D.ddc.media;
+    if (isDDC && !(DDC_MEDIA.test(val) && (!media || val.startsWith(media)))) { bad++; rows.push([k, r, '❌', `not this store's Dealer.com Media Library URL (${media || 'https://pictures.dealer.com/<letter>/<account>/'}…)`, '', '', val]); continue; }
+    const u = /^https?:/i.test(val) ? val : fetchUrl(val);
     try {
       const res = await netFetch(u, { timeout: 30000, headers: { 'User-Agent': UA, Accept: 'image/avif,image/webp,image/*,*/*;q=0.8', 'Accept-Language': 'en-US,en;q=0.9', Referer: D.domain + '/' } });
       const ct = (res.headers.get('content-type') || '').split(';')[0].trim().toLowerCase();
