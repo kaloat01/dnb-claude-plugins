@@ -34,6 +34,9 @@
 - **v0.11.1:** image requests are current ("any 2025–2027 <brand or model>": last year to next year), general (no camera positions, hands,
   screens, parts or trims) and easy to find online (5 press-gallery shot types); older-design library photos are marked
   `outdated` and never reused; DealerInspire 1,900px / 1MB upload note; action-first, short chat style.
+- **v0.11.2:** fixes from the first Richmond test run: DealerInspire sales articles build again (hours fallback without
+  `<br>`), sales articles no longer link service specials or repeat the sales number as "Main line", the resume kit carries
+  local dealer overrides, and older jobs get the short photo list again.
 
 ## Next
 1. **v0.12: Dealer.com adapter** for Brickell CDJR, Ocean Cadillac and Brickell Buick GMC. Same shared workflow and checks as Apollo and DealerInspire. Platform points: a block with no H1 where the page name is the H1, px units with a 16px wrapper, `!important` CTA fills, and no Google Fonts where the dealer forbids them.

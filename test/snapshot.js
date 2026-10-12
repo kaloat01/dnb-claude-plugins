@@ -51,6 +51,13 @@ for (const d of dealers) {
 }
 try { fs.rmSync(work, { recursive: true, force: true }); } catch (e) { /* ignore */ }
 
+// a draft must pass every gate (only --final may fail, on the example's placeholder images): a recorded FAIL is no baseline
+const badDrafts = Object.entries(result).filter(([k, c]) => k.endsWith('|draft') && c.fails);
+if (badDrafts.length) {
+  console.log(`❌ ${badDrafts.length} draft case(s) fail a gate (${platform}):\n  ` + badDrafts.map(([k, c]) => `${k}: ${c.gates.filter((g) => /❌/.test(g)).map((g) => g.trim()).join(' · ')}`).join('\n  '));
+  process.exit(1);
+}
+
 if (mode === 'record') {
   fs.mkdirSync(path.dirname(file), { recursive: true });
   fs.writeFileSync(file, JSON.stringify({ platform, dealers: dealers.map((d) => d.key), cases: result }, null, 1) + '\n');

@@ -139,3 +139,22 @@
   `<job>/qa/` instead of the chat.
 - Engine: version stamp only (0.11.1); package output unchanged.
 
+## 2026-10-12 — v0.11.2: fixes from the first Richmond test run
+- **DealerInspire sales articles build again** on the 4 stores without a verified Sales `[di_hours]` department (Foothill
+  Ranch, Laguna Niguel, Richmond, Vans). The text fallback put `<br>` in the dealership box, which the engine's own
+  wpautop gate rejects. The fallback now prints the same list markup the shortcode prints (one line on the page).
+- **Richmond:** the Sales hours shortcode is on (the site's hours widget lists a Sales department; confirm on the live
+  article).
+- **Dealership box, sales articles:**
+  - Link only a vehicle-offers page as "Current offers". `routes.specials` is the SERVICE specials page on every dealer,
+    so 7 stores (5 Mercedes-Benz, 2 Bentley) linked service specials from sales articles.
+  - No "Main line" when it is the same number as the department's; the other department's number shows instead.
+  - "Start online: <a>Schedule a Test Drive</a> on our website." replaces "… any time." (service keeps "Book online …
+    any time.").
+- **No false "01, 02 numbering" warning** from upload URLs such as `/2026/09/` (every DealerInspire article had it).
+- **Resume kit:** a local dealer override (`./dealers/<key>.*`) travels in the kit and `resume` restores it (never over
+  a different local copy without `--force`), so a new conversation rebuilds the same article.
+- **`/article-images`:** a job started before v0.11.1 gets the short, current photo list again before photos are asked
+  for; any current §2 shot that suits the article is accepted, and a caption that no longer fits its photo is rewritten.
+- **Tests:** `test/snapshot.js` refuses any draft case that fails a gate (the `<br>` FAIL had been recorded in the
+  DealerInspire baseline since v0.10). Baselines re-recorded; every change was reviewed case by case.

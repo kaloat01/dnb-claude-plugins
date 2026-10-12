@@ -24,6 +24,10 @@ If this run did not start with `DA env --net`, run it first and show its version
    - Otherwise, from `$ARGUMENTS`, locate `<jobs folder>/<dealer-key>/<slug>/` (Glob `<jobs folder>/*/*/job.json` and match the
      dealer + title/slug). If none matches, list the jobs found and ask (in a new Cowork task or chat, ask for the resume kit).
    - Run `DA status "<job>"`.
+   - **Job started before v0.11.1** (`job.json` `version` below 0.11.1, or `IMAGES-TO-SOURCE.md` asks for camera positions,
+     hands, screens or parts) and the user has not sent photos yet: first re-send the missing slots in the `image-brief.md`
+     §2/§6 shape (library first, never an `outdated` image), update their `desc` in `module.js` and save the list to
+     `IMAGES-TO-SOURCE.md`.
 2. **Map images to slots.** Slots: IMG_HERO, IMG_FIG1, IMG_FIG2, IMG_PAIR1, IMG_PAIR2 (see each slot's `desc` in `module.js`).
    Accept Image IDs, full Apollo URLs (`…GetLibraryImage?fileNameOrId=<ID>…`) or a list in slot order. If the mapping is
    unclear, show the slot list and ask once. Write each value into `module.js` → `images.<KEY>.apollo`. Reject thumbnails or
@@ -43,8 +47,10 @@ If this run did not start with `DA env --net`, run it first and show its version
    - Sizes not given: keep the slot minimums from `image-brief.md` as `w`/`h`, choose the safe placement (hero
      `heroContained: true`), and write "image sizes unverified (image hosts blocked)" in `job.json` notes.
    - Tell the user in your summary that the images were not fetched here and to eyeball the live page after publishing.
-4. **View every photo** (Read each file in `<job>/images/`, or the photos the user attached). Check: subject matches the slot request, **model year/generation
-   matches the article**, no baked-in text/watermarks, own brand only in comparisons. Filenames lie: describe what you SEE.
+4. **View every photo** (Read each file in `<job>/images/`, or the photos the user attached). Check: subject fits the slot (its request, or any
+   `image-brief.md` §2 shot that suits the article), **model year/generation matches the article**, no baked-in
+   text/watermarks, own brand only in comparisons. Filenames lie: describe what you SEE. When a photo shows something
+   other than its `caption` describes, rewrite that caption to fit the photo, using only facts already in the article.
    A vehicle older than last year's model year (or a previous generation of the article's model) → reject: tell the user which slot and ask for a current one
    (`image-brief.md` §2). Rewrite each `alt` (what the photo shows, ≤125 chars) and set the real `w`/`h`. A photo you could not view at all: alt
    text from the slot request, flagged "alt text not checked against the photo" in your summary.

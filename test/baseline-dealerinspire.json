@@ -10,16 +10,16 @@
  "cases": {
   "mercedes-benz-foothill-ranch|sales|draft": {
    "files": {
-    "HANDOFF.md": "9cad259ffd50e6fc",
-    "honda-trade-in-value-miami-guide-preview.html": "75ec19fc39fd6b41",
-    "package/honda-trade-in-value-miami-guide-embed-Wired.html": "3e3919376b87fe94",
+    "HANDOFF.md": "2883fc3a99998496",
+    "honda-trade-in-value-miami-guide-preview.html": "f10be26c9d3cdb54",
+    "package/honda-trade-in-value-miami-guide-embed-Wired.html": "a0c39cd7b1317332",
     "package/honda-trade-in-value-miami-guide-SEO.md": "1ccac11059151474",
-    "package/README.md": "09d22e3df20d1657"
+    "package/README.md": "cf965a7c67675996"
    },
    "gates": [
     "  ✅ JSON-LD parses: 3 nodes",
     "  ✅ Exactly one <h1>",
-    "  ✅ Balanced <div>: 43",
+    "  ✅ Balanced <div>: 44",
     "  ✅ No rem units",
     "  ✅ No em/en dashes",
     "  ✅ Banned phrases (global + dealer + module)",
@@ -30,18 +30,18 @@
     "  ✅ No toll-free numbers",
     "  ✅ $ figures only as MSRP (allowMsrp)",
     "  ✅ Brand terms ledger: 14 rule(s) for Mercedes-Benz",
-    "  ✅ Internal links in allow-list: 18 unique, source: module allowedLinks",
+    "  ✅ Internal links in allow-list: 17 unique, source: module allowedLinks",
     "  ✅ FAQ parity (visible + schema): 10 Q&A",
     "  ✅ No stand-alone bold paragraph",
     "  ✅ No unresolved {{tokens}} / __MARKERS__",
     "  ✅ Paste file shape (one line, root div, style, script, JSON-LD): 58 KB",
-    "  ❌ No <br>, <pre> or <textarea> (wpautop): found in the article markup",
+    "  ✅ No <br>, <pre> or <textarea> (wpautop)",
     "  ✅ No <a> wrapping block elements (wpautop clones it)",
     "  ✅ Helper script compiles (linkPhones/condense)",
     "  ✅ Inline CSS fully scoped: 23 KB",
     "  ✅ Yoast sheet complete (social images never empty): 13 fields",
     "  ✅ wpautop simulation: 35 <p> added by wpautop (stray ones are hidden by the hardening CSS; check the preview)",
-    "  ⚠️ No \"01, 02\" numbering: possible \"01, 02\" style numbering",
+    "  ✅ No \"01, 02\" numbering",
     "  ✅ Title length 50–65: 55",
     "  ✅ Social title ≤70: 69",
     "  ✅ Meta 130–165: 153",
@@ -50,28 +50,28 @@
     "  ⚠️ Dealer fit (brand + city in article copy): brand \"Mercedes-Benz\" never mentioned; city \"Foothill Ranch\" never mentioned",
     "  ✅ Question H2s 8–9: 9",
     "  ✅ FAQ 9–10 × 40–90 words: 10 × 41–64 words",
-    "  ✅ ≥12 unique internal links: 18",
+    "  ✅ ≥12 unique internal links: 17",
     "  ⚠️ Sentences ≤25 words: 1 sentence(s) over 25 words",
     "  ⚠️ Images sourced: IMG_B_HERO placeholder; IMG_B_INSPECT placeholder; IMG_B_KEYS placeholder; IMG_B_SERVICE placeholder; IMG_B_REVIEW placeholder",
     "  ✅ Dealer images (optional): small LOGO emblem + name band",
     "  ✅ Department contact",
-    "RESULT: ❌ FAIL (1 gate), 4 warnings"
+    "RESULT: ✅ PASS, 3 warnings"
    ],
-   "fails": 1,
-   "warns": 4
+   "fails": 0,
+   "warns": 3
   },
   "mercedes-benz-foothill-ranch|sales|final": {
    "files": {
-    "HANDOFF.md": "1c938b1b9aa97c07",
-    "honda-trade-in-value-miami-guide-preview.html": "75ec19fc39fd6b41",
-    "package/honda-trade-in-value-miami-guide-embed-Wired.html": "3e3919376b87fe94",
+    "HANDOFF.md": "358e713c696f704b",
+    "honda-trade-in-value-miami-guide-preview.html": "f10be26c9d3cdb54",
+    "package/honda-trade-in-value-miami-guide-embed-Wired.html": "a0c39cd7b1317332",
     "package/honda-trade-in-value-miami-guide-SEO.md": "1ccac11059151474",
-    "package/README.md": "07ef237fb8555910"
+    "package/README.md": "a4b6263a49ecf115"
    },
    "gates": [
     "  ✅ JSON-LD parses: 3 nodes",
     "  ✅ Exactly one <h1>",
-    "  ✅ Balanced <div>: 43",
+    "  ✅ Balanced <div>: 44",
     "  ✅ No rem units",
     "  ✅ No em/en dashes",
     "  ✅ Banned phrases (global + dealer + module)",
@@ -82,19 +82,19 @@
     "  ✅ No toll-free numbers",
     "  ✅ $ figures only as MSRP (allowMsrp)",
     "  ✅ Brand terms ledger: 14 rule(s) for Mercedes-Benz",
-    "  ✅ Internal links in allow-list: 18 unique, source: module allowedLinks",
+    "  ✅ Internal links in allow-list: 17 unique, source: module allowedLinks",
     "  ✅ FAQ parity (visible + schema): 10 Q&A",
     "  ✅ No stand-alone bold paragraph",
     "  ✅ No unresolved {{tokens}} / __MARKERS__",
     "  ✅ Paste file shape (one line, root div, style, script, JSON-LD): 58 KB",
-    "  ❌ No <br>, <pre> or <textarea> (wpautop): found in the article markup",
+    "  ✅ No <br>, <pre> or <textarea> (wpautop)",
     "  ✅ No <a> wrapping block elements (wpautop clones it)",
     "  ✅ Helper script compiles (linkPhones/condense)",
     "  ✅ Inline CSS fully scoped: 23 KB",
     "  ❌ Yoast sheet complete (social images never empty): Featured image missing; Facebook image missing; Twitter image missing",
     "  ❌ Final: every article image is a DealerInspire upload of this site: IMG_B_HERO has no WordPress Media Library URL; IMG_B_INSPECT has no WordPress Media Library URL; IMG_B_KEYS has no WordPress Media Library URL; IMG_B_SERVICE has no WordPress Media Library URL; IMG_B_REVIEW has no WordPress Media Library URL",
     "  ✅ wpautop simulation: 35 <p> added by wpautop (stray ones are hidden by the hardening CSS; check the preview)",
-    "  ⚠️ No \"01, 02\" numbering: possible \"01, 02\" style numbering",
+    "  ✅ No \"01, 02\" numbering",
     "  ✅ Title length 50–65: 55",
     "  ✅ Social title ≤70: 69",
     "  ✅ Meta 130–165: 153",
@@ -103,22 +103,22 @@
     "  ⚠️ Dealer fit (brand + city in article copy): brand \"Mercedes-Benz\" never mentioned; city \"Foothill Ranch\" never mentioned",
     "  ✅ Question H2s 8–9: 9",
     "  ✅ FAQ 9–10 × 40–90 words: 10 × 41–64 words",
-    "  ✅ ≥12 unique internal links: 18",
+    "  ✅ ≥12 unique internal links: 17",
     "  ⚠️ Sentences ≤25 words: 1 sentence(s) over 25 words",
     "  ✅ Dealer images (optional): small LOGO emblem + name band",
     "  ✅ Department contact",
-    "RESULT: ❌ FAIL (3 gates), 3 warnings"
+    "RESULT: ❌ FAIL (2 gates), 2 warnings"
    ],
-   "fails": 3,
-   "warns": 3
+   "fails": 2,
+   "warns": 2
   },
   "mercedes-benz-foothill-ranch|service|draft": {
    "files": {
-    "HANDOFF.md": "e0a68612c5b5ad85",
+    "HANDOFF.md": "2883fc3a99998496",
     "honda-trade-in-value-miami-guide-preview.html": "944805153f0fc7fd",
     "package/honda-trade-in-value-miami-guide-embed-Wired.html": "2ee68f30e2e95210",
     "package/honda-trade-in-value-miami-guide-SEO.md": "1ccac11059151474",
-    "package/README.md": "843cc28c2d5c355a"
+    "package/README.md": "cf965a7c67675996"
    },
    "gates": [
     "  ✅ JSON-LD parses: 3 nodes",
@@ -145,7 +145,7 @@
     "  ✅ Inline CSS fully scoped: 23 KB",
     "  ✅ Yoast sheet complete (social images never empty): 13 fields",
     "  ✅ wpautop simulation: 35 <p> added by wpautop (stray ones are hidden by the hardening CSS; check the preview)",
-    "  ⚠️ No \"01, 02\" numbering: possible \"01, 02\" style numbering",
+    "  ✅ No \"01, 02\" numbering",
     "  ✅ Title length 50–65: 55",
     "  ✅ Social title ≤70: 69",
     "  ✅ Meta 130–165: 153",
@@ -159,18 +159,18 @@
     "  ⚠️ Images sourced: IMG_B_HERO placeholder; IMG_B_INSPECT placeholder; IMG_B_KEYS placeholder; IMG_B_SERVICE placeholder; IMG_B_REVIEW placeholder",
     "  ✅ Dealer images (optional): small LOGO emblem + name band",
     "  ✅ Department contact",
-    "RESULT: ✅ PASS, 4 warnings"
+    "RESULT: ✅ PASS, 3 warnings"
    ],
    "fails": 0,
-   "warns": 4
+   "warns": 3
   },
   "mercedes-benz-foothill-ranch|service|final": {
    "files": {
-    "HANDOFF.md": "fbc56736ef856675",
+    "HANDOFF.md": "358e713c696f704b",
     "honda-trade-in-value-miami-guide-preview.html": "944805153f0fc7fd",
     "package/honda-trade-in-value-miami-guide-embed-Wired.html": "2ee68f30e2e95210",
     "package/honda-trade-in-value-miami-guide-SEO.md": "1ccac11059151474",
-    "package/README.md": "bc4f686a15e1606f"
+    "package/README.md": "a4b6263a49ecf115"
    },
    "gates": [
     "  ✅ JSON-LD parses: 3 nodes",
@@ -198,7 +198,7 @@
     "  ❌ Yoast sheet complete (social images never empty): Featured image missing; Facebook image missing; Twitter image missing",
     "  ❌ Final: every article image is a DealerInspire upload of this site: IMG_B_HERO has no WordPress Media Library URL; IMG_B_INSPECT has no WordPress Media Library URL; IMG_B_KEYS has no WordPress Media Library URL; IMG_B_SERVICE has no WordPress Media Library URL; IMG_B_REVIEW has no WordPress Media Library URL",
     "  ✅ wpautop simulation: 35 <p> added by wpautop (stray ones are hidden by the hardening CSS; check the preview)",
-    "  ⚠️ No \"01, 02\" numbering: possible \"01, 02\" style numbering",
+    "  ✅ No \"01, 02\" numbering",
     "  ✅ Title length 50–65: 55",
     "  ✅ Social title ≤70: 69",
     "  ✅ Meta 130–165: 153",
@@ -211,23 +211,23 @@
     "  ⚠️ Sentences ≤25 words: 1 sentence(s) over 25 words",
     "  ✅ Dealer images (optional): small LOGO emblem + name band",
     "  ✅ Department contact",
-    "RESULT: ❌ FAIL (2 gates), 3 warnings"
+    "RESULT: ❌ FAIL (2 gates), 2 warnings"
    ],
    "fails": 2,
-   "warns": 3
+   "warns": 2
   },
   "mercedes-benz-laguna-niguel|sales|draft": {
    "files": {
-    "HANDOFF.md": "3cdda1fa2318f4d2",
-    "honda-trade-in-value-miami-guide-preview.html": "d91f16ff4c69e1d7",
-    "package/honda-trade-in-value-miami-guide-embed-Wired.html": "f12dfd8323290da7",
+    "HANDOFF.md": "1f3fa3a3eda93fa0",
+    "honda-trade-in-value-miami-guide-preview.html": "71267d0c41ce6312",
+    "package/honda-trade-in-value-miami-guide-embed-Wired.html": "000d18af9c5da41b",
     "package/honda-trade-in-value-miami-guide-SEO.md": "ae2a3809da3da414",
-    "package/README.md": "7e53662c464cef8e"
+    "package/README.md": "33749547ed8302e0"
    },
    "gates": [
     "  ✅ JSON-LD parses: 3 nodes",
     "  ✅ Exactly one <h1>",
-    "  ✅ Balanced <div>: 43",
+    "  ✅ Balanced <div>: 44",
     "  ✅ No rem units",
     "  ✅ No em/en dashes",
     "  ✅ Banned phrases (global + dealer + module)",
@@ -238,18 +238,18 @@
     "  ✅ No toll-free numbers",
     "  ✅ $ figures only as MSRP (allowMsrp)",
     "  ✅ Brand terms ledger: 14 rule(s) for Mercedes-Benz",
-    "  ✅ Internal links in allow-list: 18 unique, source: module allowedLinks",
+    "  ✅ Internal links in allow-list: 17 unique, source: module allowedLinks",
     "  ✅ FAQ parity (visible + schema): 10 Q&A",
     "  ✅ No stand-alone bold paragraph",
     "  ✅ No unresolved {{tokens}} / __MARKERS__",
     "  ✅ Paste file shape (one line, root div, style, script, JSON-LD): 58 KB",
-    "  ❌ No <br>, <pre> or <textarea> (wpautop): found in the article markup",
+    "  ✅ No <br>, <pre> or <textarea> (wpautop)",
     "  ✅ No <a> wrapping block elements (wpautop clones it)",
     "  ✅ Helper script compiles (linkPhones/condense)",
     "  ✅ Inline CSS fully scoped: 23 KB",
     "  ✅ Yoast sheet complete (social images never empty): 13 fields",
     "  ✅ wpautop simulation: 35 <p> added by wpautop (stray ones are hidden by the hardening CSS; check the preview)",
-    "  ⚠️ No \"01, 02\" numbering: possible \"01, 02\" style numbering",
+    "  ✅ No \"01, 02\" numbering",
     "  ✅ Title length 50–65: 55",
     "  ✅ Social title ≤70: 69",
     "  ✅ Meta 130–165: 153",
@@ -258,28 +258,28 @@
     "  ⚠️ Dealer fit (brand + city in article copy): brand \"Mercedes-Benz\" never mentioned; city \"Laguna Niguel\" never mentioned",
     "  ✅ Question H2s 8–9: 9",
     "  ✅ FAQ 9–10 × 40–90 words: 10 × 41–64 words",
-    "  ✅ ≥12 unique internal links: 18",
+    "  ✅ ≥12 unique internal links: 17",
     "  ⚠️ Sentences ≤25 words: 1 sentence(s) over 25 words",
     "  ⚠️ Images sourced: IMG_B_HERO placeholder; IMG_B_INSPECT placeholder; IMG_B_KEYS placeholder; IMG_B_SERVICE placeholder; IMG_B_REVIEW placeholder",
     "  ✅ Dealer images (optional): small LOGO emblem + name band",
     "  ✅ Department contact",
-    "RESULT: ❌ FAIL (1 gate), 4 warnings"
+    "RESULT: ✅ PASS, 3 warnings"
    ],
-   "fails": 1,
-   "warns": 4
+   "fails": 0,
+   "warns": 3
   },
   "mercedes-benz-laguna-niguel|sales|final": {
    "files": {
-    "HANDOFF.md": "28eaa9577a5a0869",
-    "honda-trade-in-value-miami-guide-preview.html": "d91f16ff4c69e1d7",
-    "package/honda-trade-in-value-miami-guide-embed-Wired.html": "f12dfd8323290da7",
+    "HANDOFF.md": "c3afc476df6bef14",
+    "honda-trade-in-value-miami-guide-preview.html": "71267d0c41ce6312",
+    "package/honda-trade-in-value-miami-guide-embed-Wired.html": "000d18af9c5da41b",
     "package/honda-trade-in-value-miami-guide-SEO.md": "ae2a3809da3da414",
-    "package/README.md": "f71eee2d2e193a23"
+    "package/README.md": "02b387acdf7eb873"
    },
    "gates": [
     "  ✅ JSON-LD parses: 3 nodes",
     "  ✅ Exactly one <h1>",
-    "  ✅ Balanced <div>: 43",
+    "  ✅ Balanced <div>: 44",
     "  ✅ No rem units",
     "  ✅ No em/en dashes",
     "  ✅ Banned phrases (global + dealer + module)",
@@ -290,19 +290,19 @@
     "  ✅ No toll-free numbers",
     "  ✅ $ figures only as MSRP (allowMsrp)",
     "  ✅ Brand terms ledger: 14 rule(s) for Mercedes-Benz",
-    "  ✅ Internal links in allow-list: 18 unique, source: module allowedLinks",
+    "  ✅ Internal links in allow-list: 17 unique, source: module allowedLinks",
     "  ✅ FAQ parity (visible + schema): 10 Q&A",
     "  ✅ No stand-alone bold paragraph",
     "  ✅ No unresolved {{tokens}} / __MARKERS__",
     "  ✅ Paste file shape (one line, root div, style, script, JSON-LD): 58 KB",
-    "  ❌ No <br>, <pre> or <textarea> (wpautop): found in the article markup",
+    "  ✅ No <br>, <pre> or <textarea> (wpautop)",
     "  ✅ No <a> wrapping block elements (wpautop clones it)",
     "  ✅ Helper script compiles (linkPhones/condense)",
     "  ✅ Inline CSS fully scoped: 23 KB",
     "  ❌ Yoast sheet complete (social images never empty): Featured image missing; Facebook image missing; Twitter image missing",
     "  ❌ Final: every article image is a DealerInspire upload of this site: IMG_B_HERO has no WordPress Media Library URL; IMG_B_INSPECT has no WordPress Media Library URL; IMG_B_KEYS has no WordPress Media Library URL; IMG_B_SERVICE has no WordPress Media Library URL; IMG_B_REVIEW has no WordPress Media Library URL",
     "  ✅ wpautop simulation: 35 <p> added by wpautop (stray ones are hidden by the hardening CSS; check the preview)",
-    "  ⚠️ No \"01, 02\" numbering: possible \"01, 02\" style numbering",
+    "  ✅ No \"01, 02\" numbering",
     "  ✅ Title length 50–65: 55",
     "  ✅ Social title ≤70: 69",
     "  ✅ Meta 130–165: 153",
@@ -311,22 +311,22 @@
     "  ⚠️ Dealer fit (brand + city in article copy): brand \"Mercedes-Benz\" never mentioned; city \"Laguna Niguel\" never mentioned",
     "  ✅ Question H2s 8–9: 9",
     "  ✅ FAQ 9–10 × 40–90 words: 10 × 41–64 words",
-    "  ✅ ≥12 unique internal links: 18",
+    "  ✅ ≥12 unique internal links: 17",
     "  ⚠️ Sentences ≤25 words: 1 sentence(s) over 25 words",
     "  ✅ Dealer images (optional): small LOGO emblem + name band",
     "  ✅ Department contact",
-    "RESULT: ❌ FAIL (3 gates), 3 warnings"
+    "RESULT: ❌ FAIL (2 gates), 2 warnings"
    ],
-   "fails": 3,
-   "warns": 3
+   "fails": 2,
+   "warns": 2
   },
   "mercedes-benz-laguna-niguel|service|draft": {
    "files": {
-    "HANDOFF.md": "e174ea7934c22a1c",
+    "HANDOFF.md": "1f3fa3a3eda93fa0",
     "honda-trade-in-value-miami-guide-preview.html": "b980a61bff6286b8",
     "package/honda-trade-in-value-miami-guide-embed-Wired.html": "add540be4172f7d2",
     "package/honda-trade-in-value-miami-guide-SEO.md": "ae2a3809da3da414",
-    "package/README.md": "2a8e924f0262dd0a"
+    "package/README.md": "33749547ed8302e0"
    },
    "gates": [
     "  ✅ JSON-LD parses: 3 nodes",
@@ -353,7 +353,7 @@
     "  ✅ Inline CSS fully scoped: 23 KB",
     "  ✅ Yoast sheet complete (social images never empty): 13 fields",
     "  ✅ wpautop simulation: 35 <p> added by wpautop (stray ones are hidden by the hardening CSS; check the preview)",
-    "  ⚠️ No \"01, 02\" numbering: possible \"01, 02\" style numbering",
+    "  ✅ No \"01, 02\" numbering",
     "  ✅ Title length 50–65: 55",
     "  ✅ Social title ≤70: 69",
     "  ✅ Meta 130–165: 153",
@@ -367,18 +367,18 @@
     "  ⚠️ Images sourced: IMG_B_HERO placeholder; IMG_B_INSPECT placeholder; IMG_B_KEYS placeholder; IMG_B_SERVICE placeholder; IMG_B_REVIEW placeholder",
     "  ✅ Dealer images (optional): small LOGO emblem + name band",
     "  ✅ Department contact",
-    "RESULT: ✅ PASS, 4 warnings"
+    "RESULT: ✅ PASS, 3 warnings"
    ],
    "fails": 0,
-   "warns": 4
+   "warns": 3
   },
   "mercedes-benz-laguna-niguel|service|final": {
    "files": {
-    "HANDOFF.md": "bad82c12fd614930",
+    "HANDOFF.md": "c3afc476df6bef14",
     "honda-trade-in-value-miami-guide-preview.html": "b980a61bff6286b8",
     "package/honda-trade-in-value-miami-guide-embed-Wired.html": "add540be4172f7d2",
     "package/honda-trade-in-value-miami-guide-SEO.md": "ae2a3809da3da414",
-    "package/README.md": "05a022259e8e6c18"
+    "package/README.md": "02b387acdf7eb873"
    },
    "gates": [
     "  ✅ JSON-LD parses: 3 nodes",
@@ -406,7 +406,7 @@
     "  ❌ Yoast sheet complete (social images never empty): Featured image missing; Facebook image missing; Twitter image missing",
     "  ❌ Final: every article image is a DealerInspire upload of this site: IMG_B_HERO has no WordPress Media Library URL; IMG_B_INSPECT has no WordPress Media Library URL; IMG_B_KEYS has no WordPress Media Library URL; IMG_B_SERVICE has no WordPress Media Library URL; IMG_B_REVIEW has no WordPress Media Library URL",
     "  ✅ wpautop simulation: 35 <p> added by wpautop (stray ones are hidden by the hardening CSS; check the preview)",
-    "  ⚠️ No \"01, 02\" numbering: possible \"01, 02\" style numbering",
+    "  ✅ No \"01, 02\" numbering",
     "  ✅ Title length 50–65: 55",
     "  ✅ Social title ≤70: 69",
     "  ✅ Meta 130–165: 153",
@@ -419,18 +419,18 @@
     "  ⚠️ Sentences ≤25 words: 1 sentence(s) over 25 words",
     "  ✅ Dealer images (optional): small LOGO emblem + name band",
     "  ✅ Department contact",
-    "RESULT: ❌ FAIL (2 gates), 3 warnings"
+    "RESULT: ❌ FAIL (2 gates), 2 warnings"
    ],
    "fails": 2,
-   "warns": 3
+   "warns": 2
   },
   "mercedes-benz-midlothian|sales|draft": {
    "files": {
-    "HANDOFF.md": "6514cf45556db96c",
-    "honda-trade-in-value-miami-guide-preview.html": "1916da29a58792dc",
-    "package/honda-trade-in-value-miami-guide-embed-Wired.html": "d30a06c157e56503",
+    "HANDOFF.md": "8fb7d1c0e605811b",
+    "honda-trade-in-value-miami-guide-preview.html": "e02b7da7b26b5f52",
+    "package/honda-trade-in-value-miami-guide-embed-Wired.html": "5107ee5333f0fc4f",
     "package/honda-trade-in-value-miami-guide-SEO.md": "f5c48a645a45a7a5",
-    "package/README.md": "7a39a97aef5c98f1"
+    "package/README.md": "695dbe5b9720ac6d"
    },
    "gates": [
     "  ✅ JSON-LD parses: 3 nodes",
@@ -446,7 +446,7 @@
     "  ✅ No toll-free numbers",
     "  ✅ $ figures only as MSRP (allowMsrp)",
     "  ✅ Brand terms ledger: 13 rule(s) for Mercedes-Benz",
-    "  ✅ Internal links in allow-list: 18 unique, source: module allowedLinks",
+    "  ✅ Internal links in allow-list: 17 unique, source: module allowedLinks",
     "  ✅ FAQ parity (visible + schema): 10 Q&A",
     "  ✅ No stand-alone bold paragraph",
     "  ✅ No unresolved {{tokens}} / __MARKERS__",
@@ -457,7 +457,7 @@
     "  ✅ Inline CSS fully scoped: 23 KB",
     "  ✅ Yoast sheet complete (social images never empty): 13 fields",
     "  ✅ wpautop simulation: 35 <p> added by wpautop (stray ones are hidden by the hardening CSS; check the preview)",
-    "  ⚠️ No \"01, 02\" numbering: possible \"01, 02\" style numbering",
+    "  ✅ No \"01, 02\" numbering",
     "  ✅ Title length 50–65: 55",
     "  ✅ Social title ≤70: 69",
     "  ✅ Meta 130–165: 153",
@@ -466,23 +466,23 @@
     "  ⚠️ Dealer fit (brand + city in article copy): brand \"Mercedes-Benz\" never mentioned; city \"Midlothian\" never mentioned",
     "  ✅ Question H2s 8–9: 9",
     "  ✅ FAQ 9–10 × 40–90 words: 10 × 41–64 words",
-    "  ✅ ≥12 unique internal links: 18",
+    "  ✅ ≥12 unique internal links: 17",
     "  ⚠️ Sentences ≤25 words: 1 sentence(s) over 25 words",
     "  ⚠️ Images sourced: IMG_B_HERO placeholder; IMG_B_INSPECT placeholder; IMG_B_KEYS placeholder; IMG_B_SERVICE placeholder; IMG_B_REVIEW placeholder",
     "  ✅ Dealer images (optional): small LOGO emblem + name band",
     "  ✅ Department contact",
-    "RESULT: ✅ PASS, 4 warnings"
+    "RESULT: ✅ PASS, 3 warnings"
    ],
    "fails": 0,
-   "warns": 4
+   "warns": 3
   },
   "mercedes-benz-midlothian|sales|final": {
    "files": {
-    "HANDOFF.md": "490ee9acc226995b",
-    "honda-trade-in-value-miami-guide-preview.html": "1916da29a58792dc",
-    "package/honda-trade-in-value-miami-guide-embed-Wired.html": "d30a06c157e56503",
+    "HANDOFF.md": "959a518296885237",
+    "honda-trade-in-value-miami-guide-preview.html": "e02b7da7b26b5f52",
+    "package/honda-trade-in-value-miami-guide-embed-Wired.html": "5107ee5333f0fc4f",
     "package/honda-trade-in-value-miami-guide-SEO.md": "f5c48a645a45a7a5",
-    "package/README.md": "3be0a5a935fc3c97"
+    "package/README.md": "5a119f5960623c32"
    },
    "gates": [
     "  ✅ JSON-LD parses: 3 nodes",
@@ -498,7 +498,7 @@
     "  ✅ No toll-free numbers",
     "  ✅ $ figures only as MSRP (allowMsrp)",
     "  ✅ Brand terms ledger: 13 rule(s) for Mercedes-Benz",
-    "  ✅ Internal links in allow-list: 18 unique, source: module allowedLinks",
+    "  ✅ Internal links in allow-list: 17 unique, source: module allowedLinks",
     "  ✅ FAQ parity (visible + schema): 10 Q&A",
     "  ✅ No stand-alone bold paragraph",
     "  ✅ No unresolved {{tokens}} / __MARKERS__",
@@ -510,7 +510,7 @@
     "  ❌ Yoast sheet complete (social images never empty): Featured image missing; Facebook image missing; Twitter image missing",
     "  ❌ Final: every article image is a DealerInspire upload of this site: IMG_B_HERO has no WordPress Media Library URL; IMG_B_INSPECT has no WordPress Media Library URL; IMG_B_KEYS has no WordPress Media Library URL; IMG_B_SERVICE has no WordPress Media Library URL; IMG_B_REVIEW has no WordPress Media Library URL",
     "  ✅ wpautop simulation: 35 <p> added by wpautop (stray ones are hidden by the hardening CSS; check the preview)",
-    "  ⚠️ No \"01, 02\" numbering: possible \"01, 02\" style numbering",
+    "  ✅ No \"01, 02\" numbering",
     "  ✅ Title length 50–65: 55",
     "  ✅ Social title ≤70: 69",
     "  ✅ Meta 130–165: 153",
@@ -519,22 +519,22 @@
     "  ⚠️ Dealer fit (brand + city in article copy): brand \"Mercedes-Benz\" never mentioned; city \"Midlothian\" never mentioned",
     "  ✅ Question H2s 8–9: 9",
     "  ✅ FAQ 9–10 × 40–90 words: 10 × 41–64 words",
-    "  ✅ ≥12 unique internal links: 18",
+    "  ✅ ≥12 unique internal links: 17",
     "  ⚠️ Sentences ≤25 words: 1 sentence(s) over 25 words",
     "  ✅ Dealer images (optional): small LOGO emblem + name band",
     "  ✅ Department contact",
-    "RESULT: ❌ FAIL (2 gates), 3 warnings"
+    "RESULT: ❌ FAIL (2 gates), 2 warnings"
    ],
    "fails": 2,
-   "warns": 3
+   "warns": 2
   },
   "mercedes-benz-midlothian|service|draft": {
    "files": {
-    "HANDOFF.md": "6514cf45556db96c",
+    "HANDOFF.md": "8fb7d1c0e605811b",
     "honda-trade-in-value-miami-guide-preview.html": "e82f07d2032148b5",
     "package/honda-trade-in-value-miami-guide-embed-Wired.html": "2fb371f4ca3bb058",
     "package/honda-trade-in-value-miami-guide-SEO.md": "f5c48a645a45a7a5",
-    "package/README.md": "7a39a97aef5c98f1"
+    "package/README.md": "695dbe5b9720ac6d"
    },
    "gates": [
     "  ✅ JSON-LD parses: 3 nodes",
@@ -561,7 +561,7 @@
     "  ✅ Inline CSS fully scoped: 23 KB",
     "  ✅ Yoast sheet complete (social images never empty): 13 fields",
     "  ✅ wpautop simulation: 35 <p> added by wpautop (stray ones are hidden by the hardening CSS; check the preview)",
-    "  ⚠️ No \"01, 02\" numbering: possible \"01, 02\" style numbering",
+    "  ✅ No \"01, 02\" numbering",
     "  ✅ Title length 50–65: 55",
     "  ✅ Social title ≤70: 69",
     "  ✅ Meta 130–165: 153",
@@ -575,18 +575,18 @@
     "  ⚠️ Images sourced: IMG_B_HERO placeholder; IMG_B_INSPECT placeholder; IMG_B_KEYS placeholder; IMG_B_SERVICE placeholder; IMG_B_REVIEW placeholder",
     "  ✅ Dealer images (optional): small LOGO emblem + name band",
     "  ✅ Department contact",
-    "RESULT: ✅ PASS, 4 warnings"
+    "RESULT: ✅ PASS, 3 warnings"
    ],
    "fails": 0,
-   "warns": 4
+   "warns": 3
   },
   "mercedes-benz-midlothian|service|final": {
    "files": {
-    "HANDOFF.md": "490ee9acc226995b",
+    "HANDOFF.md": "959a518296885237",
     "honda-trade-in-value-miami-guide-preview.html": "e82f07d2032148b5",
     "package/honda-trade-in-value-miami-guide-embed-Wired.html": "2fb371f4ca3bb058",
     "package/honda-trade-in-value-miami-guide-SEO.md": "f5c48a645a45a7a5",
-    "package/README.md": "3be0a5a935fc3c97"
+    "package/README.md": "5a119f5960623c32"
    },
    "gates": [
     "  ✅ JSON-LD parses: 3 nodes",
@@ -614,7 +614,7 @@
     "  ❌ Yoast sheet complete (social images never empty): Featured image missing; Facebook image missing; Twitter image missing",
     "  ❌ Final: every article image is a DealerInspire upload of this site: IMG_B_HERO has no WordPress Media Library URL; IMG_B_INSPECT has no WordPress Media Library URL; IMG_B_KEYS has no WordPress Media Library URL; IMG_B_SERVICE has no WordPress Media Library URL; IMG_B_REVIEW has no WordPress Media Library URL",
     "  ✅ wpautop simulation: 35 <p> added by wpautop (stray ones are hidden by the hardening CSS; check the preview)",
-    "  ⚠️ No \"01, 02\" numbering: possible \"01, 02\" style numbering",
+    "  ✅ No \"01, 02\" numbering",
     "  ✅ Title length 50–65: 55",
     "  ✅ Social title ≤70: 69",
     "  ✅ Meta 130–165: 153",
@@ -627,45 +627,45 @@
     "  ⚠️ Sentences ≤25 words: 1 sentence(s) over 25 words",
     "  ✅ Dealer images (optional): small LOGO emblem + name band",
     "  ✅ Department contact",
-    "RESULT: ❌ FAIL (2 gates), 3 warnings"
+    "RESULT: ❌ FAIL (2 gates), 2 warnings"
    ],
    "fails": 2,
-   "warns": 3
+   "warns": 2
   },
   "mercedes-benz-richmond|sales|draft": {
    "files": {
-    "HANDOFF.md": "341ce254515dc8d6",
-    "honda-trade-in-value-miami-guide-preview.html": "184e30354d2bb7b5",
-    "package/honda-trade-in-value-miami-guide-embed-Wired.html": "89f108f5704fbf3d",
+    "HANDOFF.md": "b41777b3895d27bb",
+    "honda-trade-in-value-miami-guide-preview.html": "a47f9abccc68c1a1",
+    "package/honda-trade-in-value-miami-guide-embed-Wired.html": "a4869f0804e5fc8a",
     "package/honda-trade-in-value-miami-guide-SEO.md": "4b4b7c6aee482b22",
-    "package/README.md": "177b0111f65b7e52"
+    "package/README.md": "30e5510f08962477"
    },
    "gates": [
     "  ✅ JSON-LD parses: 3 nodes",
     "  ✅ Exactly one <h1>",
-    "  ✅ Balanced <div>: 43",
+    "  ✅ Balanced <div>: 45",
     "  ✅ No rem units",
     "  ✅ No em/en dashes",
     "  ✅ Banned phrases (global + dealer + module)",
     "  ✅ Excluded towns",
     "  ✅ JSON-LD has no shortcodes, %% tokens, tags or \"<\"",
     "  ✅ Phones use DealerInspire shortcodes ([di_option]): service/sales via [di_option]",
-    "  ✅ Hours only via [di_hours]: no verified [di_hours] department → text hours from the dealer file",
+    "  ✅ Hours only via [di_hours]: [di_hours department=\"Sales\"]",
     "  ✅ No toll-free numbers",
     "  ✅ $ figures only as MSRP (allowMsrp)",
     "  ✅ Brand terms ledger: 13 rule(s) for Mercedes-Benz",
-    "  ✅ Internal links in allow-list: 18 unique, source: module allowedLinks",
+    "  ✅ Internal links in allow-list: 17 unique, source: module allowedLinks",
     "  ✅ FAQ parity (visible + schema): 10 Q&A",
     "  ✅ No stand-alone bold paragraph",
     "  ✅ No unresolved {{tokens}} / __MARKERS__",
     "  ✅ Paste file shape (one line, root div, style, script, JSON-LD): 57 KB",
-    "  ❌ No <br>, <pre> or <textarea> (wpautop): found in the article markup",
+    "  ✅ No <br>, <pre> or <textarea> (wpautop)",
     "  ✅ No <a> wrapping block elements (wpautop clones it)",
     "  ✅ Helper script compiles (linkPhones/condense)",
     "  ✅ Inline CSS fully scoped: 23 KB",
     "  ✅ Yoast sheet complete (social images never empty): 13 fields",
     "  ✅ wpautop simulation: 35 <p> added by wpautop (stray ones are hidden by the hardening CSS; check the preview)",
-    "  ⚠️ No \"01, 02\" numbering: possible \"01, 02\" style numbering",
+    "  ✅ No \"01, 02\" numbering",
     "  ✅ Title length 50–65: 55",
     "  ✅ Social title ≤70: 69",
     "  ✅ Meta 130–165: 153",
@@ -674,51 +674,51 @@
     "  ⚠️ Dealer fit (brand + city in article copy): brand \"Mercedes-Benz\" never mentioned; city \"Richmond\" never mentioned",
     "  ✅ Question H2s 8–9: 9",
     "  ✅ FAQ 9–10 × 40–90 words: 10 × 41–64 words",
-    "  ✅ ≥12 unique internal links: 18",
+    "  ✅ ≥12 unique internal links: 17",
     "  ⚠️ Sentences ≤25 words: 1 sentence(s) over 25 words",
     "  ⚠️ Images sourced: IMG_B_HERO placeholder; IMG_B_INSPECT placeholder; IMG_B_KEYS placeholder; IMG_B_SERVICE placeholder; IMG_B_REVIEW placeholder",
     "  ✅ Dealer images (optional): small LOGO emblem + name band",
     "  ✅ Department contact",
-    "RESULT: ❌ FAIL (1 gate), 4 warnings"
+    "RESULT: ✅ PASS, 3 warnings"
    ],
-   "fails": 1,
-   "warns": 4
+   "fails": 0,
+   "warns": 3
   },
   "mercedes-benz-richmond|sales|final": {
    "files": {
-    "HANDOFF.md": "25b86e4a810948e3",
-    "honda-trade-in-value-miami-guide-preview.html": "184e30354d2bb7b5",
-    "package/honda-trade-in-value-miami-guide-embed-Wired.html": "89f108f5704fbf3d",
+    "HANDOFF.md": "51788228951168b6",
+    "honda-trade-in-value-miami-guide-preview.html": "a47f9abccc68c1a1",
+    "package/honda-trade-in-value-miami-guide-embed-Wired.html": "a4869f0804e5fc8a",
     "package/honda-trade-in-value-miami-guide-SEO.md": "4b4b7c6aee482b22",
-    "package/README.md": "b57202a311102ec8"
+    "package/README.md": "36b3955713baddfb"
    },
    "gates": [
     "  ✅ JSON-LD parses: 3 nodes",
     "  ✅ Exactly one <h1>",
-    "  ✅ Balanced <div>: 43",
+    "  ✅ Balanced <div>: 45",
     "  ✅ No rem units",
     "  ✅ No em/en dashes",
     "  ✅ Banned phrases (global + dealer + module)",
     "  ✅ Excluded towns",
     "  ✅ JSON-LD has no shortcodes, %% tokens, tags or \"<\"",
     "  ✅ Phones use DealerInspire shortcodes ([di_option]): service/sales via [di_option]",
-    "  ✅ Hours only via [di_hours]: no verified [di_hours] department → text hours from the dealer file",
+    "  ✅ Hours only via [di_hours]: [di_hours department=\"Sales\"]",
     "  ✅ No toll-free numbers",
     "  ✅ $ figures only as MSRP (allowMsrp)",
     "  ✅ Brand terms ledger: 13 rule(s) for Mercedes-Benz",
-    "  ✅ Internal links in allow-list: 18 unique, source: module allowedLinks",
+    "  ✅ Internal links in allow-list: 17 unique, source: module allowedLinks",
     "  ✅ FAQ parity (visible + schema): 10 Q&A",
     "  ✅ No stand-alone bold paragraph",
     "  ✅ No unresolved {{tokens}} / __MARKERS__",
     "  ✅ Paste file shape (one line, root div, style, script, JSON-LD): 57 KB",
-    "  ❌ No <br>, <pre> or <textarea> (wpautop): found in the article markup",
+    "  ✅ No <br>, <pre> or <textarea> (wpautop)",
     "  ✅ No <a> wrapping block elements (wpautop clones it)",
     "  ✅ Helper script compiles (linkPhones/condense)",
     "  ✅ Inline CSS fully scoped: 23 KB",
     "  ❌ Yoast sheet complete (social images never empty): Featured image missing; Facebook image missing; Twitter image missing",
     "  ❌ Final: every article image is a DealerInspire upload of this site: IMG_B_HERO has no WordPress Media Library URL; IMG_B_INSPECT has no WordPress Media Library URL; IMG_B_KEYS has no WordPress Media Library URL; IMG_B_SERVICE has no WordPress Media Library URL; IMG_B_REVIEW has no WordPress Media Library URL",
     "  ✅ wpautop simulation: 35 <p> added by wpautop (stray ones are hidden by the hardening CSS; check the preview)",
-    "  ⚠️ No \"01, 02\" numbering: possible \"01, 02\" style numbering",
+    "  ✅ No \"01, 02\" numbering",
     "  ✅ Title length 50–65: 55",
     "  ✅ Social title ≤70: 69",
     "  ✅ Meta 130–165: 153",
@@ -727,22 +727,22 @@
     "  ⚠️ Dealer fit (brand + city in article copy): brand \"Mercedes-Benz\" never mentioned; city \"Richmond\" never mentioned",
     "  ✅ Question H2s 8–9: 9",
     "  ✅ FAQ 9–10 × 40–90 words: 10 × 41–64 words",
-    "  ✅ ≥12 unique internal links: 18",
+    "  ✅ ≥12 unique internal links: 17",
     "  ⚠️ Sentences ≤25 words: 1 sentence(s) over 25 words",
     "  ✅ Dealer images (optional): small LOGO emblem + name band",
     "  ✅ Department contact",
-    "RESULT: ❌ FAIL (3 gates), 3 warnings"
+    "RESULT: ❌ FAIL (2 gates), 2 warnings"
    ],
-   "fails": 3,
-   "warns": 3
+   "fails": 2,
+   "warns": 2
   },
   "mercedes-benz-richmond|service|draft": {
    "files": {
-    "HANDOFF.md": "42f4eb41d94e69dd",
+    "HANDOFF.md": "b41777b3895d27bb",
     "honda-trade-in-value-miami-guide-preview.html": "657bed1879706dde",
     "package/honda-trade-in-value-miami-guide-embed-Wired.html": "fb188f8c3d144535",
     "package/honda-trade-in-value-miami-guide-SEO.md": "4b4b7c6aee482b22",
-    "package/README.md": "5206db62ecbaa839"
+    "package/README.md": "30e5510f08962477"
    },
    "gates": [
     "  ✅ JSON-LD parses: 3 nodes",
@@ -769,7 +769,7 @@
     "  ✅ Inline CSS fully scoped: 23 KB",
     "  ✅ Yoast sheet complete (social images never empty): 13 fields",
     "  ✅ wpautop simulation: 35 <p> added by wpautop (stray ones are hidden by the hardening CSS; check the preview)",
-    "  ⚠️ No \"01, 02\" numbering: possible \"01, 02\" style numbering",
+    "  ✅ No \"01, 02\" numbering",
     "  ✅ Title length 50–65: 55",
     "  ✅ Social title ≤70: 69",
     "  ✅ Meta 130–165: 153",
@@ -783,18 +783,18 @@
     "  ⚠️ Images sourced: IMG_B_HERO placeholder; IMG_B_INSPECT placeholder; IMG_B_KEYS placeholder; IMG_B_SERVICE placeholder; IMG_B_REVIEW placeholder",
     "  ✅ Dealer images (optional): small LOGO emblem + name band",
     "  ✅ Department contact",
-    "RESULT: ✅ PASS, 4 warnings"
+    "RESULT: ✅ PASS, 3 warnings"
    ],
    "fails": 0,
-   "warns": 4
+   "warns": 3
   },
   "mercedes-benz-richmond|service|final": {
    "files": {
-    "HANDOFF.md": "ee21470d8018f497",
+    "HANDOFF.md": "51788228951168b6",
     "honda-trade-in-value-miami-guide-preview.html": "657bed1879706dde",
     "package/honda-trade-in-value-miami-guide-embed-Wired.html": "fb188f8c3d144535",
     "package/honda-trade-in-value-miami-guide-SEO.md": "4b4b7c6aee482b22",
-    "package/README.md": "d1c8c4807793e6a0"
+    "package/README.md": "36b3955713baddfb"
    },
    "gates": [
     "  ✅ JSON-LD parses: 3 nodes",
@@ -822,7 +822,7 @@
     "  ❌ Yoast sheet complete (social images never empty): Featured image missing; Facebook image missing; Twitter image missing",
     "  ❌ Final: every article image is a DealerInspire upload of this site: IMG_B_HERO has no WordPress Media Library URL; IMG_B_INSPECT has no WordPress Media Library URL; IMG_B_KEYS has no WordPress Media Library URL; IMG_B_SERVICE has no WordPress Media Library URL; IMG_B_REVIEW has no WordPress Media Library URL",
     "  ✅ wpautop simulation: 35 <p> added by wpautop (stray ones are hidden by the hardening CSS; check the preview)",
-    "  ⚠️ No \"01, 02\" numbering: possible \"01, 02\" style numbering",
+    "  ✅ No \"01, 02\" numbering",
     "  ✅ Title length 50–65: 55",
     "  ✅ Social title ≤70: 69",
     "  ✅ Meta 130–165: 153",
@@ -835,23 +835,23 @@
     "  ⚠️ Sentences ≤25 words: 1 sentence(s) over 25 words",
     "  ✅ Dealer images (optional): small LOGO emblem + name band",
     "  ✅ Department contact",
-    "RESULT: ❌ FAIL (2 gates), 3 warnings"
+    "RESULT: ❌ FAIL (2 gates), 2 warnings"
    ],
    "fails": 2,
-   "warns": 3
+   "warns": 2
   },
   "mercedes-benz-vans-laguna-niguel|sales|draft": {
    "files": {
-    "HANDOFF.md": "d22bb63f820abe36",
-    "honda-trade-in-value-miami-guide-preview.html": "fe77969f77c39b5c",
-    "package/honda-trade-in-value-miami-guide-embed-Wired.html": "56a0923add6e9718",
+    "HANDOFF.md": "eda8d3b3d710d8f0",
+    "honda-trade-in-value-miami-guide-preview.html": "388ae3df567d61b7",
+    "package/honda-trade-in-value-miami-guide-embed-Wired.html": "a10194eae94c5697",
     "package/honda-trade-in-value-miami-guide-SEO.md": "66b8aea182d0d6e5",
-    "package/README.md": "4144e8effc97ffdf"
+    "package/README.md": "2711c3a310881a41"
    },
    "gates": [
     "  ✅ JSON-LD parses: 3 nodes",
     "  ✅ Exactly one <h1>",
-    "  ✅ Balanced <div>: 43",
+    "  ✅ Balanced <div>: 44",
     "  ✅ No rem units",
     "  ✅ No em/en dashes",
     "  ✅ Banned phrases (global + dealer + module)",
@@ -862,18 +862,18 @@
     "  ✅ No toll-free numbers",
     "  ✅ $ figures only as MSRP (allowMsrp)",
     "  ✅ Brand terms ledger: 14 rule(s) for Mercedes-Benz",
-    "  ✅ Internal links in allow-list: 18 unique, source: module allowedLinks",
+    "  ✅ Internal links in allow-list: 17 unique, source: module allowedLinks",
     "  ✅ FAQ parity (visible + schema): 10 Q&A",
     "  ✅ No stand-alone bold paragraph",
     "  ✅ No unresolved {{tokens}} / __MARKERS__",
     "  ✅ Paste file shape (one line, root div, style, script, JSON-LD): 59 KB",
-    "  ❌ No <br>, <pre> or <textarea> (wpautop): found in the article markup",
+    "  ✅ No <br>, <pre> or <textarea> (wpautop)",
     "  ✅ No <a> wrapping block elements (wpautop clones it)",
     "  ✅ Helper script compiles (linkPhones/condense)",
     "  ✅ Inline CSS fully scoped: 24 KB",
     "  ✅ Yoast sheet complete (social images never empty): 13 fields",
     "  ✅ wpautop simulation: 35 <p> added by wpautop (stray ones are hidden by the hardening CSS; check the preview)",
-    "  ⚠️ No \"01, 02\" numbering: possible \"01, 02\" style numbering",
+    "  ✅ No \"01, 02\" numbering",
     "  ✅ Title length 50–65: 55",
     "  ✅ Social title ≤70: 69",
     "  ✅ Meta 130–165: 153",
@@ -882,28 +882,28 @@
     "  ⚠️ Dealer fit (brand + city in article copy): brand \"Mercedes-Benz\" never mentioned; city \"Laguna Niguel\" never mentioned",
     "  ✅ Question H2s 8–9: 9",
     "  ✅ FAQ 9–10 × 40–90 words: 10 × 41–64 words",
-    "  ✅ ≥12 unique internal links: 18",
+    "  ✅ ≥12 unique internal links: 17",
     "  ⚠️ Sentences ≤25 words: 1 sentence(s) over 25 words",
     "  ⚠️ Images sourced: IMG_B_HERO placeholder; IMG_B_INSPECT placeholder; IMG_B_KEYS placeholder; IMG_B_SERVICE placeholder; IMG_B_REVIEW placeholder",
     "  ✅ Dealer images (optional): small LOGO emblem + name band",
     "  ✅ Department contact",
-    "RESULT: ❌ FAIL (1 gate), 4 warnings"
+    "RESULT: ✅ PASS, 3 warnings"
    ],
-   "fails": 1,
-   "warns": 4
+   "fails": 0,
+   "warns": 3
   },
   "mercedes-benz-vans-laguna-niguel|sales|final": {
    "files": {
-    "HANDOFF.md": "24cefc2fca613cfb",
-    "honda-trade-in-value-miami-guide-preview.html": "fe77969f77c39b5c",
-    "package/honda-trade-in-value-miami-guide-embed-Wired.html": "56a0923add6e9718",
+    "HANDOFF.md": "369dbf30a1f64a4d",
+    "honda-trade-in-value-miami-guide-preview.html": "388ae3df567d61b7",
+    "package/honda-trade-in-value-miami-guide-embed-Wired.html": "a10194eae94c5697",
     "package/honda-trade-in-value-miami-guide-SEO.md": "66b8aea182d0d6e5",
-    "package/README.md": "5e8609aa97799ada"
+    "package/README.md": "4ef8619fb6350716"
    },
    "gates": [
     "  ✅ JSON-LD parses: 3 nodes",
     "  ✅ Exactly one <h1>",
-    "  ✅ Balanced <div>: 43",
+    "  ✅ Balanced <div>: 44",
     "  ✅ No rem units",
     "  ✅ No em/en dashes",
     "  ✅ Banned phrases (global + dealer + module)",
@@ -914,19 +914,19 @@
     "  ✅ No toll-free numbers",
     "  ✅ $ figures only as MSRP (allowMsrp)",
     "  ✅ Brand terms ledger: 14 rule(s) for Mercedes-Benz",
-    "  ✅ Internal links in allow-list: 18 unique, source: module allowedLinks",
+    "  ✅ Internal links in allow-list: 17 unique, source: module allowedLinks",
     "  ✅ FAQ parity (visible + schema): 10 Q&A",
     "  ✅ No stand-alone bold paragraph",
     "  ✅ No unresolved {{tokens}} / __MARKERS__",
     "  ✅ Paste file shape (one line, root div, style, script, JSON-LD): 59 KB",
-    "  ❌ No <br>, <pre> or <textarea> (wpautop): found in the article markup",
+    "  ✅ No <br>, <pre> or <textarea> (wpautop)",
     "  ✅ No <a> wrapping block elements (wpautop clones it)",
     "  ✅ Helper script compiles (linkPhones/condense)",
     "  ✅ Inline CSS fully scoped: 24 KB",
     "  ❌ Yoast sheet complete (social images never empty): Featured image missing; Facebook image missing; Twitter image missing",
     "  ❌ Final: every article image is a DealerInspire upload of this site: IMG_B_HERO has no WordPress Media Library URL; IMG_B_INSPECT has no WordPress Media Library URL; IMG_B_KEYS has no WordPress Media Library URL; IMG_B_SERVICE has no WordPress Media Library URL; IMG_B_REVIEW has no WordPress Media Library URL",
     "  ✅ wpautop simulation: 35 <p> added by wpautop (stray ones are hidden by the hardening CSS; check the preview)",
-    "  ⚠️ No \"01, 02\" numbering: possible \"01, 02\" style numbering",
+    "  ✅ No \"01, 02\" numbering",
     "  ✅ Title length 50–65: 55",
     "  ✅ Social title ≤70: 69",
     "  ✅ Meta 130–165: 153",
@@ -935,22 +935,22 @@
     "  ⚠️ Dealer fit (brand + city in article copy): brand \"Mercedes-Benz\" never mentioned; city \"Laguna Niguel\" never mentioned",
     "  ✅ Question H2s 8–9: 9",
     "  ✅ FAQ 9–10 × 40–90 words: 10 × 41–64 words",
-    "  ✅ ≥12 unique internal links: 18",
+    "  ✅ ≥12 unique internal links: 17",
     "  ⚠️ Sentences ≤25 words: 1 sentence(s) over 25 words",
     "  ✅ Dealer images (optional): small LOGO emblem + name band",
     "  ✅ Department contact",
-    "RESULT: ❌ FAIL (3 gates), 3 warnings"
+    "RESULT: ❌ FAIL (2 gates), 2 warnings"
    ],
-   "fails": 3,
-   "warns": 3
+   "fails": 2,
+   "warns": 2
   },
   "mercedes-benz-vans-laguna-niguel|service|draft": {
    "files": {
-    "HANDOFF.md": "e7f03bede8cf6f8d",
+    "HANDOFF.md": "eda8d3b3d710d8f0",
     "honda-trade-in-value-miami-guide-preview.html": "b8bfe8009f88c7d9",
     "package/honda-trade-in-value-miami-guide-embed-Wired.html": "526f062e5c1c6a00",
     "package/honda-trade-in-value-miami-guide-SEO.md": "66b8aea182d0d6e5",
-    "package/README.md": "1921e2e349d67171"
+    "package/README.md": "2711c3a310881a41"
    },
    "gates": [
     "  ✅ JSON-LD parses: 3 nodes",
@@ -977,7 +977,7 @@
     "  ✅ Inline CSS fully scoped: 24 KB",
     "  ✅ Yoast sheet complete (social images never empty): 13 fields",
     "  ✅ wpautop simulation: 35 <p> added by wpautop (stray ones are hidden by the hardening CSS; check the preview)",
-    "  ⚠️ No \"01, 02\" numbering: possible \"01, 02\" style numbering",
+    "  ✅ No \"01, 02\" numbering",
     "  ✅ Title length 50–65: 55",
     "  ✅ Social title ≤70: 69",
     "  ✅ Meta 130–165: 153",
@@ -991,18 +991,18 @@
     "  ⚠️ Images sourced: IMG_B_HERO placeholder; IMG_B_INSPECT placeholder; IMG_B_KEYS placeholder; IMG_B_SERVICE placeholder; IMG_B_REVIEW placeholder",
     "  ✅ Dealer images (optional): small LOGO emblem + name band",
     "  ✅ Department contact",
-    "RESULT: ✅ PASS, 4 warnings"
+    "RESULT: ✅ PASS, 3 warnings"
    ],
    "fails": 0,
-   "warns": 4
+   "warns": 3
   },
   "mercedes-benz-vans-laguna-niguel|service|final": {
    "files": {
-    "HANDOFF.md": "cadfe6455a1f8990",
+    "HANDOFF.md": "369dbf30a1f64a4d",
     "honda-trade-in-value-miami-guide-preview.html": "b8bfe8009f88c7d9",
     "package/honda-trade-in-value-miami-guide-embed-Wired.html": "526f062e5c1c6a00",
     "package/honda-trade-in-value-miami-guide-SEO.md": "66b8aea182d0d6e5",
-    "package/README.md": "b76501167415aeea"
+    "package/README.md": "4ef8619fb6350716"
    },
    "gates": [
     "  ✅ JSON-LD parses: 3 nodes",
@@ -1030,7 +1030,7 @@
     "  ❌ Yoast sheet complete (social images never empty): Featured image missing; Facebook image missing; Twitter image missing",
     "  ❌ Final: every article image is a DealerInspire upload of this site: IMG_B_HERO has no WordPress Media Library URL; IMG_B_INSPECT has no WordPress Media Library URL; IMG_B_KEYS has no WordPress Media Library URL; IMG_B_SERVICE has no WordPress Media Library URL; IMG_B_REVIEW has no WordPress Media Library URL",
     "  ✅ wpautop simulation: 35 <p> added by wpautop (stray ones are hidden by the hardening CSS; check the preview)",
-    "  ⚠️ No \"01, 02\" numbering: possible \"01, 02\" style numbering",
+    "  ✅ No \"01, 02\" numbering",
     "  ✅ Title length 50–65: 55",
     "  ✅ Social title ≤70: 69",
     "  ✅ Meta 130–165: 153",
@@ -1043,10 +1043,10 @@
     "  ⚠️ Sentences ≤25 words: 1 sentence(s) over 25 words",
     "  ✅ Dealer images (optional): small LOGO emblem + name band",
     "  ✅ Department contact",
-    "RESULT: ❌ FAIL (2 gates), 3 warnings"
+    "RESULT: ❌ FAIL (2 gates), 2 warnings"
    ],
    "fails": 2,
-   "warns": 3
+   "warns": 2
   }
  }
 }

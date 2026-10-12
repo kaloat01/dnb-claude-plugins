@@ -13,7 +13,7 @@ const os = require('os');
 const zlib = require('zlib');
 const { pathToFileURL } = require('url');
 
-const VERSION = '0.11.1';
+const VERSION = '0.11.2';
 const RELEASED = '2026-10-12';
 const VER_LINE = `dealer-articles v${VERSION} (${RELEASED})`;
 const REVIEW = { separate: 'separate reviewer agents', single: 'single conversation (Chat) – double-check before publishing' }; // job.json reviewMode
@@ -666,15 +666,19 @@ function build(mod, D, job, opts = {}) {
     const toc = h2s.length ? `<nav class="${P}-toc" aria-label="In this article"><div class="${P}-label">In this article</div><ol>${h2s.map((h) => `<li><a href="#${P}-${h.id}">${h.toc || stripTags(h.text)}</a></li>`).join('')}</ol></nav>` : '';
     const ds = mod.dealerSection;
     const otherDept = Object.entries(D.depts).find(([k, d]) => k !== mod.dept && d && d.phone);
+    const mainIsDept = !!(dept.phone && D.mainPhone && digits10(dept.phone) === digits10(D.mainPhone)); // never list the same number twice
     const other = ds.other ? [ds.otherLabel || 'Main line', phoneLink(ds.other)]
       // package: a main line that is not a department number has no Apollo tag, so show the other department (tagged) instead
-      : D.mainPhone && !(pkgMode() && !Object.values(D.depts || {}).some((d) => d && d.phone && digits10(d.phone) === digits10(D.mainPhone))) ? [ds.otherLabel || 'Main line', mainLink()]
+      : D.mainPhone && !mainIsDept && !(pkgMode() && !Object.values(D.depts || {}).some((d) => d && d.phone && digits10(d.phone) === digits10(D.mainPhone))) ? [ds.otherLabel || 'Main line', mainLink()]
         : otherDept ? [otherDept[1].label, phoneLink(otherDept[1])] : null;
     // logo: wide lockup alone; small emblem (<300 px) + name band; no Apollo logo = name band only;
     // LOGO.onDark (white artwork) = logo on the Editorial v2 black brand band (as the Mercedes white star)
     const logoImg = hasLogo ? imgTag('LOGO', mode, `${P}-dealer-logo${logoSmall ? ` ${P}-dealer-logo-sm` : ''}`) : '';
     const logo = (hasLogo && images.LOGO.onDark ? `<div class="${P}-dealer-band">${logoImg}</div>` : logoImg) + (hasLogo && !logoSmall ? '' : `<div class="${P}-dealer-name">${esc(D.name)}</div>`);
-    const hoursFact = diHrs() ? [`${dept.label} hours`, `[di_hours department="${diHrs()}"]`, `${P}-hours-inline`] : hrs(dept) && [`${dept.label} hours`, hrs(dept).replace(/ {2}· {2}/g, '<br>')];
+    // DealerInspire without a verified [di_hours] department: the same list markup the shortcode prints (wpautop forbids <br>)
+    const hoursFact = diHrs() ? [`${dept.label} hours`, `[di_hours department="${diHrs()}"]`, `${P}-hours-inline`]
+      : isDI && hrs(dept) ? [`${dept.label} hours`, diHoursUl(dept.hours), `${P}-hours-inline`]
+        : hrs(dept) && [`${dept.label} hours`, hrs(dept).replace(/ {2}· {2}/g, '<br>')];
     const facts = [['Address', `${D.street}, ${D.city}, ${D.region} ${D.zip}`], dept.phone && [dept.label, phoneLink(dept)], hoursFact, other]
       .filter(Boolean).map(([t, d, cls]) => cls ? `<div class="${P}-fact"><span class="${P}-fact-k">${t}</span><div class="${P}-fact-v ${cls}">${d}</div></div>` : `<div class="${P}-fact"><span class="${P}-fact-k">${t}</span><span class="${P}-fact-v">${d}</span></div>`).join('');
     // storefront plaque (department + address) and factual value lines: the structure of the dealers' service-specials
@@ -683,10 +687,12 @@ function build(mod, D, job, opts = {}) {
     const media = hasStore ? `<figure class="${P}-dealer-media">${imgTag('STORE', mode)}${plaque}</figure>` : '';
     const daysOpen = dept.hours ? new Set(dept.hours.flatMap((r) => r[0])).size : 0;
     const R2 = D.routes || {};
-    const specials = mod.dept === 'service' ? (R2.specials || R2.serviceSpecials) : (R2.vehicleSpecials || R2.specials);
+    // routes.specials is the SERVICE specials page on every dealer: other departments link only a vehicle-offers page
+    const specials = mod.dept === 'service' ? (R2.specials || R2.serviceSpecials) : R2.vehicleSpecials;
     const values = [
       daysOpen ? [`Open ${daysOpen} days a week`, `${esc(dept.label)} hours are listed below.`] : null,
-      cta && cta.href ? ['Book online', `<a href="${cta.href}">${esc(cta.label)}</a> any time.`] : null,
+      // "any time" fits an online service scheduler, not a test drive or a trade appraisal
+      cta && cta.href ? (mod.dept === 'service' ? ['Book online', `<a href="${cta.href}">${esc(cta.label)}</a> any time.`] : ['Start online', `<a href="${cta.href}">${esc(cta.label)}</a> on our website.`]) : null,
       specials ? [mod.dept === 'service' ? 'Current service specials' : 'Current offers', `<a href="${specials}">See this month's ${mod.dept === 'service' ? 'service specials' : 'offers'}</a> and their terms.`] : null,
       D.group ? [esc(D.group), `${esc(D.name)} is part of the ${esc(D.group)}.`] : null,
     ].filter(Boolean).slice(0, 4).map(([t, d]) => `<li><strong>${t}</strong>${d}</li>`).join('');
@@ -1058,7 +1064,7 @@ ${shell}
     warnG('wpautop simulation', [], `${diInjectedP} <p> added by wpautop (stray ones are hidden by the hardening CSS; check the preview)`);
   }
   // warnings
-  const cleanForNum = frag.replace(/\d{2}\/\d{2}\/\d{4}/g, '');
+  const cleanForNum = frag.replace(/="[^"]*"/g, '=""').replace(/\d{2}\/\d{2}\/\d{4}/g, ''); // attribute values (upload URLs like /2026/09/) are not copy
   warnG('No "01, 02" numbering', /\b0[1-9]\b(?=[^<]*<\/(li|h2|h3|span|div)>)/.test(cleanForNum) ? ['possible "01, 02" style numbering'] : []);
   warnG('Title length 50–65', (mod.title.length > 65 || mod.title.length < 50) ? [`${mod.title.length} chars`] : [], `${mod.title.length}`);
   const socialTitle = mod.ogTitle || mod.title; // the OG / Facebook / Twitter title actually used
@@ -1495,10 +1501,14 @@ function cmdDeliver(arg, a) {
   pkgFiles.forEach((f) => fs.copyFileSync(path.join(pk, f), path.join(to, dest(f))));
   const kit = fs.readdirSync(job).filter((f) => KIT_FILES(f) && fs.statSync(path.join(job, f)).isFile()).sort();
   const zipName = `${mod.slug}-resume-kit.zip`;
-  fs.writeFileSync(path.join(to, zipName), zipStore(kit.map((f) => ({ name: `${D.key}/${mod.slug}/${f}`, data: fs.readFileSync(path.join(job, f)) }))));
+  // local dealer overrides (./dealers/<key>.*) travel in the kit, so a new conversation rebuilds the same article
+  const localDir = path.join(process.cwd(), 'dealers');
+  const overrides = ['.json', '.sitemap.txt', '.images.json'].map((x) => D.key + x).filter((f) => fs.existsSync(path.join(localDir, f)));
+  fs.writeFileSync(path.join(to, zipName), zipStore(kit.map((f) => ({ name: `${D.key}/${mod.slug}/${f}`, data: fs.readFileSync(path.join(job, f)) }))
+    .concat(overrides.map((f) => ({ name: `${D.key}/${mod.slug}/dealer-override/${f}`, data: fs.readFileSync(path.join(localDir, f)) })))));
   const st = (fs.readFileSync(hf, 'utf8').match(/^\*\*Status: (.+)\*\*$/m) || [])[1];
   console.log(`✅ Delivered to ${to}${st ? `\nStatus: ${st}` : ''}\n${['HANDOFF.md', ...pkgFiles].map(dest).concat(zipName).map((f) => '  ' + f).join('\n')}`);
-  console.log(`Resume kit (${D.key}/${mod.slug}/): ${kit.join(', ')}. In a new conversation: build.js resume ${zipName}`);
+  console.log(`Resume kit (${D.key}/${mod.slug}/): ${kit.concat(overrides.map((f) => 'dealer-override/' + f)).join(', ')}. In a new conversation: build.js resume ${zipName}`);
 }
 function cmdResume(zipArg, a) {
   if (!zipArg || !fs.existsSync(zipArg) || !fs.statSync(zipArg).isFile()) die('Usage: build.js resume <kit.zip> [--out <dir>] [--force]');
@@ -1521,6 +1531,17 @@ function cmdResume(zipArg, a) {
   for (const f of files) { const r = path.relative(dir, path.resolve(dir, f.rel)); if (!r || r.startsWith('..') || path.isAbsolute(r)) die(`❌ Unsafe path in the zip: ${f.rel}`); }
   for (const f of files) { const dest = path.resolve(dir, f.rel); fs.mkdirSync(path.dirname(dest), { recursive: true }); fs.writeFileSync(dest, f.data); }
   console.log(`✅ Resumed ${files.length} file(s): ${files.map((f) => f.rel).join(', ')}\nJOB: ${dir}\nPhase: ${meta.phase || '(not recorded)'}${meta.version ? `\nLast built with dealer-articles v${meta.version}` : ''}`);
+  // the dealer override the article was built with goes back to ./dealers (loadDealer reads it before the shipped file)
+  const ovName = new RegExp(`^dealer-override/(${dealer.replace(/\./g, '\\.')}\\.(json|sitemap\\.txt|images\\.json))$`);
+  for (const f of files) {
+    const m = f.rel.match(ovName);
+    if (!m) continue;
+    const ld = path.join(process.cwd(), 'dealers'), to = path.join(ld, m[1]);
+    if (fs.existsSync(to) && !a.force && !fs.readFileSync(to).equals(f.data)) { console.log(`⚠️ ${to} differs from the kit's copy: kept yours (add --force to use the kit's)`); continue; }
+    fs.mkdirSync(ld, { recursive: true });
+    fs.writeFileSync(to, f.data);
+    console.log(`ℹ️ Restored the local dealer override this article was built with: ${to}`);
+  }
   if (!dealerFile(dealer)) console.log(`⚠️ Dealer "${dealer}" is not in this plugin's dealer files: update the plugin or add ./dealers/${dealer}.json`);
 }
 

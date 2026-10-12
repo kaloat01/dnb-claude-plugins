@@ -158,7 +158,8 @@
       "sales": "di_phone_sales"
     },
     "hoursDepartments": {
-      "service": "Service"
+      "service": "Service",
+      "sales": "Sales"
     }
   },
   "images": {
@@ -179,16 +180,17 @@
     }
   },
   "verify": [
-    "No Richmond article is live yet. Template, root path and no category are set to match the two live Midlothian articles (Page Composer pages at the site root); confirm on the first Richmond article. If an article is published as a WordPress post instead, use the \"News\" category.",
-    "Sales hours shortcode [di_hours department=\"Sales\"] is not used on any live page of this site yet, so it is not verified; use the Service hours shortcode only, or confirm Sales on the first article that uses it."
+    "No Richmond article is live yet. Template, root path and no category are set to match the two live Midlothian articles (Page Composer pages at the site root); confirm when the Richmond article goes live. If an article is published as a WordPress post instead, use the \"News\" category.",
+    "The Sales hours shortcode [di_hours department=\"Sales\"] is set from the site hours widget (Sales department, contact page, 2026-10-12) and renders on Midlothian; no Richmond page uses it yet, so confirm Sales hours show on one line on the live article."
   ],
-  "lastVerified": "2026-10-09",
+  "lastVerified": "2026-10-12",
   "sourcesNote": "internal provenance: project files + live site checks 2026-10-09",
   "sources": [
     "https://www.mbofrichmond.com/about-us/ (US geo, 2026-10-09): 8225 West Broad Street, Richmond, VA 23294; Sales 804-587-6128, Service 804-607-7517, Parts 804-607-7516; Sales Mon-Fri 9:00 AM-7:00 PM, Sat 9:00 AM-6:00 PM, Sun closed; Service Mon-Fri 7:30 AM-6:00 PM, Sat 8:00 AM-2:00 PM, Sun closed",
     "https://www.mbofrichmond.com/service/service-specials/ (live, 2026-10-09): Page Composer page; [di_option] service and sales phones and [di_hours department=\"Service\"] render",
     "https://www.mbofrichmond.com/wp-content/themes/DealerInspireDealerTheme/css/style.css (2026-10-09): --maintextfont Roboto, --headingfont CorporateA, base links #176db7; @font-face CorporateA and CORPSR",
-    "https://www.mbofrichmond.com/sitemap_index.xml (Yoast page + post sitemaps, 2026-10-09): sitemap snapshot and route checks"
+    "https://www.mbofrichmond.com/sitemap_index.xml (Yoast page + post sitemaps, 2026-10-09): sitemap snapshot and route checks",
+    "https://www.mbofrichmond.com/contact-us/ (2026-10-12): the DealerInspire hours widget lists Sales Hours (Mon-Fri 9:00 AM-7:00 PM, Sat 9:00 AM-6:00 PM, Sun closed), Service Hours and Parts Hours"
   ],
   "allowPhrases": [
     "Premier Prepaid Maintenance"
