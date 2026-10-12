@@ -1,6 +1,6 @@
 ---
 name: article-images
-description: Wire the user's uploaded images (Apollo Image IDs or GetLibraryImage URLs, or DealerInspire WordPress Media Library File URLs) into an existing dealer article job, or one restored from a *-resume-kit.zip, verify and view each photo, place it by resolution, and produce the FINAL package. Works in the Claude Desktop app or claude.ai (Cowork or Chat) and in Claude Code. Use when the user sends image IDs/URLs for an article, attaches an article resume kit, or types /dealer-articles:article-images "<dealer>" "<title or slug>".
+description: Wire the user's uploaded images (Apollo Image IDs or GetLibraryImage URLs, DealerInspire WordPress Media Library File URLs, or Dealer.com Media Library image URLs) into an existing dealer article job, or one restored from a *-resume-kit.zip, verify and view each photo, place it by resolution, and produce the FINAL package. Works in the Claude Desktop app or claude.ai (Cowork or Chat) and in Claude Code. Use when the user sends image IDs/URLs for an article, attaches an article resume kit, or types /dealer-articles:article-images "<dealer>" "<title or slug>".
 argument-hint: "\"<dealer name>\" \"<article title or slug>\" [image IDs/URLs…]"
 allowed-tools:
   - Bash(node:*)
@@ -32,6 +32,10 @@ If this run did not start with `DA env --net`, run it first and show its version
    (`https://di-uploads-podN.dealerinspire.com/<site>/uploads/YYYY/MM/<file>`, the original, not a `-1024x683` copy) and
    write it into `images.<KEY>.di`. It must be this store's uploads base (dealer file `di.uploads`). The final package is
    `<slug>-embed-Wired.html` + `<slug>-SEO.md`; deliver as in `/dealer-articles:article-dealerinspire` step 9.
+   **Dealer.com dealers** (dealer file `platform: "dealercom"`): accept the Dealer.com **Media Library** image URL
+   (`https://pictures.dealer.com/<letter>/<account>/…`) and write it into `images.<KEY>.ddc`. It must be on this store's
+   Media Library base (dealer file `ddc.media`); reject another store's URL or a non-Dealer.com URL. The final package is
+   `<slug>-DDC-Custom-HTML.html` + `<slug>-SEO.md`; deliver as in `/dealer-articles:article-dealercom` step 10.
 3. **Verify.** Run `DA images "<job>"`: every image must return 200 + `image/*`; it saves copies to `<job>/images/` and prints
    real width × height. A failure → tell the user which slot and why (wrong ID, not public, 406) and stop for that slot.
    **Image hosts blocked here** (`DA env --net` lists them as blocked or refused, or every image fails the same way, e.g.

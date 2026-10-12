@@ -22,6 +22,14 @@ comparison fairness, pricing policy, local framing), and `${CLAUDE_PLUGIN_ROOT}/
 Every ledger rule for the dealer's brand is a **P0** if violated anywhere (copy, headings, buttons, titles, meta, alt text,
 slug, file names). Also report, as "NEW LEDGER CANDIDATE", any wording you believe an OEM review would fail (with source).
 
+**Dealer.com dealers** (dealer file `platform: "dealercom"`; rules in `resources/rules/design-and-dealercom.md`): the paste
+block has no `<h1>` (the DDC shell prints the page name, which must equal the article H1); SEO fields are the MetaData
+Title and Description only; the schema is our own `#organization` (NAP and phones equal to the dealer file) + BlogPosting
++ FAQPage; phone numbers are real `tel:` links that must equal the dealer file (the site header may show call-tracking
+numbers: the dealer file wins). The stores are in Florida: the LAW-* rows apply, and every MSRP figure says it is not a
+dealer selling price and states destination (Fla. Stat. §501.976 pointer in `compliance.md` §4). The ledger has no OEM
+rows for Stellantis, Cadillac or Buick/GMC yet, so OEM wording concerns go in as NEW LEDGER CANDIDATE.
+
 ## Method
 1. List the article's specific risk items from the ledger (HOLDs, restrictions, time-sensitive rows, safety conditions,
    verbatim legal lines) before reading the draft.

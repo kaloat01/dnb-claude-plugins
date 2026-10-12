@@ -85,6 +85,7 @@ Never random web images, competitor sites, social media, or stock previews with 
    `https://service.secureoffersites.com/images/GetLibraryImage?fileNameOrId=123456`.
 The agent never logs in to Apollo and never uploads, edits or deletes library images.
 DealerInspire upload steps: `skills/article-dealerinspire/SKILL.md` (Phase 1 image list).
+Dealer.com upload steps: `skills/article-dealercom/SKILL.md` (Phase 1 image list).
 
 ## 6. The image-list message (first message; fill in every <…>, keep this shape and length)
 
@@ -110,6 +111,8 @@ Reply: IMG_HERO = <ID> · IMG_FIG1 = <ID> · …
   - Apollo: `Apollo → Content Management → Manage Images → your store's folder → upload → copy each Image ID.`
   - DealerInspire: `WordPress → Media → Add New (if wider than 1,900px: resize to 1,900px wide, JPEG under 1MB) → copy each File URL.`
     The reply line then says `<File URL>` instead of `<ID>`.
+  - Dealer.com: `Dealer.com → Media Library → upload → copy each image URL (https://pictures.dealer.com/…).`
+    The reply line then says `<image URL>` instead of `<ID>`.
 - If one pair image comes from the library, ask for the other in the same shape (e.g. "Landscape 16:9").
 - **Nothing to source** (the library fills all 5): replace "Your turn" … "Reply" with one line: `No photos to source: all
   5 are already in your library. Researching now.` and keep the library line.

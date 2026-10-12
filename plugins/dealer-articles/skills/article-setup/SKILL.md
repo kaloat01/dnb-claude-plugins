@@ -21,7 +21,8 @@ First decide where you are running: **Claude Code** (terminal, IDE extension, or
 1. **Code execution.** If you cannot run commands at all: ❌ "Settings → Capabilities → turn on **Code execution and file
    creation**. If it offers network access (egress or a domain allowlist), choose **All domains**, or at least allow the
    dealer websites, the OEM and government sites used for research, and the image hosts (Apollo
-   `service.secureoffersites.com`, DealerInspire `di-uploads-pod*.dealerinspire.com`). Then start a new chat or Cowork task."
+   `service.secureoffersites.com`, DealerInspire `di-uploads-pod*.dealerinspire.com`, Dealer.com `pictures.dealer.com`).
+   Then start a new chat or Cowork task."
    Stop here until it is on.
 2. **Plugin.** You are running from it, so it is installed. Remind the user once: Customize → Plugins → the `dnb-plugins`
    marketplace (`kaloat01/dnb-claude-plugins`) → **Sync automatically** on (or **Check for updates** before a new article).
@@ -60,6 +61,6 @@ First decide where you are running: **Claude Code** (terminal, IDE extension, or
    and `Bash(node:*)`. Research uses many web lookups.
 6. **Dealers available** — show the dealer list from `DA dealers` and how to start:
    `/dealer-articles:article "<dealer>" "<article title>"` (it picks the platform), or
-   `/dealer-articles:article-apollo …` / `/dealer-articles:article-dealerinspire …` (the PLATFORM column of `DA dealers`
-   says which). Articles are created under `./articles/` in the current folder, so start Claude Code in the folder where
-   you want your articles saved.
+   `/dealer-articles:article-apollo …` / `/dealer-articles:article-dealerinspire …` / `/dealer-articles:article-dealercom …`
+   (the PLATFORM column of `DA dealers` says which: `apollo`, `dealerinspire` or `dealercom`). Articles are created
+   under `./articles/` in the current folder, so start Claude Code in the folder where you want your articles saved.

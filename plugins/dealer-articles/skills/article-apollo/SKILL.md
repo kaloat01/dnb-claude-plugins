@@ -97,6 +97,8 @@ The router (`${CLAUDE_PLUGIN_ROOT}/skills/article/SKILL.md`) decides the surface
    **DealerInspire dealer** (the `new` output or the dealer file says `platform: "dealerinspire"`) and you are not already
    following the DealerInspire workflow → Read `${CLAUDE_PLUGIN_ROOT}/skills/article-dealerinspire/SKILL.md` and follow it
    from here (the job just created stays valid).
+   **Dealer.com dealer** (`platform: "dealercom"`) and you are not already following the Dealer.com workflow → Read
+   `${CLAUDE_PLUGIN_ROOT}/skills/article-dealercom/SKILL.md` and follow it from here (the job just created stays valid).
 3. No separate message: the dealer and version go in the image list's header line. Read ONLY the dealer JSON now; go
    straight to Phase 1.
 

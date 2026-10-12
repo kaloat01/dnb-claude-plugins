@@ -2,8 +2,8 @@
 
 ## dealer-articles
 Turns a dealer name + article title into a **publication-ready, compliance-reviewed long-form article** for an
-**Apollo (Team Velocity)** or a **DealerInspire (WordPress)** dealer website. Every article on every platform gets the
-same workflow and the same checks. Only the image upload, the platform rules and the package differ.
+**Apollo (Team Velocity)**, a **DealerInspire (WordPress)** or a **Dealer.com** dealer website. Every article on every
+platform gets the same workflow and the same checks. Only the image upload, the platform rules and the package differ.
 
 - **Rigor:** a premise test against the manufacturer, then a primary-source claim ledger (OEM, owner's manuals,
   government sources). Every fact traces to the ledger.
@@ -13,11 +13,13 @@ same workflow and the same checks. Only the image upload, the platform rules and
   (golden-geo, article mode) check the draft before you see it. The build also checks the brand and legal wording
   rules (for example, Mercedes-Benz says "offer", never "coupon").
 - **Design:** "Editorial v2", the same layout for every dealer. The dealer's brand color is used on links only;
-  dealers with brand fonts (the Mercedes-Benz stores) use them.
+  dealers with brand fonts (the Mercedes-Benz stores) use them. Dealer.com pages load no outside fonts.
 - **Apollo package:** an HTML fragment, the site-wide CSS, Structured Data, the SEO fields and paste steps, plus a
   local preview.
 - **DealerInspire package:** one paste file (CSS, article and structured data in a single line), the WordPress +
   Yoast fields and paste steps, plus a local preview.
+- **Dealer.com package:** one paste block for the page's Custom HTML component (CSS, article and structured data), the
+  page name and MetaData fields and paste steps, plus a local preview.
 - **Handoff:** every run ends with a HANDOFF block (status, version, URL, every SEO/Yoast/social field, files to paste,
   paste steps, open flags). It is also saved as `HANDOFF.md` next to the paste files.
 
@@ -41,7 +43,7 @@ plugin agents load, downloads work).
 2. Install **dealer-articles**, then turn on **Sync automatically** for the marketplace (or use **Check for updates**).
 3. **Settings → Capabilities:** turn on **Code execution and file creation** and set the **domain allowlist** to **All
    domains**. Research works either way (it uses Claude's own web tool, server-side); All domains lets the plugin check
-   image sizes on Apollo and DealerInspire. If image hosts still can't be reached, sizes are marked "unverified" (check
+   image sizes on Apollo, DealerInspire and Dealer.com. If image hosts still can't be reached, sizes are marked "unverified" (check
    the live page after publishing).
 4. Optional check: in a new task, type `/dealer-articles:article-setup`.
 
@@ -55,21 +57,23 @@ Mercedes-Benz on the road") and the ones already in the library. Upload them whi
 - **DealerInspire:** upload to the store's **WordPress Media Library** and send each **File URL** from the attachment
   details (the original file, not a resized copy). DealerInspire takes at most 1,900px wide and 1MB: resize bigger
   photos first.
+- **Dealer.com:** upload to the store's Dealer.com **Media Library** and send each image URL
+  (`https://pictures.dealer.com/…`), only from that store's own library.
 
 **What you get:** the paste files, `<slug>-HANDOFF.md` and a `<slug>-resume-kit.zip` appear as downloads. The **last message**
 always contains the full handoff, including every SEO/Yoast field: copy from there or from `HANDOFF.md`.
 
 **Finish later** (for example after uploading the images): working files are not kept after a task ends, so keep the
 downloads. Start a new task, attach the `<slug>-resume-kit.zip`,
-and send the Image IDs or File URLs (or say "continue this article"). Claude picks up where the article stopped.
+and send the Image IDs, File URLs or image URLs (or say "continue this article"). Claude picks up where the article stopped.
 
-### What happens (the same on both platforms)
+### What happens (the same on every platform)
 1. It asks for **5 images** first (hero, 2 full-width figures and 1 pair; some may already be in the library), each a
    current, general shot that is easy to find (brand press-photo site or the store's own photos), with a minimum size.
 2. While you source the images, it researches the topic, tests the title's premise (it asks you if the title needs
    correcting), drafts the article, builds it and runs the reviews.
-3. It hands you a **draft package** with a preview that uses placeholders. When the images are uploaded, send the IDs
-   or File URLs (or run `/dealer-articles:article-images "<dealer>" "<title>"`) to get the **final package**.
+3. It hands you a **draft package** with a preview that uses placeholders. When the images are uploaded, send the IDs,
+   File URLs or image URLs (or run `/dealer-articles:article-images "<dealer>" "<title>"`) to get the **final package**.
 
 **Apollo package:**
 
@@ -99,11 +103,28 @@ Never leave a Yoast social image empty (use the hero). After publishing, use Dea
 the page with `?cb=<anything>` added to the URL. Copy the paste file from the file itself (Notepad), never from a chat
 window.
 
-### Dealers (13)
+**Dealer.com package:**
+
+| File | What it is |
+|---|---|
+| `<slug>-preview.html` | Open it in your browser. It shows the paste block inside a Dealer.com page shell, with the page name as the headline |
+| `package/<slug>-DDC-Custom-HTML.html` | The **only** paste file: CSS, the article and the structured data. Paste it into the page's **Custom HTML component** |
+| `package/<slug>-SEO.md` | The Dealer.com fields, one line per field: page name (= the article headline), URL, MetaData Title and Description, and the focus keyphrase for reference |
+| `package/README.md` | Paste steps and post-publish checks |
+
+There is no site-wide CSS file and no separate Structured Data file: both are inside the paste file. Articles are
+**content pages** with a Custom HTML component, never blog posts. Name the page **exactly** as the page name line:
+Dealer.com prints the page name as the page's headline, so the paste file has none of its own. In the **MetaData
+Editor**, type the Title without the dealer name (Dealer.com adds the site name); there are no canonical, OG or Twitter
+fields. Copy the paste file from Notepad with Ctrl+A, never a line range and never from a chat window. After publishing,
+check the page with `?cb=<anything>` added to the URL.
+
+### Dealers (16)
 - **Apollo (8):** Brickell Honda · Brickell Mazda · Honda Libertyville · Toyota of Downtown Chicago ·
   Bentley Jacksonville · Murgado Ford of Chicago · Murgado Lincoln of Chicago · Bentley Edison.
 - **DealerInspire (5):** Mercedes-Benz of Laguna Niguel · Mercedes-Benz of Foothill Ranch ·
   Mercedes-Benz Vans of Laguna Niguel (Sprinter) · Mercedes-Benz of Midlothian · Mercedes-Benz of Richmond.
+- **Dealer.com (3):** Brickell Chrysler Dodge Jeep Ram · Ocean Cadillac · Brickell Buick GMC.
 
 Run `/dealer-articles:article-setup` to see the current list.
 
@@ -115,7 +136,8 @@ shipped one.
 Call-tracking scripts swap numbers by visitor location, so a check from outside the US can show the wrong numbers.
 Local numbers are preferred; when a department has no local number, the number its About Us page shows (header/main
 line) is used. On DealerInspire, the article shows the site's own phone numbers and hours through DealerInspire
-shortcodes; the verified numbers are used in the structured data.
+shortcodes; the verified numbers are used in the structured data. Dealer.com has no phone token, so the article shows
+the verified numbers as phone links and the hours as text.
 
 ### Claude Code
 The same plugin works in Claude Code (terminal, VS Code / JetBrains extension, the Desktop app's **Code** tab with a
@@ -132,7 +154,7 @@ The same plugin works in Claude Code (terminal, VS Code / JetBrains extension, t
   the official `frontend-design` skill.
 - Start Claude Code in the folder where you want your articles saved, then type
   `/dealer-articles:article "<dealer>" "<title>"` (or `/dealer-articles:article-apollo …` /
-  `/dealer-articles:article-dealerinspire …`). Output goes to `./articles/<dealer>/<slug>/`. Every plugin command starts
+  `/dealer-articles:article-dealerinspire …` / `/dealer-articles:article-dealercom …`). Output goes to `./articles/<dealer>/<slug>/`. Every plugin command starts
   with `/dealer-articles:`; typing `/article` and picking from the menu works too.
 
 ### Update
@@ -156,6 +178,9 @@ The same plugin works in Claude Code (terminal, VS Code / JetBrains extension, t
 | DealerInspire image URL rejected | Send the Media Library **File URL** of the original upload (`https://di-uploads-podN.dealerinspire.com/<site>/uploads/YYYY/MM/<file>`), not a resized `-1024x683` copy and not another store's URL |
 | DealerInspire page shows two titles | Paste the file again in the **Text** tab, not the Visual tab (the Visual tab rewrites the markup) |
 | DealerInspire phone number is not a link | A Raw HTML block was used. Paste into the **Text** tab (Page Composer: a "Use WordPress Content" row) instead |
+| Dealer.com image URL rejected | Send the Media Library URL of this store's own upload (`https://pictures.dealer.com/…`), not another store's URL |
+| Dealer.com says `Tag must be paired, missing: [ </div> ]` | The copy was cut off. Open the paste file in Notepad, Ctrl+A, Copy, and paste the whole file again (never a line range, never from chat) |
+| Dealer.com page shows no headline or the wrong one | The page name is the headline: rename the Dealer.com page to the exact page name line from the handoff |
 | Claude Code: `/article-apollo` "not found" | Type the full name, `/dealer-articles:article-apollo` (every plugin command starts with the plugin name). Then check `/plugin` → **Installed** shows dealer-articles enabled, and type `/reload-plugins` |
 | Claude Code: "node is not recognized" | Install Node.js 18+, then fully restart Claude Code |
 | Claude Code: `frontend-design` missing | `/plugin install frontend-design@claude-plugins-official`, then restart |

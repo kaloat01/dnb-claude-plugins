@@ -32,7 +32,7 @@ Only the points below differ. Where they conflict with the Apollo skill, this fi
 ## DealerInspire differences
 1. **Dealer and platform.**
    - DealerInspire dealer files have `"platform": "dealerinspire"`. Today these are the Mercedes-Benz stores: `mercedes-benz-laguna-niguel`, `mercedes-benz-foothill-ranch`, `mercedes-benz-vans-laguna-niguel`, `mercedes-benz-midlothian`, `mercedes-benz-richmond`.
-   - If `DA new` matches an **Apollo** dealer, stop following this file and follow `${CLAUDE_PLUGIN_ROOT}/skills/article-apollo/SKILL.md` alone (the Apollo workflow does the reverse for DealerInspire dealers).
+   - If `DA new` matches an **Apollo** dealer, stop following this file and follow `${CLAUDE_PLUGIN_ROOT}/skills/article-apollo/SKILL.md` alone (the Apollo workflow does the reverse for DealerInspire dealers). A **Dealer.com** dealer → follow `${CLAUDE_PLUGIN_ROOT}/skills/article-dealercom/SKILL.md` instead.
    - "Mercedes Laguna" is ambiguous: it matches two stores, the cars store and the Vans store. Ask which.
 2. **Platform rules.** Read `${CLAUDE_PLUGIN_ROOT}/resources/rules/design-and-dealerinspire.md` at the start of Phase 2. Never hand-edit the paste file.
 3. **Phase 1 image list:** the same 5 slots, request rules and message shape (`image-brief.md` §2 and §6). The upload steps differ:
