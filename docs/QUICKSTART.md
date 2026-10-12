@@ -23,7 +23,7 @@ Start a new chat/task in the Desktop app or claude.ai and type:
 ```
 Example: `/dealer-articles:article "Toyota of Downtown Chicago" "Toyota Hybrid Battery Care in Chicago: Warranty and Winter Tips"`.
 Plain words work too: *"Write an article for Toyota of Downtown Chicago about hybrid battery care in winter."*
-It picks the platform (Apollo or DealerInspire) from the dealer.
+It picks the platform (Apollo, DealerInspire or Dealer.com) from the dealer.
 
 The first message shows the plugin version (e.g. `dealer-articles v0.11.1`). You can also type `/` and pick
 **dealer-articles:article**. If a session can't start helper agents (older app versions), Claude says so once and runs the
@@ -35,6 +35,8 @@ Dealers:
 - **DealerInspire:** Mercedes-Benz of Laguna Niguel, Mercedes-Benz of Foothill Ranch, Mercedes-Benz Vans of Laguna Niguel
   (Sprinter), Mercedes-Benz of Midlothian, Mercedes-Benz of Richmond. "Mercedes Laguna" matches two stores (cars and Vans);
   Claude asks which one.
+- **Dealer.com:** Brickell Chrysler Dodge Jeep Ram, Ocean Cadillac, Brickell Buick GMC. "Brickell" alone matches several
+  stores; Claude asks which one.
 
 ## 3. Source the images (the first thing Claude gives you)
 The first message is an **image list**: the photos to source under **Your turn**, the ones already in the dealer's library,
@@ -46,6 +48,8 @@ and drafts, upload the photos and reply with where they live:
   reply with each **File URL** (`https://di-uploads-podN.dealerinspire.com/<site>/uploads/YYYY/MM/<file>`): the original,
   not a resized `-1024x683` copy, and only from that store's own library. DealerInspire takes at most 1,900px wide and 1MB
   per file: resize bigger photos to 1,900px wide (JPEG under 1MB) before uploading.
+- **Dealer.com:** upload to the store's Dealer.com **Media Library** and reply with each image URL
+  (`https://pictures.dealer.com/…`), only from that store's own library.
 
 Real photos you have rights to (dealer library, the brand's press-photo site, your own photos), model year from last year to
 next year, no text or logos.
@@ -60,9 +64,9 @@ dealer already has a page on the topic. Pick the recommended option unless you k
 The run ends with the **handoff** (the last message, also saved as `HANDOFF.md`): status (FINAL, DRAFT or NOT READY),
 version, page URL, every SEO/Yoast/social field, the files to paste and the paste steps. The paste files, `HANDOFF.md`
 and `<slug>-resume-kit.zip` appear as **downloads**.
-- **DRAFT** = images are still placeholders. Send the Image IDs or File URLs in the same task to get the final package.
-- **Finishing later** (new day, new task): working files are not kept after a task ends, so keep the downloads. Start a new task, attach `<slug>-resume-kit.zip`, and send the Image IDs
-  or File URLs (or say "continue this article").
+- **DRAFT** = images are still placeholders. Send the Image IDs, File URLs or image URLs in the same task to get the final package.
+- **Finishing later** (new day, new task): working files are not kept after a task ends, so keep the downloads. Start a new task, attach `<slug>-resume-kit.zip`, and send the Image IDs,
+  File URLs or image URLs (or say "continue this article").
 - **NOT READY** = a check failed. Claude fixes it before handing off; if it can't, the handoff says why.
 
 ## 6. Publish: Apollo dealers
@@ -89,6 +93,20 @@ and `<slug>-resume-kit.zip` appear as **downloads**.
 6. **Check** the page with `?cb=<anything>` added to the URL: one headline, phone numbers are links, hours show on one line,
    images load, buttons are not underlined, FAQ opens, Google's Rich Results Test shows Article + FAQ, and the page title and
    social image are the new Yoast values. Some DealerInspire sites block automated checks; use a normal browser.
+
+## 8. Publish: Dealer.com (Brickell CDJR, Ocean Cadillac, Brickell Buick GMC)
+1. In Dealer.com, create a new **content page** (never a blog post) at the URL from the handoff. Name it **exactly** as
+   the "Page name" line: Dealer.com prints the page name as the page's headline, and the paste file has none of its own.
+   (Claude may recommend refreshing an existing page in place, at the same URL.)
+2. Add a **Custom HTML component** and paste `<slug>-DDC-Custom-HTML.html` (open it in Notepad, Ctrl+A, Copy). Never a
+   line range, never from a chat. If Dealer.com says `Tag must be paired, missing: [ </div> ]`, the copy was cut off:
+   copy the whole file again.
+3. **MetaData Editor:** enter the Title and Description lines from the handoff (or `<slug>-SEO.md`). Type the Title as
+   given, without the dealer name: Dealer.com adds the site name. There are no canonical, OG or Twitter fields.
+4. **Publish.**
+5. **Check** the page with `?cb=<anything>` added to the URL: one headline (the page name), buttons keep their fill and
+   their labels fit, centered sections are centered, phone numbers are links, images load, FAQ opens, Google's Rich
+   Results Test shows Article + FAQ, and the browser tab title shows the dealer name once.
 
 ## Claude Code users
 Same commands in Claude Code (terminal, IDE, Desktop **Code** tab). Run `/dealer-articles:article-setup` once (Node.js 18+,

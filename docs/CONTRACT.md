@@ -1,7 +1,7 @@
 # dealer-articles — internal contract (v0.11, 2026-10-11)
 Shared spec for the engine (`scripts/build.js`), the dealer data files and the skills. Everything inside the plugin
 is referenced from `${CLAUDE_PLUGIN_ROOT}` = `plugins/dealer-articles/`. Pure Node ≥18, **zero npm dependencies**.
-Two platforms share one workflow and one engine: **Apollo** (`/dealer-articles:article-apollo`) and **DealerInspire** (`/dealer-articles:article-dealerinspire`).
+Three platforms share one workflow and one engine: **Apollo** (`/dealer-articles:article-apollo`), **DealerInspire** (`/dealer-articles:article-dealerinspire`) and **Dealer.com** (`/dealer-articles:article-dealercom`).
 Only the image values, the platform hardening, the package and a few platform gates differ. The router
 `/dealer-articles:article` picks the platform from the dealer. The same skills run in Claude Code, Cowork and Chat (section 6).
 
@@ -10,13 +10,14 @@ Apollo keys: `brickell-honda`, `brickell-mazda`, `honda-libertyville`, `toyota-d
 `murgado-ford-chicago`, `murgado-lincoln-chicago`, `bentley-edison`.
 DealerInspire keys: `mercedes-benz-laguna-niguel`, `mercedes-benz-foothill-ranch`, `mercedes-benz-vans-laguna-niguel`,
 `mercedes-benz-midlothian`, `mercedes-benz-richmond`.
+Dealer.com keys: `brickell-cdjr`, `ocean-cadillac`, `brickell-buick-gmc` (all Miami, FL).
 Each also has `<key>.sitemap.txt` and `<key>.images.json`.
 A file with the same name in the user's working folder `./dealers/<key>.json` overrides the shipped one.
 ```jsonc
 {
   "key": "brickell-honda",
   "prefix": "bh",                       // article root class = .bh-art ; sitewide CSS file = bh-articles-sitewide-CSS.html
-  "platform": "apollo",                 // "apollo" (default) | "dealerinspire"
+  "platform": "apollo",                 // "apollo" (default) | "dealerinspire" | "dealercom"
   "name": "Brickell Honda",
   "aliases": ["brickell honda", "honda brickell", "bh"],   // lowercase, used for fuzzy dealer matching
   "brand": "Honda",                     // OEM brand name as written in copy
@@ -93,6 +94,34 @@ Phones and hours on DealerInspire are verified on each site's About Us / Contact
 Only the shortcodes listed in `di.shortcodes` / `di.hoursDepartments` are used; a department without one falls back to the
 dealer-file number or text hours (build warning).
 
+Dealer.com dealer files have the same fields, with no `apollo` or `di` block and these additions:
+```jsonc
+{
+  "platform": "dealercom",
+  "brand": "Chrysler Dodge Jeep Ram",      // the full brand string the compliance checks use ("Cadillac", "Buick GMC")
+  "brandShort": "…",                       // copy-friendly brand phrase the build puts in its own lines
+  "style": {
+    "fonts": { "head": "…", "body": "…" }, // the site's theme font faces or a system stack; no @import, no Google Fonts
+    "radius": "…"                          // optional corner radius (a recorded brand exception, e.g. square corners)
+  },
+  "ddc": {
+    "media": "https://pictures.dealer.com/<letter>/<account>/",   // this store's Media Library base (--final checks it)
+    "orgId": null,                         // DDC's site-wide AutoDealer has no @id, so the block defines <domain>/#organization
+    "titleSuffix": "…",                    // the site name DDC appends to page titles (the MetaData Title is typed without it)
+    "aboutPath": "/dealership/about.htm",  // About Us page: the source of the phones and hours
+    "contentPath": "…",                    // where article content pages live (`new` builds the page URL from it)
+    "socialTags": "…"                      // what the DDC shell prints for og:/twitter: tags (reference only; no field exists)
+  },
+  "images": {                              // value field is `ddc` (Media Library image URL), never `apollo` or `di`
+    "STORE": { "ddc": "https://pictures.dealer.com/<letter>/<account>/…", "alt": "…", "w": 1600, "h": 900 },
+    "LOGO":  { "ddc": "…", "alt": "…", "w": 600, "h": 120 }
+  }
+}
+```
+`brandShort` and `style.radius` are optional and absent for Apollo and DealerInspire dealers, so their output is unchanged.
+Phones and hours on Dealer.com are verified on each site's About Us page (`ddc.aboutPath`) from a US location. Dealer.com
+has no phone or hours token: the block shows the dealer-file numbers as real `tel:` links and the dealer-file hours as text.
+
 Sitemap snapshot: `resources/dealers/<key>.sitemap.txt` — one root-relative path per line (no inventory/VDP URLs),
 first line `# <domain> snapshot YYYY-MM-DD`. It is the default internal-link allow-list.
 
@@ -104,11 +133,13 @@ Same shape as the proven Apollo modules (see `resources/examples/`), with:
   - **DealerInspire:** `di: '<WordPress Media Library File URL>'`, i.e.
     `https://di-uploads-podN.dealerinspire.com/<site>/uploads/YYYY/MM/<file>` (the original, not a `-WxH` copy, from this
     store's library). `new` writes `di: null` for DealerInspire jobs.
+  - **Dealer.com:** `ddc: '<Media Library image URL>'`, i.e. `https://pictures.dealer.com/<letter>/<account>/…` on this
+    store's `ddc.media` base. `new` writes `ddc: null` for Dealer.com jobs.
 
   `desc` = the plain-language image request ("2027 Mazda CX-50, front three-quarter, exterior, daylight"); when the
   value is null the preview shows a light placeholder with that text, and the package is DRAFT.
 - `path`: root-relative page URL, set by `new` (Apollo `/<slug>`, no trailing slash; DealerInspire `/<slug>/`, or
-  `<di.parentPath><slug>/` for stores with an article parent page).
+  `<di.parentPath><slug>/` for stores with an article parent page; Dealer.com: a content page under `ddc.contentPath`).
 - `allowedLinks` optional (default = dealer sitemap snapshot + builder-owned routes); `banned[]` regex strings;
   `allowPhrases[]` (added to the dealer file's `allowPhrases`); `allowMsrp` (bool; required for any `$` figure, each needs
   the brand price term, "MSRP" or "TSRP" for Toyota, within 140 chars).
@@ -118,19 +149,20 @@ Same shape as the proven Apollo modules (see `resources/examples/`), with:
   fine, about[]. Blocks: h2{id,toc,text} h3 p{html} list{items,check?} steps{items[{h,html}]} callout{label,html}
   table{caption,head,rows,note} stats{items[{n,l}]} cta{text,label,href} fig{img,caption,prose?} pair{items[{img,caption}]}.
 - Tokens: `{{PHONE}}` (dept phone), `{{SALESPHONE}}`, `{{SERVICEPHONE}}`. Never write a number (or, on DealerInspire, a
-  clock time) in prose. In the package the tokens become Apollo merge tags (`#ServiceNumber` / `#SalesNumber`) or
-  DealerInspire `[di_option]` shortcodes; the JSON-LD always keeps the real numbers.
+  clock time) in prose. In the package the tokens become Apollo merge tags (`#ServiceNumber` / `#SalesNumber`),
+  DealerInspire `[di_option]` shortcodes, or on Dealer.com the dealer-file numbers as real `tel:` links; the JSON-LD
+  always keeps the real numbers.
 
 ## 3. CLI — `node "<ROOT>/scripts/build.js" <command> …`
 | command | does |
 |---|---|
 | `env [--net]` | first line `dealer-articles v<version> (<date>)` (the version stamp; skills show it to the user), Node version, plugin root, browser found for screenshots (msedge/chrome path or "none"), download folders that exist and are writable (`/mnt/user-data/outputs`, `/mnt/outputs`, `./outputs`), dealers available. `--net` also reports which image hosts, font hosts and a dealer domain are reachable or blocked |
 | `dealers` | list keys, prefixes, names, platform, aliases |
-| `new --dealer "<name or key>" --title "<title>" [--slug <short-slug>] [--out <dir>]` | fuzzy-match dealer (exit 2 + candidates if ambiguous), slugify title (or `--slug`), create `<out|./articles>/<key>/<slug>/` with `module.js` (from `resources/templates/module.template.js`, dealer/title/slug/path/dates pre-filled; DealerInspire jobs get `di: null` image values and the DealerInspire path), `job.json` {dealer, title, slug, phase:"intake", created}, print the job path |
+| `new --dealer "<name or key>" --title "<title>" [--slug <short-slug>] [--out <dir>]` | fuzzy-match dealer (exit 2 + candidates if ambiguous), slugify title (or `--slug`), create `<out|./articles>/<key>/<slug>/` with `module.js` (from `resources/templates/module.template.js`, dealer/title/slug/path/dates pre-filled; DealerInspire jobs get `di: null` image values and the DealerInspire path; Dealer.com jobs get `ddc: null` and the Dealer.com path), `job.json` {dealer, title, slug, phase:"intake", created}, print the job path |
 | `status <job>` | print job.json + which outputs exist (the platform's own package files) |
-| `build <job> [--final]` | load module + dealer → write outputs (below) → run gates → print ✅/❌/⚠️ per gate and the handoff; exit 1 on any ❌ (the package README then starts with "NOT READY: gates failed … Do not paste."). `--final` additionally requires every image to have a value and no placeholder: an Apollo id/URL, or on DealerInspire a Media Library URL on this store's `di.uploads` host |
+| `build <job> [--final]` | load module + dealer → write outputs (below) → run gates → print ✅/❌/⚠️ per gate and the handoff; exit 1 on any ❌ (the package README then starts with "NOT READY: gates failed … Do not paste."). `--final` additionally requires every image to have a value and no placeholder: an Apollo id/URL, on DealerInspire a Media Library URL on this store's `di.uploads` host, or on Dealer.com a Media Library URL on this store's `ddc.media` base |
 | `shot <job> [--widths 1280,375]` | headless system browser screenshots of the preview → `<job>/qa/preview-<w>.png` (full page). On Windows, very long job paths render from a short temp copy. If no browser: warn, exit 0 |
-| `images <job>` | for every module/dealer image with a value: normalize URL, GET with browser headers, require 200 + `image/*`, save to `<job>/images/<KEY>.<ext>`, read real width/height (pure JS PNG/JPEG/WebP/GIF header parse), print table + placement advice (hero ≥1900 full-bleed else contained; fig ≥1100; narrow 880; pair ≤1000). DealerInspire: the `di` value must be a `https://di-uploads-podN.dealerinspire.com/<site>/uploads/YYYY/MM/` URL, else ❌ |
+| `images <job>` | for every module/dealer image with a value: normalize URL, GET with browser headers, require 200 + `image/*`, save to `<job>/images/<KEY>.<ext>`, read real width/height (pure JS PNG/JPEG/WebP/GIF header parse), print table + placement advice (hero ≥1900 full-bleed else contained; fig ≥1100; narrow 880; pair ≤1000). DealerInspire: the `di` value must be a `https://di-uploads-podN.dealerinspire.com/<site>/uploads/YYYY/MM/` URL, else ❌. Dealer.com: the `ddc` value must be a `https://pictures.dealer.com/…` URL (a wrong file name on a real path returns 403) |
 | `page <url> [--out <file>]` | system-browser DOM dump (text + links) for pages that block plain fetches |
 | `review <job> --mode separate\|single` | records how the two reviews ran: `separate` (reviewer agents: Cowork, Claude Code) or `single` (one conversation: Chat). The handoff shows it |
 | `deliver <job> --to <dir>` | copies `HANDOFF.md` and the package files to `<dir>` (`HANDOFF.md` and `README.md` become `<slug>-HANDOFF.md` / `<slug>-README.md`, so many articles can share one flat download folder) (a download folder; with none, any folder the user can open) and writes `<slug>-resume-kit.zip` there: `module.js`, `job.json`, `HANDOFF.md`, `IMAGES-TO-SOURCE.md` and the source ledger under `<dealer>/<slug>/` (no images or previews: rebuild after resuming). Warns when `module.js` changed after the last build |
@@ -179,7 +211,29 @@ Same shape as the proven Apollo modules (see `resources/examples/`), with:
 ```
 No site-wide CSS file and no separate Structured Data file on DealerInspire: both are inside the paste file.
 
-**Both platforms: the handoff.** Every `build` writes `<job>/HANDOFF.md` and prints the same text between
+**Dealer.com:**
+```
+<job>/<slug>-preview.html          the paste block inside a Dealer.com page shell that prints the page name (= mod.h1) as the
+                                   page's only H1 above the block, with the font fallbacks; placeholder SVGs for images
+                                   without a ddc URL; top bar "LOCAL PREVIEW · DRAFT (placeholders)" or "FINAL"
+<job>/package/<slug>-DDC-Custom-HTML.html   the ONLY paste file (the page's Custom HTML component): one <style> (Editorial v2
+                                   + Dealer.com hardening: px only with a 16px wrapper, no @import, CTA fills !important,
+                                   every rule scoped to .<p>-art) + one wrapper <div class="<p>-art <p>-art-<slug>"> holding
+                                   the article (no <h1>: the header starts with the eyebrow and dek; phones are real tel:
+                                   links, hours are text) and, as the last node, the JSON-LD (AutoDealer <domain>/#organization
+                                   with dealer-file facts, BlogPosting, FAQPage; no other script). It may be multi-line and
+                                   ends on </div>, with nothing after it
+<job>/package/<slug>-SEO.md        Dealer.com hand-entry sheet, ONE line per field "* Field  →  value": Page name (= the H1),
+                                   URL, MetaData Title (without the dealer name: DDC appends the site name), MetaData
+                                   Description, Focus keyphrase (reference only). No canonical, robots, OG or Twitter lines:
+                                   the MetaData Editor has no such fields
+<job>/package/README.md            paste steps (new content page named exactly as the H1 → Custom HTML component → paste
+                                   from Notepad with Ctrl+A → MetaData Editor Title + Description → Publish → checks with
+                                   ?cb=); DRAFT banner when not --final
+```
+No site-wide CSS file and no separate Structured Data file on Dealer.com either: both are inside the paste file.
+
+**Every platform: the handoff.** Every `build` writes `<job>/HANDOFF.md` and prints the same text between
 `=== HANDOFF (show this to the user verbatim) ===` and `=== END HANDOFF ===`.
 - Status: **FINAL** (a `--final` build with every gate passing), **DRAFT** (built without `--final`, or images still
   placeholders; do not paste) or **NOT READY** (the failed gates are listed; do not paste).
@@ -191,8 +245,8 @@ No site-wide CSS file and no separate Structured Data file on DealerInspire: bot
   paste files and the resume kit.
 
 ## 5. Gates (❌ = fail, ⚠️ = warn)
-**Shared (both platforms)**
-❌ JSON-LD parses · exactly 1 `<h1>` in fragment · balanced `<div>` · no `rem` · no em dash / no en dash outside
+**Shared (every platform)**
+❌ JSON-LD parses · exactly 1 `<h1>` in fragment (Dealer.com: 0, below) · balanced `<div>` · no `rem` · no em dash / no en dash outside
 digit ranges · global + dealer + module banned phrases (minus module and dealer `allowPhrases`) · excluded towns ·
 toll-free numbers not in the dealer file (8xx, phone-shaped regex) · brand terms ledger readable (a missing or malformed
 `brand-terms.json` fails every build; `env` shows it too) · `$` figures only with `allowMsrp` and the brand price
@@ -224,6 +278,16 @@ field; `--final`: social images present) · `--final`: every image is a DealerIn
 
 All shared gates apply unchanged on DealerInspire, including MB-001 ("offer", never "coupon") and the advisory
 LAW-CA-01 for the California stores.
+
+**Dealer.com only**
+❌ 0 `<h1>` in the block (the DDC shell prints the page name as the H1) · exactly one `<style>` · JSON-LD is the last
+node · the block ends with `</div>` · 0 `rem` · no `@import` · no `<` inside CSS or HTML comments (DDC's tag-pair
+validator counts them) · no doctype/html/head/body/title/meta/link · no inline `style=` · no `transition: all` · CTA
+fill `!important` present · phone numbers in the block equal the dealer file · `--final`: every image is on this store's
+`ddc.media` base (pictures.dealer.com) and no placeholder is left.
+
+All shared gates apply unchanged on Dealer.com (except the H1 count above), including the LAW-* ledger rows for the
+Florida stores.
 
 Global banned list (whole words, plus plural/-ly forms): look no further, premier, seamless, elevate, nestled, unmatched,
 best-in-class, state-of-the-art, unlock, peace of mind, top dollar, guarantee, best price, highest price, certified
